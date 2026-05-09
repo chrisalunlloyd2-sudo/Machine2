@@ -1,0 +1,13 @@
+{
+  "objective": "Create a tiny safe Python CLI program that adds two integers and prints JSON evidence. Keep it self-contained and testable.",
+  "items": [
+    {
+      "name": "alpha",
+      "value": 1
+    },
+    {
+      "name": "beta",
+      "value": 2
+    }
+  ]
+}

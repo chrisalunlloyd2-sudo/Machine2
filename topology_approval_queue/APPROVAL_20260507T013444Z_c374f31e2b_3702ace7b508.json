@@ -1,0 +1,18 @@
+{
+  "confidence": 0.78,
+  "created_at": "2026-05-07T01:34:44.213010+00:00",
+  "environment_map_id": "ENV_MAP_20260507T013438Z",
+  "genetic_advancement_policy": {
+    "must_pass_end_to_end": true,
+    "one_variable": "Replace one silent broad exception with logged exception detail.",
+    "requires_user_approval": true,
+    "suggest_only": true
+  },
+  "id": "APPROVAL_20260507T013444Z_c374f31e2b",
+  "priority": 2,
+  "source_path": "C:\\Users\\viper\\infinite_triplet_loop.py",
+  "status": "pending_user_approval",
+  "subsystem_id": "TRIPLET_LOOP",
+  "summary": "infinite_triplet_loop.py has 4 broad exception handlers. Propose logging one failure path first so Karoo can learn why a subsystem fails.",
+  "title": "Broad exception handling reduces learning signal"
+}

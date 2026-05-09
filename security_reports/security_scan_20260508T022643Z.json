@@ -1,0 +1,4435 @@
+{
+  "timestamp": "2026-05-08T02:26:43.453677+00:00",
+  "events_seen": 316,
+  "new_events": 316,
+  "repeated_events": 0,
+  "inserted": [
+    {
+      "fingerprint": "292a82561281112ddca14b590684bfab69d38f368f1f1762ab8a279f17e490cc",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:36:46.976224+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "9be3c247a058ff573ab8185401f6df69bdfe86ba1fcae44f4070cf0eba3dc1b9",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:36:47.605559+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "54b7b520fd41abe32620ebb4679b844368ace4f65a1b8421cebf0fba2bfd2290",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:37:18.361567+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "fcb3c7bc6e7eaac4c73853b85b804b54cad279315c9e20c38561103f9cc1584f",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:37:47.025903+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "35acb398136a1a3cc2ae16a3e2979726dbd723e1e9a90506e762cef43318a2ba",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:37:47.856476+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "5529b0447d8f1523c3ce569322e8de3338cd5301d016f7f532b9974c778e0d46",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:38:17.853425+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "ba35bdb2fb7fea9222d3bc58c9d443328c8980658ebf0d4d31d38a1783fe06b6",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:38:47.610191+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "9c8d1352ed5d43354bcad2a27795271299fed65dc29d4ec6d2c8a88e058c265d",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:38:47.755532+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "bfeadc7b7fa2ecad933463343333bb54f4cad7bac78aaa28db9c1372a3f4d603",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:39:17.188279+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "08d3382378d4b7ec921d92558668b0a8cc483479b9f45cb3801efb5a30ec452a",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:39:47.022267+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "cc3b8adb58a76a37e039423bc0160e4444a34b6f9052edcc70c46e85d4bcd275",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:39:47.535678+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "7c167e0f58fd2622ebfb557fc361ad48f4d78f5fa20b03395cb66e2460373761",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:40:18.422775+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "e63efe9b1637e3454dd44433ded05096385f371160a1f81fd15725b2f8e9c479",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:40:47.701924+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "0cbbad821871f68acd1c039f528aaa97ef8f5100213b7daeeeebbf07ff3b3785",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:40:47.826095+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "7fce673b54e76d85d923f25e664b56ec0784a2163a10a125e174829ae60c8dfb",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:41:17.243234+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "7049ce7ed296b8296eeb0f323797e35beedbe9e6607b5a6000a872d9a5e584ef",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:41:47.679885+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "ce626f0c733c5b9f74b05abd5e34f6541d210be5c830522b417755eb088468c9",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:41:47.812097+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "34eb1eb6e1b6cb5c28fad2ef84f516cc1b22e186145ed444dc7d96f92e90798f",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:42:18.394366+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "3901c8acd9a9cc371ee3c42bfa0b14e20bbe7c84b7bf3848f9a9a44d6a24e4de",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:42:47.092614+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "1ebbe74cd89e7e8e40eeb74e4ac0b9d17d5fe4fd841b1ce541dba187c858a3c8",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:42:47.619229+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "9ec4a05bf436cb5ba7009bf1948dc3df08ce6a84f1cba39ac21bab10f3c99ac9",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:43:18.413746+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "ef61c65510ce086e15dd9038b2310cdeaf3ba3f0e18f11adc62d724e1964179a",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:43:47.581053+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "d07a2a3ee4435b367414ca9c949fa559948b59e6e9a48a4ac963dfb132cc36fb",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:43:47.862851+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "f287c6e08130f830b7bd6afc5b1380a60ebf1c22b495456e33ac62d2d8a443af",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:44:17.402091+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "2323a4bd5dbab79435412b0bae9e6359fbbb613c511dec1a112830b71b839234",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:44:47.125665+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "9a93a4ae18b01f3fcaae9c99dd3026b130b6b7161d535209a705e2a9eec01ce2",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:44:47.686148+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "0cc8f6fe4b3365d9222d371d679ef9393b63bb28d69d9110277f6c6d7ea6cbcd",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:45:17.785762+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "a5c9d35d40aba078d9baebe947ea95fd7d9182f6fc9acb02e56569a11880f2b2",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:45:48.499112+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "077e1893eb8f9eec5897c7650bc6d8ded838fe6765f3da7e88f497dcf6e0d0ff",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:45:49.528764+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "f061ea020f02992ba413e00547ee9d4dfa417a785eb8115889140eb49fd020bd",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:46:18.749456+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "7202da23207751f1c6c6e221aa4371ce0899ec6d5d9e2dccd67b855c108a8528",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:46:47.724627+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "b5c8b4ca8bcb326f490434ce466343229cf466be83d4b6d997c698e6a3bc9811",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:46:48.362456+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "11080e5c49b7b1a078b56744540373aeec626d7affe4fa368c92712f79aa06eb",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:47:19.653706+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "630ad417ab56488c8ab8c68f71be805a683169c2bf3f07cd196b0a1e71123cbe",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:47:47.797932+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "9830686e4a3faaec2a4034b3ae73a938246731ff6e1c8c50b4d5634a777f73c9",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:47:48.363544+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "cf27dc078e0e8b2d7d89a5057c3435a0e6b3d2898edbd9028472ac4194047748",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:48:18.655815+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "d706d7b1a955a1729eaf8171d6ab9a027d4c077444229026aeaad58d87e74ab6",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:48:47.636644+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "4623590471d631b070aa796a9c6095296f84fac2f707d5095a17a71c7cd90f8b",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:48:48.417326+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "0510417505b3ee71497b5b02280fa9328f8d5683f530abda47f3a6e8404d6cd7",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:49:19.015102+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "be35199232a0340133421867ab148051eb40b4c1da4edaf1ddea12584b2b5d1f",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:49:47.564261+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "ea6b58352a666c0763b24232faacc6141c48b47b1e47222df04332d67a9bbcae",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:49:48.420854+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "f838197c90b113b2b08d49015dfa3fea6d30bcf591c70dc580f58091695dce51",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:50:18.824549+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "a138533f06871559247acf3d461aa8c952d700168ecd0b84437fd470bbfb22ab",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:50:47.830814+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "e64dfbb4745d45540069ccb300f672ec1d5833da4d4f0ddd9598de57b459a5d4",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:50:48.440962+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "033ba2ab26578dcf6ad373700ae2792394d9249081ce78befe829a1ceba3beaf",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:51:18.911466+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "c70ce4efb99cda757fb1f3a49d0f244f8fbedd48e273bb1422153568c61cb55d",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:51:47.817563+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "0b98b623a80ab77a4ccd79f0ec41d3755f9ed81839679593e5bedf6473ff109f",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:51:48.455466+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "37def9f037c9a7c75bab6988b5f126c97dc697a3570fa2e346131a4351dcc470",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:52:18.779257+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "07cda831d6dae53b148dd620615b09d477d74a8617c7e38097de15d2e1071f99",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:52:47.735350+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "21500b19d596184c5212481461b973aba4cc0a8cc8653cb436991e30fa206452",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:52:48.798022+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "bfcb478374eb371574371dfe6766cc5f959aca810cc5e6911c509ea1e6a6538e",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:53:19.487719+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "6e93191bba4854a43d57019bb460246af1e172f86fd7d0d2bd4f8d8350c4aa37",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:53:47.496401+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "5ddd3b13a214fe6e667eac08861633bbc719584d02db03eb2ed306166924e86e",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:53:48.520596+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "ddb34d25495179a6ee6133c3991b839e67427821417c9e599dc50311e04fe47b",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:54:19.303012+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "2c93ec5961e4cf00c4f07184242cea77b61a47b3f31c13d815b515ad716f9d46",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:54:47.482231+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "815e7cd573829c92a0119b7de7aa03b6760975ac73e09569fc271179efc30b5f",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:54:48.547946+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "e1fda555605b3e005cfbb00677b78536ec49a5f27211f5e9ae59747d8a381142",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:55:19.558543+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "3efe519c6cd06e31dc7ddbfb9d6fb0d46f135b4b8fd62686837148eea28f990e",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:55:47.617454+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "64b67c6918abf639ac6e286d88da8e4cba3d33779813045f093f21a564ce1b87",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:55:48.555262+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "05e9a988e9f12e40159cb2233ec4c2e478e6cf56274076a9a8d023b0c9568c99",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:56:19.906822+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "4f8f50573db5d415d5ea633ca4fb6536a2b55007c65ceda5a86f7de5f11fb05c",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:56:48.562522+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "56c65066e6d1959cbec324835ecd3ce0c302aea42424fcd1d532a3927f267ef6",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:56:49.128687+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "5eea3e85bf38186207bd4e41a277e4ddf650feff44decc2def7795c2d33258c6",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:57:19.302587+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "0aec58453b975424c505496fe213e7d951061a164e900ef154cfcc71f7933057",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:57:47.997557+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "a3921f3885455e8bef8b877b776b5ee565241baa0bf05a6dce8d3592670bc71b",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:57:48.574635+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "a56c2811dc77adf14f512d02f58d1e7e2a9a03ff54e9c9c733d38b2ca7c0413f",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:58:19.385330+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "12ce6d0ed47ec5972754ed83591e98f7d0c5d19bb8fa4203df4c77b9e5f09b55",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:58:52.434597+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "609bd76ecfa2118ea617cb46250b11643c98e8df130f87a644ff08f0e73d3724",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-07T11:59:07.869799+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "9cad0ec8ad23f7f400dae65f12dd83f55f1452113c359dd9b96a44d8eb1c2a31",
+      "event_type": "unknown_logic_block_lookup",
+      "severity": 2,
+      "heuristic_score": 0.64,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T00:49:28.904271+00:00",
+        "ip": "127.0.0.1",
+        "method": "GET",
+        "path": "/logic/block/CODEDB_LOGIC_BLOCK_20260507T013712Z_d73b0c26da0a",
+        "status": 404,
+        "interpretation": "agent attempted to fetch a block id that is not exposed"
+      }
+    },
+    {
+      "fingerprint": "3a388339fe0c8b2713b4076a84a6ee95622e15b33f31381b804d93dfa3d51640",
+      "event_type": "agent_discovery_probe",
+      "severity": 2,
+      "heuristic_score": 0.72,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T00:49:49.894804+00:00",
+        "ip": "127.0.0.1",
+        "method": "GET",
+        "path": "/.well-known/agent.json",
+        "status": 404,
+        "interpretation": "new agent/network surface probe"
+      }
+    },
+    {
+      "fingerprint": "d40871e9f172e2e1f06ee9c628ddbd19ef881b484ea7d792e8dcc3976e2c2962",
+      "event_type": "unknown_agent_api_probe",
+      "severity": 2,
+      "heuristic_score": 0.72,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T00:57:24.987305+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/ask",
+        "status": 404,
+        "interpretation": "new agent/network surface probe"
+      }
+    },
+    {
+      "fingerprint": "646b9ad5ab3adcefd2f5ec3538f2bc5e73756821158ea011f8ec51e4a57618b2",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:06:24.578160+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/agent/ask",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "f61db1316346b922c9c38548a91f80317983e5f395ef287cc6640dd1f9d2826c",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:12:49.070183+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "7adb976a7198539af0b96f9875490b0774dbd9eb6e180be90a8b9e024377ff31",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:35:15.642252+00:00",
+        "ip": "127.0.0.1",
+        "method": "GET",
+        "path": "/tactical",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "acf9e74d19148eba84860ca045546e2079faaf37d4b6ae3df733e179ccaec69e",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:42:54.164878+00:00",
+        "ip": "127.0.0.1",
+        "method": "GET",
+        "path": "/api/ledger",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "dd7c06a600bfadf6a8de74321751a190f1cbe577a01333304e96fbd9048ab132",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:45:48.073971+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "9ed9a32431a6264b283f67c0db91994e7833458f428f8e7dbb0e9655f1e6d0ec",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:46:05.201564+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "d4dad04fbcc6dd5124876e515bf68b1ebc8fdda6bddba25744a1a4de0ece305f",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:46:35.465153+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "6cac959092100d6c98197810729f35bbf0c226916a4b562572d9c0ffa3c47c3f",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:46:36.403219+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "4864bbcdbec13028068fe01c6f92d229e2524a2e6a7b22e76af7c040bb39dc4b",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:47:05.234564+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "e38a0340afde3f19d8ec58b6226880bfdcabfc9be20b936a1d3edd4ae7ebbf4c",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:47:11.750738+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "61b41bf9344bc1ec65561c954c40d4204edae577ada4fa1a37bf0967c28bf5df",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:47:35.557552+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "48c4fb5de806631fb69c6ea67c2fe24e64a1ad862529d7e2550a59c6f4fd820b",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:47:36.407245+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "53b13682cab296d5f32649e2211ba35205577ad5fe02cc6347ec1defdca61b6a",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:47:42.662624+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "cec4820b665ed01f0751770614025b7ad8af8e527abeec055eaf5a0b930fc8e2",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:48:05.493990+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "af3aeaf6c47263b3dd21f9a61680a2d48d0b108bee28c7e3fbe0f19a97c165f7",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:48:11.989557+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "099fe4f4d1035c22daf0789c4c78d615f40e2a5d852691843dabd48c524e94f5",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:48:13.162962+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "4bcff1aa54bc6f167fdb0698c40a7618c3057504f044abdc896eab3d1a21e6be",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:48:35.376243+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "016228d4c6c1541e60f8523fbe9bf1e69113d2e806dc29bfd076cb8f4f8ea484",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:48:36.389100+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "dc85ea3b6aeef39f4043718d6506331986e00950f02be2c2fc7026b67894da15",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:48:41.987764+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "257b22ac512987940ba83646ee26aa43a07a7c3a4e5da9c76d20ab7f615e556b",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:49:05.444163+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "51523cac693331bcfe7353f609787088d6ca71a9bfb85a589b11c52190fc99ba",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:49:11.992634+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "9cf503f5aca848c73ec4e613b05241df7b3f59a03d1c2dfd80bbd63a051bbc48",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:49:13.208293+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "0834f29a1e11f860787ee722cd6a9967a345d52f84ccc63a2bf82b28edc5da95",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:49:35.341909+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "c916e4f21036d553dafb3db58e19cb564417bb40deb3ad1103471e7db7ecce11",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:49:36.401176+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "2cafabcfdb8515b7b4106d7b612e223f0391664d3099df62250b356007e28e52",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:49:42.570824+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "6237a10e1044db30033f42f341c23741afb292336ff2a3eb3cac240d91becf88",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:50:05.768760+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "d055cbf16e2cc5f772016f476a8ed74303fa2091bf5f2b32bb4b09849f20f764",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:50:12.052355+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "1f555c123dc87276e54e0661bd100302a771afefad47208bbeb9e6a305817fdb",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:50:13.101898+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "708d33c2f54be7c068d6df741bd15a365e96124fb76c88d11c073d3390859357",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:50:35.634913+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "92b4593edc6a769e4b45921ff57796d5e0545de4870e19a3f5e411fdffc241ff",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:50:36.469406+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "709c91b4a84d236d04d92fa5c3819033b1ad042a819533d7acebd94c322e5f2b",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:50:42.440102+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "1cbbb9aaa4a6725194fa0b73e7faba730ffb6c7c72a491361b1c8230d6b2b51f",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:51:05.850266+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "aac7155c58e3c3dd298b2c79cae42fb3f9adb8eac77b786444204ccfe0021cb4",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:51:12.038748+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "efcd9017819c16d4f8b5367d3466d33a14ecc1a91e6d06a4f99bfc31d3f18662",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:51:13.110759+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "8f81a523ded7e2db14c557b2eba57cc260270715106bcd8cc5ad5451b70ad0e2",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:51:35.467263+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "48c53d9338314cbbb49a48b5f2dbe2cf311c18fe885adb7ef10df638a5108fc5",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:51:36.375157+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "6c6fbc86443378ffbea787d5c53fc888cb80d7ba5e3025745e35bd6f3add43a5",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:51:42.300862+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "74fd5ff1a21c41d0ed079758db6359790c385cef32df35a40479e90b524e7c5e",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:52:05.364431+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "0070ef4ec430f5944da044d52fb663abb30b9aef7fbffc57129d7bc1d9285c77",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:52:12.100636+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "33fac4b2fefeb93abb49a3adf25927567b54e605d2e23bb7d7edeea07b0227d3",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:52:13.111186+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "838daf227e6bf11470d76c36836fad463e3cc4de2df3ccceea0a03d77d798f85",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:52:35.843572+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "25a730a4ed9c8219929c3e18b41002176b22fac5d06aaa856632305608c23ae4",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:52:36.409329+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "061290b10b49d745e073a88d40c04514c38fa533f2c0447b2eb82afc85e94c33",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:52:42.504230+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "5b9b140398f394141a8853f080b1aad3266d2363c4bcd821e5c8cb145416cc0e",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:53:05.627451+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "cc23b5b8bf106b432efea524b6224672b113d268d3345c1fb1f9713076c06bde",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:53:12.081446+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "6c9cb71f1a4c3f014691462f8b5bfa8fa10d017cc0952752143ef78c261e2a4a",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:53:13.131999+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "8f0053a9fe8b6bd8d16513d7b9f0d3ea4c8766326f4590e7a5797c577287683c",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:53:35.432088+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "67e8123de4eaf33e8ce440ebc84a05d14420b8397535527b2cfb1a3afe4b0d07",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:53:36.425344+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "399646752b5ad349aa5b4b33957cb4912f8b41cd343d0a1903bfdacf823dfe74",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:53:42.425451+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "bd6597df8c500d37829434b01de54cf4c55a2c45d32ae00535d70c55c35f9f8d",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:54:06.451783+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "3fee3d9c1a885b581e67470f2824cd1ae2ee7f80bb4d2053e627bd4e26751f2c",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:54:12.066763+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "02366a96a7951df714ccb796e322b8e0df41787f3703a42b96f254931ff43828",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:54:13.096443+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "d49af8e110f6f9df015a5780117b13d11bc0ff160dc4cd1c903fee1342adaa63",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:54:35.715877+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "c323bb54e705081ec4925379d3082061e2ba26cccf26f310f7136d5d442a6067",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:54:36.394966+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "932aafc6e9dd4ee6518520f5c2ea6345783188b82730e60517452117dfa88257",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:54:42.196339+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "f0824dd83b59484f2b8a146646f1741eb47b8627eefeda3bce8624bb450e943c",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:55:06.401967+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "dab96b96e04598919ecba540c9bf90adba9fea29ca77028641e63f5d3149653a",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:55:12.085850+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "c60c6a35a2715b8d917d5c42a0f526700ee8114e58b8a7ab08b5563b2f07ae23",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:55:13.073289+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "ff0875ea557984db0b9cc946e8f5a108197060e35d8642a86d1742e1b30390c8",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:55:35.798302+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "f4a5ea0afb8a041b1dc7b96af488f95fbb9fa01579753dee6705156efef1fa2c",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:55:36.411395+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "821f118154291667acbac30120f773fe79165a7648b99e19c116527bcea3be3a",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:55:42.462788+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "437cf409ee55cfcef9a3c60da6b4ee465d53962703af34ee4a74d3488cbb4dc5",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:56:06.081041+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "84ab23d5e5ef0c7fd7e488ca8617d1cb205f2dde7aa1a65616a844da35377485",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:56:12.691941+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "20065d7dca12d6b7b14898d558121efd12eb7e59a93fda06e7eec9c78f621081",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:56:13.122926+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "91c01a479542283ab850ebc56e5b58b1150fb47f7b68fb7bfc4f48fe6dcf2a17",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:56:36.440533+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "bbeefdc900f8eb919d5d128bbf6829fde6e3a49fd21807479362514bc9d038e1",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:56:36.472817+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "030d1857549c9d85579238f06d4308a765217e6a54116fe3e3eb8756110a062a",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:56:43.080509+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "0cc0d94a7b2a0c079b3ce2c3f35256b075be74ddccb19fa5590fc1db4742b688",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:57:06.654892+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "c942854cd0aaf972efe85e3e20f11aebf4b074429d5e3489c19c9ec115312ab7",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:57:12.158026+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "8c8bf02cc73623c5f88ed8cfdba816811b8622070a7ed89972dd0c5fac927f61",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:57:13.142483+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "bc13c1c57c3d654aebba63bff7881295521236ef0c51792fa187250e47bdd494",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:57:36.396367+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "cd596d984ea4ad7154c2ee1d37b3826d784a6016090bd607ca8ca9f93f37014b",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:57:36.421513+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "6611b76b1d1d4c696b540bc735e372a5a3ffb8abcd9d9bcb35382ec3be417929",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:57:42.128589+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "922cbe1aa5a6155a62673fb1579e076aed89e5aa70eb589550cb9e34fb74ef7a",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:58:06.887730+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "60f12399eb440093b01a8af8a588f0494ab86c116c68737af6bffed9ac09f4de",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:58:12.603755+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "265c05d035dde8a75a51ca9b89c9610d240ba0ed1a4563701cfa27a8f9f7aaac",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:58:13.122783+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "33d2b1c8ea2d874edc124399de801d8635f0b977208ee826e3a02b97f90bf9a6",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:58:35.963557+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "f73df3c3d2dbcc4c54568970568f77f68c06f813a8e12157dfe751f7e524d472",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:58:36.441401+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "72c2d0e50cbc30bcea93085104be5420a1c45ffeeedf5e2348cf19c3a40c2f28",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:58:42.289554+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "ed7968f25948f2ae45057c94870a29ed8f0d904f00c86930019dfebf5e2c3a23",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:59:05.740466+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "f15ad344dd2c778481cac7dfc4e7efd98747f50eba94d57d3e7e7718a1f9a65c",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:59:12.135642+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "e15dff2e27ba9b74ede6307c1365439e086a0348e246f518c0c12cfcf4e74afb",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:59:13.122795+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "1b2494361888612ba6f0874b9ad489bc65d597eec76cd3762355deaff8cc6255",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:59:35.975034+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "7cdc1e86758660a76902d658623be7286fa5bd2ef33686dd54945d929357df5b",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:59:36.418033+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "c156b0b5c6a0fce26322f8f376c9289feb890ed92ae503b616e592847b3195c0",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T01:59:42.326604+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "8bd273c3aa0d0957159c997b1f8a3688de530176653b6f71a58fed20f0323508",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:00:05.722347+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "5973a1554e3bdc99248a53f8648fca5d28d893783c89c72ce373a0b53ed7eb83",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:00:12.262453+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "99345131cde5b590b7563926892c08e9c6e1e41489229da1a25529ba2c06e8d0",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:00:13.093688+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "35297d3253ab725548c84f04e0056f99500bbdf77af5e081baff1a79d7949e24",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:00:36.458565+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "cd29eeaacb45c3c16e95812af5b7f124de8e0566863dd7d136ed99065642b11a",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:00:36.669533+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "2e3f14780959b66bc0473f7f117d31f923d1364efebb73bb093d0776af4cf9d7",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:00:42.195516+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "b8fe1007f1812456268aaf11f45a3f8dfb883bb3843ccab88b3f192b10ed5e9b",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:01:05.672533+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "0448c6db61a7e46849494aa1ed5f2247601e91f2c72e0e88b2664386c1dad9ee",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:01:12.589636+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "69bdb945431d1a9e8eae4eaee470ec94c7210909929064481c61980269b6319d",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:01:13.087116+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "805988e57265c257edc50fdd656ffcb5f1323a361a92251dc1cd66cd3602add2",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:01:36.090638+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "a5bbfe35957427f00a858029c4ede5a6804c452567d1e68c64be49fa0925aa4d",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:01:36.408412+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "230059d0d2f719e6175a815a751a16ea99078da39b2e683dd242b7d074191776",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:01:42.998816+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "3df8672ce1102c9da04803283563a838ff42f6fc35f140a91047c91cc9273b22",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:02:05.647384+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "93776750d929eb4e4250d3771b3087dd3f621246a5cda79f2d651443cf3e8b4f",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:02:12.621420+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "4ada8e9d7e311021196649b8ba700b108223afdf4e517c7597b5332723a2400f",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:02:13.113756+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "47ff890097dcd3781fbf47252c1c0de7ac6e5321791003f02b279d5540427694",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:02:35.741990+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "5d38e85d1e3bf2cedbc11cc236ed2fb5ce46f14c2341acde89546af5cc9aef8b",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:02:37.504412+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "b885940a739b10dd7593905ebe184e87b9167c28773b9ff075be48ede70e18a0",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:02:42.727370+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "7d0c1242469d046a8fbb5be53523110b819a05a16ecb4505561b47c24f1e7437",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:03:06.310902+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "f83789b8594e3c2805c3e25b327cd58a114fbeba91bfdcda7d07c488eef1a43f",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:03:12.687072+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "abc2bd8bd73736fbf4fcb198cba235bae211caaf5140a930de498853c9670f1d",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:03:13.221519+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "d9628dab45a0c01832ed1325f9a44c691c282d418b532da667f031e12700367b",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:03:35.930299+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "1ab0fe2d0eae3963565c099a74129230485f01779258ff40b9b6f1e9df84c811",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:03:36.439342+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "1957db15a981708aef5628cf62e54fb49cb2deb2e7bb81fa57b3558f457ddc07",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:03:43.622478+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "520780b22c5aab829c315b8114a55e6386d49cbe6864d24c6e1b4dd4a34cd74b",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:04:06.920607+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "4f1cbc88f6ef5dc1f13b69781ebdb87429810ccb7e105852eb1791d6fbe94b21",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:04:12.187969+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "95adc054083657ffc2dcd5fd2bcb49fac5e5db0fc890893eb562a8202b81ed20",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:04:13.130423+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "a4dfdb74c12a8f6e9358337c24103bcc07c98d12811a94ecb4dd90bfdb81e631",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:04:35.555114+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "0ed116ffbbf4f6e6c352d89487a8053526853e96134b30b7657534fc5182ce26",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:04:36.429637+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "7abe521417c66f6ad7767abd8686bf2c810edb6454da3cc3df8b6a28de9b1c0c",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:04:42.930569+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "e0651fbd911e9f21c239b42ef4269dc1580162678d57c37a87a5620f76b16e2c",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:05:06.154962+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "be9083764a03889ae454a29a1fcca39a5db4dfb9ad2f7280c48bba3b55d5ddf4",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:05:13.177001+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "a847aafe682456a5a0e8deef8a4ead43780fd5536353052943f85ea9e0a00fbc",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:05:13.178142+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "620242b7f47564a0af91d6d5e478b14b580390e7fdc9bf3ed425f4f9599042d7",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:05:36.537682+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "eac85786cfcb6b5d999170cd11351c04d917ea62ac53bbd26504bc9063a7cae3",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:05:37.095153+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "52c4c6ac1332d662a5d546fddf78905b443d25616e1c884e10fe3f4ccd2cbbdf",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:05:42.405722+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "7932af8d825e1ebc513c2f9cac5a9bd2d959df41a4da06584ce327d5870c76ea",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:06:06.168413+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "887a3341b6ec768884542f819aba481e1403c79897b590874d303b838f72e7c0",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:06:12.229113+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "a56adbb319eb398523e974bf42f522ab94eb26ba961576fd0fed4f802e554639",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:06:13.136573+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "6b1fb82b74fc15d8f035e1c613dcadfa06d4abb276067ad4433f40631c1a28f3",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:06:35.587682+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "b2b2896dadb93e286eb9cf80e2e40f3151a5cdbdee32442258ee289e9ec62ba5",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:06:36.445308+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "446bcc465db6dedbde6f6812e14328e241991356cc157524023b1044964aaa70",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:06:42.544272+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "8139035514d87f3f873e99a450ae68654f882633b38a05f51b0b2e985ec49fb2",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:07:05.680815+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "eef196222d5c5b03d8fef8fe0b9ca6e57b747b2886788ea2d121fe0ebdbab7f4",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:07:12.661562+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "fc3ecc3fc89df0301f25a5b2e13c5c144e1da228c596ca97338a9914fa1f2b3e",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:07:13.199601+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "a503742cac316a95de3469778681e047ca93634d2d5997b398c3f7497b15d8ed",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:07:36.412951+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "e09effd717299dade14e6e70dc1e4b5324fac9b09a17fae55470acff36666627",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:07:36.819287+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "b8685dcb27f0df136af03631744842b27b14565f33c1718159d339f2d666b63d",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:07:42.204778+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "279229ab64298d2a1fb3136d8f2e58b042cf4edb7fa1ce1d1a07986aaed3daba",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:08:05.662609+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "6640908911a1a69e69827fd2d6800e6847dcb8ad0948ac4ca97135a47ad5747b",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:08:12.342996+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "6734396892ec5b7bdebeee367671652d497d95e357263b66fd990186ffc74f84",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:08:13.148429+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "524fa8bc6d823c75c3cb7041189b22f425f0cc91ee915c25f9d01979476790a6",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:08:36.120400+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "93ac2a394c841e53b7bbafc7cb6caa17445e1c78ec180dfc1de0cc862b07a17b",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:08:36.463846+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "66a3a0ddbad7a86912af14aaa974c25077a9bce68d2af000cd329c46665b3741",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:08:43.033671+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "8e5c258a668914cb434524b5b33fe4b4603ac32c2a7644de5ed00f14abeaad3e",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:09:06.203169+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "57c73a150bd7219e132fb13c6d1c7a924f31b1dc6a8564e6857917e87dd63f06",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:09:12.130131+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "a5b5eb7ff748c03749e07dcdc7e118845858dcf727e64442650474244b23bcb9",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:09:13.139497+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "090af1503f3b306b0dbd74c64a61026dbac47b0cd72d994c8cd2807c5b40b489",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:09:35.840830+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "d717639b7739d06119c1008a3126c06577b52b0928e6464346401d14d3ec4f0f",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:09:36.443047+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "e2ce71ecd9fdb9fe4467dd03962eaf481c4d7e78f5086e9ef3da23b643648f6d",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:09:43.008009+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "290f9825a2cfb90d19e8273a196e433817e223606f34d87c89d98cdadca674b5",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:10:06.109603+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "8ac32ebef1e8285b9c96ea69eb52a3b6a1cfd41a700d18e5fc42d5d77df2521b",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:10:12.554833+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "47362c0f9175d1c3e1712698da56b75bbf39b31db1d5f3b808f376901c92531e",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:10:13.230796+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "93950967a455e11dfbb87a48971ed0b548f8554f40dae2faeb4f20679aa860f5",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:10:36.477967+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "3fca1ff0761dcd63a4aa2563064cd9c031faa1822c67892af52d8b2a5cef22bf",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:10:36.505850+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "50f87e33d3ebff4be664f5ceef4d4df84bb2d89476be09547ca263003495b02c",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:10:43.419690+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "8d7ac9a6371a1eae6a994865b97fd769147a96e37621c14698940bd3a27f3e1d",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:11:06.004436+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "534d4f7bf7b61fa5c1db3e9d212e421b085466caf9ade040d954be7d009a0600",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:11:12.187459+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "a8c876d6d432240769a82e43da7f80858a58c8f97d61d128b2f3cf85af37d9bb",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:11:13.242594+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "b641adf2d09258021f4fa8a2a74b02283d4b279d4cd9935278c3a9aae36a687d",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:11:36.034397+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "d1d948f3823ae4d0ca46925f5f7eae93a104c51402dc4243b04f66bcdc6ddb2b",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:11:36.460739+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "d697a71af4bc5be8160fa3ab8603b15d7cd772766549c516bf536fd4d1138a2a",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:11:43.395523+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "9d92874888b4a33ef0cf0091d3de24d1938c7be18187b8905c546c5b12063c45",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:12:06.153457+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "59fb9c0254f9048d15b76939631a6f739b2c68c742cc432ddd90174e6da4d6db",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:12:12.629017+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "1ea8faa2707d89d056cbc5feed65bbdce43c963c1e49051626f893c723059c46",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:12:13.236427+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "caaba2a91c7d13a8ef193f03574675b8f9c84e5f5b56266dd6d770a5b1aa5e6d",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:12:36.166734+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "43c47b8104511bb0c9b87cbeeb79d388dcf22558be5a11f62f6120b23d073563",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:12:36.465018+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "fe0904dbdbd78dc2a259a98f5c260d651b5fd9186240e1061b5065e5ab3106cb",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:12:42.798114+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "4e3130302d89f2f3b0d8ad8e880c8b7894b6ef54be28a73574a9b07598321533",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:13:05.908394+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "c9d4c8d34115a08b303df9124124ef21e3564176b211e4774573c9684d8d1d78",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:13:13.237392+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "ce99a038962d23b9532c64bd2e6ed347e41926e74da64f2cd9d654117032aaf5",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:13:13.269163+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "7b1622808bb837b14b04255643a99f16b0c56e8d6d88115b036b2cc19e20b977",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:13:36.486966+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "43f69572fdf37a3a410f51473f8ae1e7bfa737493cd689fb54b536f1be3d3d98",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:13:36.491731+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "7a86be0e7bc43e98dc6ea3efc5a5a681bfad5eddbee17c282bcc9f1faf55a592",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:13:42.877464+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "d371426c646f185d94c9ced71ce66126f15c338da6094c469b754ccc349f5be2",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:14:06.105195+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "710208dfa0834f53ca6b30dcdfa6bb10c6590a2bacea091f4fd9ab376b7a32a7",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:14:12.392667+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "118d52cc37f56d2c704aad4ff4a2f9bea6dc85fd88a516afd325febf5dd2b57a",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:14:13.208694+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "fe57ad5ec13050026e5dd27e2d58fdaef2b2f3f3d905b8b4baaf46f5fe05c450",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:14:36.240508+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "d5d010789a0eb32ddcae7a6262b7ad4895f808ba05d42cefc1043bb113391a56",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:14:36.637171+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "612739e33b2d61241b22019366df01b429a9541ba2ae34efb03556e0cf7bf545",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:14:42.793504+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "b2fb5071937bba1f39bdb8fbcb15ed0c4438b9ccc180ef57ad9fbf80e42a9412",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:15:06.125903+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "be54b056fa90b5d3158ed14234310b2b5ce288c01c9d4994502decc0092524b7",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:15:12.551178+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "98bb7c2a7765ae8e6d001a6bb188e9c7d17505f87227d01ac79ff2683f2de7be",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:15:13.186662+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "88377780d8bdf55f6f13f7f98ca71990d50bd5ec310360ab723518d290c2b8cb",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:15:36.309101+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "3879194727c046a674b97f52e2caf4eec3003b09516a5114e33805be17215bb3",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:15:36.490505+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "f81c510cbf0a9ac546ad16fe630da2f9ec39acf71651cadfd0fc88b1087ea561",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:15:42.808448+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "d92651b74eb4fb109c3f02ecede56aedc54f45134eaa7c2292079838227ce683",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:16:05.780846+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "16684254e5e8278a37dd6ca2c7f6fc1649045c5ef5e8d195883db6cb2af22cac",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:16:12.520913+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "f2ca16aade9ed662d5b0c1532eea7528e550c45ce8c04522f2bcc1e27548bcb6",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:16:13.203533+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "c911b5d949454e674f2342724ceb310bcbfeca0f308906dec222838a05b08f71",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:16:36.556409+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "271da53f41d6fce21b2903bc184031273412f857b709006867caaae0b8961371",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:16:36.569099+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "5d31934a8c581a0f9fc5cd4feca1aa941ce36a8ba621abd40fdc8167f482bb40",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:16:43.485032+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "087b3b57fa0e9a539476feba02abd1a7fb76bdb3540b6fd49f8faa274861e2ff",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:17:06.213823+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "f29f83d24dab4d3a20fb5b2fd3aa1e5fb87fb4a1271b4409a78e815c534536f3",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:17:12.279967+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "4b7704fda5126c54c531dab44ffe59dd6646dee05d7bfaa4b69bbe8ae30ec1e6",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:17:13.201911+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "9ad2684a2f2fbe1852255ecb784c70b44724f6332b5483cafefb68fdd30d7e00",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:17:36.204048+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "f9e68818e4740aa90613f2dee50dfb6226cc1b17a5b605af5b28dc3e83692640",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:17:36.505916+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "64655a516b37b23221d34cd861d3167d92e0ad1a9d889b999eee2476dbfa2cb4",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:17:43.437345+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "395064ff5c9640856ccb16e65232f5c4b7fb961496b23b065d177f76a90590bf",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:18:05.914512+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "ee4e15f4644ceaee94dd4ce690e71e44fd626b95f1dc125eb5d9a411b5d055b1",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:18:13.232990+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "69aa42b499ac16c0cbf4fcd8fd03fea5d18298a2c50247b99efae764b51d193e",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:18:13.274475+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "1e321532adc456f817c3460ab32fdb4599b5024c57336e0e2a3219f4d430c450",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:18:35.929028+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "0e5a741e142c43dc7d39a382f7effe70d1b423d1318ca84e81476a04df07640e",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:18:36.545741+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "5c484d3d7c4ea993d8919a8c7a05bcd7abfab3145870d687dbf1f9026a13ee24",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:18:42.800537+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "80178208ee31307dbf4f0e285ac5e01c8b8fd386b89199508e7384086127ac6a",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:19:07.058193+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "462f2d7cd31e95f319c9921f48cb6753ad099744930e908516f32017f5bfec10",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:19:12.776626+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "e9d2f599cd54c40672abf10ba3cd58150cdff60c28a6c0e1213fdf8a76893888",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:19:13.226981+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "2d4b68aa2df76dd68538442c2e69614efd285dc67aa22886f37859ba88ee5478",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:19:35.760483+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "64cf3773190f433fb590f197193783f141d1b223d5ed16f529a7e7a3e44c7d2a",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:19:36.532564+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "89d65a10dec4eccf3d411ea2c068ba827bde2fcd941cc28c5faa635bdb6e8b2e",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:19:42.657350+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "38d53b3048d6fbecdd503d9b5aad20f944e0a009ced37ee8ade43dd45ad3d0d7",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:20:07.058322+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "cf81030080d48f462851248c432c15597b6bcd81a101b368f66ce97a04f0fe20",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:20:12.730687+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "2cc5c30b8c9933f0b8e4dd240e23338889888fb4ffafdb477f632e400c8f74fc",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:20:13.209153+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "996ad55369fe9a79e385c872a14e7f372980ed47dc7c2b3bb0450943e4259fb3",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:20:35.780929+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "f6f82b770789580cd7692103e1d0e82cd9bd1d283cd4e9ed81250b1bc073689b",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:20:36.634219+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "9cfb41d3651b14b08d88e0d5536aa1e73fa3f9c8cfbd2c5a73683a9999d34b5c",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:20:42.461249+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "cb6256fdebd85cafcb21da566d8053537db55fdef40e8b460754edd9d0658a27",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:21:06.463013+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "7f872bf66d0c85e7136735589a158415279f3df3d34fb87e23c7db02bb953bb4",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:21:12.993538+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "11d8f3bc82a4a0cd54da56551c474d56dc838f75ce56ccb55ab8a1234adb5e4c",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:21:13.272942+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "1a746226de11e33e9af98bb2d64007e4eddde48cd2e964a6dfad9790ddb943dd",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:21:36.061572+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "292c1e994857e3b4d05f6fb6a5d87f1e664d2459324f5884c77a64847163e75c",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:21:36.553996+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "09b7cf5a3d911f9985a09600e0a9339b2e282ef8642d2ecb12a1c752104f68a3",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:21:43.638614+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "c993762518b48f723f77bcb7848db8a88283d4f9020c982dabd7bf5147f8435e",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:22:06.302108+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "976900669a30637d0ad3bd21866471e96895eae7c18969135c577bef329c774f",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:22:12.391749+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "b287485a452d2ce9515724c5d82f5700d5e286bb83de96331d07eeb5c5f6ac8c",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:22:13.291909+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "664e2819ba12c4580a5947292ecef924444114cd10a57f1d28e2b47e85a600ae",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:22:36.561761+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "c529ce04a4dbe378616b4e6fef60eb4eff4fe4368e7dbd8477cbb5c369131bcf",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:22:36.758832+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "d4e45a8befd82e88206b7b1c77b8886b635c5e674f8a6308d248bc3d3789da4d",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:22:43.993792+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "5253c8561351814ca6e6c6da58f403435f73479f5cfe31e6f5b95d850f15cf45",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:23:06.213645+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "6cd1b3a83ac3f4b242bb54b4e8d6ec839a04902a5c018225fccc078d95746d15",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:23:13.243833+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "3e9ceb71ea48cda61f66c3c17c57722b0674118be940bba22115b053de21ad3b",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:23:13.390885+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "11453767adbd62b297e247f8f67ce4d629418cc0a73b749395da76be0273f8cf",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:23:36.506694+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "7509c3a3a48d9f00d986ca470142874264d14cc2747dcb22fa1f943a429b7265",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:23:36.538006+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "8704b52a9c09b6bb625f794775a3dbbb7eee63a9d47f648b91d97fd838e05612",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:23:42.594856+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "21eca962687cb2e63e9cc85a4a3ad5a87c3132a210ca99f3b615b90641d03b26",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:24:05.945216+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "86842b38f0260f3a7c103156a30b25c83f4cf26fba9b3d383df20b081ade826b",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:24:12.993736+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "0d3c9612b95f0463c752926d6d734450d76e9b2102b6cd6ca5a31fa80417ace4",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:24:13.276527+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "56fe0a41756922ba9d3290c09aec44400dd7324e049b6721e06c222488e91764",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:24:35.874852+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "3a36e05bba1a72912e001b2a659200be17f85c89aa92884e3f456fafd59cb923",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:24:36.591360+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "2c56cab8ff09ccef6a64ab249e441bb0020e68381bfe6e80218c1406e470b023",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:24:43.704960+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "5ffbb3efb839893b90afa46608f592aef674a43dc608a42aba9cba8d77578255",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:25:06.353537+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "474ba39d18b6944842c8224f92ef4b1a4c657f6df9219e5e13de5db391e353dd",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:25:12.456419+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "06e81c37a09878019cab8fe7855c122e9bae6805b74e147cb0f1fe804925935f",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:25:13.259170+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "b6bf8bdd361ff512bda8105606babd417aa1090e0e79df2320cad90d5a80e5a2",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:25:36.858365+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "802e9c46245e16d20bc53386e836561d503114acc3342d83d98370689456f297",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:25:37.260692+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "4bc2f70a0684ef801e88097ecdcea81290460b3c6ac79ff427cd03cf0504cb1a",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:25:42.872263+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "6926493c87ff619a23fe06057e7343b7ed4889da6e3f2a9dda0657383a5f4db0",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:26:06.335297+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "6e77e88df7b808e271b8fcd11a2abc289419f7b18c57db744b62fe8593ea33e8",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:26:13.299387+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "5883902708dd1d74e700b408afe46af485fe329a1215c759ceb3e234ba7b5f6f",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:26:13.302506+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    },
+    {
+      "fingerprint": "14de59a7a5e13048dfa1fa832377c3249e7a10dd6d1a7cd935cb39e82ad4f43e",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:26:36.261829+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    }
+  ]
+}

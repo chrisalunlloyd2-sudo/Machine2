@@ -1,0 +1,256 @@
+{
+  "experiment_id": "LOIHI_EXP_20260507T014955Z_d3f210b40a",
+  "created_at": "2026-05-07T01:49:55.843893+00:00",
+  "mode": "loihi_style_sparse_cube_simulation",
+  "backend": {
+    "requested": "lava",
+    "selected": "sparse_python_cpu",
+    "reason": "Lava requested but not installed; falling back without faking Lava execution",
+    "manifest_id": "LBE_20260507T014955Z_6fa5da825b12",
+    "lava_available": false,
+    "loihi_hardware_available": false
+  },
+  "cube": {
+    "x": 100,
+    "y": 100,
+    "z": 100
+  },
+  "input_hash": "d3f210b40acab12e3169b63a55f9dcce4ffe9d1324bb4bb4c199552d21c20f89",
+  "prompt": "Validate Lava-compatible top-code spike graph for future real Loihi backend: Dense links, LIF nodes, approval-only output, no live code mutation.",
+  "steps": 6,
+  "seed_count": 12,
+  "event_count": 247,
+  "output_hash": "e1dba5a576808a688a90431fb7d2ae01454ed64d59039df1ac497964d8d64f73",
+  "summary": "Strongest output `RAG_SUBMISSION` from TRIPLET_MANIFOLD at [55, 27, 95] amp=0.82; 16 positive and 0 negative surviving activations.",
+  "top_outputs": [
+    {
+      "code_id": "LCODE_0eabb0476d5bb98f",
+      "amplitude": 0.82,
+      "code_type": "logic:shift",
+      "label": "RAG_SUBMISSION",
+      "source_table": "TRIPLET_MANIFOLD",
+      "source_id": "E1777997206",
+      "coord": [
+        55,
+        27,
+        95
+      ],
+      "polarity": -1
+    },
+    {
+      "code_id": "LCODE_035fb8760f98500f",
+      "amplitude": 0.82,
+      "code_type": "reward:like",
+      "label": "like",
+      "source_table": "RAG_MANIFOLD",
+      "source_id": "18",
+      "coord": [
+        63,
+        22,
+        92
+      ],
+      "polarity": -1
+    },
+    {
+      "code_id": "LCODE_ddb028b5bf0ee32b",
+      "amplitude": 0.82,
+      "code_type": "logic:shift",
+      "label": "RISC_EXPORT",
+      "source_table": "TRIPLET_MANIFOLD",
+      "source_id": "E1778030755",
+      "coord": [
+        52,
+        21,
+        10
+      ],
+      "polarity": -1
+    },
+    {
+      "code_id": "LCODE_f83a1c948d770fff",
+      "amplitude": 0.82,
+      "code_type": "reward:dislike",
+      "label": "dislike",
+      "source_table": "RAG_MANIFOLD",
+      "source_id": "4",
+      "coord": [
+        46,
+        16,
+        15
+      ],
+      "polarity": -1
+    },
+    {
+      "code_id": "LCODE_261865a068c6f23c",
+      "amplitude": 0.82,
+      "code_type": "logic:shift",
+      "label": "TRIPLET_HOUSE_REASONING",
+      "source_table": "TRIPLET_MANIFOLD",
+      "source_id": "E1777988362",
+      "coord": [
+        52,
+        16,
+        22
+      ],
+      "polarity": -1
+    },
+    {
+      "code_id": "LCODE_912e7de430d1f650",
+      "amplitude": 0.82,
+      "code_type": "logic:shift",
+      "label": "TRIPLET_HOUSE_REASONING",
+      "source_table": "TRIPLET_MANIFOLD",
+      "source_id": "E1777988317",
+      "coord": [
+        66,
+        28,
+        97
+      ],
+      "polarity": -1
+    },
+    {
+      "code_id": "LCODE_35bcf310452c2df2",
+      "amplitude": 0.82,
+      "code_type": "logic:shift",
+      "label": "TRIPLET_HOUSE_REASONING",
+      "source_table": "TRIPLET_MANIFOLD",
+      "source_id": "E1777988409",
+      "coord": [
+        56,
+        24,
+        8
+      ],
+      "polarity": -1
+    },
+    {
+      "code_id": "LCODE_e7159803039c7a8f",
+      "amplitude": 0.82,
+      "code_type": "reward:like",
+      "label": "like",
+      "source_table": "RAG_MANIFOLD",
+      "source_id": "20",
+      "coord": [
+        57,
+        15,
+        24
+      ],
+      "polarity": -1
+    },
+    {
+      "code_id": "LCODE_17a43c956e3b46de",
+      "amplitude": 0.82,
+      "code_type": "logic:shift",
+      "label": "TRIPLET_HOUSE_REASONING",
+      "source_table": "TRIPLET_MANIFOLD",
+      "source_id": "E1778070395",
+      "coord": [
+        52,
+        9,
+        19
+      ],
+      "polarity": -1
+    },
+    {
+      "code_id": "LCODE_9895a611d6cb309b",
+      "amplitude": 0.82,
+      "code_type": "logic:shift",
+      "label": "TRIPLET_HOUSE_REASONING",
+      "source_table": "TRIPLET_MANIFOLD",
+      "source_id": "E1778004520",
+      "coord": [
+        61,
+        13,
+        87
+      ],
+      "polarity": -1
+    },
+    {
+      "code_id": "LCODE_d7781dd5fd7d38e8",
+      "amplitude": 0.82,
+      "code_type": "chunk:JAVA_BACKEND",
+      "label": "logChunked",
+      "source_table": "TOPO_CHUNKS",
+      "source_id": "CHUNK_JAVA_BACKEND_logChunked_75c7be19986d",
+      "coord": [
+        60,
+        37,
+        93
+      ],
+      "polarity": -1
+    },
+    {
+      "code_id": "LCODE_57ade68a296785d4",
+      "amplitude": 0.82,
+      "code_type": "logic:shift",
+      "label": "RISC_EXPORT",
+      "source_table": "TRIPLET_MANIFOLD",
+      "source_id": "E1777988337",
+      "coord": [
+        45,
+        18,
+        99
+      ],
+      "polarity": -1
+    },
+    {
+      "code_id": "LCODE_80003418bf690c4b",
+      "amplitude": 0.75071,
+      "code_type": "logic:shift",
+      "label": "RAG_SUBMISSION",
+      "source_table": "TRIPLET_MANIFOLD",
+      "source_id": "E1778004517",
+      "coord": [
+        68,
+        36,
+        1
+      ],
+      "polarity": -1
+    },
+    {
+      "code_id": "LCODE_8567ccbee605e330",
+      "amplitude": 0.750193,
+      "code_type": "reward:dislike",
+      "label": "dislike",
+      "source_table": "RAG_MANIFOLD",
+      "source_id": "21",
+      "coord": [
+        51,
+        14,
+        85
+      ],
+      "polarity": -1
+    },
+    {
+      "code_id": "LCODE_b9d250300054082c",
+      "amplitude": 0.725993,
+      "code_type": "reward:dislike",
+      "label": "dislike",
+      "source_table": "RAG_MANIFOLD",
+      "source_id": "1",
+      "coord": [
+        70,
+        28,
+        84
+      ],
+      "polarity": -1
+    },
+    {
+      "code_id": "LCODE_c65fde00ba5be41d",
+      "amplitude": 0.723411,
+      "code_type": "logic:shift",
+      "label": "RAG_SUBMISSION",
+      "source_table": "TRIPLET_MANIFOLD",
+      "source_id": "E1778071983",
+      "coord": [
+        83,
+        32,
+        7
+      ],
+      "polarity": -1
+    }
+  ],
+  "policy": {
+    "learning_only": true,
+    "no_code_mutation": true,
+    "requires_user_approval_for_any_patch": true
+  }
+}

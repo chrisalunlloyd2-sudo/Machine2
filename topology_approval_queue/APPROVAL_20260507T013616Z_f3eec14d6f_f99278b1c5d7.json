@@ -1,0 +1,18 @@
+{
+  "confidence": 0.88,
+  "created_at": "2026-05-07T01:36:16.280710+00:00",
+  "environment_map_id": "RAG_DISLIKE_10",
+  "genetic_advancement_policy": {
+    "must_pass_end_to_end": true,
+    "one_variable": "Repair only the disliked reply behavior or missing action; do not alter GUI/backend.",
+    "requires_user_approval": true,
+    "suggest_only": true
+  },
+  "id": "APPROVAL_20260507T013616Z_f3eec14d6f",
+  "priority": 1,
+  "source_path": "RAG_MANIFOLD",
+  "status": "pending_user_approval",
+  "subsystem_id": "REPLY_QUALITY",
+  "summary": "Disliked reply detected. Karoo should check whether the prior response missed the requested action, then submit a concise Codex repair plan and log the fix outcome.",
+  "title": "Dislike repair request 10"
+}

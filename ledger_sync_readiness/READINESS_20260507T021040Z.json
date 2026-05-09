@@ -1,0 +1,56 @@
+{
+  "report_id": "READINESS_20260507T021040Z",
+  "created_at": "2026-05-07T02:10:40.960707+00:00",
+  "readiness_status": "ready_for_endpoint_resync",
+  "summary": "Global ledger sync base is ready for hash-metadata redundancy and agent access contracts.",
+  "counts": {
+    "LOGIC_BLOCKCHAIN_QUEUE": 4,
+    "TOPO_CHUNKS": 24,
+    "TOPO_APPROVAL_REPORTS": 22,
+    "PERFORMATIVE_ROUTE_LOG": 4,
+    "LOIHI_TOPO_CODES": 131,
+    "LOIHI_SPIKE_EXPERIMENTS": 3,
+    "SHA256_LEDGER_REPLICAS": 1,
+    "SHA256_SYNC_CONTRACTS": 1,
+    "AGENT_GLOBAL_ACCESS_POLICIES": 1,
+    "COMPUTE_RESOURCE_REGISTRY": 1
+  },
+  "queue_status": [
+    [
+      "queued",
+      1
+    ],
+    [
+      "retry",
+      1
+    ],
+    [
+      "shipped",
+      2
+    ]
+  ],
+  "replicas": [
+    [
+      "cloudflare_sha256_logic_db",
+      "cloud_hot_replica",
+      "zero_trust_hash_only",
+      "queued_push_then_reconcile",
+      "configured",
+      "https://perfume-had-prevent-take.trycloudflare.com"
+    ]
+  ],
+  "agent_access_policies": [
+    [
+      "global_agent_access_v1",
+      "PERFORMATIVE_ROUTE_LOG",
+      1
+    ]
+  ],
+  "next_endpoint_fields_needed": [
+    "stable non-local base_url",
+    "uplink_url for hash block POST",
+    "ledger_url for reconciliation",
+    "auth token or signed challenge format, if desired",
+    "raw payload policy: hashes only by default"
+  ]
+}

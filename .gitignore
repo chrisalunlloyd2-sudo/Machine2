@@ -1,0 +1,27 @@
+# Runtime and generated logs
+*.log
+*.pid
+system_log.txt
+topological_manifold.json
+
+# Large generated/runtime folders
+.runtime/
+topology_checkpoints/
+topology_candidates/
+java_notes_suite/dist/app-image/
+java_notes_suite/dist/jar-input/
+java_notes_suite/out/
+
+# Local model weights and Hugging Face cache
+models/tiny/**/*.gguf
+models/tiny/**/.cache/
+*.safetensors
+
+# Local sync/staging artifacts
+VIPER_AGENT_NODE/
+VIPER_NAS_SYNC_STAGING/
+Aegis_Agents/AEGIS_OUTPUT/
+
+# Python caches
+__pycache__/
+*.pyc

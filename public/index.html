@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIPER RISC: 3D Manifold</title>
+    <style>
+        body { margin: 0; overflow: hidden; background-color: #020617; color: #38bdf8; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        #canvas-container { width: 100vw; height: 100vh; display: block; }
+        
+        #ui-panel { position: absolute; top: 20px; left: 20px; background: rgba(19, 20, 24, 0.4); padding: 20px; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.3); backdrop-filter: blur(12px); width: 340px; box-shadow: 0 4px 30px rgba(0,0,0,0.5); z-index: 100; pointer-events: auto; }
+        #ui-panel h1 { margin: 0; display: flex; align-items: center; gap: 12px; font-size: 18px; color: #a8c7fa; letter-spacing: 1px; }
+        
+        /* [ELECTRON_ANIMATION] Locked */
+        .electron-container { position: relative; width: 24px; height: 24px; }
+        .nucleus { position: absolute; top: 10px; left: 10px; width: 4px; height: 4px; background: #38bdf8; border-radius: 50%; box-shadow: 0 0 10px #38bdf8; }
+        .orbit { position: absolute; top: 0; left: 0; width: 24px; height: 24px; border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 50%; animation: rotate-orbit 2s linear infinite; }
+        .electron { position: absolute; top: -2px; left: 10px; width: 4px; height: 4px; background: #fff; border-radius: 50%; box-shadow: 0 0 5px #fff; }
+        @keyframes rotate-orbit { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* [AI_THOUGHTS_COMPONENT] Locked */
+        #ai-thoughts { position: absolute; bottom: 80px; left: 50%; transform: translateX(-50%); width: 60%; text-align: center; font-family: monospace; font-size: 11px; color: #94a3b8; font-style: italic; pointer-events: none; opacity: 0; transition: opacity 0.5s; z-index: 50; text-shadow: 0 0 5px #000; }
+
+        #terminal-window { position: absolute; bottom: 20px; left: 20px; width: 500px; height: 250px; background: rgba(2, 6, 23, 0.4); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 12px; display: flex; flex-direction: column; backdrop-filter: blur(12px); z-index: 100; box-shadow: 0 0 30px rgba(0, 0, 0, 0.5); overflow: hidden; pointer-events: auto; }
+        #terminal-header { background: rgba(16, 185, 129, 0.1); color: #10b981; padding: 6px 15px; font-weight: bold; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid rgba(16, 185, 129, 0.2); }
+        #terminal-output { flex: 1; overflow-y: auto; padding: 15px; font-family: 'Courier New', Courier, monospace; font-size: 11px; color: #10b981; line-height: 1.5; scroll-behavior: smooth; }
+        
+        #chat-window { position: absolute; bottom: 20px; right: 20px; width: 420px; height: 500px; background: rgba(19, 20, 24, 0.4); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 12px; display: flex; flex-direction: column; backdrop-filter: blur(12px); z-index: 100; box-shadow: 0 10px 50px rgba(0,0,0,0.7); pointer-events: auto; }
+        #chat-header { padding: 12px 18px; border-bottom: 1px solid rgba(56, 189, 248, 0.2); font-weight: bold; color: #a8c7fa; font-size: 14px; }
+        #chat-messages { flex: 1; overflow-y: auto; padding: 15px; font-size: 13px; color: #e2e8f0; scroll-behavior: smooth; }
+        #chat-input-area { padding: 15px; border-top: 1px solid rgba(56, 189, 248, 0.2); }
+        #chat-input { width: 100%; box-sizing: border-box; background: rgba(2, 6, 23, 0.5); border: 1px solid #38bdf8; color: #38bdf8; border-radius: 6px; padding: 10px; outline: none; font-size: 14px; }
+        
+        #tooltip { position: absolute; background: rgba(2, 6, 23, 0.9); color: #fff; padding: 8px 12px; border: 1px solid #38bdf8; border-radius: 6px; font-size: 12px; pointer-events: none; opacity: 0; transition: opacity 0.2s; z-index: 300; font-family: monospace; }
+        
+        .res-tag { font-weight: bold; margin-right: 5px; }
+        .tag-user { color: #38bdf8; }
+        .tag-ai { color: #7bd389; }
+        .tag-grid { color: #facc15; }
+        
+        .metric { margin-bottom: 8px; font-size: 13px; }
+        .metric span { color: #e2e8f0; font-weight: bold; }
+        button { background: rgba(56, 189, 248, 0.1); border: 1px solid #38bdf8; color: #38bdf8; padding: 8px 12px; border-radius: 6px; cursor: pointer; margin-top: 8px; width: 100%; font-weight: bold; transition: all 0.2s; font-size: 11px; text-transform: uppercase; }
+        button:hover { background: rgba(56, 189, 248, 0.25); }
+        
+        .user-msg { margin-bottom: 12px; text-align: right; }
+        .ai-msg { margin-bottom: 12px; padding: 8px; border-left: 2px solid #7bd389; background: rgba(123, 211, 137, 0.05); }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <div id="tooltip"></div>
+    <div id="ai-thoughts"></div>
+
+    <div id="ui-panel">
+        <h1>
+            <div class="electron-container">
+                <div class="nucleus"></div>
+                <div class="orbit"><div class="electron"></div></div>
+            </div>
+            VIPER RISC MANIFOLD
+        </h1>
+        <div class="metric">Neurons: <span id="neuron-count">Loading...</span></div>
+        <div class="metric">Resonance: <span style="color:#7bd389">TRIPLETED</span></div>
+        <div class="metric">Phase: <span id="rolling-index">0</span></div>
+        
+        <button id="btn-export">Export SHA-256</button>
+        <button id="btn-publish">Blockchain Sync</button>
+        
+        <div id="legend" style="margin-top:15px; font-size:10px; border-top:1px solid rgba(56,189,248,0.2); padding-top:10px;">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;"><div style="width:8px; height:8px; border-radius:50%; background:#38bdf8"></div><span>Success</span></div>
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;"><div style="width:8px; height:8px; border-radius:50%; background:#8b0000"></div><span>Failure</span></div>
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;"><div style="width:8px; height:8px; border-radius:50%; background:#facc15"></div><span>Karoo (1%)</span></div>
+        </div>
+    </div>
+
+    <div id="terminal-window">
+        <div id="terminal-header">Resonance Interaction Log</div>
+        <div id="terminal-output"></div>
+    </div>
+
+    <div id="chat-window">
+        <div id="chat-header">TRIPLETED AI KERNEL</div>
+        <div id="chat-messages">
+            <div class="ai-msg"><b>TRIPLET:</b> Axiomatic Seal Verified. 101% Mandate Active.</div>
+        </div>
+        <div id="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Directive..." autocomplete="off">
+        </div>
+    </div>
+
+    <div id="canvas-container"></div>
+
+    <script>
+        const logOutput = document.getElementById('terminal-output');
+        const neuronCount = document.getElementById('neuron-count');
+        const rollingIndex = document.getElementById('rolling-index');
+        const aiThoughtsEl = document.getElementById('ai-thoughts');
+
+        const thoughts = [
+            "Analyzing purpose of interaction...",
+            "Checking interoceptive feedback...",
+            "Minimizing prediction error...",
+            "Securing topological braid...",
+            "Mapping logic-set to grid neurons...",
+            "Verifying self-concept alignment..."
+        ];
+
+        function resonanceLog(tag, msg, colorClass) {
+            const el = document.createElement('div');
+            el.innerHTML = `<span class="res-tag ${colorClass}">[${tag}]</span> ${msg}`;
+            logOutput.appendChild(el);
+            logOutput.scrollTop = logOutput.scrollHeight;
+        }
+
+        let lastSystemTestId = Number(localStorage.getItem('viper_last_system_test_id') || '0');
+
+        async function loadSystemTests() {
+            try {
+                const res = await fetch('/api/system/tests?limit=12');
+                const data = await res.json();
+                (data.tests || []).forEach(test => {
+                    if (test.id > lastSystemTestId) {
+                        const ok = String(test.status || '').toLowerCase() === 'pass';
+                        const hash = (test.sha256 || '').substring(0, 12);
+                        resonanceLog(
+                            "TEST",
+                            `${test.layer}/${test.test_name}: ${test.status} #${hash}`,
+                            ok ? "tag-ai" : "tag-grid"
+                        );
+                        lastSystemTestId = test.id;
+                    }
+                });
+                localStorage.setItem('viper_last_system_test_id', String(lastSystemTestId));
+            } catch(e) {}
+        }
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(0, 0, 75);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+        const group = new THREE.Group();
+        scene.add(group);
+        const raycaster = new THREE.Raycaster();
+        const mouse = new THREE.Vector2();
+        const tooltip = document.getElementById('tooltip');
+        let meshes = [];
+
+        async function loadRealDataPoints() {
+            try {
+                const res = await fetch('/api/datapoints');
+                const data = await res.json();
+                while(group.children.length > 0){ group.remove(group.children[0]); }
+                meshes = [];
+                data.points.forEach((dp, i) => {
+                    const phi = Math.acos(-1 + (2 * i) / data.points.length);
+                    const theta = Math.sqrt(data.points.length * Math.PI) * phi;
+                    const r = 30 + Math.sin(i * 0.5) * 2;
+                    const x = r * Math.cos(theta) * Math.sin(phi);
+                    const y = r * Math.sin(theta) * Math.sin(phi);
+                    const z = r * Math.cos(phi);
+
+                    const size = 1.0 + (Math.random() * 0.6);
+                    const sphere = new THREE.Mesh(
+                        new THREE.SphereGeometry(size, 16, 16),
+                        new THREE.MeshPhongMaterial({ 
+                            color: dp.type === 'failure' ? 0x8b0000 : 0x38bdf8,
+                            transparent: true,
+                            opacity: 0.9,
+                            emissive: dp.type === 'failure' ? 0x440000 : 0x112244,
+                            emissiveIntensity: 0.4
+                        })
+                    );
+                    sphere.position.set(x, y, z);
+                    sphere.userData = { id: dp.id, label: dp.label, baseSize: size };
+                    group.add(sphere);
+                    meshes.push(sphere);
+
+                    // Tiny Data Label
+                    const canvas = document.createElement('canvas');
+                    canvas.width = 64; canvas.height = 32;
+                    const ctx = canvas.getContext('2d');
+                    ctx.fillStyle = 'rgba(255,255,255,0.3)';
+                    ctx.font = '10px Monospace';
+                    ctx.fillText(dp.id, 2, 20);
+                    const texture = new THREE.CanvasTexture(canvas);
+                    const sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: texture, transparent: true }));
+                    sprite.position.set(x * 1.08, y * 1.08, z * 1.08);
+                    sprite.scale.set(4, 2, 1);
+                    group.add(sprite);
+                });
+                resonanceLog("GRID", `${data.points.length} points active.`, "tag-grid");
+            } catch(e) {}
+        }
+        loadRealDataPoints();
+
+        const karooGeo = new THREE.TorusKnotGeometry(2, 0.5, 64, 8);
+        const karooMat = new THREE.MeshPhongMaterial({ color: 0xfacc15, emissive: 0xfacc15, emissiveIntensity: 0.8, wireframe: true });
+        const karooOrbiter = new THREE.Mesh(karooGeo, karooMat);
+        scene.add(karooOrbiter);
+        let orbitAngle = 0;
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+            raycaster.setFromCamera(mouse, camera);
+            const hits = raycaster.intersectObjects(meshes);
+            if (hits.length > 0) {
+                tooltip.style.opacity = 1;
+                tooltip.style.left = e.clientX + 15 + 'px';
+                tooltip.style.top = e.clientY + 15 + 'px';
+                tooltip.innerHTML = `[${hits[0].object.userData.id}]<br/>${hits[0].object.userData.label}`;
+            } else tooltip.style.opacity = 0;
+        });
+
+        scene.add(new THREE.AmbientLight(0x404040));
+        const pLight = new THREE.PointLight(0xffffff, 1, 100);
+        pLight.position.set(10, 10, 50);
+        scene.add(pLight);
+
+        const chatInput = document.getElementById('chat-input');
+        const chatMessages = document.getElementById('chat-messages');
+        const CHAT_HISTORY_KEY = 'viper_triplet_last_10_replies';
+
+        function getChatHistory() {
+            try { return JSON.parse(localStorage.getItem(CHAT_HISTORY_KEY) || '[]'); }
+            catch(e) { return []; }
+        }
+
+        function saveChatHistory(history) {
+            localStorage.setItem(CHAT_HISTORY_KEY, JSON.stringify(history.slice(-10)));
+        }
+
+        function appendStoredChat(entry) {
+            const userDiv = document.createElement('div');
+            userDiv.className = 'user-msg';
+            userDiv.innerHTML = `<b>YOU:</b> ${entry.user}`;
+            chatMessages.appendChild(userDiv);
+
+            const aiDiv = document.createElement('div');
+            aiDiv.className = 'ai-msg';
+            aiDiv.innerHTML = `<b>TRIPLET:</b> ${entry.ai}`;
+            chatMessages.appendChild(aiDiv);
+        }
+
+        function rememberReply(user, ai) {
+            const history = getChatHistory();
+            history.push({ user, ai, ts: new Date().toISOString() });
+            saveChatHistory(history);
+        }
+
+        function restoreLastReplies() {
+            const history = getChatHistory();
+            history.forEach(appendStoredChat);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        restoreLastReplies();
+
+        chatInput.addEventListener('keypress', async (e) => {
+            if (e.key === 'Enter' && chatInput.value.trim()) {
+                const msg = chatInput.value;
+                chatInput.value = '';
+                const userDiv = document.createElement('div');
+                userDiv.className = 'user-msg';
+                userDiv.innerHTML = `<b>YOU:</b> ${msg}`;
+                chatMessages.appendChild(userDiv);
+                
+                aiThoughtsEl.style.opacity = 1;
+                aiThoughtsEl.textContent = thoughts[Math.floor(Math.random() * thoughts.length)];
+                resonanceLog("USER", msg, "tag-user");
+
+                // Temporary loading message
+                const loadingDiv = document.createElement('div');
+                loadingDiv.className = 'ai-msg';
+                loadingDiv.innerHTML = `<b>TRIPLET:</b> <span class="loading-dots"></span>`;
+                chatMessages.appendChild(loadingDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                
+                try {
+                    const res = await fetch('/api/loibi/predict', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({ message: msg })
+                    });
+                    const data = await res.json();
+                    
+                    aiThoughtsEl.style.opacity = 0;
+                    loadingDiv.innerHTML = `<b>TRIPLET:</b> ${data.response}`;
+                    rememberReply(msg, data.response);
+                    
+                    // Add Feedback & Retry
+                    const fbContainer = document.createElement('div');
+                    fbContainer.className = 'feedback-btns';
+                    fbContainer.innerHTML = `
+                        <button class="f-btn btn-like">Like</button>
+                        <button class="f-btn btn-dislike">Dislike</button>
+                        <button class="f-btn btn-retry">Retry</button>
+                    `;
+                    loadingDiv.appendChild(fbContainer);
+
+                    fbContainer.querySelector('.btn-like').onclick = () => updateFeedback(msg, 'like', loadingDiv);
+                    fbContainer.querySelector('.btn-dislike').onclick = () => updateFeedback(msg, 'dislike', loadingDiv);
+                    fbContainer.querySelector('.btn-retry').onclick = () => {
+                        chatInput.value = msg;
+                        loadingDiv.remove();
+                        chatInput.dispatchEvent(new KeyboardEvent('keypress', {'key':'Enter'}));
+                    };
+
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                    resonanceLog("AI", "Response Braid SECURED.", "tag-ai");
+                } catch(err) { 
+                    aiThoughtsEl.style.opacity = 0;
+                    loadingDiv.innerHTML = `<b>TRIPLET:</b> <span style="color:#8b0000">Logic Breach Detected.</span>`;
+                    rememberReply(msg, '<span style="color:#8b0000">Logic Breach Detected.</span>');
+                    resonanceLog("ERR", "Logic Breach", "tag-grid"); 
+                }
+            }
+        });
+
+        async function updateFeedback(msg, type, el) {
+            const btns = el.querySelectorAll('.f-btn');
+            btns.forEach(b => b.classList.remove('active-like', 'active-dislike'));
+            if(type === 'like') el.querySelector('.btn-like').classList.add('active-like');
+            if(type === 'dislike') el.querySelector('.btn-dislike').classList.add('active-dislike');
+
+            // Physical Node Color Update (Find latest node or relevant one)
+            const targetColor = type === 'like' ? 0x7bd389 : 0x8b0000;
+            if(meshes.length > 0) {
+                const latest = meshes[meshes.length - 1];
+                latest.material.color.setHex(targetColor);
+                latest.material.emissive.setHex(targetColor);
+            }
+
+            resonanceLog("SYS", `Feedback [${type.toUpperCase()}] submitted to RAG.`, "tag-grid");
+            await fetch('/api/loibi/rag/submit', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ message: msg, type: type })
+            });
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            group.rotation.y += 0.0005;
+            orbitAngle += 0.02;
+            karooOrbiter.position.x = Math.cos(orbitAngle) * 40;
+            karooOrbiter.position.z = Math.sin(orbitAngle) * 40;
+            karooOrbiter.position.y = Math.sin(orbitAngle * 2) * 10;
+            karooOrbiter.rotation.x += 0.05;
+            
+            const time = Date.now() * 0.002;
+            meshes.forEach((m, i) => {
+                const pulse = 1 + Math.sin(time + i) * 0.1;
+                m.scale.set(pulse, pulse, pulse);
+            });
+            
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        async function updateStats() {
+            try {
+                const nRes = await fetch('/api/loihi/neurons');
+                const nData = await nRes.json();
+                neuronCount.textContent = nData.neurons.toLocaleString();
+                
+                const rRes = await fetch('/api/rolling');
+                const rData = await rRes.json();
+                rollingIndex.textContent = rData.roll_id;
+
+                const ragStatus = document.getElementById('rag-status');
+                ragStatus.textContent = "SYNCHRONIZED";
+            } catch (e) {}
+        }
+        setInterval(updateStats, 5000);
+        updateStats();
+        setInterval(loadSystemTests, 15000);
+        loadSystemTests();
+
+        document.getElementById('btn-export').addEventListener('click', async () => {
+            resonanceLog("SYS", "Exporting...", "tag-grid");
+            const res = await fetch('/api/risc/export', { method: 'POST' });
+            const d = await res.json();
+            resonanceLog("SYS", `SHA-256: ${d.hash.substring(0,16)}`, "tag-grid");
+        });
+
+        document.getElementById('btn-publish').addEventListener('click', async () => {
+            resonanceLog("SYS", "Ledger Sync...", "tag-grid");
+            const res = await fetch('/api/blockchain/publish', { method: 'POST' });
+            const d = await res.json();
+            resonanceLog("SYS", "BLOCKCHAIN_LOCKED", "tag-grid");
+        });
+    </script>
+</body>
+</html>

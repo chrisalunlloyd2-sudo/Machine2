@@ -1,0 +1,248 @@
+{
+  "experiment_id": "LOIHI_EXP_20260507T014614Z_7b4eb724c2",
+  "created_at": "2026-05-07T01:46:14.919500+00:00",
+  "mode": "loihi_style_sparse_cube_simulation",
+  "cube": {
+    "x": 100,
+    "y": 100,
+    "z": 100
+  },
+  "input_hash": "7b4eb724c232737dd4d82470f32ed8da983cdd4ddc6865b500366fe7bb500737",
+  "prompt": "Map current VIPER subsystems into top codes and find learning signals for Karoo approval-only genetic optimization. Translate disliked replies into repair pressure and successful logic into positive spike attractors.",
+  "steps": 8,
+  "seed_count": 16,
+  "event_count": 352,
+  "output_hash": "04e8d9bde9899892cb9cfc5ba1e3465cb9425695b7c886f4e1e2b29e9b5630c7",
+  "summary": "Strongest output `RAG_SUBMISSION` from TRIPLET_MANIFOLD at [83, 32, 7] amp=1.0; 16 positive and 0 negative surviving activations.",
+  "top_outputs": [
+    {
+      "code_id": "LCODE_c65fde00ba5be41d",
+      "amplitude": 1.0,
+      "code_type": "logic:shift",
+      "label": "RAG_SUBMISSION",
+      "source_table": "TRIPLET_MANIFOLD",
+      "source_id": "E1778071983",
+      "coord": [
+        83,
+        32,
+        7
+      ],
+      "polarity": -1
+    },
+    {
+      "code_id": "LCODE_912e7de430d1f650",
+      "amplitude": 1.0,
+      "code_type": "logic:shift",
+      "label": "TRIPLET_HOUSE_REASONING",
+      "source_table": "TRIPLET_MANIFOLD",
+      "source_id": "E1777988317",
+      "coord": [
+        66,
+        28,
+        97
+      ],
+      "polarity": -1
+    },
+    {
+      "code_id": "LCODE_63f9acc3bb222307",
+      "amplitude": 1.0,
+      "code_type": "logic:shift",
+      "label": "RAG_SUBMISSION",
+      "source_table": "TRIPLET_MANIFOLD",
+      "source_id": "E1777983405",
+      "coord": [
+        93,
+        27,
+        6
+      ],
+      "polarity": -1
+    },
+    {
+      "code_id": "LCODE_0eabb0476d5bb98f",
+      "amplitude": 1.0,
+      "code_type": "logic:shift",
+      "label": "RAG_SUBMISSION",
+      "source_table": "TRIPLET_MANIFOLD",
+      "source_id": "E1777997206",
+      "coord": [
+        55,
+        27,
+        95
+      ],
+      "polarity": -1
+    },
+    {
+      "code_id": "LCODE_65ec40e1dc321629",
+      "amplitude": 1.0,
+      "code_type": "logic:shift",
+      "label": "RAG_SUBMISSION",
+      "source_table": "TRIPLET_MANIFOLD",
+      "source_id": "E1778091138",
+      "coord": [
+        92,
+        9,
+        70
+      ],
+      "polarity": -1
+    },
+    {
+      "code_id": "LCODE_09ae9b09757facd9",
+      "amplitude": 1.0,
+      "code_type": "logic:shift",
+      "label": "TRIPLET_HOUSE_REASONING",
+      "source_table": "TRIPLET_MANIFOLD",
+      "source_id": "E1778070520",
+      "coord": [
+        78,
+        89,
+        79
+      ],
+      "polarity": 1
+    },
+    {
+      "code_id": "LCODE_d27ee60c83e61b13",
+      "amplitude": 1.0,
+      "code_type": "logic:shift",
+      "label": "RISC_EXPORT",
+      "source_table": "TRIPLET_MANIFOLD",
+      "source_id": "E1777988332",
+      "coord": [
+        86,
+        92,
+        66
+      ],
+      "polarity": 1
+    },
+    {
+      "code_id": "LCODE_97f74b14eaa69f2e",
+      "amplitude": 1.0,
+      "code_type": "reward:dislike",
+      "label": "dislike",
+      "source_table": "RAG_MANIFOLD",
+      "source_id": "22",
+      "coord": [
+        3,
+        20,
+        70
+      ],
+      "polarity": -1
+    },
+    {
+      "code_id": "LCODE_d936572e669e0111",
+      "amplitude": 1.0,
+      "code_type": "logic:shift",
+      "label": "RISC_EXPORT",
+      "source_table": "TRIPLET_MANIFOLD",
+      "source_id": "E1777989102",
+      "coord": [
+        6,
+        18,
+        70
+      ],
+      "polarity": -1
+    },
+    {
+      "code_id": "LCODE_95f965417e9dd7f1",
+      "amplitude": 1.0,
+      "code_type": "logic:shift",
+      "label": "TRIPLET_HOUSE_REASONING",
+      "source_table": "TRIPLET_MANIFOLD",
+      "source_id": "E1777988321",
+      "coord": [
+        93,
+        21,
+        13
+      ],
+      "polarity": -1
+    },
+    {
+      "code_id": "LCODE_c9237f4d5c21ab50",
+      "amplitude": 1.0,
+      "code_type": "logic:shift",
+      "label": "RAG_SUBMISSION",
+      "source_table": "TRIPLET_MANIFOLD",
+      "source_id": "E1777988342",
+      "coord": [
+        91,
+        89,
+        85
+      ],
+      "polarity": 1
+    },
+    {
+      "code_id": "LCODE_48fb4c7f864cd079",
+      "amplitude": 1.0,
+      "code_type": "reward:like",
+      "label": "like",
+      "source_table": "RAG_MANIFOLD",
+      "source_id": "17",
+      "coord": [
+        83,
+        83,
+        80
+      ],
+      "polarity": 1
+    },
+    {
+      "code_id": "LCODE_035fb8760f98500f",
+      "amplitude": 1.0,
+      "code_type": "reward:like",
+      "label": "like",
+      "source_table": "RAG_MANIFOLD",
+      "source_id": "18",
+      "coord": [
+        63,
+        22,
+        92
+      ],
+      "polarity": -1
+    },
+    {
+      "code_id": "LCODE_cb3f9595d5171173",
+      "amplitude": 1.0,
+      "code_type": "logic:shift",
+      "label": "RAG_SUBMISSION",
+      "source_table": "TRIPLET_MANIFOLD",
+      "source_id": "E1778070880",
+      "coord": [
+        31,
+        93,
+        51
+      ],
+      "polarity": 1
+    },
+    {
+      "code_id": "LCODE_2ed0bb91820f8f3b",
+      "amplitude": 1.0,
+      "code_type": "chunk:JAVA_BACKEND",
+      "label": "handle",
+      "source_table": "TOPO_CHUNKS",
+      "source_id": "CHUNK_JAVA_BACKEND_handle_88133a4e4c39",
+      "coord": [
+        84,
+        17,
+        95
+      ],
+      "polarity": -1
+    },
+    {
+      "code_id": "LCODE_68a5bc473379a54d",
+      "amplitude": 1.0,
+      "code_type": "chunk:RISC_BRIDGE",
+      "label": "do_GET",
+      "source_table": "TOPO_CHUNKS",
+      "source_id": "CHUNK_RISC_BRIDGE_do_GET_b129b9f53ae9",
+      "coord": [
+        89,
+        99,
+        77
+      ],
+      "polarity": 1
+    }
+  ],
+  "policy": {
+    "learning_only": true,
+    "no_code_mutation": true,
+    "requires_user_approval_for_any_patch": true
+  }
+}

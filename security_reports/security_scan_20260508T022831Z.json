@@ -1,0 +1,22 @@
+{
+  "timestamp": "2026-05-08T02:28:31.116614+00:00",
+  "events_seen": 58,
+  "new_events": 1,
+  "repeated_events": 57,
+  "inserted": [
+    {
+      "fingerprint": "bb83d6eea765d58dafc0e9531b96262b25695a01d6ebb90cfed1d9d8a704e0d2",
+      "event_type": "http_error_surface",
+      "severity": 3,
+      "heuristic_score": 0.45,
+      "details": {
+        "source": "logic_blockchain_shipper.log",
+        "timestamp": "2026-05-08T02:18:42.800537+00:00",
+        "ip": "127.0.0.1",
+        "method": "POST",
+        "path": "/api/uplink",
+        "status": 404
+      }
+    }
+  ]
+}

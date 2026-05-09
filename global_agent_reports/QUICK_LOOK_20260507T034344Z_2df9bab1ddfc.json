@@ -1,0 +1,25 @@
+{
+  "agent_id": "local_viper_control",
+  "timestamp": "2026-05-07T03:43:43.957303+00:00",
+  "host": "Alice",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "python": "3.11.9",
+  "cwd": "C:\\Users\\viper\\VIPER_JAVA_RISC",
+  "safe_env": {
+    "OS": "Windows_NT",
+    "COMPUTERNAME": "ALICE",
+    "PATH": {
+      "entry_count": 26,
+      "sha256": "3ad3befdfed08160715e24bc1cd596d103f30a87b0af6f365812ec30e4cfa616"
+    },
+    "NUMBER_OF_PROCESSORS": "8",
+    "USERNAME": "viper",
+    "PROCESSOR_ARCHITECTURE": "AMD64",
+    "USERDOMAIN": "ALICE"
+  },
+  "ports": {
+    "gui": "http://127.0.0.1:8080",
+    "house_cpp": "http://127.0.0.1:11435/api/generate",
+    "logic_shipper": "http://127.0.0.1:18081"
+  }
+}

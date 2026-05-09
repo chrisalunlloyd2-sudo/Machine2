@@ -1,0 +1,6 @@
+{
+  "mode": "planning",
+  "planningReplyTokens": 1024,
+  "karooProposalOnly": true,
+  "heartbeatSeconds": 300
+}

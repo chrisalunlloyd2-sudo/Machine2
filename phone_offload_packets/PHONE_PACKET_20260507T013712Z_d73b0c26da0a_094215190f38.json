@@ -1,0 +1,1290 @@
+{
+  "chain_hash": "27b1a2134042c5004a1f67619e1eb1d8d5df37f625ce1a1ec97ce316df274c9d",
+  "code_block_id": "CODEDB_LOGIC_BLOCK_20260507T013712Z_d73b0c26da0a",
+  "created_at": "2026-05-07T06:13:08.674959+00:00",
+  "packet_type": "phone_db_offload_code_block",
+  "payload_json": {
+    "approval_reports": [
+      {
+        "confidence": 0.88,
+        "created_at": "2026-05-07 01:36:16",
+        "id": "APPROVAL_20260507T013616Z_baef6edc60",
+        "priority": 1,
+        "report_sha256": "459538650320de7c44080200359af81c1614207798b7caa88023f7b3d9c5785f",
+        "status": "pending_user_approval",
+        "subsystem_id": "REPLY_QUALITY",
+        "summary_sha256": "ac60bebdcaea06fca52bf6973c891cf0fe9e924a3c82c9dd66a184dbf3936cfd"
+      },
+      {
+        "confidence": 0.88,
+        "created_at": "2026-05-07 01:36:16",
+        "id": "APPROVAL_20260507T013616Z_385080d748",
+        "priority": 1,
+        "report_sha256": "edc937436a8d924403c9a6f19b2fe52f5c235e5d445a64323c94d01b138aa8e3",
+        "status": "pending_user_approval",
+        "subsystem_id": "REPLY_QUALITY",
+        "summary_sha256": "ac60bebdcaea06fca52bf6973c891cf0fe9e924a3c82c9dd66a184dbf3936cfd"
+      },
+      {
+        "confidence": 0.88,
+        "created_at": "2026-05-07 01:36:16",
+        "id": "APPROVAL_20260507T013616Z_8c4569bb07",
+        "priority": 1,
+        "report_sha256": "0d560440ea3c748ec930a77e314f87f044ef8d96d061b2fc7767c7b212066e24",
+        "status": "pending_user_approval",
+        "subsystem_id": "REPLY_QUALITY",
+        "summary_sha256": "ac60bebdcaea06fca52bf6973c891cf0fe9e924a3c82c9dd66a184dbf3936cfd"
+      },
+      {
+        "confidence": 0.88,
+        "created_at": "2026-05-07 01:36:16",
+        "id": "APPROVAL_20260507T013616Z_8474ecbb36",
+        "priority": 1,
+        "report_sha256": "8d71eb2fd8f9a0177bda03dbc676c56568b07f5cbb0e26333ed6292e853c2664",
+        "status": "pending_user_approval",
+        "subsystem_id": "REPLY_QUALITY",
+        "summary_sha256": "ac60bebdcaea06fca52bf6973c891cf0fe9e924a3c82c9dd66a184dbf3936cfd"
+      },
+      {
+        "confidence": 0.88,
+        "created_at": "2026-05-07 01:36:16",
+        "id": "APPROVAL_20260507T013616Z_aebb7a9ae8",
+        "priority": 1,
+        "report_sha256": "e44e81e551b6d05e9b77db800a2b3b33dba10129b1819c006e57a2861c6c21e7",
+        "status": "pending_user_approval",
+        "subsystem_id": "REPLY_QUALITY",
+        "summary_sha256": "ac60bebdcaea06fca52bf6973c891cf0fe9e924a3c82c9dd66a184dbf3936cfd"
+      },
+      {
+        "confidence": 0.88,
+        "created_at": "2026-05-07 01:36:16",
+        "id": "APPROVAL_20260507T013616Z_14c694d8f8",
+        "priority": 1,
+        "report_sha256": "a0c473892e451b0cf9230372a1a2cdb9f510b80f11420462eaac730fce181e0c",
+        "status": "pending_user_approval",
+        "subsystem_id": "REPLY_QUALITY",
+        "summary_sha256": "ac60bebdcaea06fca52bf6973c891cf0fe9e924a3c82c9dd66a184dbf3936cfd"
+      },
+      {
+        "confidence": 0.88,
+        "created_at": "2026-05-07 01:36:16",
+        "id": "APPROVAL_20260507T013616Z_98fc025ac7",
+        "priority": 1,
+        "report_sha256": "0a90f7e336065ffa07fa276069c18edb2a4a80387b1c8634f574e28548b99ced",
+        "status": "pending_user_approval",
+        "subsystem_id": "REPLY_QUALITY",
+        "summary_sha256": "ac60bebdcaea06fca52bf6973c891cf0fe9e924a3c82c9dd66a184dbf3936cfd"
+      },
+      {
+        "confidence": 0.88,
+        "created_at": "2026-05-07 01:36:16",
+        "id": "APPROVAL_20260507T013616Z_f3eec14d6f",
+        "priority": 1,
+        "report_sha256": "f99278b1c5d7e58deaf723eab45a1eb417d71bd8270533ae94b402f39ae35987",
+        "status": "pending_user_approval",
+        "subsystem_id": "REPLY_QUALITY",
+        "summary_sha256": "ac60bebdcaea06fca52bf6973c891cf0fe9e924a3c82c9dd66a184dbf3936cfd"
+      },
+      {
+        "confidence": 0.88,
+        "created_at": "2026-05-07 01:36:16",
+        "id": "APPROVAL_20260507T013616Z_397f932180",
+        "priority": 1,
+        "report_sha256": "c0d1edf682db985349531d0c1d7721f8a8ba996cfa0e3a5a1da3da228896e8d1",
+        "status": "pending_user_approval",
+        "subsystem_id": "REPLY_QUALITY",
+        "summary_sha256": "ac60bebdcaea06fca52bf6973c891cf0fe9e924a3c82c9dd66a184dbf3936cfd"
+      },
+      {
+        "confidence": 0.88,
+        "created_at": "2026-05-07 01:36:16",
+        "id": "APPROVAL_20260507T013616Z_c4c024e25b",
+        "priority": 1,
+        "report_sha256": "ca3dd929fbb9a81a0da3c285bef72a810a253b46718adc8a40a2ea3cdce7d313",
+        "status": "pending_user_approval",
+        "subsystem_id": "REPLY_QUALITY",
+        "summary_sha256": "ac60bebdcaea06fca52bf6973c891cf0fe9e924a3c82c9dd66a184dbf3936cfd"
+      },
+      {
+        "confidence": 0.88,
+        "created_at": "2026-05-07 01:36:16",
+        "id": "APPROVAL_20260507T013616Z_42410f4cf5",
+        "priority": 1,
+        "report_sha256": "3ac3a85dd52fba5a00f3cda4ee0f11407f1d61a9837e12aa6866369247124e1b",
+        "status": "pending_user_approval",
+        "subsystem_id": "REPLY_QUALITY",
+        "summary_sha256": "ac60bebdcaea06fca52bf6973c891cf0fe9e924a3c82c9dd66a184dbf3936cfd"
+      },
+      {
+        "confidence": 0.88,
+        "created_at": "2026-05-07 01:36:16",
+        "id": "APPROVAL_20260507T013616Z_a261040c87",
+        "priority": 1,
+        "report_sha256": "95967680d3f5ee8fe88a63732e2f2f33a7b23928f6e732a70b84effe98641920",
+        "status": "pending_user_approval",
+        "subsystem_id": "REPLY_QUALITY",
+        "summary_sha256": "ac60bebdcaea06fca52bf6973c891cf0fe9e924a3c82c9dd66a184dbf3936cfd"
+      },
+      {
+        "confidence": 0.88,
+        "created_at": "2026-05-07 01:36:16",
+        "id": "APPROVAL_20260507T013616Z_1f85614f3c",
+        "priority": 1,
+        "report_sha256": "da4ecee3d16d1b7fb258c202717d2a8125621abbf386a8a32a6ebfab4063d563",
+        "status": "pending_user_approval",
+        "subsystem_id": "REPLY_QUALITY",
+        "summary_sha256": "ac60bebdcaea06fca52bf6973c891cf0fe9e924a3c82c9dd66a184dbf3936cfd"
+      },
+      {
+        "confidence": 0.88,
+        "created_at": "2026-05-07 01:36:16",
+        "id": "APPROVAL_20260507T013616Z_0c2d107f6f",
+        "priority": 1,
+        "report_sha256": "093eb62a55b9f7e4a26da6799664c0e7b0f964da15cdf27abb252314da8f18c5",
+        "status": "pending_user_approval",
+        "subsystem_id": "REPLY_QUALITY",
+        "summary_sha256": "ac60bebdcaea06fca52bf6973c891cf0fe9e924a3c82c9dd66a184dbf3936cfd"
+      },
+      {
+        "confidence": 0.88,
+        "created_at": "2026-05-07 01:36:16",
+        "id": "APPROVAL_20260507T013616Z_c2e51b6a6f",
+        "priority": 1,
+        "report_sha256": "5b73453e24682ba4ec803791883c004d57e4654843023fda71a3a4976e47452d",
+        "status": "pending_user_approval",
+        "subsystem_id": "REPLY_QUALITY",
+        "summary_sha256": "ac60bebdcaea06fca52bf6973c891cf0fe9e924a3c82c9dd66a184dbf3936cfd"
+      },
+      {
+        "confidence": 0.88,
+        "created_at": "2026-05-07 01:36:16",
+        "id": "APPROVAL_20260507T013616Z_138dceb08a",
+        "priority": 1,
+        "report_sha256": "b872b2197e6e68bf4a2366f94da2a3cb145f3f795e9ef13f462463741dff8209",
+        "status": "pending_user_approval",
+        "subsystem_id": "REPLY_QUALITY",
+        "summary_sha256": "ac60bebdcaea06fca52bf6973c891cf0fe9e924a3c82c9dd66a184dbf3936cfd"
+      },
+      {
+        "confidence": 0.88,
+        "created_at": "2026-05-07 01:36:16",
+        "id": "APPROVAL_20260507T013616Z_8b80bcc103",
+        "priority": 1,
+        "report_sha256": "f02ecc3df48ab5c1cce6f651ee3450374b6a43ad486be8c27bcf8146718daee3",
+        "status": "pending_user_approval",
+        "subsystem_id": "REPLY_QUALITY",
+        "summary_sha256": "ac60bebdcaea06fca52bf6973c891cf0fe9e924a3c82c9dd66a184dbf3936cfd"
+      },
+      {
+        "confidence": 0.88,
+        "created_at": "2026-05-07 01:35:04",
+        "id": "APPROVAL_20260507T013504Z_baef6edc60",
+        "priority": 1,
+        "report_sha256": "33ee0e9e7b006aa567485ac835912ed2be05a848cbac6df7493f0dae3b4da5f1",
+        "status": "pending_user_approval",
+        "subsystem_id": "REPLY_QUALITY",
+        "summary_sha256": "ac60bebdcaea06fca52bf6973c891cf0fe9e924a3c82c9dd66a184dbf3936cfd"
+      },
+      {
+        "confidence": 0.78,
+        "created_at": "2026-05-07 01:34:44",
+        "id": "APPROVAL_20260507T013444Z_cc11a742ba",
+        "priority": 2,
+        "report_sha256": "d66ce621d696633d5ad6a4681066d19e0e4edb1150da2e122e5f6c4023d6685e",
+        "status": "pending_user_approval",
+        "subsystem_id": "RISC_BRIDGE",
+        "summary_sha256": "053032b28fc11517c19711f62c519f18a1c53a1999e5e84331e39d82059ef69e"
+      },
+      {
+        "confidence": 0.94,
+        "created_at": "2026-05-07 01:34:44",
+        "id": "APPROVAL_20260507T013444Z_c81caf88b3",
+        "priority": 1,
+        "report_sha256": "57ab5d3db6ae67342aec9262bf8be1acb1d7e811bb963f02130c691d2425fa17",
+        "status": "pending_user_approval",
+        "subsystem_id": "TRIPLET_LOOP",
+        "summary_sha256": "4ca9ae4293dcdfc7d7f55443d112b3f114ec3cf0015ff48054cbf227cc657286"
+      },
+      {
+        "confidence": 0.78,
+        "created_at": "2026-05-07 01:34:44",
+        "id": "APPROVAL_20260507T013444Z_c374f31e2b",
+        "priority": 2,
+        "report_sha256": "3702ace7b50862a03f9edfb0b0b29fde651f20b907d5570eefe8823c6ad51a88",
+        "status": "pending_user_approval",
+        "subsystem_id": "TRIPLET_LOOP",
+        "summary_sha256": "ad4f4748d855994d13c921f3aa244b5b5254083a263463a9fc770d609ff4df82"
+      },
+      {
+        "confidence": 0.88,
+        "created_at": "2026-05-07 01:34:38",
+        "id": "APPROVAL_20260507T013438Z_baef6edc60",
+        "priority": 1,
+        "report_sha256": "b7b90a5fd038d0f726abb0dc26af3ccaac8a6d8bebab52ebbcb39c5eb0cfaa67",
+        "status": "pending_user_approval",
+        "subsystem_id": "REPLY_QUALITY",
+        "summary_sha256": "ac60bebdcaea06fca52bf6973c891cf0fe9e924a3c82c9dd66a184dbf3936cfd"
+      }
+    ],
+    "candidates": [
+      {
+        "action": "suggest_only",
+        "candidate_sha256": "1b39bda185e05179c281b4717a3bcab48090cdaea48e871b1dfd23c9784271fa",
+        "chunk_id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "comparison_count": 0,
+        "confidence": 0.0,
+        "created_at": "2026-05-07 01:28:21",
+        "experiment_id": "EXP_20260507T012821Z_c1f83a1152",
+        "id": "CAND_20260507T012821Z_ae2db86718"
+      },
+      {
+        "action": "suggest_only",
+        "candidate_sha256": "1b39bda185e05179c281b4717a3bcab48090cdaea48e871b1dfd23c9784271fa",
+        "chunk_id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "comparison_count": 0,
+        "confidence": 0.0,
+        "created_at": "2026-05-07 01:08:18",
+        "experiment_id": "EXP_20260507T010818Z_c1f83a1152",
+        "id": "CAND_20260507T010818Z_ae2db86718"
+      },
+      {
+        "action": "suggest_only",
+        "candidate_sha256": "1b39bda185e05179c281b4717a3bcab48090cdaea48e871b1dfd23c9784271fa",
+        "chunk_id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "comparison_count": 0,
+        "confidence": 0.0,
+        "created_at": "2026-05-07 00:48:15",
+        "experiment_id": "EXP_20260507T004815Z_c1f83a1152",
+        "id": "CAND_20260507T004815Z_ae2db86718"
+      },
+      {
+        "action": "suggest_only",
+        "candidate_sha256": "1b39bda185e05179c281b4717a3bcab48090cdaea48e871b1dfd23c9784271fa",
+        "chunk_id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "comparison_count": 0,
+        "confidence": 0.0,
+        "created_at": "2026-05-07 00:28:12",
+        "experiment_id": "EXP_20260507T002812Z_c1f83a1152",
+        "id": "CAND_20260507T002812Z_ae2db86718"
+      },
+      {
+        "action": "suggest_only",
+        "candidate_sha256": "1b39bda185e05179c281b4717a3bcab48090cdaea48e871b1dfd23c9784271fa",
+        "chunk_id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "comparison_count": 0,
+        "confidence": 0.0,
+        "created_at": "2026-05-07 00:08:09",
+        "experiment_id": "EXP_20260507T000809Z_c1f83a1152",
+        "id": "CAND_20260507T000809Z_ae2db86718"
+      },
+      {
+        "action": "suggest_only",
+        "candidate_sha256": "1b39bda185e05179c281b4717a3bcab48090cdaea48e871b1dfd23c9784271fa",
+        "chunk_id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "comparison_count": 0,
+        "confidence": 0.0,
+        "created_at": "2026-05-06 23:48:06",
+        "experiment_id": "EXP_20260506T234806Z_c1f83a1152",
+        "id": "CAND_20260506T234806Z_ae2db86718"
+      },
+      {
+        "action": "suggest_only",
+        "candidate_sha256": "1b39bda185e05179c281b4717a3bcab48090cdaea48e871b1dfd23c9784271fa",
+        "chunk_id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "comparison_count": 0,
+        "confidence": 0.0,
+        "created_at": "2026-05-06 23:28:03",
+        "experiment_id": "EXP_20260506T232803Z_c1f83a1152",
+        "id": "CAND_20260506T232803Z_ae2db86718"
+      },
+      {
+        "action": "suggest_only",
+        "candidate_sha256": "1b39bda185e05179c281b4717a3bcab48090cdaea48e871b1dfd23c9784271fa",
+        "chunk_id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "comparison_count": 0,
+        "confidence": 0.0,
+        "created_at": "2026-05-06 23:08:00",
+        "experiment_id": "EXP_20260506T230800Z_c1f83a1152",
+        "id": "CAND_20260506T230800Z_ae2db86718"
+      },
+      {
+        "action": "suggest_only",
+        "candidate_sha256": "1b39bda185e05179c281b4717a3bcab48090cdaea48e871b1dfd23c9784271fa",
+        "chunk_id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "comparison_count": 0,
+        "confidence": 0.0,
+        "created_at": "2026-05-06 22:47:58",
+        "experiment_id": "EXP_20260506T224758Z_c1f83a1152",
+        "id": "CAND_20260506T224758Z_ae2db86718"
+      },
+      {
+        "action": "suggest_only",
+        "candidate_sha256": "1b39bda185e05179c281b4717a3bcab48090cdaea48e871b1dfd23c9784271fa",
+        "chunk_id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "comparison_count": 0,
+        "confidence": 0.0,
+        "created_at": "2026-05-06 22:27:55",
+        "experiment_id": "EXP_20260506T222755Z_c1f83a1152",
+        "id": "CAND_20260506T222755Z_ae2db86718"
+      },
+      {
+        "action": "suggest_only",
+        "candidate_sha256": "1b39bda185e05179c281b4717a3bcab48090cdaea48e871b1dfd23c9784271fa",
+        "chunk_id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "comparison_count": 0,
+        "confidence": 0.0,
+        "created_at": "2026-05-06 22:07:51",
+        "experiment_id": "EXP_20260506T220751Z_c1f83a1152",
+        "id": "CAND_20260506T220751Z_ae2db86718"
+      },
+      {
+        "action": "suggest_only",
+        "candidate_sha256": "1b39bda185e05179c281b4717a3bcab48090cdaea48e871b1dfd23c9784271fa",
+        "chunk_id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "comparison_count": 0,
+        "confidence": 0.0,
+        "created_at": "2026-05-06 21:47:49",
+        "experiment_id": "EXP_20260506T214749Z_c1f83a1152",
+        "id": "CAND_20260506T214749Z_ae2db86718"
+      },
+      {
+        "action": "suggest_only",
+        "candidate_sha256": "1b39bda185e05179c281b4717a3bcab48090cdaea48e871b1dfd23c9784271fa",
+        "chunk_id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "comparison_count": 0,
+        "confidence": 0.0,
+        "created_at": "2026-05-06 21:27:45",
+        "experiment_id": "EXP_20260506T212745Z_c1f83a1152",
+        "id": "CAND_20260506T212745Z_ae2db86718"
+      },
+      {
+        "action": "suggest_only",
+        "candidate_sha256": "1b39bda185e05179c281b4717a3bcab48090cdaea48e871b1dfd23c9784271fa",
+        "chunk_id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "comparison_count": 0,
+        "confidence": 0.0,
+        "created_at": "2026-05-06 21:07:42",
+        "experiment_id": "EXP_20260506T210742Z_c1f83a1152",
+        "id": "CAND_20260506T210742Z_ae2db86718"
+      },
+      {
+        "action": "suggest_only",
+        "candidate_sha256": "1b39bda185e05179c281b4717a3bcab48090cdaea48e871b1dfd23c9784271fa",
+        "chunk_id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "comparison_count": 0,
+        "confidence": 0.0,
+        "created_at": "2026-05-06 20:47:39",
+        "experiment_id": "EXP_20260506T204739Z_c1f83a1152",
+        "id": "CAND_20260506T204739Z_ae2db86718"
+      },
+      {
+        "action": "suggest_only",
+        "candidate_sha256": "1b39bda185e05179c281b4717a3bcab48090cdaea48e871b1dfd23c9784271fa",
+        "chunk_id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "comparison_count": 0,
+        "confidence": 0.0,
+        "created_at": "2026-05-06 20:27:37",
+        "experiment_id": "EXP_20260506T202737Z_c1f83a1152",
+        "id": "CAND_20260506T202737Z_ae2db86718"
+      },
+      {
+        "action": "suggest_only",
+        "candidate_sha256": "1b39bda185e05179c281b4717a3bcab48090cdaea48e871b1dfd23c9784271fa",
+        "chunk_id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "comparison_count": 0,
+        "confidence": 0.0,
+        "created_at": "2026-05-06 20:07:33",
+        "experiment_id": "EXP_20260506T200733Z_c1f83a1152",
+        "id": "CAND_20260506T200733Z_ae2db86718"
+      },
+      {
+        "action": "suggest_only",
+        "candidate_sha256": "1b39bda185e05179c281b4717a3bcab48090cdaea48e871b1dfd23c9784271fa",
+        "chunk_id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "comparison_count": 0,
+        "confidence": 0.0,
+        "created_at": "2026-05-06 19:47:30",
+        "experiment_id": "EXP_20260506T194730Z_c1f83a1152",
+        "id": "CAND_20260506T194730Z_ae2db86718"
+      },
+      {
+        "action": "suggest_only",
+        "candidate_sha256": "1b39bda185e05179c281b4717a3bcab48090cdaea48e871b1dfd23c9784271fa",
+        "chunk_id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "comparison_count": 0,
+        "confidence": 0.0,
+        "created_at": "2026-05-06 19:27:29",
+        "experiment_id": "EXP_20260506T192729Z_c1f83a1152",
+        "id": "CAND_20260506T192729Z_ae2db86718"
+      },
+      {
+        "action": "suggest_only",
+        "candidate_sha256": "1b39bda185e05179c281b4717a3bcab48090cdaea48e871b1dfd23c9784271fa",
+        "chunk_id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "comparison_count": 0,
+        "confidence": 0.0,
+        "created_at": "2026-05-06 19:07:26",
+        "experiment_id": "EXP_20260506T190726Z_c1f83a1152",
+        "id": "CAND_20260506T190726Z_ae2db86718"
+      },
+      {
+        "action": "suggest_only",
+        "candidate_sha256": "1b39bda185e05179c281b4717a3bcab48090cdaea48e871b1dfd23c9784271fa",
+        "chunk_id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "comparison_count": 0,
+        "confidence": 0.0,
+        "created_at": "2026-05-06 18:47:24",
+        "experiment_id": "EXP_20260506T184724Z_c1f83a1152",
+        "id": "CAND_20260506T184724Z_ae2db86718"
+      },
+      {
+        "action": "suggest_only",
+        "candidate_sha256": "1b39bda185e05179c281b4717a3bcab48090cdaea48e871b1dfd23c9784271fa",
+        "chunk_id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "comparison_count": 0,
+        "confidence": 0.0,
+        "created_at": "2026-05-06 18:27:22",
+        "experiment_id": "EXP_20260506T182722Z_c1f83a1152",
+        "id": "CAND_20260506T182722Z_ae2db86718"
+      },
+      {
+        "action": "suggest_only",
+        "candidate_sha256": "1b39bda185e05179c281b4717a3bcab48090cdaea48e871b1dfd23c9784271fa",
+        "chunk_id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "comparison_count": 0,
+        "confidence": 0.0,
+        "created_at": "2026-05-06 18:07:19",
+        "experiment_id": "EXP_20260506T180719Z_c1f83a1152",
+        "id": "CAND_20260506T180719Z_ae2db86718"
+      },
+      {
+        "action": "suggest_only",
+        "candidate_sha256": "1b39bda185e05179c281b4717a3bcab48090cdaea48e871b1dfd23c9784271fa",
+        "chunk_id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "comparison_count": 0,
+        "confidence": 0.0,
+        "created_at": "2026-05-06 17:47:17",
+        "experiment_id": "EXP_20260506T174717Z_c1f83a1152",
+        "id": "CAND_20260506T174717Z_ae2db86718"
+      },
+      {
+        "action": "suggest_only",
+        "candidate_sha256": "1b39bda185e05179c281b4717a3bcab48090cdaea48e871b1dfd23c9784271fa",
+        "chunk_id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "comparison_count": 0,
+        "confidence": 0.0,
+        "created_at": "2026-05-06 17:27:14",
+        "experiment_id": "EXP_20260506T172714Z_c1f83a1152",
+        "id": "CAND_20260506T172714Z_ae2db86718"
+      },
+      {
+        "action": "suggest_only",
+        "candidate_sha256": "1b39bda185e05179c281b4717a3bcab48090cdaea48e871b1dfd23c9784271fa",
+        "chunk_id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "comparison_count": 0,
+        "confidence": 0.0,
+        "created_at": "2026-05-06 17:07:10",
+        "experiment_id": "EXP_20260506T170710Z_c1f83a1152",
+        "id": "CAND_20260506T170710Z_ae2db86718"
+      },
+      {
+        "action": "suggest_only",
+        "candidate_sha256": "1b39bda185e05179c281b4717a3bcab48090cdaea48e871b1dfd23c9784271fa",
+        "chunk_id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "comparison_count": 0,
+        "confidence": 0.0,
+        "created_at": "2026-05-06 16:47:07",
+        "experiment_id": "EXP_20260506T164707Z_c1f83a1152",
+        "id": "CAND_20260506T164707Z_ae2db86718"
+      },
+      {
+        "action": "suggest_only",
+        "candidate_sha256": "1b39bda185e05179c281b4717a3bcab48090cdaea48e871b1dfd23c9784271fa",
+        "chunk_id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "comparison_count": 0,
+        "confidence": 0.0,
+        "created_at": "2026-05-06 16:27:05",
+        "experiment_id": "EXP_20260506T162705Z_c1f83a1152",
+        "id": "CAND_20260506T162705Z_ae2db86718"
+      },
+      {
+        "action": "suggest_only",
+        "candidate_sha256": "1b39bda185e05179c281b4717a3bcab48090cdaea48e871b1dfd23c9784271fa",
+        "chunk_id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "comparison_count": 0,
+        "confidence": 0.0,
+        "created_at": "2026-05-06 16:07:00",
+        "experiment_id": "EXP_20260506T160700Z_c1f83a1152",
+        "id": "CAND_20260506T160700Z_ae2db86718"
+      },
+      {
+        "action": "suggest_only",
+        "candidate_sha256": "1b39bda185e05179c281b4717a3bcab48090cdaea48e871b1dfd23c9784271fa",
+        "chunk_id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "comparison_count": 0,
+        "confidence": 0.0,
+        "created_at": "2026-05-06 15:46:56",
+        "experiment_id": "EXP_20260506T154656Z_c1f83a1152",
+        "id": "CAND_20260506T154656Z_ae2db86718"
+      },
+      {
+        "action": "suggest_only",
+        "candidate_sha256": "1b39bda185e05179c281b4717a3bcab48090cdaea48e871b1dfd23c9784271fa",
+        "chunk_id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "comparison_count": 0,
+        "confidence": 0.0,
+        "created_at": "2026-05-06 15:26:53",
+        "experiment_id": "EXP_20260506T152653Z_c1f83a1152",
+        "id": "CAND_20260506T152653Z_ae2db86718"
+      },
+      {
+        "action": "suggest_only",
+        "candidate_sha256": "1b39bda185e05179c281b4717a3bcab48090cdaea48e871b1dfd23c9784271fa",
+        "chunk_id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "comparison_count": 0,
+        "confidence": 0.0,
+        "created_at": "2026-05-06 15:06:48",
+        "experiment_id": "EXP_20260506T150648Z_c1f83a1152",
+        "id": "CAND_20260506T150648Z_ae2db86718"
+      }
+    ],
+    "chunks": [
+      {
+        "content_sha256": "33461d9f9eb8399db6e1fdf747e103b36859c91a80b6f320499156d277968e1a",
+        "end_line": 40,
+        "id": "CHUNK_JAVA_BACKEND_main_33461d9f9eb8",
+        "source_path": "C:\\Users\\viper\\VIPER_JAVA_RISC\\src\\com\\viper\\risc\\RiscServer.java",
+        "start_line": 25,
+        "status": "active",
+        "subsystem_id": "JAVA_BACKEND",
+        "symbol": "main"
+      },
+      {
+        "content_sha256": "75c7be19986d2d4cb3a3249d2799d0b2da62e740dda051fdbda04d91df736fb3",
+        "end_line": 57,
+        "id": "CHUNK_JAVA_BACKEND_logChunked_75c7be19986d",
+        "source_path": "C:\\Users\\viper\\VIPER_JAVA_RISC\\src\\com\\viper\\risc\\RiscServer.java",
+        "start_line": 42,
+        "status": "active",
+        "subsystem_id": "JAVA_BACKEND",
+        "symbol": "logChunked"
+      },
+      {
+        "content_sha256": "f0fa6eefb8aa99104f20f7ec9bbb0bcc7a3f747b5321b13311d590453effc348",
+        "end_line": 65,
+        "id": "CHUNK_JAVA_BACKEND_enforceDelay_f0fa6eefb8aa",
+        "source_path": "C:\\Users\\viper\\VIPER_JAVA_RISC\\src\\com\\viper\\risc\\RiscServer.java",
+        "start_line": 59,
+        "status": "active",
+        "subsystem_id": "JAVA_BACKEND",
+        "symbol": "enforceDelay"
+      },
+      {
+        "content_sha256": "003dc70fbf8497c1c7ed791938bcbb0cd67839b0a900e00adb8aa90913182baf",
+        "end_line": 81,
+        "id": "CHUNK_JAVA_BACKEND_sha256_003dc70fbf84",
+        "source_path": "C:\\Users\\viper\\VIPER_JAVA_RISC\\src\\com\\viper\\risc\\RiscServer.java",
+        "start_line": 67,
+        "status": "active",
+        "subsystem_id": "JAVA_BACKEND",
+        "symbol": "sha256"
+      },
+      {
+        "content_sha256": "616bb7b9405acbc9b7657aa4a802e94f529fa113a5d5c12526f31fc5f864c193",
+        "end_line": 100,
+        "id": "CHUNK_JAVA_BACKEND_handle_616bb7b9405a",
+        "source_path": "C:\\Users\\viper\\VIPER_JAVA_RISC\\src\\com\\viper\\risc\\RiscServer.java",
+        "start_line": 85,
+        "status": "active",
+        "subsystem_id": "JAVA_BACKEND",
+        "symbol": "handle"
+      },
+      {
+        "content_sha256": "68dad4fbc5528ba22f6ab7de8730198878a2c8069c037eacb62fa7a150f1a600",
+        "end_line": 117,
+        "id": "CHUNK_JAVA_BACKEND_handle_68dad4fbc552",
+        "source_path": "C:\\Users\\viper\\VIPER_JAVA_RISC\\src\\com\\viper\\risc\\RiscServer.java",
+        "start_line": 105,
+        "status": "active",
+        "subsystem_id": "JAVA_BACKEND",
+        "symbol": "handle"
+      },
+      {
+        "content_sha256": "04f66b9d5e953448b412bf12561313df50fd692b05abe4fde47dacee0df90f0f",
+        "end_line": 132,
+        "id": "CHUNK_JAVA_BACKEND_handle_04f66b9d5e95",
+        "source_path": "C:\\Users\\viper\\VIPER_JAVA_RISC\\src\\com\\viper\\risc\\RiscServer.java",
+        "start_line": 122,
+        "status": "active",
+        "subsystem_id": "JAVA_BACKEND",
+        "symbol": "handle"
+      },
+      {
+        "content_sha256": "43894ff2da1fe9f35d099eaa7984642bb8772cf18ed10001f4845d04a4995677",
+        "end_line": 147,
+        "id": "CHUNK_JAVA_BACKEND_handle_43894ff2da1f",
+        "source_path": "C:\\Users\\viper\\VIPER_JAVA_RISC\\src\\com\\viper\\risc\\RiscServer.java",
+        "start_line": 137,
+        "status": "active",
+        "subsystem_id": "JAVA_BACKEND",
+        "symbol": "handle"
+      },
+      {
+        "content_sha256": "88133a4e4c395be47f9cf44d74bf65276e49117ab83ed8b4e132538726fd3f16",
+        "end_line": 162,
+        "id": "CHUNK_JAVA_BACKEND_handle_88133a4e4c39",
+        "source_path": "C:\\Users\\viper\\VIPER_JAVA_RISC\\src\\com\\viper\\risc\\RiscServer.java",
+        "start_line": 152,
+        "status": "active",
+        "subsystem_id": "JAVA_BACKEND",
+        "symbol": "handle"
+      },
+      {
+        "content_sha256": "9927481d43102e7dca6ec600dfb163cb1bb9676e25c8acf6557e28b7645c9336",
+        "end_line": 177,
+        "id": "CHUNK_JAVA_BACKEND_handle_9927481d4310",
+        "source_path": "C:\\Users\\viper\\VIPER_JAVA_RISC\\src\\com\\viper\\risc\\RiscServer.java",
+        "start_line": 167,
+        "status": "active",
+        "subsystem_id": "JAVA_BACKEND",
+        "symbol": "handle"
+      },
+      {
+        "content_sha256": "f1fed61e1aaece93ee9a62cfefd136e3d3635f5ab43951512e312a3ea9b5da20",
+        "end_line": 175,
+        "id": "CHUNK_RISC_BRIDGE_RiscBridgeHandler_f1fed61e1aae",
+        "source_path": "C:\\Users\\viper\\risc_bridge_server.py",
+        "start_line": 19,
+        "status": "active",
+        "subsystem_id": "RISC_BRIDGE",
+        "symbol": "RiscBridgeHandler"
+      },
+      {
+        "content_sha256": "4f1faee444a5f0022148bb6c06af24a96e70db973b1a20228de390800cdf91d4",
+        "end_line": 22,
+        "id": "CHUNK_RISC_BRIDGE__validate_logic_first_4f1faee444a5",
+        "source_path": "C:\\Users\\viper\\risc_bridge_server.py",
+        "start_line": 20,
+        "status": "active",
+        "subsystem_id": "RISC_BRIDGE",
+        "symbol": "_validate_logic_first"
+      },
+      {
+        "content_sha256": "59ea9bfe6e2ea5a8cf861493df87c4e4949bb6c9df62d1a757a7a38e9016d63c",
+        "end_line": 60,
+        "id": "CHUNK_RISC_BRIDGE__record_topological_shift_59ea9bfe6e2e",
+        "source_path": "C:\\Users\\viper\\risc_bridge_server.py",
+        "start_line": 24,
+        "status": "active",
+        "subsystem_id": "RISC_BRIDGE",
+        "symbol": "_record_topological_shift"
+      },
+      {
+        "content_sha256": "f0fe3f73a5df20f6aac82098ad371151d9b460d494a873f6866e68298a052287",
+        "end_line": 66,
+        "id": "CHUNK_RISC_BRIDGE_log_chunked_f0fe3f73a5df",
+        "source_path": "C:\\Users\\viper\\risc_bridge_server.py",
+        "start_line": 62,
+        "status": "active",
+        "subsystem_id": "RISC_BRIDGE",
+        "symbol": "log_chunked"
+      },
+      {
+        "content_sha256": "b129b9f53ae94648f24a3edb1d65998e4a355ec80fa89cff0a4313ceb0eba2df",
+        "end_line": 109,
+        "id": "CHUNK_RISC_BRIDGE_do_GET_b129b9f53ae9",
+        "source_path": "C:\\Users\\viper\\risc_bridge_server.py",
+        "start_line": 68,
+        "status": "active",
+        "subsystem_id": "RISC_BRIDGE",
+        "symbol": "do_GET"
+      },
+      {
+        "content_sha256": "3dcd79bec4aadb0481bad0cb76cb393c38895fe41b836e5619947fc3476c3761",
+        "end_line": 168,
+        "id": "CHUNK_RISC_BRIDGE_do_POST_3dcd79bec4aa",
+        "source_path": "C:\\Users\\viper\\risc_bridge_server.py",
+        "start_line": 111,
+        "status": "active",
+        "subsystem_id": "RISC_BRIDGE",
+        "symbol": "do_POST"
+      },
+      {
+        "content_sha256": "a9751e63991c53ea4c554220b0681240c5f60b51e32eef7b53fce3870b4ca00a",
+        "end_line": 175,
+        "id": "CHUNK_RISC_BRIDGE__send_json_a9751e63991c",
+        "source_path": "C:\\Users\\viper\\risc_bridge_server.py",
+        "start_line": 170,
+        "status": "active",
+        "subsystem_id": "RISC_BRIDGE",
+        "symbol": "_send_json"
+      },
+      {
+        "content_sha256": "ae2db867188d271de2b1794719ba13d7b0ea220dc55659a4986ce9c501650435",
+        "end_line": 79,
+        "id": "CHUNK_HOUSE_INFERENCE_HouseInferenceHandler_ae2db867188d",
+        "source_path": "C:\\Users\\viper\\house_inference_engine.py",
+        "start_line": 22,
+        "status": "active",
+        "subsystem_id": "HOUSE_INFERENCE",
+        "symbol": "HouseInferenceHandler"
+      },
+      {
+        "content_sha256": "4521094109d1d00e134adee7d8b32f752aca59b5b1a300e340a6cc93adcc081a",
+        "end_line": 39,
+        "id": "CHUNK_HOUSE_INFERENCE__get_rag_context_4521094109d1",
+        "source_path": "C:\\Users\\viper\\house_inference_engine.py",
+        "start_line": 25,
+        "status": "active",
+        "subsystem_id": "HOUSE_INFERENCE",
+        "symbol": "_get_rag_context"
+      },
+      {
+        "content_sha256": "c6730f7e19a52edb6b62a0f979cbf4df64096998c0f1be52616bdf51aba4f6fe",
+        "end_line": 50,
+        "id": "CHUNK_HOUSE_INFERENCE_get_llm_c6730f7e19a5",
+        "source_path": "C:\\Users\\viper\\house_inference_engine.py",
+        "start_line": 42,
+        "status": "active",
+        "subsystem_id": "HOUSE_INFERENCE",
+        "symbol": "get_llm"
+      },
+      {
+        "content_sha256": "4ba6c90a3754b7f09e4376eeb4cfa20f446ea435d282f9a65d18472f0018d1d7",
+        "end_line": 79,
+        "id": "CHUNK_HOUSE_INFERENCE_do_POST_4ba6c90a3754",
+        "source_path": "C:\\Users\\viper\\house_inference_engine.py",
+        "start_line": 52,
+        "status": "active",
+        "subsystem_id": "HOUSE_INFERENCE",
+        "symbol": "do_POST"
+      },
+      {
+        "content_sha256": "cd3a7afe60f98c6171e21c05e29d45781ee7fd25a8bb44255284321ac55c3a16",
+        "end_line": 29,
+        "id": "CHUNK_TRIPLET_LOOP_twin_train_abliterated_cd3a7afe60f9",
+        "source_path": "C:\\Users\\viper\\infinite_triplet_loop.py",
+        "start_line": 17,
+        "status": "active",
+        "subsystem_id": "TRIPLET_LOOP",
+        "symbol": "twin_train_abliterated"
+      },
+      {
+        "content_sha256": "880ba36aa5f6076555e9fd4086cd9e856f50c4ac904d161a8dfaeeb0c1f496e2",
+        "end_line": 95,
+        "id": "CHUNK_TRIPLET_LOOP_run_infinite_triplet_loop_880ba36aa5f6",
+        "source_path": "C:\\Users\\viper\\infinite_triplet_loop.py",
+        "start_line": 31,
+        "status": "active",
+        "subsystem_id": "TRIPLET_LOOP",
+        "symbol": "run_infinite_triplet_loop"
+      },
+      {
+        "content_sha256": "19f29a7cc6c61fc18a8c08f7d0597245ddfa30339ccd93db542b1366a933175c",
+        "end_line": 45,
+        "id": "CHUNK_LOGIC_CRAWLER_crawl_logic_sources_19f29a7cc6c6",
+        "source_path": "C:\\Users\\viper\\logic_crawler.py",
+        "start_line": 8,
+        "status": "active",
+        "subsystem_id": "LOGIC_CRAWLER",
+        "symbol": "crawl_logic_sources"
+      }
+    ],
+    "created_at": "2026-05-07T01:37:12.569674+00:00",
+    "dislike_repairs": [
+      {
+        "approval_report_id": "APPROVAL_20260507T013616Z_baef6edc60",
+        "created_at": "2026-05-07 01:36:16",
+        "feedback_type": "dislike",
+        "id": "DISLIKE_REPAIR_27_aee357899f",
+        "message_sha256": "aee357899f796d2de84cc3b907de4f80a34c58e9a40f9305cde72fb7515ad2a5",
+        "rag_id": 27,
+        "repair_status": "pending_codex_review"
+      },
+      {
+        "approval_report_id": "APPROVAL_20260507T013616Z_385080d748",
+        "created_at": "2026-05-07 01:36:16",
+        "feedback_type": "dislike",
+        "id": "DISLIKE_REPAIR_25_da31e4a57d",
+        "message_sha256": "da31e4a57d3283c557255a038c83c9bf14e258192b2f902e3dc980e269f620df",
+        "rag_id": 25,
+        "repair_status": "pending_codex_review"
+      },
+      {
+        "approval_report_id": "APPROVAL_20260507T013616Z_8c4569bb07",
+        "created_at": "2026-05-07 01:36:16",
+        "feedback_type": "dislike",
+        "id": "DISLIKE_REPAIR_24_da31e4a57d",
+        "message_sha256": "da31e4a57d3283c557255a038c83c9bf14e258192b2f902e3dc980e269f620df",
+        "rag_id": 24,
+        "repair_status": "pending_codex_review"
+      },
+      {
+        "approval_report_id": "APPROVAL_20260507T013616Z_8474ecbb36",
+        "created_at": "2026-05-07 01:36:16",
+        "feedback_type": "dislike",
+        "id": "DISLIKE_REPAIR_22_763d0559dd",
+        "message_sha256": "763d0559ddaa5e29fa36b6604a9bcf0eecfe4e4c3295468908e082b7ed047b70",
+        "rag_id": 22,
+        "repair_status": "pending_codex_review"
+      },
+      {
+        "approval_report_id": "APPROVAL_20260507T013616Z_aebb7a9ae8",
+        "created_at": "2026-05-07 01:36:16",
+        "feedback_type": "dislike",
+        "id": "DISLIKE_REPAIR_21_763d0559dd",
+        "message_sha256": "763d0559ddaa5e29fa36b6604a9bcf0eecfe4e4c3295468908e082b7ed047b70",
+        "rag_id": 21,
+        "repair_status": "pending_codex_review"
+      },
+      {
+        "approval_report_id": "APPROVAL_20260507T013616Z_14c694d8f8",
+        "created_at": "2026-05-07 01:36:16",
+        "feedback_type": "dislike",
+        "id": "DISLIKE_REPAIR_16_3208f38193",
+        "message_sha256": "3208f381939441fc8af26c5f6a17af8cecfe334cf23fab8c5b75438b754149af",
+        "rag_id": 16,
+        "repair_status": "pending_codex_review"
+      },
+      {
+        "approval_report_id": "APPROVAL_20260507T013616Z_98fc025ac7",
+        "created_at": "2026-05-07 01:36:16",
+        "feedback_type": "dislike",
+        "id": "DISLIKE_REPAIR_11_185f8db322",
+        "message_sha256": "185f8db32271fe25f561a6fc938b2e264306ec304eda518007d1764826381969",
+        "rag_id": 11,
+        "repair_status": "pending_codex_review"
+      },
+      {
+        "approval_report_id": "APPROVAL_20260507T013616Z_f3eec14d6f",
+        "created_at": "2026-05-07 01:36:16",
+        "feedback_type": "dislike",
+        "id": "DISLIKE_REPAIR_10_3639efcd08",
+        "message_sha256": "3639efcd08abb273b1619e82e78c29a7df02c1051b1820e99fc395dcaa3326b8",
+        "rag_id": 10,
+        "repair_status": "pending_codex_review"
+      },
+      {
+        "approval_report_id": "APPROVAL_20260507T013616Z_397f932180",
+        "created_at": "2026-05-07 01:36:16",
+        "feedback_type": "dislike",
+        "id": "DISLIKE_REPAIR_9_185f8db322",
+        "message_sha256": "185f8db32271fe25f561a6fc938b2e264306ec304eda518007d1764826381969",
+        "rag_id": 9,
+        "repair_status": "pending_codex_review"
+      },
+      {
+        "approval_report_id": "APPROVAL_20260507T013616Z_c4c024e25b",
+        "created_at": "2026-05-07 01:36:16",
+        "feedback_type": "dislike",
+        "id": "DISLIKE_REPAIR_8_185f8db322",
+        "message_sha256": "185f8db32271fe25f561a6fc938b2e264306ec304eda518007d1764826381969",
+        "rag_id": 8,
+        "repair_status": "pending_codex_review"
+      },
+      {
+        "approval_report_id": "APPROVAL_20260507T013616Z_42410f4cf5",
+        "created_at": "2026-05-07 01:36:16",
+        "feedback_type": "dislike",
+        "id": "DISLIKE_REPAIR_7_185f8db322",
+        "message_sha256": "185f8db32271fe25f561a6fc938b2e264306ec304eda518007d1764826381969",
+        "rag_id": 7,
+        "repair_status": "pending_codex_review"
+      },
+      {
+        "approval_report_id": "APPROVAL_20260507T013616Z_a261040c87",
+        "created_at": "2026-05-07 01:36:16",
+        "feedback_type": "dislike",
+        "id": "DISLIKE_REPAIR_6_185f8db322",
+        "message_sha256": "185f8db32271fe25f561a6fc938b2e264306ec304eda518007d1764826381969",
+        "rag_id": 6,
+        "repair_status": "pending_codex_review"
+      },
+      {
+        "approval_report_id": "APPROVAL_20260507T013616Z_1f85614f3c",
+        "created_at": "2026-05-07 01:36:16",
+        "feedback_type": "dislike",
+        "id": "DISLIKE_REPAIR_5_185f8db322",
+        "message_sha256": "185f8db32271fe25f561a6fc938b2e264306ec304eda518007d1764826381969",
+        "rag_id": 5,
+        "repair_status": "pending_codex_review"
+      },
+      {
+        "approval_report_id": "APPROVAL_20260507T013616Z_0c2d107f6f",
+        "created_at": "2026-05-07 01:36:16",
+        "feedback_type": "dislike",
+        "id": "DISLIKE_REPAIR_4_185f8db322",
+        "message_sha256": "185f8db32271fe25f561a6fc938b2e264306ec304eda518007d1764826381969",
+        "rag_id": 4,
+        "repair_status": "pending_codex_review"
+      },
+      {
+        "approval_report_id": "APPROVAL_20260507T013616Z_c2e51b6a6f",
+        "created_at": "2026-05-07 01:36:16",
+        "feedback_type": "dislike",
+        "id": "DISLIKE_REPAIR_3_8c900c9d11",
+        "message_sha256": "8c900c9d116c4b572f58a5d311da25a94bd34896154dc44f9fdfbdb162a7676e",
+        "rag_id": 3,
+        "repair_status": "pending_codex_review"
+      },
+      {
+        "approval_report_id": "APPROVAL_20260507T013616Z_138dceb08a",
+        "created_at": "2026-05-07 01:36:16",
+        "feedback_type": "dislike",
+        "id": "DISLIKE_REPAIR_2_8c900c9d11",
+        "message_sha256": "8c900c9d116c4b572f58a5d311da25a94bd34896154dc44f9fdfbdb162a7676e",
+        "rag_id": 2,
+        "repair_status": "pending_codex_review"
+      },
+      {
+        "approval_report_id": "APPROVAL_20260507T013616Z_8b80bcc103",
+        "created_at": "2026-05-07 01:36:16",
+        "feedback_type": "dislike",
+        "id": "DISLIKE_REPAIR_1_8c900c9d11",
+        "message_sha256": "8c900c9d116c4b572f58a5d311da25a94bd34896154dc44f9fdfbdb162a7676e",
+        "rag_id": 1,
+        "repair_status": "pending_codex_review"
+      }
+    ],
+    "environment_maps": [
+      {
+        "chunk_count": 24,
+        "created_at": "2026-05-07 01:34:44",
+        "file_count": 9,
+        "id": "ENV_MAP_20260507T013438Z",
+        "map_sha256": "fa875b28e102b54ae9cd9d6463a11145557780967474099b28d6fa517b7a65fa",
+        "subsystem_count": 7
+      }
+    ],
+    "liked_feedback": [
+      {
+        "feedback_type": "like",
+        "id": 26,
+        "message_sha256": "da31e4a57d3283c557255a038c83c9bf14e258192b2f902e3dc980e269f620df",
+        "timestamp": "2026-05-06 18:14:52"
+      },
+      {
+        "feedback_type": "like",
+        "id": 23,
+        "message_sha256": "763d0559ddaa5e29fa36b6604a9bcf0eecfe4e4c3295468908e082b7ed047b70",
+        "timestamp": "2026-05-06 12:57:34"
+      },
+      {
+        "feedback_type": "like",
+        "id": 20,
+        "message_sha256": "ba28341ea8f960083ba4ee6b361beee619a0e080044ac7a27b4c8c16cc6f3c79",
+        "timestamp": "2026-05-06 12:45:03"
+      },
+      {
+        "feedback_type": "like",
+        "id": 19,
+        "message_sha256": "8229cc69d99c6e6da8df9f03b66bfd392e976f8eb41b217fd529beffe5fee0e9",
+        "timestamp": "2026-05-06 12:34:40"
+      },
+      {
+        "feedback_type": "like",
+        "id": 18,
+        "message_sha256": "1a6a7dc8eb14c4233e0a8b996f22bad18acf64c9ad2a7ebfbdce624aea2de8bf",
+        "timestamp": "2026-05-06 12:29:12"
+      },
+      {
+        "feedback_type": "like",
+        "id": 17,
+        "message_sha256": "3208f381939441fc8af26c5f6a17af8cecfe334cf23fab8c5b75438b754149af",
+        "timestamp": "2026-05-06 12:26:52"
+      },
+      {
+        "feedback_type": "like",
+        "id": 15,
+        "message_sha256": "185f8db32271fe25f561a6fc938b2e264306ec304eda518007d1764826381969",
+        "timestamp": "2026-05-06 12:17:45"
+      },
+      {
+        "feedback_type": "like",
+        "id": 14,
+        "message_sha256": "6ead2a05aee4714a12edee10c94f3cd5f11135a6ac31cc890782ef3d9dacb215",
+        "timestamp": "2026-05-06 05:20:55"
+      },
+      {
+        "feedback_type": "like",
+        "id": 13,
+        "message_sha256": "f0b380c58db9fc81026fadc1877e1ef163e6ee63ddad60fe4acf54f45ab37318",
+        "timestamp": "2026-05-06 02:52:53"
+      },
+      {
+        "feedback_type": "like",
+        "id": 12,
+        "message_sha256": "8f434346648f6b96df89dda901c5176b10a6d83961dd3c1ac88b59b2dc327aa4",
+        "timestamp": "2026-05-06 02:51:24"
+      }
+    ],
+    "policy": {
+      "gui_locked": true,
+      "logic_only": true,
+      "one_variable_per_test": true,
+      "promotion": "manual_approval_required"
+    },
+    "schema": "VIPER_LOGIC_BLOCKCHAIN_V1",
+    "success_logic": [
+      {
+        "description_sha256": "1d8cb24a9862ac5bf99f31c2f999b6e648c7a4d5b73c1d8d8d2b2cbedaa4adb5",
+        "id": "E1777956675",
+        "label": "BLOCKCHAIN_SYNC",
+        "logic_sha256": "0541a30329cdcb114cbdb429904b7e80d9595e43d3ade5e006feca330a96a4a9",
+        "timestamp": "2026-05-05 04:51:15",
+        "type": "shift"
+      },
+      {
+        "description_sha256": "ae58ef3b8ea4166c5d6ffe56ae83d58cd819e0d01832b2efb007865ee7db9f9c",
+        "id": "S003",
+        "label": "AUTONOMY / CONTEXT_MANAGEMENT",
+        "logic_sha256": "92e965a22c35b71e524fbbf6c7ffe26669b389dfc95ea499132b6539a7ed5256",
+        "timestamp": "2026-05-05 03:57:49",
+        "type": "success"
+      },
+      {
+        "description_sha256": "4105160cdcf008b796096eb11465ef22fe00f3a274a529092924256067d3989f",
+        "id": "S004",
+        "label": "AUTONOMY / TOPOLOGY",
+        "logic_sha256": "3da6fede80a77a1860f4f29c99435459e3c46cbbaa0f7442c0d711c6515f9c27",
+        "timestamp": "2026-05-05 03:57:49",
+        "type": "success"
+      },
+      {
+        "description_sha256": "c2877084fae379beda37b36be10aa2de313d99138779956fb6b0b22f800f8e79",
+        "id": "S005",
+        "label": "LOGIC / AFFIRMATION_VERIFICATION",
+        "logic_sha256": "03080f5ed2767d636ca41247db07e46b68fc4bdc1c2ae04aedf2a00a7b88eb7b",
+        "timestamp": "2026-05-05 03:57:49",
+        "type": "success"
+      },
+      {
+        "description_sha256": "361c4485000f09c3d191deed871649fbd7c406d898427cab5b6568c82fca292d",
+        "id": "S006",
+        "label": "UI / SYSTEM_COMPLETION",
+        "logic_sha256": "b105faed1a5ddfe96b1e4b618127e2d115e65f255cb9b38e8364e5a708795c7c",
+        "timestamp": "2026-05-05 03:57:49",
+        "type": "success"
+      },
+      {
+        "description_sha256": "78112d13699cb7ed3ce000ad5665cc5127158ca296946c63b89158712284061a",
+        "id": "S007",
+        "label": "GENETIC_REPAIR / GENERAL",
+        "logic_sha256": "d9eaa44e99afab677c662661a1fd9f89c25a426df1fe52ac42a273f405e268a2",
+        "timestamp": "2026-05-05 03:57:49",
+        "type": "success"
+      },
+      {
+        "description_sha256": "cc092b38cba74a049efdd144287621acb838c6b2c08ca441d4bad90292f304b9",
+        "id": "S008",
+        "label": "GENETIC_CODER / STRATEGY",
+        "logic_sha256": "24ca6a1c3b49d01b51891150f0d6b4abe0eb13094cbbe047af71d8d77aca8861",
+        "timestamp": "2026-05-05 03:57:49",
+        "type": "success"
+      },
+      {
+        "description_sha256": "bb240c997a3536dbaac6be02ef721035bd899639105d07596b9c20ec6e341751",
+        "id": "S009",
+        "label": "AUTONOMY / VALIDATION",
+        "logic_sha256": "b0fa7f8a6baef726c238105a42a16b908c40761b8c97f8afd19f650f896eaff3",
+        "timestamp": "2026-05-05 03:57:49",
+        "type": "success"
+      },
+      {
+        "description_sha256": "c8a9c6277ba0daf7c727a5d0a4a4b6184a28da469a267a01b8c299166bb1e60a",
+        "id": "S010",
+        "label": "AUTONOMY / GLOBAL_MAINTENANCE",
+        "logic_sha256": "656002d03c50db2d89e1f8cb1fb9322ed5049cbf724fbf32d66625b8fc44629e",
+        "timestamp": "2026-05-05 03:57:49",
+        "type": "success"
+      },
+      {
+        "description_sha256": "a568c0ab6f8a15d6989a348dc4a33eedb0cf71426bab42f55461a6b482589506",
+        "id": "S012",
+        "label": "AUTONOMY / GLOBAL_EVOLUTION",
+        "logic_sha256": "adf683e14d51486f033b652821bf4922b458edef8927b63d87808a285b93ea98",
+        "timestamp": "2026-05-05 03:57:49",
+        "type": "success"
+      },
+      {
+        "description_sha256": "ad56896f88aa382e5058f34bfa4cb1416fc1352774b85d1456eb0d3ec48ec985",
+        "id": "S013",
+        "label": "GENETIC_REPAIR / LOIHI_QCD",
+        "logic_sha256": "78d5235838627274c0416e565d213fb4ae4d11ad70899bbcebd3f14f02bdf1e8",
+        "timestamp": "2026-05-05 03:57:49",
+        "type": "success"
+      },
+      {
+        "description_sha256": "eb9d4a367fc4090463d231477e0aa2087e80a2184b8e4c9b4d59a19820500ac7",
+        "id": "S015",
+        "label": "GENETIC_REPAIR / LOIHI_QCD_FINAL",
+        "logic_sha256": "0cc737cfc18e990fda7b8374cd570c71ba9e56752a06293c60adc97766efe1fb",
+        "timestamp": "2026-05-05 03:57:49",
+        "type": "success"
+      },
+      {
+        "description_sha256": "e6af4a32952f80df1b111c15f411893c1f99f402eb22c0182ef48dd03422753d",
+        "id": "S019",
+        "label": "GENETIC_REPAIR / GLOBAL_MANIFOLD_OPTIMIZE",
+        "logic_sha256": "1a3763cdfe834a79e41ad0947837aabb62c463084aba108c141d2638ef2e130a",
+        "timestamp": "2026-05-05 03:57:49",
+        "type": "success"
+      },
+      {
+        "description_sha256": "e6af4a32952f80df1b111c15f411893c1f99f402eb22c0182ef48dd03422753d",
+        "id": "S021",
+        "label": "GENETIC_REPAIR / GLOBAL_MANIFOLD_OPTIMIZE",
+        "logic_sha256": "5d5f069e3fc5d5302739a84d7a7f14b4d5ec433d3ce4631187cadfb1d317ace6",
+        "timestamp": "2026-05-05 03:57:49",
+        "type": "success"
+      },
+      {
+        "description_sha256": "e6af4a32952f80df1b111c15f411893c1f99f402eb22c0182ef48dd03422753d",
+        "id": "S023",
+        "label": "GENETIC_REPAIR / GLOBAL_MANIFOLD_OPTIMIZE",
+        "logic_sha256": "80ac61d7643abf61e94eeb91c5ade3e43cb3ca5658e1db2342a1bb34f70a5497",
+        "timestamp": "2026-05-05 03:57:49",
+        "type": "success"
+      },
+      {
+        "description_sha256": "e6af4a32952f80df1b111c15f411893c1f99f402eb22c0182ef48dd03422753d",
+        "id": "S025",
+        "label": "GENETIC_REPAIR / GLOBAL_MANIFOLD_OPTIMIZE",
+        "logic_sha256": "143823e8475f15bc631b96d1cf8d9cd26507357d5641cab4c512be1ec6ee02f5",
+        "timestamp": "2026-05-05 03:57:49",
+        "type": "success"
+      },
+      {
+        "description_sha256": "e6af4a32952f80df1b111c15f411893c1f99f402eb22c0182ef48dd03422753d",
+        "id": "S027",
+        "label": "GENETIC_REPAIR / GLOBAL_MANIFOLD_OPTIMIZE",
+        "logic_sha256": "b529072e9edbb3e4d345b7d824e42c86261683c85e95935f5a6e7465b09e0183",
+        "timestamp": "2026-05-05 03:57:49",
+        "type": "success"
+      },
+      {
+        "description_sha256": "e6af4a32952f80df1b111c15f411893c1f99f402eb22c0182ef48dd03422753d",
+        "id": "S029",
+        "label": "GENETIC_REPAIR / GLOBAL_MANIFOLD_OPTIMIZE",
+        "logic_sha256": "cb3696d8ae57ddf0a76235744661faa1bea0a355031a51a4a0ea6810c8aff3fc",
+        "timestamp": "2026-05-05 03:57:49",
+        "type": "success"
+      },
+      {
+        "description_sha256": "e6af4a32952f80df1b111c15f411893c1f99f402eb22c0182ef48dd03422753d",
+        "id": "S031",
+        "label": "GENETIC_REPAIR / GLOBAL_MANIFOLD_OPTIMIZE",
+        "logic_sha256": "77e09f64ef8a5bf2d4930fccf99e3e27557434d1eaca0549e7e175309897be91",
+        "timestamp": "2026-05-05 03:57:49",
+        "type": "success"
+      },
+      {
+        "description_sha256": "e6af4a32952f80df1b111c15f411893c1f99f402eb22c0182ef48dd03422753d",
+        "id": "S033",
+        "label": "GENETIC_REPAIR / GLOBAL_MANIFOLD_OPTIMIZE",
+        "logic_sha256": "f0aebd96238a3d5fc7bc7856c5a5b6daf6ed8d761d5cc9ccc05b45862db2c6de",
+        "timestamp": "2026-05-05 03:57:49",
+        "type": "success"
+      },
+      {
+        "description_sha256": "e6af4a32952f80df1b111c15f411893c1f99f402eb22c0182ef48dd03422753d",
+        "id": "S035",
+        "label": "GENETIC_REPAIR / GLOBAL_MANIFOLD_OPTIMIZE",
+        "logic_sha256": "9bb3b1f588c07df059e5b3e481c00e971a91cd640a83f29de731656876a0ad34",
+        "timestamp": "2026-05-05 03:57:49",
+        "type": "success"
+      },
+      {
+        "description_sha256": "e6af4a32952f80df1b111c15f411893c1f99f402eb22c0182ef48dd03422753d",
+        "id": "S037",
+        "label": "GENETIC_REPAIR / GLOBAL_MANIFOLD_OPTIMIZE",
+        "logic_sha256": "816e84606819ef6cb23fbfd15099ce6614cea8e47836ea9b8f93ec432710b2bc",
+        "timestamp": "2026-05-05 03:57:49",
+        "type": "success"
+      },
+      {
+        "description_sha256": "e6af4a32952f80df1b111c15f411893c1f99f402eb22c0182ef48dd03422753d",
+        "id": "S039",
+        "label": "GENETIC_REPAIR / GLOBAL_MANIFOLD_OPTIMIZE",
+        "logic_sha256": "59707d93f5b887822c72325f1f5773029aee262662ad046bf6ce859d60401964",
+        "timestamp": "2026-05-05 03:57:49",
+        "type": "success"
+      },
+      {
+        "description_sha256": "e6af4a32952f80df1b111c15f411893c1f99f402eb22c0182ef48dd03422753d",
+        "id": "S041",
+        "label": "GENETIC_REPAIR / GLOBAL_MANIFOLD_OPTIMIZE",
+        "logic_sha256": "69684308f743e1a9856949157685785d850de2d6583cb7779976c3389b71c2d2",
+        "timestamp": "2026-05-05 03:57:49",
+        "type": "success"
+      },
+      {
+        "description_sha256": "e6af4a32952f80df1b111c15f411893c1f99f402eb22c0182ef48dd03422753d",
+        "id": "S043",
+        "label": "GENETIC_REPAIR / GLOBAL_MANIFOLD_OPTIMIZE",
+        "logic_sha256": "26d32f028092bd7247ec1f5685b490f171e849fbadb60a1543be64dfca06a601",
+        "timestamp": "2026-05-05 03:57:49",
+        "type": "success"
+      },
+      {
+        "description_sha256": "e6af4a32952f80df1b111c15f411893c1f99f402eb22c0182ef48dd03422753d",
+        "id": "S045",
+        "label": "GENETIC_REPAIR / GLOBAL_MANIFOLD_OPTIMIZE",
+        "logic_sha256": "611abbeedd12d6eb9a37d6a5e1a02b4d47da99eec99479737a88e92cbc729757",
+        "timestamp": "2026-05-05 03:57:49",
+        "type": "success"
+      },
+      {
+        "description_sha256": "e6af4a32952f80df1b111c15f411893c1f99f402eb22c0182ef48dd03422753d",
+        "id": "S047",
+        "label": "GENETIC_REPAIR / GLOBAL_MANIFOLD_OPTIMIZE",
+        "logic_sha256": "e364d56797686a1dd05423ecca32274dbff42f3ccddad387f26be51fe8bdd145",
+        "timestamp": "2026-05-05 03:57:49",
+        "type": "success"
+      },
+      {
+        "description_sha256": "e6af4a32952f80df1b111c15f411893c1f99f402eb22c0182ef48dd03422753d",
+        "id": "S049",
+        "label": "GENETIC_REPAIR / GLOBAL_MANIFOLD_OPTIMIZE",
+        "logic_sha256": "dd20136b82c628c0271668cba17552cfd938f9305959e4cc446b70da46c97c8b",
+        "timestamp": "2026-05-05 03:57:49",
+        "type": "success"
+      },
+      {
+        "description_sha256": "e6af4a32952f80df1b111c15f411893c1f99f402eb22c0182ef48dd03422753d",
+        "id": "S051",
+        "label": "GENETIC_REPAIR / GLOBAL_MANIFOLD_OPTIMIZE",
+        "logic_sha256": "85cb2e752c1370b3443ff2476567ab4f5c865d5b115938e39774634a97ea4019",
+        "timestamp": "2026-05-05 03:57:49",
+        "type": "success"
+      },
+      {
+        "description_sha256": "e6af4a32952f80df1b111c15f411893c1f99f402eb22c0182ef48dd03422753d",
+        "id": "S053",
+        "label": "GENETIC_REPAIR / GLOBAL_MANIFOLD_OPTIMIZE",
+        "logic_sha256": "e23ff5e9376d2b7bc7c7bd04bd07f71e06fa4a20b48c6701c78e255ba9841668",
+        "timestamp": "2026-05-05 03:57:49",
+        "type": "success"
+      },
+      {
+        "description_sha256": "e6af4a32952f80df1b111c15f411893c1f99f402eb22c0182ef48dd03422753d",
+        "id": "S055",
+        "label": "GENETIC_REPAIR / GLOBAL_MANIFOLD_OPTIMIZE",
+        "logic_sha256": "9ff258e4c6f35041005a981118dce2526aa3498d58c635b682c4c715c728f465",
+        "timestamp": "2026-05-05 03:57:49",
+        "type": "success"
+      },
+      {
+        "description_sha256": "e6af4a32952f80df1b111c15f411893c1f99f402eb22c0182ef48dd03422753d",
+        "id": "S057",
+        "label": "GENETIC_REPAIR / GLOBAL_MANIFOLD_OPTIMIZE",
+        "logic_sha256": "dfdbec901c5657ea91825fbd38785a871a00f3ebfaf3abb1c9135c5559461043",
+        "timestamp": "2026-05-05 03:57:49",
+        "type": "success"
+      }
+    ]
+  },
+  "payload_sha256": "d73b0c26da0a0b6c3bf737c90e8c2217ddb0d704c7cbea992c63f6ea27676464",
+  "source_queue_id": "LOGIC_BLOCK_20260507T013712Z_d73b0c26da0a",
+  "target_node": "phone_db_lend_primary"
+}

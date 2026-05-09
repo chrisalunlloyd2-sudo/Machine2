@@ -1,0 +1,9 @@
+<resources>
+    <style name="ViperTheme" parent="android:style/Theme.Material.NoActionBar">
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:windowBackground">#0d1117</item>
+        <item name="android:navigationBarColor">#0d1117</item>
+        <item name="android:statusBarColor">#161b22</item>
+        <item name="android:colorAccent">#58a6ff</item>
+    </style>
+</resources>

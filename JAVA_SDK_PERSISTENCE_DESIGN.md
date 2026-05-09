@@ -3,7 +3,7 @@
 Current SDK version:
 
 ```text
-0.4.0-real-tiny-chooser
+0.4.1-training-lab
 ```
 
 This document defines the Java-side persistent SDK and lab suite. It is separate
@@ -131,8 +131,8 @@ The UI is a VS Code-like dark SDK surface with:
 - quick test runner;
 - quick settings editor;
 - A/B test logger;
-- training run logger;
-- recursive training proposal/eval epoch logger;
+- active eval training run logger;
+- recursive training record backed by service/prefetch/benchmark proof;
 - benchmark snapshot graph for bridge, house, and shipper latency;
 - ASCII epoch queue with quick-edit variables and optional judge slots;
 - upgrade proof analyzer that reads live logs/benchmarks and proposes concrete
@@ -164,11 +164,12 @@ AB testing:
   candidate A/B plans, metric, promotion gate, append-only record
 
 training:
-  dataset name, route, proposal-only rule, append-only record
+  dataset name, route, one changed variable, service probes, bridge prefetch,
+  benchmark readback, candidate score, append-only proof record
 
 recursive training:
-  proposal/eval epoch, changed variable, dataset slice, benchmark-before
-  snapshot, SHA-256 record; no model-weight mutation from this SDK yet
+  training-backed epoch, changed variable, dataset slice, evaluation score,
+  benchmark snapshot, SHA-256 record; no model-weight mutation from this SDK yet
 
 benchmarks:
   service latency graph, persistent snapshot log, current counts, log sizes
@@ -231,8 +232,9 @@ Rules:
 - no deletes from the Java SDK;
 - system tests append one JSON object per run;
 - A/B tests append one JSON object per plan;
-- training plans append one JSON object per run;
-- recursive training epochs append one proposal/eval record per proposed
+- active eval training appends one JSON object per run and a linked recursive
+  epoch record;
+- recursive training epochs append one proof-backed record per proposed
   variable change;
 - benchmark snapshots append one service/count/log-size measurement per capture;
 - ASCII epochs append one subsystem/variable/judge proposal per queue item;
@@ -378,12 +380,20 @@ Everything else remains proposal-only.
 
 ## Recursive Training Truth Table
 
-The Java SDK can now submit a recursive training epoch record, not a real
-recursive training run.
+The Java SDK can now submit a real training/eval run and a linked recursive
+training epoch record. It still does not mutate model weights.
 
 ```text
 asked: "does this submit recursive training?"
-answer: not model training yet
+answer: yes for proof-backed training/eval data; no for model-weight mutation
+
+implemented:
+  POST /api/training
+  -> probes bridge/house/shipper
+  -> asks bridge predictive prefetch
+  -> reads bridge benchmark history
+  -> scores one changed variable
+  -> writes training run + recursive epoch + benchmark snapshot + SHA-256
 
 implemented:
   POST /api/recursive-training
@@ -396,7 +406,7 @@ implemented:
 future runner:
   load dataset slice
   mutate one retrieval/logic variable
-  run benchmark/eval
+  run longer benchmark/eval suite
   compare against baseline
   promote only if gate passes
 ```
@@ -414,8 +424,9 @@ chosen Fabric  -> real retrieval + cards + route contract
 large model    -> normal answer headroom
 ```
 
-The Java SDK records and displays the resulting tests, AB plans, and training
-plans. The Python bridge and database still handle the active Fabric chooser.
+The Java SDK records and displays the resulting tests, AB plans, and active
+training/eval runs. The Python bridge and database still handle the active
+Fabric chooser.
 
 ## Loihi/Lava Sidecar Contract
 

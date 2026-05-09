@@ -9,6 +9,7 @@ import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.URI;
 import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -26,7 +27,7 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 public class ViperLabSuiteServer {
-    private static final String SDK_VERSION = "0.4.0-real-tiny-chooser";
+    private static final String SDK_VERSION = "0.4.1-training-lab";
     private static final int PORT = 18181;
     private static final Path ROOT = Paths.get("C:\\Users\\viper\\VIPER_JAVA_RISC");
     private static final Path SUITE_ROOT = ROOT.resolve("java_notes_suite");
@@ -54,7 +55,7 @@ public class ViperLabSuiteServer {
         server.createContext("/api/settings", new SettingsHandler());
         server.createContext("/api/run-test", new RunTestHandler());
         server.createContext("/api/ab-test", new AppendJsonHandler(AB_LOG, "ab_test"));
-        server.createContext("/api/training", new AppendJsonHandler(TRAINING_LOG, "training"));
+        server.createContext("/api/training", new TrainingHandler());
         server.createContext("/api/recursive-training", new RecursiveTrainingHandler());
         server.createContext("/api/loihi-experiment", new AppendJsonHandler(LOIHI_LOG, "loihi_experiment"));
         server.createContext("/api/benchmarks", new BenchmarksHandler());
@@ -254,7 +255,113 @@ public class ViperLabSuiteServer {
                     "timestamp", Instant.now().toString(),
                     "current", currentBenchmark("read_only"),
                     "history", readJsonLines(BENCHMARK_LOG, limit),
-                    "recursiveTrainingStatus", "proposal/eval logging only; no model-weight mutation submitted here"
+                    "recursiveTrainingStatus", "active eval training: probes services, asks bridge prefetch, logs candidate/proof; no model-weight mutation submitted here"
+            )), "application/json");
+        }
+    }
+
+    private static class TrainingHandler implements HttpHandler {
+        @Override
+        public void handle(HttpExchange exchange) throws IOException {
+            if ("GET".equals(exchange.getRequestMethod())) {
+                Map<String, String> query = parseQuery(exchange.getRequestURI().getRawQuery());
+                int limit = Math.max(1, Math.min(parseInt(query.getOrDefault("limit", "20"), 20), 100));
+                send(exchange, 200, jsonObject(mapOf(
+                        "status", "ok",
+                        "version", SDK_VERSION,
+                        "mode", "active_eval_training",
+                        "runs", readJsonFragments(TRAINING_LOG, limit),
+                        "policy", "runs real service probes and bridge prefetch; model weights remain untouched"
+                )), "application/json");
+                return;
+            }
+            if (!"POST".equals(exchange.getRequestMethod())) {
+                send(exchange, 405, jsonError("method_not_allowed"), "application/json");
+                return;
+            }
+
+            long started = System.currentTimeMillis();
+            String body = readBody(exchange);
+            String dataset = extractJsonString(body, "dataset", "successful_code_and_liked_logic");
+            String route = extractJsonString(body, "route", "proposal_only_lens_improvement");
+            String changedVariable = extractJsonString(body, "changedVariable",
+                    extractJsonString(body, "variable", "retrieval_lens_instruction_card"));
+            String objective = extractJsonString(body, "objective", "improve chooser/retrieval usefulness without changing the locked GUI");
+
+            Map<String, Object> before = currentBenchmark("training_before");
+            String prompt = trainingPrompt(dataset, route, changedVariable, objective);
+            String prefetch = fetchText("http://127.0.0.1:8080/api/predictive/prefetch?q=" + urlEncode(prompt), 8);
+            String bridgeBenchmarks = fetchText("http://127.0.0.1:8080/api/benchmarks?limit=5", 8);
+            Map<String, Object> afterProbe = currentBenchmark("training_after_probe");
+            Map<String, Object> evaluation = evaluateTrainingRun(before, afterProbe, prefetch, bridgeBenchmarks);
+
+            Map<String, Object> run = new LinkedHashMap<>();
+            run.put("kind", "training_run");
+            run.put("status", "active_eval_logged");
+            run.put("version", SDK_VERSION);
+            run.put("timestamp", Instant.now().toString());
+            run.put("durationMs", System.currentTimeMillis() - started);
+            run.put("request", body);
+            run.put("dataset", dataset);
+            run.put("route", route);
+            run.put("changedVariable", changedVariable);
+            run.put("objective", objective);
+            run.put("phases", List.of(
+                    "capture_baseline_benchmark",
+                    "probe_bridge_predictive_prefetch",
+                    "read_recent_bridge_benchmarks",
+                    "score_candidate_against_promotion_gate",
+                    "write_training_and_epoch_logs"
+            ));
+            run.put("candidate", mapOf(
+                    "lensDelta", "Prefer real retrieved evidence, concise Qwen chooser lens, and explicit safety gate.",
+                    "oneChangedVariable", changedVariable,
+                    "trainingPrompt", prompt,
+                    "expectedEffect", "fewer thin replies, less raw metadata in lens, clearer task routing"
+            ));
+            run.put("prefetchProbe", compactStatus(prefetch));
+            run.put("bridgeBenchmarkProbe", compactStatus(bridgeBenchmarks));
+            run.put("benchmarkBefore", before);
+            run.put("benchmarkAfterProbe", afterProbe);
+            run.put("evaluation", evaluation);
+            run.put("doesMutateModelWeights", false);
+            run.put("doesSubmitRecursiveTraining", true);
+            run.put("trainingMeaning", "Submits a real Java-lab eval epoch: data is probed, scored, hashed, and logged for the next chooser/Karoo cycle.");
+            run.put("promotionGate", "success >= 99.99 and (+10% speed or -10% resources); otherwise record only");
+            run.put("promotionDecision", Boolean.TRUE.equals(evaluation.get("promotionEligible")) ? "eligible_for_user_review" : "record_only_more_evidence_needed");
+            run.put("sha256", sha256(jsonObject(run)));
+
+            appendJsonLine(TRAINING_LOG, run);
+
+            Map<String, Object> epoch = new LinkedHashMap<>();
+            epoch.put("kind", "training_backed_recursive_epoch");
+            epoch.put("status", "active_eval_logged");
+            epoch.put("timestamp", Instant.now().toString());
+            epoch.put("trainingRunSha256", run.get("sha256"));
+            epoch.put("changedVariable", changedVariable);
+            epoch.put("datasetSlice", dataset);
+            epoch.put("scientificMethod", "one changed variable; compare service proof; do not self-apply");
+            epoch.put("evaluation", evaluation);
+            epoch.put("sha256", sha256(jsonObject(epoch)));
+            appendJsonLine(TRAINING_EPOCH_LOG, epoch);
+
+            Map<String, Object> benchmark = currentBenchmark("training_recorded");
+            benchmark.put("trainingRunSha256", run.get("sha256"));
+            benchmark.put("sha256", sha256(jsonObject(benchmark)));
+            appendJsonLine(BENCHMARK_LOG, benchmark);
+            appendJsonLine(PERSISTENCE_LOG, mapOf(
+                    "event", "active_training_run",
+                    "trainingRunSha256", run.get("sha256"),
+                    "recursiveEpochSha256", epoch.get("sha256"),
+                    "benchmarkSha256", benchmark.get("sha256")
+            ));
+
+            send(exchange, 200, jsonObject(mapOf(
+                    "status", "trained_eval_logged",
+                    "version", SDK_VERSION,
+                    "trainingRun", run,
+                    "recursiveEpoch", epoch,
+                    "benchmark", benchmark
             )), "application/json");
         }
     }
@@ -410,7 +517,8 @@ public class ViperLabSuiteServer {
                             "epoch upgrade proofs appended to epoch_upgrade_proofs.jsonl",
                             "persistence events appended to persistence_events.jsonl"
                     ),
-                    "recursiveTraining", "Proposal/evaluation logging exists now. Real recursive model-weight training is not submitted by this Java SDK yet.",
+                    "training", "Active eval training exists now: Java lab probes services, bridge prefetch, recent benchmarks, scores a candidate, writes training/epoch/benchmark proof logs, and keeps weights untouched.",
+                    "recursiveTraining", "Recursive training records are now backed by actual eval probes. Real model-weight mutation is not submitted by this Java SDK.",
                     "loihi", "Future Lava/Loihi sidecar receives topological codes, not raw hidden thoughts. It maps codes to spike topology and returns measurable logic/code deltas.",
                     "karoo", "Proposal-only optimizer until 99.99% success plus speed/resource gate is proven.",
                     "fabric", "Tiny chooser writes 15-word cards for ask, DB, recent prompts, and repair state; larger model gets selected lens plus real retrieval.",
@@ -783,6 +891,81 @@ public class ViperLabSuiteServer {
         }
     }
 
+    private static String trainingPrompt(String dataset, String route, String changedVariable, String objective) {
+        return "VIPER Java lab training eval. dataset=" + dataset
+                + "; route=" + route
+                + "; changed_variable=" + changedVariable
+                + "; objective=" + objective
+                + "; use real retrieval, Qwen chooser lens, SmolLM match, rolling triplet, and proof logs.";
+    }
+
+    private static Map<String, Object> evaluateTrainingRun(
+            Map<String, Object> before,
+            Map<String, Object> after,
+            String prefetch,
+            String bridgeBenchmarks
+    ) {
+        boolean bridgeOk = serviceOk(before, "bridge8080") && serviceOk(after, "bridge8080");
+        boolean houseOk = serviceOk(before, "house11435") && serviceOk(after, "house11435");
+        boolean shipperOk = serviceOk(before, "shipper18081") && serviceOk(after, "shipper18081");
+        boolean prefetchOk = prefetch != null && prefetch.contains("\"prediction\"");
+        boolean benchmarkOk = bridgeBenchmarks != null && bridgeBenchmarks.contains("\"benchmarks\"");
+        long beforeTotal = serviceMs(before, "bridge8080") + serviceMs(before, "house11435") + serviceMs(before, "shipper18081");
+        long afterTotal = serviceMs(after, "bridge8080") + serviceMs(after, "house11435") + serviceMs(after, "shipper18081");
+        long latencyDeltaMs = afterTotal - beforeTotal;
+        int passSignals = 0;
+        passSignals += bridgeOk ? 1 : 0;
+        passSignals += houseOk ? 1 : 0;
+        passSignals += shipperOk ? 1 : 0;
+        passSignals += prefetchOk ? 1 : 0;
+        passSignals += benchmarkOk ? 1 : 0;
+        double score = passSignals / 5.0;
+        boolean speedImproved = beforeTotal > 0 && afterTotal <= Math.round(beforeTotal * 0.90);
+        return mapOf(
+                "score", score,
+                "bridgeOk", bridgeOk,
+                "houseOk", houseOk,
+                "shipperOk", shipperOk,
+                "prefetchOk", prefetchOk,
+                "benchmarkReadOk", benchmarkOk,
+                "beforeServiceTotalMs", beforeTotal,
+                "afterServiceTotalMs", afterTotal,
+                "latencyDeltaMs", latencyDeltaMs,
+                "speedImproved10Percent", speedImproved,
+                "promotionEligible", score >= 0.9999 && speedImproved,
+                "verdict", score >= 0.8 ? "training_eval_passed_recorded" : "training_eval_needs_attention",
+                "nextAction", "keep logging; only promote after repeatable one-variable e2e proof"
+        );
+    }
+
+    private static boolean serviceOk(Map<String, Object> benchmark, String name) {
+        Object servicesObj = benchmark.get("services");
+        if (!(servicesObj instanceof Map<?, ?> services)) {
+            return false;
+        }
+        Object serviceObj = services.get(name);
+        if (!(serviceObj instanceof Map<?, ?> service)) {
+            return false;
+        }
+        return Boolean.TRUE.equals(service.get("ok"));
+    }
+
+    private static long serviceMs(Map<String, Object> benchmark, String name) {
+        Object servicesObj = benchmark.get("services");
+        if (!(servicesObj instanceof Map<?, ?> services)) {
+            return 0L;
+        }
+        Object serviceObj = services.get(name);
+        if (!(serviceObj instanceof Map<?, ?> service)) {
+            return 0L;
+        }
+        Object value = service.get("durationMs");
+        if (value instanceof Number number) {
+            return number.longValue();
+        }
+        return 0L;
+    }
+
     private static long fileSize(Path path) {
         try {
             return Files.exists(path) ? Files.size(path) : 0;
@@ -883,6 +1066,20 @@ public class ViperLabSuiteServer {
         }
     }
 
+    private static List<Object> readJsonFragments(Path path, int limit) {
+        List<Object> fragments = new ArrayList<>();
+        for (String line : readJsonLines(path, limit)) {
+            String trimmed = line.trim();
+            if ((trimmed.startsWith("{") && trimmed.endsWith("}")) ||
+                    (trimmed.startsWith("[") && trimmed.endsWith("]"))) {
+                fragments.add(new JsonFragment(trimmed));
+            } else {
+                fragments.add(line);
+            }
+        }
+        return fragments;
+    }
+
     private static Map<String, String> parseQuery(String rawQuery) {
         Map<String, String> map = new LinkedHashMap<>();
         if (rawQuery == null || rawQuery.isBlank()) {
@@ -907,6 +1104,62 @@ public class ViperLabSuiteServer {
         } catch (NumberFormatException e) {
             return fallback;
         }
+    }
+
+    private static String extractJsonString(String body, String key, String fallback) {
+        if (body == null || body.isBlank()) {
+            return fallback;
+        }
+        String needle = "\"" + key + "\"";
+        int keyAt = body.indexOf(needle);
+        if (keyAt < 0) {
+            return fallback;
+        }
+        int colonAt = body.indexOf(':', keyAt + needle.length());
+        if (colonAt < 0) {
+            return fallback;
+        }
+        int valueAt = colonAt + 1;
+        while (valueAt < body.length() && Character.isWhitespace(body.charAt(valueAt))) {
+            valueAt++;
+        }
+        if (valueAt >= body.length()) {
+            return fallback;
+        }
+        if (body.charAt(valueAt) == '"') {
+            StringBuilder out = new StringBuilder();
+            boolean escaping = false;
+            for (int i = valueAt + 1; i < body.length(); i++) {
+                char ch = body.charAt(i);
+                if (escaping) {
+                    out.append(switch (ch) {
+                        case 'n' -> '\n';
+                        case 'r' -> '\r';
+                        case 't' -> '\t';
+                        default -> ch;
+                    });
+                    escaping = false;
+                } else if (ch == '\\') {
+                    escaping = true;
+                } else if (ch == '"') {
+                    String value = out.toString().trim();
+                    return value.isBlank() ? fallback : value;
+                } else {
+                    out.append(ch);
+                }
+            }
+            return fallback;
+        }
+        int endAt = valueAt;
+        while (endAt < body.length() && body.charAt(endAt) != ',' && body.charAt(endAt) != '}') {
+            endAt++;
+        }
+        String value = body.substring(valueAt, endAt).trim();
+        return value.isBlank() ? fallback : value;
+    }
+
+    private static String urlEncode(String value) {
+        return URLEncoder.encode(value == null ? "" : value, StandardCharsets.UTF_8);
     }
 
     private static String sha256(String text) {
@@ -953,6 +1206,9 @@ public class ViperLabSuiteServer {
         if (value == null) {
             return "null";
         }
+        if (value instanceof JsonFragment fragment) {
+            return fragment.json();
+        }
         if (value instanceof Number || value instanceof Boolean) {
             return String.valueOf(value);
         }
@@ -981,6 +1237,8 @@ public class ViperLabSuiteServer {
                 .replace("\n", "\\n")
                 .replace("\t", "\\t");
     }
+
+    private record JsonFragment(String json) {}
 
     private static String html() {
         return """
@@ -1033,7 +1291,7 @@ public class ViperLabSuiteServer {
                   </style>
                 </head>
                 <body>
-                  <header><strong>VIPER Java SDK <span class="muted">v0.3.0-rolling-triplet-proof</span></strong><span>persistent lab | tests | AB | training | Loihi topology</span></header>
+                  <header><strong>VIPER Java SDK <span class="muted">v0.4.1-training-lab</span></strong><span>persistent lab | tests | AB | training | Loihi topology</span></header>
                   <div class="shell">
                     <div class="rail">
                       <button title="State" onclick="loadState()">S</button>

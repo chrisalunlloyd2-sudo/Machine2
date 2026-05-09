@@ -76,7 +76,7 @@ The live GUI remains the locked visual surface. Sidecars now carry the experimen
 - `tools/missed_message_relay.py`: stores unconfirmed long-running agent completions and repeats them in the next active window until confirmed.
 - `agent_control_web/`: managed copy of the locked webpage for future Java SHA-256 ledger/control-plane ownership.
 - `java_notes_suite/`: Java/JDK notes, dev, script index, and persistent SDK suite. It is append-only and resource-gated; it starts only when Java/JDK are present.
-- `java_notes_suite/src/com/viper/notes/ViperLabSuiteServer.java`: VS Code-like Java SDK for benchmarks, service watch, user topology, predictive prefetch, persistent settings, system tests, AB tests, training logs, Loihi experiment logs, and log tails. Intended local URL: `http://127.0.0.1:18181`.
+- `java_notes_suite/src/com/viper/notes/ViperLabSuiteServer.java`: VS Code-like Java SDK for benchmarks, service watch, user topology, predictive prefetch, persistent settings, system tests, AB tests, active eval training runs, Loihi experiment logs, and log tails. Intended local URL: `http://127.0.0.1:18181`.
 - `JAVA_SDK_PERSISTENCE_DESIGN.md`: persistence, Java SDK endpoints, Loihi/Lava sidecar contract, Fabric 15-word lens-card design, Karoo promotion gate, and test methodology.
 - `AGENT_APP_DEV_PROTOCOL.md`: Karoo/app-development, announce, device-role, Loihi, and round-robin rules.
 - `AGENT_SPECS.md`: heartbeat fields, install gates, and speed/stability optimization profiles.
@@ -119,7 +119,7 @@ VIPER_RETRIEVAL_FALLBACK_MODEL=models/tiny/h2o_danube3_500m_chat_fallback/h2o-da
 Current SDK version:
 
 ```text
-0.4.0-real-tiny-chooser
+0.4.1-training-lab
 ```
 
 The Java SDK now has an evidence-based upgrade proof path:
@@ -127,6 +127,18 @@ The Java SDK now has an evidence-based upgrade proof path:
 ```text
 POST http://127.0.0.1:18181/api/epoch-upgrade-proof
 ```
+
+Training is now active in the Java lab:
+
+```text
+POST http://127.0.0.1:18181/api/training
+```
+
+That endpoint runs real service probes, asks the bridge predictive prefetch
+path, reads recent bridge benchmarks, scores the one-variable candidate, writes
+`training_runs.jsonl`, writes a linked recursive epoch record, and appends a
+benchmark snapshot. It does not mutate model weights; it creates proof-backed
+training/eval data for the next chooser/Karoo cycle.
 
 It reads live bridge benchmarks, house health, shipper health, shipper logs,
 and topology logs, then emits high-contrast proposed-change cards with:

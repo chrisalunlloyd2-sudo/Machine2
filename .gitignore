@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pyo
+*.db
+*.log
+.gemini/
+ArchivalMoe/
+MoeGUI/
+moe-kai-skill/
+viper-package/
+viper-scripts/
+System Volume Information/

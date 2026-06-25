@@ -150,7 +150,106 @@ def start_server(host=DEFAULT_HOST, port=DEFAULT_PORT):
     finally:
         server.close()
 
+def drive_k_communication_loop(drive_path="K:\\"):
+    """
+    Watches drive K: (Machine 2 virtual link) for commands in K:\inbound\*.json
+    Processes them, and writes results to K:\outbound\res_*.json
+    Updates K:\m2_heartbeat.json.
+    """
+    import time
+    inbound_dir = os.path.join(drive_path, "inbound")
+    outbound_dir = os.path.join(drive_path, "outbound")
+    heartbeat_path = os.path.join(drive_path, "m2_heartbeat.json")
+    
+    print(f"[OTG-Bridge-K] Starting drive K: loop at {drive_path}")
+    
+    # Initialize directory structure if drive is writable
+    try:
+        os.makedirs(inbound_dir, exist_ok=True)
+        os.makedirs(outbound_dir, exist_ok=True)
+    except Exception as e:
+        print(f"[OTG-Bridge-K] Warning: could not initialize directories on {drive_path}: {e}")
+        
+    last_heartbeat = 0
+    while True:
+        try:
+            # 1. Update heartbeat every 10 seconds
+            now = time.time()
+            if now - last_heartbeat > 10:
+                if os.path.exists(drive_path):
+                    os.makedirs(inbound_dir, exist_ok=True)
+                    os.makedirs(outbound_dir, exist_ok=True)
+                    with open(heartbeat_path, "w") as f:
+                        json.dump({"status": "active", "timestamp": datetime.utcnow().isoformat()}, f)
+                    last_heartbeat = now
+            
+            # 2. Check inbound command files
+            if os.path.exists(inbound_dir):
+                for filename in os.listdir(inbound_dir):
+                    if filename.endswith(".json") and not filename.endswith(".tmp"):
+                        filepath = os.path.join(inbound_dir, filename)
+                        time.sleep(0.1) # Wait slightly for write to finish
+                        try:
+                            with open(filepath, "r") as f:
+                                request = json.load(f)
+                            
+                            # Remove the processed request file immediately to avoid double execution
+                            os.remove(filepath)
+                            
+                            action = request.get("action", "ping")
+                            print(f"[OTG-Bridge-K] Received action from K: {action}")
+                            
+                            response_data = {"status": "ok", "timestamp": datetime.utcnow().isoformat()}
+                            
+                            if action == "ping":
+                                response_data["data"] = "pong"
+                            elif action == "db_status":
+                                response_data["data"] = get_database_status()
+                            elif action == "gan_batch":
+                                batch = request.get("batch", {})
+                                response_data["data"] = handle_gan_batch(batch)
+                            elif action == "lookup_nmct":
+                                lang = request.get("language", "python")
+                                perf = request.get("performative", "ask")
+                                q = request.get("query", None)
+                                if nmct_db_manager:
+                                    res = nmct_db_manager.lookup_snippet(lang, perf, q)
+                                    response_data["data"] = res if res else "Not found"
+                                else:
+                                    response_data["data"] = "NMCT module unavailable"
+                            else:
+                                response_data["status"] = "error"
+                                response_data["message"] = f"Unknown action: {action}"
+                            
+                            # Write response to outbound directory
+                            res_filename = f"res_{filename}"
+                            res_filepath = os.path.join(outbound_dir, res_filename)
+                            tmp_filepath = res_filepath + ".tmp"
+                            
+                            with open(tmp_filepath, "w") as f:
+                                json.dump(response_data, f, indent=2)
+                            os.replace(tmp_filepath, res_filepath)
+                            print(f"[OTG-Bridge-K] Wrote response to K: {res_filepath}")
+                            
+                        except Exception as e:
+                            print(f"[OTG-Bridge-K] Error processing file {filename}: {e}")
+                            if os.path.exists(filepath):
+                                try:
+                                    os.remove(filepath)
+                                except:
+                                    pass
+                                    
+        except Exception as e:
+            pass
+            
+        time.sleep(1.0)
+
 if __name__ == "__main__":
     host = sys.argv[1] if len(sys.argv) > 1 else DEFAULT_HOST
     port = int(sys.argv[2]) if len(sys.argv) > 2 else DEFAULT_PORT
+    
+    # Start the Drive K: communication loop in a background thread
+    k_thread = threading.Thread(target=drive_k_communication_loop, args=("K:\\",), daemon=True)
+    k_thread.start()
+    
     start_server(host, port)

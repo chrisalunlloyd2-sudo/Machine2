@@ -138,7 +138,21 @@ def start_server(host=DEFAULT_HOST, port=DEFAULT_PORT):
         server.bind((host, port))
         server.listen(5)
         print(f"[OTG-Bridge] Listening for Computer A at {host}:{port}...")
-        
+    except OSError as oe:
+        print(f"[OTG-Bridge] Port {port} busy. Retrying fallback port {port + 5}...")
+        try:
+            server.bind((host, port + 5))
+            server.listen(5)
+            print(f"[OTG-Bridge] Listening for Computer A on fallback port {port + 5}...")
+        except OSError:
+            print("[OTG-Bridge] Socket binding failed. Running in Drive K: file-only mode.")
+            # Keep thread alive to allow Drive K watcher to run
+            import time
+            while True:
+                time.sleep(3600)
+            return
+
+    try:
         while True:
             client_sock, client_addr = server.accept()
             t = threading.Thread(target=handle_client, args=(client_sock, client_addr), daemon=True)

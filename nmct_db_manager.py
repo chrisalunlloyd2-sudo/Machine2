@@ -42,10 +42,45 @@ def init_db():
         FOREIGN KEY(snippet_id) REFERENCES snippets(id) ON DELETE CASCADE
     )
     """)
+
+    # Specialized database catalog
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS database_catalog (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT UNIQUE NOT NULL,
+        file_path TEXT NOT NULL,
+        description TEXT,
+        instructions TEXT,
+        last_scanned TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+    )
+    """)
+
+    # Policies and SOPs
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS policies_and_sops (
+        id TEXT PRIMARY KEY,
+        title TEXT NOT NULL,
+        content TEXT NOT NULL,
+        version TEXT DEFAULT '1.0.0',
+        last_updated TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+    )
+    """)
+
+    # Information trees
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS information_trees (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        node_name TEXT NOT NULL,
+        parent_id INTEGER,
+        data_payload TEXT,
+        context_ref TEXT,
+        last_updated TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+    )
+    """)
     
     conn.commit()
     conn.close()
-    print(f"NMCT Database initialized at: {DB_PATH}")
+    print(f"NMCT Database initialized (including specialized catalog, policies, and information trees) at: {DB_PATH}")
 
 def store_snippet(name, language, performative, description, code, fitness_score=1.0, lifespan_days=30):
     """
@@ -170,6 +205,118 @@ def garbage_collect():
         print("Garbage collection complete: 0 expired snippets found.")
         
     conn.close()
+
+def register_database(name, file_path, description, instructions):
+    """Registers or updates a database entry in the catalog."""
+    conn = get_connection()
+    cursor = conn.cursor()
+    try:
+        cursor.execute("""
+        INSERT INTO database_catalog (name, file_path, description, instructions, last_scanned)
+        VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)
+        ON CONFLICT(name) DO UPDATE SET
+            file_path=excluded.file_path,
+            description=excluded.description,
+            instructions=excluded.instructions,
+            last_scanned=CURRENT_TIMESTAMP
+        """, (name, file_path, description, instructions))
+        conn.commit()
+        print(f"Registered database '{name}' at '{file_path}'")
+    except Exception as e:
+        print(f"Error registering database: {e}", file=sys.stderr)
+    finally:
+        conn.close()
+
+def list_databases():
+    """Lists all registered databases in the catalog."""
+    conn = get_connection()
+    cursor = conn.cursor()
+    try:
+        cursor.execute("SELECT name, file_path, description, instructions, last_scanned FROM database_catalog")
+        return [{"name": r[0], "file_path": r[1], "description": r[2], "instructions": r[3], "last_scanned": r[4]} for r in cursor.fetchall()]
+    except Exception as e:
+        print(f"Error listing databases: {e}", file=sys.stderr)
+        return []
+    finally:
+        conn.close()
+
+def store_policy(policy_id, title, content, version="1.0.0"):
+    """Stores or updates a policy/SOP."""
+    conn = get_connection()
+    cursor = conn.cursor()
+    try:
+        cursor.execute("""
+        INSERT INTO policies_and_sops (id, title, content, version, last_updated)
+        VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)
+        ON CONFLICT(id) DO UPDATE SET
+            title=excluded.title,
+            content=excluded.content,
+            version=excluded.version,
+            last_updated=CURRENT_TIMESTAMP
+        """, (policy_id, title, content, version))
+        conn.commit()
+        print(f"Stored policy '{policy_id}': {title} (v{version})")
+    except Exception as e:
+        print(f"Error storing policy: {e}", file=sys.stderr)
+    finally:
+        conn.close()
+
+def lookup_policy(policy_id):
+    """Retrieves a specific policy by ID."""
+    conn = get_connection()
+    cursor = conn.cursor()
+    try:
+        cursor.execute("SELECT id, title, content, version, last_updated FROM policies_and_sops WHERE id = ?", (policy_id,))
+        r = cursor.fetchone()
+        if r:
+            return {"id": r[0], "title": r[1], "content": r[2], "version": r[3], "last_updated": r[4]}
+    except Exception as e:
+        print(f"Error looking up policy: {e}", file=sys.stderr)
+    finally:
+        conn.close()
+    return None
+
+def list_policies():
+    """Lists all policies/SOPs."""
+    conn = get_connection()
+    cursor = conn.cursor()
+    try:
+        cursor.execute("SELECT id, title, content, version, last_updated FROM policies_and_sops")
+        return [{"id": r[0], "title": r[1], "content": r[2], "version": r[3], "last_updated": r[4]} for r in cursor.fetchall()]
+    except Exception as e:
+        print(f"Error listing policies: {e}", file=sys.stderr)
+        return []
+    finally:
+        conn.close()
+
+def store_info_tree_node(node_name, parent_id, data_payload, context_ref):
+    """Adds a node to the information tree."""
+    conn = get_connection()
+    cursor = conn.cursor()
+    try:
+        cursor.execute("""
+        INSERT INTO information_trees (node_name, parent_id, data_payload, context_ref, last_updated)
+        VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)
+        """, (node_name, parent_id, data_payload, context_ref))
+        conn.commit()
+        print(f"Added information tree node '{node_name}'")
+    except Exception as e:
+        print(f"Error storing info tree node: {e}", file=sys.stderr)
+    finally:
+        conn.close()
+
+def get_info_tree():
+    """Retrieves all nodes in the information tree."""
+    conn = get_connection()
+    cursor = conn.cursor()
+    try:
+        cursor.execute("SELECT id, node_name, parent_id, data_payload, context_ref, last_updated FROM information_trees")
+        return [{"id": r[0], "node_name": r[1], "parent_id": r[2], "data_payload": r[3], "context_ref": r[4], "last_updated": r[5]} for r in cursor.fetchall()]
+    except Exception as e:
+        print(f"Error getting info tree: {e}", file=sys.stderr)
+        return []
+    finally:
+        conn.close()
 
 if __name__ == "__main__":
     init_db()

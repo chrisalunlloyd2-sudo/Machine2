@@ -172,3 +172,38 @@ OneDrive:
 
 House:
   /health and /config expose n_ctx, safe input budgets, retry ladder.
+
+2026-06-26 PRECISION EXECUTION & SWARM CHECKPOINT
+==================================================
+
+          NL Query
+             |
+             v
+   +-------------------+
+   | Router + Registry | -----> Topological dependency sort
+   | route list        |
+   +---------+---------+
+             |
+             v
+   +-------------------+        +-------------------+
+   | Planner + Redund. | -----> | LLM-A1 + LLM-A2   |
+   | Task-IR + Hash    |        | Ops-IR + Hash     |
+   +---------+---------+        +---------+---------+
+             |                            |
+             v                            v
+   +-------------------+        +-------------------+
+   | Verifier          | <----- | Consistency check |
+   | Approved-Ops      |        | Task-IR -> Ops-IR |
+   +---------+---------+        +-------------------+
+             |
+             v
+   +-------------------+
+   | Executor Kernel   |
+   | Version / Shadow  | -----> Temporal Ledger [t0, t1, t2, t3]
+   | Rollback Buffer   |        Global Constraint Compiler
+   +-------------------+        Global Safety Envelope
+
+Integration Seam:
+  - JavaFX Dashboard Sync: '/api/dashboard/excel-sync' dynamically invokes the python next-gen pipeline.
+  - Twin-Node Critique: Proposer (Kai-1) and Auditor (Kai-2) iterate locally to verify format and casing.
+  - Telemetry Governor: CPU-smoothed EMA load scaling dynamically throttling model requests.

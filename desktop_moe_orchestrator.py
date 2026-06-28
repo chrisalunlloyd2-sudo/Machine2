@@ -362,7 +362,18 @@ def policy_enforcement_agent(query: str) -> str:
         
     return "\n".join(report)
 
+def adk_coordinator_agent(query: str) -> str:
+    """Invokes Google's Agent Development Kit (ADK) agent pipeline."""
+    script_path = r"C:\Users\viper\gan-otg-db\viper-scripts\adk_llm_channel.py"
+    py_path = r"C:\Users\viper\AppData\Local\Programs\Python\Python311\python.exe"
+    try:
+        res = subprocess.run([py_path, script_path], capture_output=True, text=True)
+        return f"Google ADK Agent Output:\n{res.stdout or res.stderr}"
+    except Exception as e:
+        return f"Google ADK Agent execution failed: {e}"
+
 AGENT_ROUTING_MAP = {
+    "adk_coordinator_agent": adk_coordinator_agent,
     "systems_info_agent": systems_info_agent,
     "file_management_agent": file_management_agent,
     "database_query_agent": database_query_agent,
@@ -476,6 +487,8 @@ def select_agent(query: str) -> str:
         return "git_sync_agent"
     if "modify projects schema" in query_lower:
         return "schema_migration_agent"
+    if "adk" in query_lower:
+        return "adk_coordinator_agent"
     
     # Tier 2: Try Local LLM / Ollama
     agent = get_agent_from_llm(query)

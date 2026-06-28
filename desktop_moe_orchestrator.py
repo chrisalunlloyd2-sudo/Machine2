@@ -243,6 +243,27 @@ def schema_migration_agent(query: str) -> str:
 
 def com_excel_agent(query: str) -> str:
     """Handles COM Excel spreadsheet operations."""
+    script_path = r"C:\Users\viper\gan-otg-db\viper-scripts\excel_access_automation.py"
+    py_path = r"C:\Users\viper\AppData\Local\Programs\Python\Python311\python.exe"
+    
+    if "excel" in query.lower():
+        db = "projects"
+        tbl = "projects"
+        out = r"C:\Viper\reports\projects_report.xlsx"
+        try:
+            res = subprocess.run([py_path, script_path, "sync-excel", db, tbl, out], capture_output=True, text=True)
+            return f"Excel Automation: Sync complete.\nOutput:\n{res.stdout or res.stderr}"
+        except Exception as e:
+            return f"Excel Automation: COM failed: {e}"
+    elif "access" in query.lower():
+        access_path = r"C:\Viper\databases\inventory.accdb"
+        sql = "SELECT * FROM inventory"
+        try:
+            res = subprocess.run([py_path, script_path, "query-access", access_path, sql], capture_output=True, text=True)
+            return f"Access Automation: Query complete.\nOutput:\n{res.stdout or res.stderr}"
+        except Exception as e:
+            return f"Access Automation: COM failed: {e}"
+            
     return "Excel Automation: COM Interface status active. Ready to process spreadsheet updates."
 
 def git_sync_agent(query: str) -> str:

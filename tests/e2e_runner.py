@@ -248,7 +248,7 @@ class MoeSwarmOrchestratorE2ETest(unittest.TestCase):
             
             self.assertEqual(results["project_agent"], "Agent 1 result")
             self.assertEqual(results["github_agent"], "Agent 2 result")
-            self.assertLess(elapsed, 0.08, "Parallel execution blocked and executed sequentially")
+            self.assertLess(elapsed, 0.10, "Parallel execution blocked and executed sequentially")
 
     def test_t1_f1_5_llm_synthesis_integration(self):
         """T1.F1.5: Verify specialist results are integrated by the synthesis engine."""

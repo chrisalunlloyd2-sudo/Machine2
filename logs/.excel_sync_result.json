@@ -1,0 +1,64 @@
+Initial Sheet Versions: {'Sheet1': 1}
+
+Executing Next-Gen Pipeline...
+
+Execution Result:
+Success: True
+
+Final Sheet Versions: {'Sheet1': 2}
+
+Final Workbook sheets:
+
+--- Sheet1 ---
+['Patient', 'Age', 'TriageCode', 'WaitMinutes', 'Lab_Flag', 'Priority', 'Status']
+['Alice', 1.5, 2, 45, 'Normal', 'Medium', 'Pending']
+['Bob', 45.0, 3, 120, 'Normal', 'Escalated', 'Resolved']
+
+Multi-Sheet Diff Ledger:
+[
+  {
+    "timestamp": "2026-07-06T02:53:36.813026Z",
+    "address": "G3",
+    "old_value": "Pending",
+    "new_value": "Resolved",
+    "rule_overrides": [
+      "float(row.get('triagecode')) >= 3.0 and float(row.get('waitminutes')) > 90.0",
+      "float(row.get('triagecode')) >= 3.0 and float(row.get('waitminutes')) > 90.0"
+    ],
+    "source_agent": "LLM-A1/A2 Redundant Swarm",
+    "verified_by": "LLM-V",
+    "hash": "299bfe85",
+    "temporal": {
+      "t0": "Pending",
+      "t1": "Resolved",
+      "t2": "Resolved",
+      "t3": "Resolved"
+    },
+    "sheet": "Sheet1",
+    "domain": "medical_queue",
+    "pipeline": "defaultmatrixpipeline",
+    "version": 2
+  },
+  {
+    "timestamp": "2026-07-06T02:53:36.813026Z",
+    "address": "F3",
+    "old_value": "Medium",
+    "new_value": "Escalated",
+    "rule_overrides": [
+      "triagecode_wait_escalation"
+    ],
+    "source_agent": "LLM-A1/A2 Redundant Swarm",
+    "verified_by": "LLM-V",
+    "hash": "9dd3509d",
+    "temporal": {
+      "t0": "Medium",
+      "t1": "High",
+      "t2": "Escalated",
+      "t3": "Escalated"
+    },
+    "sheet": "Sheet1",
+    "domain": "medical_queue",
+    "pipeline": "defaultmatrixpipeline",
+    "version": 2
+  }
+]

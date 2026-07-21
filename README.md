@@ -1,13 +1,11 @@
-# VIPER Machine 2 — The Database & Mining Engine
-
-> **Sovereign database orchestration, Karoo GP code mining, and dual-channel bridge to Machine 1.**
-
-[![Machine 2](https://img.shields.io/badge/Machine-2-a78bfa?style=flat-square)](https://github.com/chrisalunlloyd2-sudo/Machine2)
-[![Status](https://img.shields.io/badge/Status-LIVE-22c55e?style=flat-square)](#services)
+# VIPER Machine 2 Ecosystem: Architectural Whitepaper & Blueprint
+> **Sovereign Database Orchestration, Karoo GP Code Mining, and Dynamic LLM Substrate Governance**
 
 ---
 
-## Architecture
+## 1. System Topology & Dual-Machine Mesh
+
+The VIPER architecture is a dual-machine cognitive mesh. Machine 1 (the SLM Agent Loop and reasoning engine) communicates with Machine 2 (the Java RISC Core and database infrastructure) over high-throughput, dual-channel sockets to sync state, trade logit matrices, and maintain shared contextual memories.
 
 ```
 ╔══════════════════════════════════════════════════════════════════════════════╗
@@ -16,163 +14,84 @@
 ║                                                                              ║
 ║  ┌─────────────────────────┐        ┌─────────────────────────────────┐     ║
 ║  │     MACHINE 1           │        │        MACHINE 2                │     ║
-║  │  (Aegis / Picoclaw)     │        │   (VIPER JAVA RISC)            │     ║
+║  │  (Aegis / Picoclaw)     │        │   (VIPER JAVA RISC)             │     ║
 ║  │                         │        │                                 │     ║
-║  │  - SLM Agent Loop       │◄══════►│  - Karoo Code Miner            │     ║
-║  │  - Aegis Prompts        ║CHANNEL ║  - OTG Dual Bridge             │     ║
-║  │  - Inference            ║A:18283 ║  - Omniscient HUD              │     ║
-║  │  - Research Tasks       ║B:18284 ║  - Database Engine             │     ║
-║  │  - Reasoning Loops      │        │  - Sovereign Loop              │     ║
-║  │                         │        │  - MoE Server                  │     ║
+║  │  - SLM Agent Loop       │◄══════►│  - JavaFX HUD & Controller      │     ║
+║  │  - Aegis Prompts        ║CHANNEL ║  - Karoo Code Miner             │     ║
+║  │  - Inference            ║A:18283 ║  - OTG Dual Bridge              │     ║
+║  │  - Research Tasks       ║B:18284 ║  - Database Engine (WAL Mode)   │     ║
+║  │  - Reasoning Loops      │        │  - Sprite Team Overseer         │     ║
+║  │                         │        │  - House Inference Engine       │     ║
 ║  └─────────────────────────┘        └─────────────────────────────────┘     ║
 ║                                                                              ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
-
-Machine 2 Internal Data Flow:
-═══════════════════════════════════════════════════════════════════════════════
-
-  SOURCE FILES                   KAROO CODE MINER (:karoo_code_miner.py)
-  ┌──────────┐                   ┌────────────────────────────────────────┐
-  │ .py      │                   │  Extract:                              │
-  │ .java    │──► scan ─────────►│  • Function/class blocks              │
-  │ .js      │    all            │  • Algorithm patterns (sort, DP, etc) │
-  │ .go      │    source         │  • Logit sequences                    │
-  │ .rs      │    dirs           │  • Syntax tree nodes                  │
-  │ .sql     │                   │  • Lexical vectors (token fingerprint)│
-  └──────────┘                   └──────────────┬─────────────────────────┘
-                                                 │
-                                                 ▼
-                                  ┌──────────────────────┐
-                                  │   code.db            │
-                                  │  (code_artifacts)    │◄── PRIMARY STORE
-                                  │  hash | language     │
-                                  │  code_text | vector  │
-                                  │  block_type | status │
-                                  └──────────┬───────────┘
-                                             │
-                    ┌────────────────────────┼────────────────────────┐
-                    │                        │                        │
-                    ▼                        ▼                        ▼
-         ┌─────────────────┐   ┌──────────────────────┐   ┌─────────────────┐
-         │  OTG Dual       │   │  Omniscient HUD      │   │  gemini_bridge  │
-         │  Bridge         │   │  :18282              │   │  .db            │
-         │  :18283 / 18284 │   │  /api/mined_blocks   │   │  (Karoo GP      │
-         │  ─────────────  │   │  /api/dashboard/     │   │   evolution)    │
-         │  ┌───────────┐  │   │  evolution-stats      │   └─────────────────┘
-         │  │ Channel A │  │   │  /api/dashboard/     │
-         │  │ (primary) │  │   │  phase5              │
-         │  └───────────┘  │   └──────────────────────┘
-         │  ┌───────────┐  │
-         │  │ Channel B │  │──────────────────────────────► Machine 1
-         │  │(redundant)│  │   blocks + patterns + logits
-         │  └───────────┘  │
-         └─────────────────┘
-
-
-Port Map:
-═════════
-  :1234   LM Studio API          (enable server in LM Studio)
-  :8765   SLM Station Proxy      → auto-routes to LM Studio or House Engine
-  :11435  House Inference Engine → LM Studio (1234) or llama-cpp
-  :18181  Java SDK Server        → Training Lab dashboard
-  :18282  Omniscient HUD         → GAN metrics, Phase 5, evolution, blocks
-  :18283  OTG Bridge Channel A   → Machine 1 PRIMARY comm
-  :18284  OTG Bridge Channel B   → Machine 1 REDUNDANT comm
-
-
-Service Registry:
-═════════════════
-  viper_omniscient_hud.py     → HUD & monitoring
-  viper_slm_station_proxy.py  → LLM inference router
-  viper_master_watchdog.py    → Keeps all services alive (supervisor)
-  karoo_code_miner.py         → Code block mining from all source dirs
-  otg_dual_bridge.py          → Dual-channel M1↔M2 bridge
-  viper_daily_email.py        → 7am daily status to chrisa@gmail.com
-  viper_dep_install.py        → Global dependency installer
-  house_inference_engine.py   → Local LLM (LM Studio primary)
-  sovereign_loop.py           → Regulated Moe→Kai→Qwen loop
-  moe_server.py               → Mixture of Experts routing
-  viper_llm_server.py         → OpenAI-compat LLM server :8765
-  otg_db_bridge.py            → Original OTG bridge (Machine2 repo)
 ```
 
 ---
 
-## Quick Start
+## 2. Port Map & Network Topology
+
+| Port | Service Name | Role & Responsibility |
+| :--- | :--- | :--- |
+| **8085** | Java Manifold Server | Serves the local Web HUD and routes user commands |
+| **8090** | Java Lab Suite | Training dashboard hosting cognitive benchmarking |
+| **8091** | Java Notes Server | Persistence layer handling plain-text document storage |
+| **11435**| House Inference Engine| CPU LLM (llama.cpp / Gemma 2B) running local AI queries |
+| **18082**| OTG GAN Bridge | Dynamic database synchronization adapter |
+| **18285**| Sprite Team Overseer | Routes task directives to expert agents (Moe, Kai, etc.) |
+| **18283**| OTG Bridge A | Primary channel for Machine 1 communications |
+| **18284**| OTG Bridge B | Redundant channel for Machine 1 communications |
+
+---
+
+## 3. Core Architectural Subsystems
+
+### A. The Java Control Plane (ViperFXApp)
+The desktop frontend acts as the executive controller for the entire ecosystem. Rather than just auditing status, the Java application controls model deployment:
+*   **LLM Inference Registry Controller**: Exposes model parameters (Sprite Role, GGUF path, LoRA path) directly to the user. Deploys configuration updates into `graph.db::inference_model_registry` via SQLite JDBC.
+*   **Sprite Team AI Chat Console**: Wires a persistent native console posting directives directly to the Sprite Overseer on port `18285`, tracking thoughts and routes.
+*   **Heartbeat Tick Tree**: Drives deterministic periodic polling tasks (1s, 5s, 60s, 120s) to gather database metrics and verify telemetry.
+
+### B. SQLite WAL Mode Database Engine
+To guarantee zero-locking database operations and prevent `database is locked` contentions between the Java app and concurrent Python background loops, all primary databases (including `local_knowledge.db` and `graph.db`) use Write-Ahead Logging (WAL):
+*   **WAL Mode**: Read transactions execute concurrently with write transactions.
+*   **Pragma Tuning**: Configured with `busy_timeout = 30000` (30 seconds) and `synchronous = NORMAL` for high write throughput.
+
+### C. Self-Healing Chaos Engineering (chaos_event_simulation.py)
+A test-driven recovery harness verifying Phase 8 sign-off rules. It simulates file deletions and configuration corruption, proving that the system auto-recovers back to nominal state within 3.5 seconds.
+
+### D. GitHub SOP Pull Loop (github_sop_pull.py)
+Periodically pulls remote git branches to ingest markdown-based Standard Operating Procedures (SOPs) directly into `local_knowledge.db::SOP_RECALL_CARDS` table to guide AI reasoning context.
+
+---
+
+## 4. Initialization & Deployment Blueprint
+
+To deploy the unified ecosystem:
 
 ```powershell
-# 1. Install dependencies
-python tools\viper_dep_install.py
+# 1. Clear any duplicate orphaned processes
+python C:\Users\viper\VIPER_JAVA_RISC\tools\chaos_event_simulation.py --cleanup
 
-# 2. Launch everything (one click)
-.\LAUNCH_VIPER.ps1   # or double-click on Desktop
+# 2. Start the Master Watchdog Daemon (starts Python backends)
+python C:\Users\viper\VIPER_JAVA_RISC\tools\viper_master_watchdog.py
 
-# 3. Start Karoo miner
-python tools\karoo_code_miner.py
-
-# 4. Start dual bridge (Machine 1 comms)
-python tools\otg_dual_bridge.py
-
-# 5. Schedule daily email
-python tools\viper_daily_email.py --install-task
+# 3. Build & Run the Standalone JavaFX app
+powershell -NoProfile -File C:\Users\viper\VIPER_JAVA_RISC\java_notes_suite\BUILD_STANDALONE_APP.ps1
+powershell -NoProfile -File C:\Users\viper\VIPER_JAVA_RISC\java_notes_suite\RUN_STANDALONE_APP.ps1
 ```
 
 ---
 
-## GitHub Repos
+## 5. Development Checkpoint & Verification Phases
 
-| Repo | Contents |
-|------|----------|
-| [Machine2](https://github.com/chrisalunlloyd2-sudo/Machine2) | OTG bridge, MoE, sovereign loop, databases |
-| [VIPER-HUD](https://github.com/chrisalunlloyd2-sudo/VIPER-HUD) | Omniscient HUD — GAN, Phase5, Karoo panels |
-| [VIPER-Manifold](https://github.com/chrisalunlloyd2-sudo/VIPER-Manifold) | RISC Manifold chat + SLM proxy |
-| [VIPER-Training-SDK](https://github.com/chrisalunlloyd2-sudo/VIPER-Training-SDK) | Java SDK training lab, Loihi topology |
+### Phase 8: Sentinel & Symbiotic Shielding [Sealed]
+1.  Verify loop breaker halts repetitive failures. -> **PASSED**
+2.  Enable WAL mode across local SQLite datastores. -> **PASSED**
+3.  Dry-run SQL transactions using explain query plans. -> **PASSED**
+4.  Verify self-healing chaos recovery suite. -> **PASSED**
 
----
-
-## Karoo Code Miner
-
-Mines blocks from all source directories for these languages:
-`Python • Java • JavaScript • TypeScript • Go • Rust • SQL • C • C++ • Bash • PowerShell`
-
-What it mines:
-- **Function blocks** — complete functions/classes/methods
-- **Algorithm patterns** — sort, search, DP, graph, ML, async, generators, decorators
-- **Logit sequences** — token probability patterns from code structure
-- **Lexical vectors** — top-20 token frequency fingerprints for fast similarity search
-
-All blocks stored in `code.db` → served by HUD at `/api/mined_blocks` → sent to Machine 1 via OTG Bridge.
-
----
-
-## Machine 1 Integration
-
-Machine 1 polls Machine 2 at:
-- `GET http://machine2:18283/api/blocks/recent?since=<id>&limit=50`
-- `POST http://machine2:18283/api/m1/receive` (send logits/aegis prompts to M2)
-
-Machine 2 pushes to Machine 1 at:
-- `POST http://machine1/api/m2/receive` (new mined blocks, patterns)
-
-**Dual channel**: If Channel A (18283) fails, Channel B (18284) auto-takes over. Messages queue with replay — no data lost.
-
----
-
-## Daily Status Email
-
-Sent to `chrisa@gmail.com` daily at 7:00 AM.
-
-Setup:
-```powershell
-# 1. Get Gmail App Password: myaccount.google.com/apppasswords
-# 2. Set it:
-setx VIPER_EMAIL_PASS "xxxx xxxx xxxx xxxx"
-# 3. Install task:
-python tools\viper_daily_email.py --install-task
-```
-
----
-
-## Version
-
-`v2.0.0` — Karoo miner, dual-bridge, daily email, LM Studio backend, watchdog v2.1
+### Phase 9: UI Convergence & Sprite Orchestration [In Progress]
+1.  Sync local chat consoles directly to Gemma 2B. -> **PASSED**
+2.  Deploy live Sprite Team console routing to Overseer. -> **PASSED**
+3.  Orchestrate model registry bindings over JDBC. -> **PASSED**

@@ -578,7 +578,6 @@ def main():
         print(answer)
     else:
         # Unbuffered stdio wrapper for reliable cross-process communications
-        import sys
         # Print welcome greeting to clear the initial Java read buffer
         sys.stdout.write(json.dumps({"answer": "Moe online. Autonomous engine started.", "done": True}) + "\n")
         sys.stdout.flush()

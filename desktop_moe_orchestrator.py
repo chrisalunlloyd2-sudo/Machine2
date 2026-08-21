@@ -26,6 +26,7 @@ import threading
 from datetime import datetime
 
 AEGIS_REPLY_PATH = r"C:\Viper\databases\sophia\aegis_reply.txt"
+AEGIS_CHAT_DIR   = r"C:\Viper\chats\moe"
 
 # Setup paths to ensure we can import resource_governor and blueprint_orchestrator
 sys.path.append(r"C:\Users\viper\gan-otg-db\viper-scripts")
@@ -485,8 +486,16 @@ def _aegis_synthesize(question: str, data: str, context: str = "") -> str:
             ai_text = json.loads(resp.read().decode()).get("response", "").strip()
     except Exception:
         ai_text = ""
-    # Write reply to file for debugging / fallback reads
+    # Persist to day-folder (same pattern as sophia_loop) + overwrite last-reply pointer
     try:
+        ts      = datetime.utcnow()
+        day_dir = os.path.join(AEGIS_CHAT_DIR, ts.strftime("%Y-%m-%d"))
+        ts_str  = ts.strftime("%H-%M-%S")
+        os.makedirs(day_dir, exist_ok=True)
+        with open(os.path.join(day_dir, f"{ts_str}_query.txt"),  "w", encoding="utf-8") as f:
+            f.write(prompt)
+        with open(os.path.join(day_dir, f"{ts_str}_reply.txt"),  "w", encoding="utf-8") as f:
+            f.write(ai_text or data)
         os.makedirs(os.path.dirname(AEGIS_REPLY_PATH), exist_ok=True)
         with open(AEGIS_REPLY_PATH, "w", encoding="utf-8") as f:
             f.write(ai_text or data)

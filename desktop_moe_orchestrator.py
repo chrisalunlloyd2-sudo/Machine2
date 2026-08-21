@@ -38,6 +38,69 @@ try:
 except ImportError:
     blueprint_orchestrator = None
 
+# ── Blackboard integration ────────────────────────────────────────────────────
+# sophia_loop OWNS blackboard.json — we never write to it directly (race condition).
+# Instead:
+#   orchestrator  → chat_inject.jsonl  (append-only, one line per turn)
+#   sophia_loop   reads chat_inject each tick → asserts facts into blackboard
+#   orchestrator  reads blackboard.json for long-term memory context (last.* + chat.*)
+BB_PATH          = r"C:\Viper\databases\sophia\blackboard.json"
+CHAT_INJECT_PATH = r"C:\Viper\databases\sophia\chat_inject.jsonl"
+
+os.makedirs(r"C:\Viper\databases\sophia", exist_ok=True)
+
+def _bb_read_context(max_facts: int = 6) -> str:
+    """Pull recent facts from sophia_loop's blackboard + this session's chat turns."""
+    lines = []
+    # 1. Long-term memory: sophia_loop's blackboard facts
+    try:
+        with open(BB_PATH, encoding="utf-8") as f:
+            bb = json.load(f)
+        facts   = bb.get("facts", {})
+        priority = {k: v for k, v in facts.items()
+                    if k.startswith("last.") or k.startswith("chat.")}
+        rest     = {k: v for k, v in facts.items() if k not in priority}
+        merged   = list(priority.items()) + list(rest.items())
+        lines   += [f"{k}: {str(v)[:80]}" for k, v in merged[:max_facts - 2]]
+    except Exception:
+        pass
+    # 2. Immediate session context: last 2 turns from chat_inject (before sophia tick)
+    try:
+        turns = []
+        with open(CHAT_INJECT_PATH, "rb") as f:
+            # Read last ~2 KB for recent turns without loading the whole file
+            f.seek(0, 2)
+            size = f.tell()
+            f.seek(max(0, size - 2048))
+            for raw in f:
+                try:
+                    turns.append(json.loads(raw.decode("utf-8", errors="replace")))
+                except Exception:
+                    pass
+        for t in turns[-2:]:
+            lines.append(f"recent {t.get('role','?')}: {t.get('content','')[:80]}")
+    except Exception:
+        pass
+    if not lines:
+        return ""
+    return "System memory:\n" + "\n".join(lines)
+
+def _bb_inject_chat(role: str, text: str):
+    """Append a chat turn to chat_inject.jsonl.
+    sophia_loop reads this each tick and asserts facts into the blackboard."""
+    try:
+        rec = json.dumps({
+            "ts": datetime.utcnow().isoformat(),
+            "role": role,
+            "content": text[:200],
+        })
+        with open(CHAT_INJECT_PATH, "a", encoding="utf-8") as f:
+            f.write(rec + "\n")
+    except Exception:
+        pass
+
+# ── End blackboard integration ────────────────────────────────────────────────
+
 AGENTS_LIST = [
     "systems_info_agent",
     "file_management_agent",
@@ -372,7 +435,144 @@ def adk_coordinator_agent(query: str) -> str:
     except Exception as e:
         return f"Google ADK Agent execution failed: {e}"
 
+def _aegis_synthesize(question: str, data: str, context: str = "") -> str:
+    """Prompt AEGIS to answer a question given data. Returns AEGIS text + raw data block.
+    Prompt ends mid-sentence so tinyllama completes it rather than copying the template.
+    context = optional blackboard facts prepended before data."""
+    import urllib.request as _req
+    system = "You are Moe, a helpful AI assistant. Be concise and factual."
+    # Build body: context → data → question
+    parts = [p for p in [context, data] if p.strip()]
+    body_text = "\n\n".join(parts)
+    if body_text.strip():
+        prompt = f"{body_text[:700]}\n\nBased on the above, {question[:120].lower().rstrip('.')}: "
+    else:
+        prompt = f"{question}: "
+    body = json.dumps({
+        "model": "tinyllama:1.1b",
+        "system": system,
+        "prompt": prompt,
+        "stream": False,
+        "keep_alive": 0,
+        "options": {"num_gpu": 0, "num_predict": 120, "num_thread": 4},
+    }).encode()
+    try:
+        r = _req.Request("http://127.0.0.1:11434/api/generate",
+                         data=body, headers={"Content-Type": "application/json"}, method="POST")
+        with _req.urlopen(r, timeout=60) as resp:
+            ai_text = json.loads(resp.read().decode()).get("response", "").strip()
+    except Exception:
+        ai_text = ""
+    # Always show both AI summary and raw data so nothing is hidden
+    if ai_text:
+        return f"{ai_text}\n\n---\n{data}"
+    return data
+
+def _find_project_dir(proj_name: str) -> tuple:
+    """Return (local_path, description, github_url) for a project, checking DB then common roots."""
+    desc = ""
+    github_url = ""
+    # DB lookup
+    try:
+        con = sqlite3.connect(r"C:\Viper\databases\projects\projects.db", timeout=3)
+        row = con.execute(
+            "SELECT local_path, description, github_url, slug FROM projects WHERE name LIKE ? LIMIT 1",
+            (f"%{proj_name}%",)
+        ).fetchone()
+        con.close()
+        if row:
+            desc = (row[1] or "").encode("ascii", errors="replace").decode("ascii")
+            github_url = row[2] or ""
+            slug = row[3] or proj_name.lower().replace("_", "-")
+            if row[0] and os.path.isdir(row[0]):
+                return row[0], desc, github_url
+    except Exception:
+        slug = proj_name.lower().replace("_", "-")
+    # Common path roots (no local_path stored → scan common roots)
+    roots = [
+        r"J:\ViperVault\code\projects",
+        r"C:\Users\viper\gan-otg-db",
+        r"C:\Viper\projects",
+        r"J:\ViperVault\code",
+    ]
+    for root in roots:
+        for candidate in [proj_name, slug if 'slug' in dir() else proj_name]:
+            path = os.path.join(root, candidate)
+            if os.path.isdir(path) and os.path.isdir(os.path.join(path, ".git")):
+                return path, desc, github_url
+    return None, desc, github_url
+
+def intelligence_report_agent(query: str) -> str:
+    """Pull rich project data: git log, status, file count, description. Then AEGIS synthesizes."""
+    import re as _re
+    match = _re.search(r'\bon\s+([A-Za-z0-9_\-]+)', query)
+    proj_name = match.group(1) if match else None
+
+    proj_dir, proj_desc, github_url = _find_project_dir(proj_name) if proj_name else (None, "", "")
+    if proj_dir is None:
+        proj_dir = r"C:\Users\viper\gan-otg-db"
+
+    parts = []
+    if proj_name:
+        parts.append(f"Project: {proj_name}")
+    if proj_desc:
+        parts.append(f"Description: {proj_desc[:150]}")
+    if github_url:
+        parts.append(f"GitHub: {github_url}")
+    parts.append(f"Path: {proj_dir}")
+
+    git = "git"
+    # Recent commits (10)
+    try:
+        r = subprocess.run([git, "log", "--oneline", "-10"],
+                           capture_output=True, text=True, cwd=proj_dir, timeout=8)
+        parts.append("Recent commits:\n" + (r.stdout.strip() or "none"))
+    except Exception as e:
+        parts.append(f"git log: {e}")
+    # Working tree status
+    try:
+        r = subprocess.run([git, "status", "--short"],
+                           capture_output=True, text=True, cwd=proj_dir, timeout=8)
+        parts.append("Git status:\n" + (r.stdout.strip() or "clean"))
+    except Exception as e:
+        parts.append(f"git status: {e}")
+    # Branch
+    try:
+        r = subprocess.run([git, "branch", "--show-current"],
+                           capture_output=True, text=True, cwd=proj_dir, timeout=5)
+        parts.append("Branch: " + r.stdout.strip())
+    except Exception:
+        pass
+    # File count
+    try:
+        total = sum(len(f) for _, _, f in os.walk(proj_dir))
+        parts.append(f"Files in repo: {total}")
+    except Exception:
+        pass
+
+    raw = "\n".join(parts)
+    _bb_inject_chat("user", query)
+    bb_ctx   = _bb_read_context()
+    response = _aegis_synthesize(query, raw, context=bb_ctx)
+    ai_part  = response.split("\n\n---\n")[0].strip()
+    if ai_part:
+        _bb_inject_chat("aegis", ai_part)
+    return response
+
+def aegis_direct_agent(query: str) -> str:
+    """Send query straight to AEGIS for a conversational answer, with blackboard context."""
+    _bb_inject_chat("user", query)
+    bb_ctx   = _bb_read_context()
+    response = _aegis_synthesize(query, "", context=bb_ctx)
+    # Only inject the AI portion back (before any "---" data divider)
+    ai_part  = response.split("\n\n---\n")[0].strip()
+    if ai_part:
+        _bb_inject_chat("aegis", ai_part)
+    return response
+
 AGENT_ROUTING_MAP = {
+    "aegis_direct_agent": aegis_direct_agent,
+    "intelligence_report_agent": intelligence_report_agent,
     "adk_coordinator_agent": adk_coordinator_agent,
     "systems_info_agent": systems_info_agent,
     "file_management_agent": file_management_agent,
@@ -444,21 +644,7 @@ def get_agent_from_llm(query: str) -> str:
     return None
 
 def get_agent_from_ask_kai(query: str) -> str:
-    """Attempts to classify agent using Ask_Kai loop (Tier 3)."""
-    try:
-        import ask_kai
-        ask_kai.ask(
-            f"Classify this query into one of these agents: {', '.join(AGENTS_LIST)}. "
-            f"Query: '{query}'. Respond with just the agent name."
-        )
-        time.sleep(0.5)
-        reply = ask_kai.latest_reply()
-        answer = reply.get("reply", "")
-        for agent in AGENTS_LIST:
-            if agent in answer:
-                return agent
-    except Exception:
-        pass
+    """Deprecated — ask_kai is replaced by AEGIS. Returns None so keyword fallback runs."""
     return None
 
 def keyword_classify(query: str) -> str:
@@ -481,6 +667,8 @@ def select_agent(query: str) -> str:
     query_lower = query.lower()
     
     # Tier 1: Deterministic routing (exact keywords / pattern matching)
+    if "intelligence report" in query_lower or "full report" in query_lower:
+        return "intelligence_report_agent"
     if "show cpu load" in query_lower:
         return "systems_info_agent"
     if "commit modified scripts" in query_lower:
@@ -489,6 +677,10 @@ def select_agent(query: str) -> str:
         return "schema_migration_agent"
     if "adk" in query_lower:
         return "adk_coordinator_agent"
+    # Short conversational queries → direct AEGIS
+    if len(query_lower) < 80 and not any(k in query_lower for k in
+            ["git","file","excel","database","schema","voice","search","memory","policy"]):
+        return "aegis_direct_agent"
     
     # Tier 2: Try Local LLM / Ollama
     agent = get_agent_from_llm(query)

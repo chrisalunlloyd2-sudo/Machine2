@@ -454,7 +454,7 @@ def _aegis_synthesize(question: str, data: str, context: str = "") -> str:
         "prompt": prompt,
         "stream": False,
         "keep_alive": 0,
-        "options": {"num_gpu": 0, "num_predict": 120, "num_thread": 4},
+        "options": {"num_gpu": 0, "num_predict": 350, "num_thread": 4},
     }).encode()
     try:
         r = _req.Request("http://127.0.0.1:11434/api/generate",

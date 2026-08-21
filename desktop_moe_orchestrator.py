@@ -22,7 +22,10 @@ import sqlite3
 import time
 import subprocess
 import shutil
+import threading
 from datetime import datetime
+
+AEGIS_REPLY_PATH = r"C:\Viper\databases\sophia\aegis_reply.txt"
 
 # Setup paths to ensure we can import resource_governor and blueprint_orchestrator
 sys.path.append(r"C:\Users\viper\gan-otg-db\viper-scripts")
@@ -103,7 +106,8 @@ def _bb_read_context(max_facts: int = 6, query: str = "") -> str:
 
 def _bb_inject_chat(role: str, text: str):
     """Append a chat turn to chat_inject.jsonl and persist to episodic KV memory.
-    sophia_loop reads this each tick and asserts facts into the blackboard."""
+    sophia_loop reads this each tick and asserts facts into the blackboard.
+    Memory store runs in a daemon thread so it never delays the GUI response."""
     try:
         rec = json.dumps({
             "ts": datetime.utcnow().isoformat(),
@@ -115,10 +119,7 @@ def _bb_inject_chat(role: str, text: str):
     except Exception:
         pass
     if _MEM_OK:
-        try:
-            _mem.store_chat(role, text)
-        except Exception:
-            pass
+        threading.Thread(target=_mem.store_chat, args=(role, text), daemon=True).start()
 
 # ── End blackboard integration ────────────────────────────────────────────────
 
@@ -484,10 +485,17 @@ def _aegis_synthesize(question: str, data: str, context: str = "") -> str:
             ai_text = json.loads(resp.read().decode()).get("response", "").strip()
     except Exception:
         ai_text = ""
-    # Always show both AI summary and raw data so nothing is hidden
-    if ai_text:
+    # Write reply to file for debugging / fallback reads
+    try:
+        os.makedirs(os.path.dirname(AEGIS_REPLY_PATH), exist_ok=True)
+        with open(AEGIS_REPLY_PATH, "w", encoding="utf-8") as f:
+            f.write(ai_text or data)
+    except Exception:
+        pass
+    # Append raw data block only when there is data to show
+    if ai_text and data.strip():
         return f"{ai_text}\n\n---\n{data}"
-    return data
+    return ai_text or data
 
 def _find_project_dir(proj_name: str) -> tuple:
     """Return (local_path, description, github_url) for a project, checking DB then common roots."""

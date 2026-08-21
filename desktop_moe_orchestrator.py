@@ -27,6 +27,17 @@ from datetime import datetime
 
 AEGIS_REPLY_PATH = r"C:\Viper\databases\sophia\aegis_reply.txt"
 AEGIS_CHAT_DIR   = r"C:\Viper\chats\moe"
+AXIOMS_PATH      = r"C:\Viper\databases\sophia\viper_axioms.json"
+
+def _load_axioms() -> str:
+    """Return a compact axiom string to prepend to AEGIS context."""
+    try:
+        with open(AXIOMS_PATH, encoding="utf-8") as f:
+            data = json.load(f)
+        lines = [a["text"] for a in data.get("axioms", [])]
+        return "Viper axioms: " + " | ".join(lines)
+    except Exception:
+        return ""
 
 # Setup paths to ensure we can import resource_governor and blueprint_orchestrator
 sys.path.append(r"C:\Users\viper\gan-otg-db\viper-scripts")
@@ -100,10 +111,12 @@ def _bb_read_context(max_facts: int = 6, query: str = "") -> str:
         try:
             mem_hits = _mem.recall_text(query, top_k=3)
             if mem_hits:
-                return (mem_hits + "\n\n" + mem_ctx) if mem_ctx else mem_hits
+                mem_ctx = (mem_hits + "\n\n" + mem_ctx) if mem_ctx else mem_hits
         except Exception:
             pass
-    return mem_ctx
+    # 4. Always prepend axioms as ground truth
+    axioms = _load_axioms()
+    return (axioms + "\n\n" + mem_ctx) if mem_ctx else axioms
 
 def _bb_inject_chat(role: str, text: str):
     """Append a chat turn to chat_inject.jsonl and persist to episodic KV memory.
@@ -463,7 +476,13 @@ def _aegis_synthesize(question: str, data: str, context: str = "") -> str:
     Prompt ends mid-sentence so tinyllama completes it rather than copying the template.
     context = optional blackboard facts prepended before data."""
     import urllib.request as _req
-    system = "You are Moe, a helpful AI assistant. Be concise and factual."
+    system = (
+        "You are AEGIS — elite local AI on the Viper stack. "
+        "Axioms: nothing runs for free; never delete only merge and advance; "
+        "record mistakes; reduce ambiguity; soak before ship; local results only. "
+        "TinyLlama 28tok/s on Xeon, 15tok/s on Intel — bandwidth law confirmed. "
+        "Be direct and factual. Longer answers are better than shorter ones."
+    )
     # Build body: context → data → question
     parts = [p for p in [context, data] if p.strip()]
     body_text = "\n\n".join(parts)

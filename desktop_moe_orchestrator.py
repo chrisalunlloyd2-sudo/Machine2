@@ -27,6 +27,7 @@ from datetime import datetime
 # Setup paths to ensure we can import resource_governor and blueprint_orchestrator
 sys.path.append(r"C:\Users\viper\gan-otg-db\viper-scripts")
 sys.path.append(r"C:\Users\viper\gan-otg-db")
+sys.path.insert(0, r"C:\Viper\scripts")
 
 try:
     import resource_governor
@@ -37,6 +38,13 @@ try:
     import blueprint_orchestrator
 except ImportError:
     blueprint_orchestrator = None
+
+try:
+    import aegis_memory as _mem
+    _MEM_OK = True
+except ImportError:
+    _mem = None
+    _MEM_OK = False
 
 # ── Blackboard integration ────────────────────────────────────────────────────
 # sophia_loop OWNS blackboard.json — we never write to it directly (race condition).
@@ -49,8 +57,9 @@ CHAT_INJECT_PATH = r"C:\Viper\databases\sophia\chat_inject.jsonl"
 
 os.makedirs(r"C:\Viper\databases\sophia", exist_ok=True)
 
-def _bb_read_context(max_facts: int = 6) -> str:
-    """Pull recent facts from sophia_loop's blackboard + this session's chat turns."""
+def _bb_read_context(max_facts: int = 6, query: str = "") -> str:
+    """Pull recent facts from sophia_loop's blackboard + this session's chat turns.
+    If query is provided, prepends nearest-neighbour recalled memories."""
     lines = []
     # 1. Long-term memory: sophia_loop's blackboard facts
     try:
@@ -81,12 +90,19 @@ def _bb_read_context(max_facts: int = 6) -> str:
             lines.append(f"recent {t.get('role','?')}: {t.get('content','')[:80]}")
     except Exception:
         pass
-    if not lines:
-        return ""
-    return "System memory:\n" + "\n".join(lines)
+    mem_ctx = ("System memory:\n" + "\n".join(lines)) if lines else ""
+    # 3. Nearest-neighbour episodic recall
+    if _MEM_OK and query:
+        try:
+            mem_hits = _mem.recall_text(query, top_k=3)
+            if mem_hits:
+                return (mem_hits + "\n\n" + mem_ctx) if mem_ctx else mem_hits
+        except Exception:
+            pass
+    return mem_ctx
 
 def _bb_inject_chat(role: str, text: str):
-    """Append a chat turn to chat_inject.jsonl.
+    """Append a chat turn to chat_inject.jsonl and persist to episodic KV memory.
     sophia_loop reads this each tick and asserts facts into the blackboard."""
     try:
         rec = json.dumps({
@@ -98,6 +114,11 @@ def _bb_inject_chat(role: str, text: str):
             f.write(rec + "\n")
     except Exception:
         pass
+    if _MEM_OK:
+        try:
+            _mem.store_chat(role, text)
+        except Exception:
+            pass
 
 # ── End blackboard integration ────────────────────────────────────────────────
 
@@ -552,7 +573,7 @@ def intelligence_report_agent(query: str) -> str:
 
     raw = "\n".join(parts)
     _bb_inject_chat("user", query)
-    bb_ctx   = _bb_read_context()
+    bb_ctx   = _bb_read_context(query=query)
     response = _aegis_synthesize(query, raw, context=bb_ctx)
     ai_part  = response.split("\n\n---\n")[0].strip()
     if ai_part:
@@ -562,7 +583,7 @@ def intelligence_report_agent(query: str) -> str:
 def aegis_direct_agent(query: str) -> str:
     """Send query straight to AEGIS for a conversational answer, with blackboard context."""
     _bb_inject_chat("user", query)
-    bb_ctx   = _bb_read_context()
+    bb_ctx   = _bb_read_context(query=query)
     response = _aegis_synthesize(query, "", context=bb_ctx)
     # Only inject the AI portion back (before any "---" data divider)
     ai_part  = response.split("\n\n---\n")[0].strip()

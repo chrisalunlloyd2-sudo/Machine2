@@ -1,0 +1,73 @@
+# ── Maven ────────────────────────────────────────────────
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# ── Java ──────────────────────────────────────────────────
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+hs_err_pid*
+replay_pid*
+
+# ── JavaFX ────────────────────────────────────────────────
+*.jfxpack
+
+# ── IDEs ──────────────────────────────────────────────────
+.idea/
+*.iml
+*.ipr
+*.iws
+.classpath
+.project
+.settings/
+.factorypath
+*.code-workspace
+.vscode/
+nbactions.xml
+nb-configuration.xml
+
+# ── Logs ──────────────────────────────────────────────────
+*.log
+logs/
+
+# ── Secrets ───────────────────────────────────────────────
+*.env
+*.key
+*.pem
+application-local.properties
+application-secret.properties
+*-credentials.properties
+
+# ── OS ────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+*.lnk
+$RECYCLE.BIN/
+
+# ── Temp ──────────────────────────────────────────────────
+*.tmp
+*.bak
+*.swp
+*.orig
+~*
+
+# ── Archives ──────────────────────────────────────────────
+*.7z
+*.zip
+*.tar.gz
+*.rar
+
+# ── Viper-specific ────────────────────────────────────────
+HEARTBEAT.json
+*.session

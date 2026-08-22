@@ -5,7 +5,6 @@ __pycache__/
 *.log
 .gemini/
 ArchivalMoe/
-MoeGUI/
 moe-kai-skill/
 viper-package/
 viper-scripts/

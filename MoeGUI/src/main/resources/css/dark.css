@@ -1,0 +1,274 @@
+/* Moe GUI — Cyberpunk Neon Theme (blueprint steps 673-700) */
+
+/* ── ROOT ─────────────────────────────────────────────────────────────────── */
+.root {
+    -fx-base:                    #050a05;
+    -fx-background:              #050a05;
+    -fx-control-inner-background:#0a110a;
+    -fx-text-fill:               #00ff41;
+    -fx-font-family:             "Consolas", "Courier New", "Monospace";
+    -fx-font-size:               12px;
+    -fx-accent:                  #00ff41;
+}
+
+.root-split {
+    -fx-background-color: #050a05;
+    -fx-border-color:     #00ff41;
+    -fx-border-width:     0;
+}
+
+/* ── SIDEBAR ──────────────────────────────────────────────────────────────── */
+.sidebar {
+    -fx-background-color: #020702;
+    -fx-border-color:     #00ff41;
+    -fx-border-width:     0 1 0 0;
+    -fx-effect:           dropshadow(gaussian, #00ff4155, 8, 0.3, 2, 0);
+}
+
+.sidebar-header {
+    -fx-text-fill:   #00ff41;
+    -fx-font-size:   9px;
+    -fx-font-weight: bold;
+    -fx-padding:     5 0 3 0;
+}
+
+.sidebar-list {
+    -fx-background-color: #020702;
+    -fx-text-fill:        #99ddaa;
+    -fx-font-size:        11px;
+    -fx-border-color:     transparent;
+}
+
+.sidebar-list .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill:        #88cc99;
+    -fx-padding:          4 8;
+    -fx-border-color:     transparent transparent #0a1f0a transparent;
+    -fx-border-width:     0 0 1 0;
+}
+
+.sidebar-list .list-cell:selected {
+    -fx-background-color: #001a00;
+    -fx-text-fill:        #00ff41;
+    -fx-border-color:     #00ff41;
+    -fx-border-width:     0 0 0 2;
+    -fx-effect:           dropshadow(gaussian, #00ff4188, 6, 0.4, 0, 0);
+}
+
+.sidebar-list .list-cell:hover {
+    -fx-background-color: #0a150a;
+    -fx-text-fill:        #aaffbb;
+}
+
+/* ── AGENT + DB STATUS ────────────────────────────────────────────────────── */
+.agent-label {
+    -fx-text-fill:   #00ff41;
+    -fx-font-size:   10px;
+    -fx-font-weight: bold;
+    -fx-effect:      dropshadow(gaussian, #00ff4188, 4, 0.3, 0, 0);
+}
+
+.db-status { -fx-spacing: 1; }
+.db-row    { -fx-text-fill: #336633; -fx-font-size: 9px; }
+
+/* ── CHAT AREA ────────────────────────────────────────────────────────────── */
+.center-pane {
+    -fx-background-color: #050a05;
+}
+
+.chat-scroll {
+    -fx-background-color:   #050a05;
+    -fx-background:         #050a05;
+    -fx-border-color:       transparent;
+}
+
+.chat-box {
+    -fx-background-color: #050a05;
+    -fx-padding:          8;
+}
+
+/* Message bubbles */
+.msg-bubble {
+    -fx-background-color:  #080d08;
+    -fx-background-radius: 3;
+    -fx-border-color:      #0d1f0d;
+    -fx-border-radius:     3;
+    -fx-border-width:      1;
+    -fx-padding:           6 10;
+}
+
+.msg-role {
+    -fx-text-fill:   #225522;
+    -fx-font-size:   9px;
+    -fx-font-weight: bold;
+}
+
+/* User messages — cyan tint */
+.user-msg {
+    -fx-text-fill:  #00ff41;
+    -fx-font-size:  12px;
+}
+
+/* Moe messages — neon green */
+.moe-msg {
+    -fx-text-fill:  #00ff41;
+    -fx-font-size:  12px;
+    -fx-effect:     dropshadow(gaussian, #00ff4133, 3, 0.2, 0, 0);
+}
+
+/* ── INPUT BAR ────────────────────────────────────────────────────────────── */
+.input-bar {
+    -fx-background-color: #020702;
+    -fx-border-color:     #00ff41;
+    -fx-border-width:     1 0 0 0;
+    -fx-padding:          6 10 10 10;
+}
+
+.input-field {
+    -fx-background-color:  #0a110a;
+    -fx-text-fill:         #00ff41;
+    -fx-border-color:      #1a4a1a;
+    -fx-border-radius:     2;
+    -fx-background-radius: 2;
+    -fx-prompt-text-fill:  #225522;
+    -fx-font-size:         13px;
+    -fx-padding:           8 12;
+    -fx-caret-color:       #00ff41;
+}
+
+.input-field:focused {
+    -fx-border-color: #00ff41;
+    -fx-effect:       dropshadow(gaussian, #00ff4166, 8, 0.4, 0, 0);
+}
+
+/* SEND button — glowing green */
+.send-btn {
+    -fx-background-color: #001a00;
+    -fx-text-fill:        #00ff41;
+    -fx-border-color:     #00ff41;
+    -fx-border-radius:    2;
+    -fx-background-radius:2;
+    -fx-font-weight:      bold;
+    -fx-font-size:        12px;
+    -fx-padding:          8 18;
+    -fx-cursor:           hand;
+    -fx-effect:           dropshadow(gaussian, #00ff4188, 6, 0.5, 0, 0);
+}
+.send-btn:hover {
+    -fx-background-color: #003300;
+    -fx-effect:           dropshadow(gaussian, #00ff41bb, 10, 0.6, 0, 0);
+}
+.send-btn:disabled {
+    -fx-background-color: #0a0a0a;
+    -fx-text-fill:        #224422;
+    -fx-border-color:     #224422;
+    -fx-effect:           none;
+}
+
+/* CLEAR button — dim red */
+.clear-btn {
+    -fx-background-color: #110000;
+    -fx-text-fill:        #ff4444;
+    -fx-border-color:     #660000;
+    -fx-border-radius:    2;
+    -fx-background-radius:2;
+    -fx-padding:          8 12;
+    -fx-cursor:           hand;
+}
+.clear-btn:hover {
+    -fx-background-color: #220000;
+    -fx-border-color:     #ff4444;
+}
+
+/* ── STATUS BAR ───────────────────────────────────────────────────────────── */
+.status-bar {
+    -fx-background-color: #020302;
+    -fx-border-color:     #00ff41;
+    -fx-border-width:     1 0 0 0;
+    -fx-padding:          3 10;
+}
+
+.bridge-status {
+    -fx-font-size:   10px;
+    -fx-text-fill:   #00ff41;
+    -fx-font-family: "Consolas", "Monospace";
+}
+
+/* ── SEPARATOR ────────────────────────────────────────────────────────────── */
+.separator .line {
+    -fx-border-color: #0d1f0d;
+    -fx-border-width: 1;
+}
+
+/* ── SCROLLBARS ───────────────────────────────────────────────────────────── */
+.scroll-bar {
+    -fx-background-color: #050a05;
+    -fx-opacity: 0.7;
+}
+.scroll-bar .thumb {
+    -fx-background-color:  #00ff4166;
+    -fx-background-radius: 2;
+}
+.scroll-bar .thumb:hover {
+    -fx-background-color: #00ff41aa;
+}
+
+/* ── TAB PANE ─────────────────────────────────────────────────────────────── */
+.tab-pane { -fx-background-color: #050a05; }
+.tab-pane .tab-header-area { -fx-background-color: #020702; }
+.tab-pane .tab-header-background { -fx-background-color: #020702; }
+.tab {
+    -fx-background-color: #020702;
+    -fx-border-color:     #00ff41;
+    -fx-border-width:     0 1 0 0;
+    -fx-padding:          4 12;
+}
+.tab:selected {
+    -fx-background-color: #001a00;
+    -fx-border-color:     #00ff41;
+    -fx-border-width:     0 0 2 0;
+}
+.tab .tab-label {
+    -fx-text-fill:   #448844;
+    -fx-font-family: "Consolas";
+    -fx-font-size:   11px;
+    -fx-font-weight: bold;
+}
+.tab:selected .tab-label { -fx-text-fill: #00ff41; }
+
+/* ── SIDEBAR panels in Performance tab ────────────────────────────────────── */
+.sidebar {
+    -fx-background-color: #020a02;
+    -fx-border-color:     #1a4a1a;
+    -fx-border-width:     1;
+    -fx-border-radius:    2;
+}
+.scroll-bar .track {
+    -fx-background-color: #020702;
+}
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 2;
+}
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-background-color: #00ff4166;
+    -fx-shape: " ";
+    -fx-padding: 2 4;
+}
+
+/* ── TOOLTIP ──────────────────────────────────────────────────────────────── */
+.tooltip {
+    -fx-background-color: #020702;
+    -fx-text-fill:        #00ff41;
+    -fx-border-color:     #00ff41;
+    -fx-border-width:     1;
+    -fx-font-size:        11px;
+}
+
+/* ── SPLIT PANE DIVIDER ───────────────────────────────────────────────────── */
+.split-pane > .split-pane-divider {
+    -fx-background-color: #00ff41;
+    -fx-padding:          0 1;
+}

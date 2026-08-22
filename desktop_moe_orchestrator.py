@@ -55,6 +55,11 @@ except ImportError:
     blueprint_orchestrator = None
 
 try:
+    import registry as _reg; _reg.heartbeat()
+except Exception:
+    pass
+
+try:
     import aegis_memory as _mem
     _MEM_OK = True
 except ImportError:

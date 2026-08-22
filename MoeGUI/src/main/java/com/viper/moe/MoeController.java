@@ -53,8 +53,9 @@ public class MoeController {
     private Timeline               thinkingTimer  = null;
     private final AtomicInteger    elapsedSecs    = new AtomicInteger(0);
 
-    // Ship-to-notes: track last Moe response for one-click save
+    // Ship-to-notes: track full conversation for one-click save
     private String                 lastMoeResponse  = null;
+    private final List<String[]>   msgBuffer        = new ArrayList<>(); // [role, text] pairs, capped at 40
     private Button                 shipBtn;
     private ViperNotesController   notesController  = null;
 
@@ -345,6 +346,12 @@ public class MoeController {
             if (shipBtn != null) shipBtn.setDisable(false);
         }
 
+        // Buffer all non-system messages for ship-to-notes (full conversation)
+        if (!"gui_data".equalsIgnoreCase(text)) {
+            msgBuffer.add(new String[]{role, text});
+            if (msgBuffer.size() > 40) msgBuffer.remove(0);
+        }
+
         if (persist && !"MOE".equals(role) || persist && "MOE".equals(role)) {
             persistMessage(role, text);
         }
@@ -385,33 +392,42 @@ public class MoeController {
 
     private void shipToNotes() {
         if (lastMoeResponse == null || lastMoeResponse.isBlank()) return;
+        // Build full conversation content from buffer
+        StringBuilder sb = new StringBuilder();
+        for (String[] msg : msgBuffer) {
+            sb.append(msg[0]).append(":\n").append(msg[1]).append("\n\n");
+        }
+        String fullContent = sb.toString().trim();
+        if (fullContent.isEmpty()) fullContent = lastMoeResponse;
+        // Title = first 80 chars of last Moe response
         String title = lastMoeResponse.length() > 80
             ? lastMoeResponse.substring(0, 80) + "…" : lastMoeResponse;
 
         // Prefer ViperNotesController (persists in notes.db with notebooks)
         if (notesController != null) {
-            notesController.ingestConversation(title, lastMoeResponse);
+            notesController.ingestConversation(title, fullContent);
             if (shipBtn != null) { shipBtn.setText("✓ SAVED"); shipBtn.setDisable(true); }
             return;
         }
 
         // Fallback: write directly to harvested_notes in telemetry.db
+        final String savedContent = fullContent;
         Thread.ofVirtual().start(() -> {
             try (Connection con = openDb()) {
                 con.createStatement().execute(
                     "CREATE TABLE IF NOT EXISTS harvested_notes (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     "hash TEXT UNIQUE, machine TEXT, source TEXT, category TEXT, title TEXT, " +
                     "content TEXT, created_at TEXT)");
-                String hash = Integer.toHexString(lastMoeResponse.hashCode());
+                String hash = Integer.toHexString(savedContent.hashCode());
                 PreparedStatement ps = con.prepareStatement(
                     "INSERT OR IGNORE INTO harvested_notes (hash,machine,source,category,title,content,created_at) " +
                     "VALUES (?,?,?,?,?,?,?)");
                 ps.setString(1, hash);
-                ps.setString(2, "alice");
+                ps.setString(2, "viper");
                 ps.setString(3, "MoeGUI chat");
                 ps.setString(4, "chat");
                 ps.setString(5, title);
-                ps.setString(6, lastMoeResponse);
+                ps.setString(6, savedContent);
                 ps.setString(7, Instant.now().toString());
                 ps.executeUpdate();
                 Platform.runLater(() -> {

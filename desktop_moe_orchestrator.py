@@ -508,8 +508,8 @@ def _aegis_synthesize(question: str, data: str, context: str = "") -> str:
                          data=body, headers={"Content-Type": "application/json"}, method="POST")
         with _req.urlopen(r, timeout=60) as resp:
             ai_text = json.loads(resp.read().decode()).get("response", "").strip()
-    except Exception:
-        ai_text = ""
+    except Exception as _e:
+        ai_text = "Model unavailable — check Ollama is running (ollama list)." if not data.strip() else ""
     # Persist to day-folder (same pattern as sophia_loop) + overwrite last-reply pointer
     try:
         ts      = datetime.utcnow()
@@ -864,7 +864,13 @@ def main():
                     answer, agent_name = process_query(query)
                     sys.stdout.write(json.dumps({"answer": answer, "agent": agent_name, "done": True}) + "\n")
             except Exception as e:
-                sys.stdout.write(json.dumps({"answer": f"[Orchestrator error: {e}]", "done": True}) + "\n")
+                # Never show raw HTTP status text — always human-readable
+                err_str = str(e)
+                if "500" in err_str or "Internal Server" in err_str or "HTTP Error" in err_str:
+                    msg = "Model busy — try again in a moment."
+                else:
+                    msg = f"Moe error: {err_str[:120]}"
+                sys.stdout.write(json.dumps({"answer": msg, "done": True}) + "\n")
             sys.stdout.flush()
 
 if __name__ == "__main__":

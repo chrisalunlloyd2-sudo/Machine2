@@ -401,20 +401,187 @@ def git_sync_agent(query: str) -> str:
         return f"[Routing] Routed to GitHubAgent. Committing modified scripts... Git Sync Agent failed: {e}"
 
 def voice_integration_agent(query: str) -> str:
-    """Voice integration agent."""
-    return "Voice Integration: Talon voice commands mapping loaded successfully."
+    """Check if Talon voice process is running and report real status."""
+    import subprocess as _sp
+    talon_running = False
+    try:
+        out = _sp.run(["tasklist", "/FI", "IMAGENAME eq talon.exe", "/NH"],
+                      capture_output=True, text=True, timeout=5)
+        talon_running = "talon.exe" in out.stdout.lower()
+    except Exception:
+        pass
+    status = "RUNNING" if talon_running else "NOT DETECTED"
+    data = f"Talon voice process: {status}. Query: {query}"
+    _bb_inject_chat("user", query)
+    bb_ctx = _bb_read_context(query=query)
+    return _aegis_synthesize(query, data, context=bb_ctx)
 
 def aider_bridge_agent(query: str) -> str:
-    """Aider coding agent."""
-    return "Aider Bridge: Aider environment initialized. Code assistant is ready."
+    """Check aider availability and recent code changes."""
+    import subprocess as _sp
+    parts = []
+    try:
+        r = _sp.run(["aider", "--version"], capture_output=True, text=True, timeout=5)
+        parts.append(f"aider version: {r.stdout.strip() or r.stderr.strip()}")
+    except FileNotFoundError:
+        parts.append("aider: not found in PATH")
+    except Exception as e:
+        parts.append(f"aider check error: {e}")
+    # Show recent git changes in gan-otg-db
+    try:
+        r = _sp.run(["git", "log", "--oneline", "-5"], capture_output=True, text=True,
+                    cwd=r"C:\Users\viper\gan-otg-db", timeout=8)
+        parts.append("Recent commits:\n" + (r.stdout.strip() or "none"))
+    except Exception:
+        pass
+    data = "\n".join(parts)
+    _bb_inject_chat("user", query)
+    bb_ctx = _bb_read_context(query=query)
+    return _aegis_synthesize(query, data, context=bb_ctx)
 
 def search_research_agent(query: str) -> str:
-    """Web crawler and search assistant."""
-    return "Search/Research: Online research database queried. Telemetry search results cache: active."
+    """Search local project catalog and squiggly knowledge base."""
+    CATALOG = r"C:\Viper\databases\squiggly\catalog_export.json"
+    parts = []
+    q_lower = query.lower()
+    try:
+        with open(CATALOG, encoding="utf-8") as f:
+            catalog = json.load(f)
+        projects = catalog.get("projects", [])
+        matches = [p for p in projects if
+                   q_lower in (p.get("name","") + p.get("intent","")).lower()][:5]
+        if matches:
+            parts.append("Matching projects:")
+            for p in matches:
+                parts.append(f"  {p['name']} [{p.get('lang','?')}] {round(p.get('completion',0)*100)}% — {(p.get('intent',''))[:80]}")
+        else:
+            parts.append(f"No catalog matches for '{query[:40]}'. {len(projects)} projects indexed.")
+    except Exception as e:
+        parts.append(f"Catalog read error: {e}")
+    # Also search squiggly bdi_inject for recent events matching query
+    INJECT = r"C:\Viper\databases\squiggly\bdi_inject.jsonl"
+    try:
+        hits = []
+        with open(INJECT, "rb") as f:
+            f.seek(max(0, os.path.getsize(INJECT) - 16384))
+            for raw in f:
+                try:
+                    ev = json.loads(raw)
+                    if q_lower in json.dumps(ev).lower():
+                        hits.append(ev)
+                except Exception:
+                    pass
+        if hits:
+            parts.append(f"Squiggly events matching query ({len(hits)} found, showing last 3):")
+            for ev in hits[-3:]:
+                parts.append(f"  {ev.get('type','?')} {ev.get('ts','')[:16]} {ev.get('path','')[-40:]}")
+    except Exception:
+        pass
+    data = "\n".join(parts) if parts else "No local results found."
+    _bb_inject_chat("user", query)
+    bb_ctx = _bb_read_context(query=query)
+    return _aegis_synthesize(query, data, context=bb_ctx)
 
 def memory_episodic_agent(query: str) -> str:
-    """Recall decisions and memory."""
-    return "Episodic Memory: Recalled previous session. Swarm sync completed successfully."
+    """Real episodic recall: nearest-neighbour memory + blackboard facts."""
+    parts = []
+    # 1. Nearest-neighbour KV recall from aegis_memory
+    if _MEM_OK:
+        try:
+            hits = _mem.recall(query, top_k=5)
+            if hits:
+                parts.append("Episodic memory recall:")
+                for key, text in hits:
+                    parts.append(f"  [{key}] {text[:120]}")
+        except Exception as e:
+            parts.append(f"Memory recall error: {e}")
+    else:
+        parts.append("aegis_memory unavailable.")
+    # 2. Blackboard facts related to query
+    try:
+        with open(BB_PATH, encoding="utf-8") as f:
+            bb = json.load(f)
+        facts = bb.get("facts", {})
+        q_lower = query.lower()
+        relevant = {k: v for k, v in facts.items()
+                    if any(word in k.lower() for word in q_lower.split()[:4])}
+        if relevant:
+            parts.append("Blackboard facts related to query:")
+            for k, v in list(relevant.items())[:5]:
+                parts.append(f"  {k}: {str(v)[:80]}")
+        else:
+            priority = {k: v for k, v in facts.items() if k.startswith("last.") or k.startswith("chat.")}
+            parts.append("Recent blackboard state:")
+            for k, v in list(priority.items())[:5]:
+                parts.append(f"  {k}: {str(v)[:80]}")
+    except Exception as e:
+        parts.append(f"Blackboard read error: {e}")
+    data = "\n".join(parts) if parts else "No episodic data available."
+    _bb_inject_chat("user", query)
+    bb_ctx = _bb_read_context(query=query)
+    return _aegis_synthesize(query, data, context=bb_ctx)
+
+def bdi_status_agent(query: str) -> str:
+    """BDI/FSM/sophia real status from blackboard + loop_state."""
+    LOOP_STATE = r"C:\Viper\databases\sophia\loop_state.json"
+    SOPHIA_LOG = r"C:\Viper\logs\sophia_loop.jsonl"
+    parts = []
+    # Sophia loop state
+    try:
+        with open(LOOP_STATE, encoding="utf-8") as f:
+            ls = json.load(f)
+        import time as _t
+        since = _t.time() - ls.get("last_ts", 0)
+        parts.append(f"Sophia loop: {ls.get('ticks',0)} ticks, FSM={ls.get('fsm_state','?')}, "
+                     f"errors={ls.get('errors',0)}, last tick {round(since)}s ago")
+    except Exception as e:
+        parts.append(f"Loop state error: {e}")
+    # Blackboard
+    try:
+        with open(BB_PATH, encoding="utf-8") as f:
+            bb = json.load(f)
+        facts = bb.get("facts", {})
+        parts.append(f"Blackboard: {len(facts)} facts, {len(bb.get('events',[]))} events")
+        # Key beliefs
+        key_facts = {k: v for k, v in facts.items() if k.startswith("last.")}
+        for k, v in list(key_facts.items())[:5]:
+            parts.append(f"  {k}: {str(v)[:80]}")
+        # Plan fitness
+        fitness = sorted(bb.get("fitness", {}).items(), key=lambda x: -x[1])[:4]
+        if fitness:
+            parts.append("Top plan fitness:")
+            for plan, score in fitness:
+                parts.append(f"  {plan}: {round(score*100)}%")
+    except Exception as e:
+        parts.append(f"Blackboard error: {e}")
+    # Last sophia log entry
+    try:
+        lines = []
+        with open(SOPHIA_LOG, "rb") as f:
+            f.seek(max(0, os.path.getsize(SOPHIA_LOG) - 4096))
+            for raw in f:
+                try:
+                    lines.append(json.loads(raw))
+                except Exception:
+                    pass
+        ticks = [l for l in lines if l.get("action") == "tick"]
+        if ticks:
+            last = ticks[-1]
+            parts.append(f"Last tick: {last.get('triples',0)} triples, perf={last.get('performative','?')}, "
+                         f"btree={last.get('btree_action','none')}, ban={last.get('ban_verdict','?')}, "
+                         f"infer={last.get('infer_s','?')}s")
+            if last.get("response_preview"):
+                parts.append(f"AEGIS said: {last['response_preview'][:120]}")
+    except Exception as e:
+        parts.append(f"Sophia log error: {e}")
+    data = "\n".join(parts)
+    _bb_inject_chat("user", query)
+    bb_ctx = _bb_read_context(query=query)
+    return _aegis_synthesize(query, data, context=bb_ctx)
+
+def sophia_agent(query: str) -> str:
+    """Sophia/AEGIS status and last inference output."""
+    return bdi_status_agent(query)
 
 def policy_enforcement_agent(query: str) -> str:
     """Enforces SOP-000, SOP-001, SOP-002, SOP-003, and DePIN gating."""
@@ -481,32 +648,65 @@ def _aegis_synthesize(question: str, data: str, context: str = "") -> str:
     Prompt ends mid-sentence so tinyllama completes it rather than copying the template.
     context = optional blackboard facts prepended before data."""
     import urllib.request as _req
+    # THIS is the copy MoeGUI actually runs -- PythonBridge.MOE_SERVER hardcodes
+    # this path, not C:\Viper\scripts. Edits made only to the scripts copy never
+    # reach the chat window.
+    #
+    # "2-4 sentences" capped replies harder than num_predict ever did -- the model
+    # stopped on its own well inside the token budget, so raising num_predict alone
+    # would have changed nothing.
     system = (
-        "You are AEGIS — elite local AI on the Viper stack. "
-        "Axioms: nothing runs for free; never delete only merge and advance; "
-        "record mistakes; reduce ambiguity; soak before ship; local results only. "
-        "TinyLlama 28tok/s on Xeon, 15tok/s on Intel — bandwidth law confirmed. "
-        "Be direct and factual. Longer answers are better than shorter ones."
+        "You are AEGIS, the Viper local AI. Answer factually and in depth. "
+        "Explain your reasoning, name the specific files, tables or numbers involved, "
+        "and say what you are unsure about rather than padding. "
+        "Viper axioms: never delete; record mistakes; reduce ambiguity; soak before ship."
     )
-    # Build body: context → data → question
-    parts = [p for p in [context, data] if p.strip()]
+    parts = [p for p in [context, data] if p and p.strip()]
     body_text = "\n\n".join(parts)
     if body_text.strip():
-        prompt = f"{body_text[:700]}\n\nBased on the above, {question[:120].lower().rstrip('.')}: "
+        # QUESTION FIRST, then the facts. With the facts first this prompt read as
+        # a document the model was being asked to continue, and at 2400 chars a
+        # 1.1b took the easy continuation: it copied the block straight back,
+        # typos and all. Leading with the question gives it the task before it
+        # ever sees text worth copying.
+        #
+        # The system text is NOT repeated here -- it is already passed in the
+        # `system` field below, and having it twice made the prompt look even more
+        # like a template to be echoed.
+        #
+        # 2400, was 600. The axiom string alone is 323 chars and is prepended, so
+        # the old budget left 277 chars of actual data -- yet the FULL data block
+        # is appended under the reply at the end of this function. The result read
+        # as though AEGIS had analysed a whole git log when it had seen roughly two
+        # lines of it. Asking for longer replies off that prompt would only have
+        # bought more invention.
+        prompt = (f"Question: {question[:400]}\n\n"
+                  f"Known facts:\n{body_text[:2400]}\n\n"
+                  f"Now answer the question in your own words, using those facts.\n"
+                  f"Answer:")
     else:
-        prompt = f"{question}: "
+        prompt = f"Question: {question[:400]}\n\nAnswer:"
     body = json.dumps({
         "model": "tinyllama:1.1b",
         "system": system,
         "prompt": prompt,
         "stream": False,
         "keep_alive": 0,
-        "options": {"num_gpu": 0, "num_predict": 350, "num_thread": 4},
+        # num_ctx pinned rather than left to the default: when prompt + num_predict
+        # overflows the window Ollama silently drops the FRONT of the prompt, which
+        # is where the axioms live. Budget: ~250 (system) + 2400 (data) + 400 (Q)
+        # is roughly 870 tokens, + 900 predict = ~1770, inside 2048 with headroom.
+        "options": {"num_gpu": 0, "num_predict": 900, "num_thread": 4, "num_ctx": 2048},
     }).encode()
     try:
         r = _req.Request("http://127.0.0.1:11434/api/generate",
                          data=body, headers={"Content-Type": "application/json"}, method="POST")
-        with _req.urlopen(r, timeout=60) as resp:
+        # 180s, raised with num_predict. This box generates at roughly 15 tok/s on
+        # CPU, so 900 tokens is about a minute of generation; leaving the timeout at
+        # 60 would have made replies WORSE, not longer -- stream is False, so a
+        # request that trips the timeout throws away every token it had produced and
+        # falls through to the empty-reply path.
+        with _req.urlopen(r, timeout=180) as resp:
             ai_text = json.loads(resp.read().decode()).get("response", "").strip()
     except Exception as _e:
         ai_text = "Model unavailable — check Ollama is running (ollama list)." if not data.strip() else ""
@@ -646,63 +846,39 @@ AGENT_ROUTING_MAP = {
     "aider_bridge_agent": aider_bridge_agent,
     "search_research_agent": search_research_agent,
     "memory_episodic_agent": memory_episodic_agent,
-    "policy_enforcement_agent": policy_enforcement_agent
+    "policy_enforcement_agent": policy_enforcement_agent,
+    "bdi_status_agent": bdi_status_agent,
+    "sophia_agent": sophia_agent,
 }
 
 # --- LLM and Fallback Classification ---
 
 def get_agent_from_llm(query: str) -> str:
-    """Attempts to classify agent using local LLM endpoint (Tier 2)."""
-    url = "http://localhost:8765/v1/chat/completions"
-    system_prompt = (
-        f"You are an intent classifier. Classify the user query into exactly one of these 11 agents: "
-        f"{', '.join(AGENTS_LIST)}. "
-        f"Respond with only the agent name, nothing else."
+    """Tier 2: tinyllama:1.1b intent classification via Ollama /api/generate."""
+    all_agents = AGENTS_LIST + ["bdi_status_agent", "sophia_agent"]
+    prompt = (
+        f"Classify this query into exactly one agent name. "
+        f"Agents: {', '.join(all_agents)}. "
+        f"Query: {query[:100]}\nAgent name only:"
     )
-    headers = {"Content-Type": "application/json"}
-    data = {
-        "model": "local",
-        "messages": [
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": query}
-        ],
-        "temperature": 0.0,
-        "max_tokens": 30
-    }
-    
-    import urllib.request
+    body = json.dumps({
+        "model": "tinyllama:1.1b",
+        "prompt": prompt,
+        "stream": False,
+        "keep_alive": 0,
+        "options": {"num_gpu": 0, "num_predict": 20, "num_thread": 4},
+    }).encode()
+    import urllib.request as _ureq
     try:
-        req = urllib.request.Request(url, data=json.dumps(data).encode('utf-8'), headers=headers)
-        with urllib.request.urlopen(req, timeout=1.0) as response:
-            res = json.loads(response.read().decode('utf-8'))
-            answer = res['choices'][0]['message']['content'].strip()
-            for agent in AGENTS_LIST:
-                if agent in answer:
-                    return agent
+        req = _ureq.Request("http://localhost:11434/api/generate",
+                            data=body, headers={"Content-Type": "application/json"}, method="POST")
+        with _ureq.urlopen(req, timeout=8) as resp:
+            answer = json.loads(resp.read().decode()).get("response", "").strip().lower()
+        for agent in all_agents:
+            if agent in answer:
+                return agent
     except Exception:
         pass
-        
-    # Alternate Ollama local endpoint
-    ollama_url = "http://localhost:11434/api/chat"
-    ollama_data = {
-        "model": "qwen2.5-coder:0.5b",
-        "messages": [
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": query}
-        ],
-        "stream": False
-    }
-    try:
-        req = urllib.request.Request(ollama_url, data=json.dumps(ollama_data).encode('utf-8'), headers=headers)
-        with urllib.request.urlopen(req, timeout=1.0) as response:
-            res = json.loads(response.read().decode('utf-8'))
-            answer = res['message']['content'].strip()
-            for agent in AGENTS_LIST:
-                if agent in answer:
-                    return agent
-    except Exception:
-        pass
-        
     return None
 
 def get_agent_from_ask_kai(query: str) -> str:
@@ -727,11 +903,11 @@ def keyword_classify(query: str) -> str:
 def select_agent(query: str) -> str:
     """Selects the correct agent using the routing rules."""
     query_lower = query.lower()
-    
+
     # Tier 1: Deterministic routing (exact keywords / pattern matching)
     if "intelligence report" in query_lower or "full report" in query_lower:
         return "intelligence_report_agent"
-    if "show cpu load" in query_lower:
+    if "show cpu load" in query_lower or "cpu stats" in query_lower:
         return "systems_info_agent"
     if "commit modified scripts" in query_lower:
         return "git_sync_agent"
@@ -739,21 +915,28 @@ def select_agent(query: str) -> str:
         return "schema_migration_agent"
     if "adk" in query_lower:
         return "adk_coordinator_agent"
+    # BDI / FSM / sophia / blackboard / AEGIS status — always route to bdi_status_agent
+    if any(k in query_lower for k in [
+            "bdi", "fsm", "blackboard", "sophia", "aegis status", "tick", "performative",
+            "kqml", "plan fitness", "btree", "ban verdict", "triples", "squiggly status",
+            "loop state", "agent status", "what is active", "what's active"]):
+        return "bdi_status_agent"
+    # Episodic memory / recall
+    if any(k in query_lower for k in ["remember", "recall", "episodic", "last time", "decided", "history", "memory"]):
+        return "memory_episodic_agent"
+    # Search / catalog
+    if any(k in query_lower for k in ["search", "find project", "look up", "catalog", "what project"]):
+        return "search_research_agent"
     # Short conversational queries → direct AEGIS
     if len(query_lower) < 80 and not any(k in query_lower for k in
-            ["git","file","excel","database","schema","voice","search","memory","policy"]):
+            ["git", "file", "excel", "database", "schema", "voice", "aider", "policy"]):
         return "aegis_direct_agent"
-    
-    # Tier 2: Try Local LLM / Ollama
+
+    # Tier 2: tinyllama intent classification (8s timeout)
     agent = get_agent_from_llm(query)
-    if agent:
+    if agent and agent in AGENT_ROUTING_MAP:
         return agent
-        
-    # Tier 3: Try Ask_Kai fallback
-    agent = get_agent_from_ask_kai(query)
-    if agent:
-        return agent
-        
+
     # Fallback to keyword classification
     return keyword_classify(query)
 

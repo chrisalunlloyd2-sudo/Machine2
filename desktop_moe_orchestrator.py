@@ -710,6 +710,21 @@ def _aegis_synthesize(question: str, data: str, context: str = "") -> str:
             ai_text = json.loads(resp.read().decode()).get("response", "").strip()
     except Exception as _e:
         ai_text = "Model unavailable — check Ollama is running (ollama list)." if not data.strip() else ""
+    # Check every figure in the reply against the text AEGIS was actually given.
+    # At 1.1b with num_predict 900 the replies got longer AND more confidently
+    # wrong -- a live reply reported 184.2 MB against a real 1424.2 MB. The
+    # unsupported figure is flagged under the reply, never scrubbed out of it:
+    # a silently corrected reply reads as fully trustworthy and hides the drift.
+    # Single module, imported from C:\Viper\scripts -- not a second copy.
+    if ai_text:
+        try:
+            import sys as _sys
+            if r"C:\Viper\scripts" not in _sys.path:
+                _sys.path.insert(0, r"C:\Viper\scripts")
+            import aegis_grounding as _gr
+            ai_text = _gr.annotate(ai_text, f"{question}\n{context}\n{data}")
+        except Exception:
+            pass  # grounding is a check on the answer, never a reason to lose one
     # Persist to day-folder (same pattern as sophia_loop) + overwrite last-reply pointer
     try:
         ts      = datetime.utcnow()

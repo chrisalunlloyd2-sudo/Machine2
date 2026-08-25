@@ -78,6 +78,11 @@ public class ViperNotesController {
 
         noteTable.getSelectionModel().selectedItemProperty().addListener(
             (obs, old, item) -> { if (item != null) loadNoteContent(item.id()); });
+        // Also fire on every click so re-clicking an already-selected row still loads content
+        noteTable.setOnMouseClicked(e -> {
+            NoteItem sel = noteTable.getSelectionModel().getSelectedItem();
+            if (sel != null && sel.id() > 0) loadNoteContent(sel.id());
+        });
 
         Button newNoteBtn  = toolBtn("+ NOTE",  "#001a33", "#00cfff");
         Button delBtn      = toolBtn("DELETE",  "#330000", "#ff4444");
@@ -204,7 +209,12 @@ public class ViperNotesController {
                 var rs = con.createStatement().executeQuery(
                     "SELECT content FROM notes WHERE id=" + noteId);
                 String content = rs.next() ? rs.getString(1) : "";
-                Platform.runLater(() -> viewer.setText(content != null ? content : ""));
+                final String text = content != null ? content : "(empty)";
+                Platform.runLater(() -> {
+                    viewer.setText(text);
+                    viewer.positionCaret(0);
+                    statusLabel.setText("Note id=" + noteId + "  (" + text.length() + " chars)");
+                });
             } catch (Exception e) {
                 Platform.runLater(() -> viewer.setText("Error: " + e.getMessage()));
             }

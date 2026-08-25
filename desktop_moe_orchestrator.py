@@ -170,6 +170,45 @@ KEYWORDS_MAP = {
     "policy_enforcement_agent": ["policy", "sop", "enforcement", "rules", "guardrails", "never delete"]
 }
 
+# --- Phonetic routing (Chris, 2026-08-24: "the bot I made worked because I used
+# --- phonetics, the core structure applied across all domains").
+#
+# Substring matching was the reason routing felt broken. "cpu stats" was a
+# literal check, so "cpu status" missed it. "sophia" missed "sofia". Every
+# trigger below was an exact-spelling test against text typed one-handed on a
+# phone. Phonetic keys match the SOUND, so the spelling stops mattering.
+#
+# It runs BEFORE the LLM and costs no VRAM and no model call. That ordering is
+# the point: deterministic routing first, model only for what is genuinely left
+# over. It also means a bad route is reproducible, and therefore fixable.
+try:
+    import phonetics as _ph          # C:\Viper\scripts, on sys.path via viper_paths.pth
+except Exception:
+    _ph = None
+
+# Extra triggers the KEYWORDS_MAP never had. These are the words she actually
+# uses, and they are exactly the proper nouns embeddings are worst at.
+_PHON_EXTRA = {
+    "bdi_status_agent": ["bdi", "fsm", "sophia", "blackboard", "kqml", "tick",
+                         "performative", "btree", "squiggly", "belief",
+                         "intention", "aegis"],
+    "systems_info_agent": ["hive", "cell", "hexeract", "heartbeat", "healer",
+                           "daemon", "supervisor", "sitter", "vram", "gpu"],
+    "search_research_agent": ["find project", "catalog", "look up", "locate"],
+    "memory_episodic_agent": ["episodic", "recall", "remember", "yesterday"],
+    "git_sync_agent": ["repo", "branch", "stage", "diff"],
+}
+
+def _build_phonetic_matcher():
+    if _ph is None:
+        return None
+    spec = {a: list(kw) for a, kw in KEYWORDS_MAP.items()}
+    for agent, words in _PHON_EXTRA.items():
+        spec.setdefault(agent, []).extend(words)
+    return _ph.Matcher(spec)
+
+PHONETIC = _build_phonetic_matcher()
+
 # --- Specialist Agent Implementations ---
 
 def systems_info_agent(query: str) -> str:
@@ -942,7 +981,31 @@ def select_agent(query: str) -> str:
     # Search / catalog
     if any(k in query_lower for k in ["search", "find project", "look up", "catalog", "what project"]):
         return "search_research_agent"
-    # Short conversational queries → direct AEGIS
+    # Tier 1.5: PHONETIC routing. Deterministic, no model, no VRAM.
+    #
+    # This sits above the conversational shortcut on purpose. The old order had
+    # the `len < 80` test here, and it swallowed nearly everything: most real
+    # questions are under 80 characters, so "show me the hive cells" never
+    # reached a hive agent -- it went straight to chat, and the whole
+    # deterministic tier below it was dead code in practice. The length of a
+    # question was standing in for its subject.
+    #
+    # Now the phonetic router gets first refusal, and DECLINING is a real
+    # answer: no match means the query genuinely is conversational, which is
+    # the only honest basis for sending it to chat.
+    if PHONETIC is not None:
+        agent, score, why = PHONETIC.match(query)
+        if agent and score >= 0.75 and agent in AGENT_ROUTING_MAP:
+            return agent
+        # A contested or weak match is not nothing. Remember it, so that if the
+        # LLM tier times out we fall back to evidence instead of to the
+        # alphabetically-first agent.
+        weak = agent if (agent and agent in AGENT_ROUTING_MAP) else None
+    else:
+        weak = None
+
+    # Short conversational queries -> direct AEGIS. Reached only when phonetics
+    # found no subject at all.
     if len(query_lower) < 80 and not any(k in query_lower for k in
             ["git", "file", "excel", "database", "schema", "voice", "aider", "policy"]):
         return "aegis_direct_agent"
@@ -951,6 +1014,9 @@ def select_agent(query: str) -> str:
     agent = get_agent_from_llm(query)
     if agent and agent in AGENT_ROUTING_MAP:
         return agent
+
+    if weak:
+        return weak
 
     # Fallback to keyword classification
     return keyword_classify(query)

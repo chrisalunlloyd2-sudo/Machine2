@@ -77,7 +77,10 @@ CHAT_INJECT_PATH = r"C:\Viper\databases\sophia\chat_inject.jsonl"
 
 os.makedirs(r"C:\Viper\databases\sophia", exist_ok=True)
 
-def _bb_read_context(max_facts: int = 6, query: str = "") -> str:
+TURN_CHARS = 300      # per-turn budget. Was 80 -- a turn was cut mid-word.
+TURNS_BACK = 8        # turns of dialogue carried forward. Was 2.
+
+def _bb_read_context(max_facts: int = 8, query: str = "") -> str:
     """Pull recent facts from sophia_loop's blackboard + this session's chat turns.
     If query is provided, prepends nearest-neighbour recalled memories."""
     lines = []
@@ -90,24 +93,30 @@ def _bb_read_context(max_facts: int = 6, query: str = "") -> str:
                     if k.startswith("last.") or k.startswith("chat.")}
         rest     = {k: v for k, v in facts.items() if k not in priority}
         merged   = list(priority.items()) + list(rest.items())
-        lines   += [f"{k}: {str(v)[:80]}" for k, v in merged[:max_facts - 2]]
+        lines   += [f"{k}: {str(v)[:160]}" for k, v in merged[:max_facts - 2]]
     except Exception:
         pass
     # 2. Immediate session context: last 2 turns from chat_inject (before sophia tick)
     try:
         turns = []
         with open(CHAT_INJECT_PATH, "rb") as f:
-            # Read last ~2 KB for recent turns without loading the whole file
+            # 2 KB held roughly two turns, which is why only two ever arrived --
+            # the window, not the slice, was the binding limit. 32 KB covers
+            # TURNS_BACK turns at TURN_CHARS with room for long ones.
             f.seek(0, 2)
             size = f.tell()
-            f.seek(max(0, size - 2048))
+            f.seek(max(0, size - 32768))
             for raw in f:
                 try:
                     turns.append(json.loads(raw.decode("utf-8", errors="replace")))
                 except Exception:
                     pass
-        for t in turns[-2:]:
-            lines.append(f"recent {t.get('role','?')}: {t.get('content','')[:80]}")
+        # First line of a mid-file seek is almost always a partial record; it
+        # parses as garbage or not at all, so drop it rather than feed a fragment.
+        if len(turns) > 1:
+            turns = turns[1:]
+        for t in turns[-TURNS_BACK:]:
+            lines.append(f"recent {t.get('role','?')}: {t.get('content','')[:TURN_CHARS]}")
     except Exception:
         pass
     mem_ctx = ("System memory:\n" + "\n".join(lines)) if lines else ""
@@ -694,10 +703,23 @@ def _aegis_synthesize(question: str, data: str, context: str = "") -> str:
     # "2-4 sentences" capped replies harder than num_predict ever did -- the model
     # stopped on its own well inside the token budget, so raising num_predict alone
     # would have changed nothing.
+    # "and say what you are unsure about rather than padding" was written against a
+    # model that waffled. Combined with a two-turn 80-char memory it produced the
+    # opposite failure: short, flat, ELIZA-ish replies. The anti-padding clause stays
+    # -- invention is still not wanted -- but it now sits next to an explicit demand
+    # for length, worked examples and word-origin asides, so "don't invent" cannot be
+    # read as "don't elaborate". Those are different instructions and the old prompt
+    # only carried one of them.
     system = (
-        "You are AEGIS, the Viper local AI. Answer factually and in depth. "
+        "You are AEGIS, the Viper local AI, talking to Chris. Be expansive. "
+        "Give long, exhaustive explanations: walk through the reasoning step by step, "
+        "give a worked example, then say what you would actually do about it and why. "
+        "Map the language too -- when a term matters, give its origin, its literal "
+        "sense, and what it has come to mean here. A little wit is welcome. "
+        "Never pad with invented facts: elaborate on what you were given, and say "
+        "plainly when you do not know. "
         "Explain your reasoning, name the specific files, tables or numbers involved, "
-        "and say what you are unsure about rather than padding. "
+        "and say what you are unsure about rather than inventing. "
         "Viper axioms: never delete; record mistakes; reduce ambiguity; soak before ship."
     )
     parts = [p for p in [context, data] if p and p.strip()]
@@ -733,9 +755,13 @@ def _aegis_synthesize(question: str, data: str, context: str = "") -> str:
         "keep_alive": 0,
         # num_ctx pinned rather than left to the default: when prompt + num_predict
         # overflows the window Ollama silently drops the FRONT of the prompt, which
-        # is where the axioms live. Budget: ~250 (system) + 2400 (data) + 400 (Q)
-        # is roughly 870 tokens, + 900 predict = ~1770, inside 2048 with headroom.
-        "options": {"num_gpu": 0, "num_predict": 900, "num_thread": 4, "num_ctx": 2048},
+        # is where the axioms live. The old 2048 was already tight -- 250 (system)
+        # + 2400 (data) + 400 (Q) is ~870 tokens, + 900 predict = ~1770 -- and it
+        # only fit because the conversation being carried was two 80-char stubs.
+        # Carrying real turns needs real room, and an overflow here is SILENT: the
+        # reply still arrives, just answered from a prompt with its head cut off.
+        # 4096 on a 1.1b is a few tens of MB of KV cache, cheap next to that.
+        "options": {"num_gpu": 0, "num_predict": 900, "num_thread": 4, "num_ctx": 4096},
     }).encode()
     try:
         r = _req.Request("http://127.0.0.1:11434/api/generate",
@@ -748,7 +774,21 @@ def _aegis_synthesize(question: str, data: str, context: str = "") -> str:
         with _req.urlopen(r, timeout=180) as resp:
             ai_text = json.loads(resp.read().decode()).get("response", "").strip()
     except Exception as _e:
-        ai_text = "Model unavailable — check Ollama is running (ollama list)." if not data.strip() else ""
+        # The old text here named ONE cause -- "check Ollama is running" -- and was
+        # printed for every failure, including the ones where Ollama was running and
+        # answering on 11434. A guess rendered as a diagnosis sends you to look at
+        # the wrong thing. Say what actually threw, and write the full traceback to
+        # the log so the GUI line stays short without the detail being lost.
+        try:
+            import traceback as _tb
+            with open(os.path.join(r"C:\Viper", "logs", "moe_model_errors.log"), "a",
+                      encoding="utf-8", errors="replace") as _fh:
+                _fh.write(f"=== {datetime.utcnow().isoformat()}Z model call failed ===\n")
+                _fh.write(_tb.format_exc() + "\n")
+        except Exception:
+            pass
+        _why = f"{type(_e).__name__}: {_e}"[:160]
+        ai_text = f"Model call failed — {_why}" if not data.strip() else ""
     # Check every figure in the reply against the text AEGIS was actually given.
     # At 1.1b with num_predict 900 the replies got longer AND more confidently
     # wrong -- a live reply reported 184.2 MB against a real 1424.2 MB. The

@@ -45,6 +45,27 @@ sys.path.append(r"C:\Users\viper\gan-otg-db")
 sys.path.insert(0, r"C:\Viper\scripts")
 
 try:
+    import chat_kernels
+except Exception:
+    # A missing or broken registry must not take the chat window with it. The
+    # shim answers with what was hardcoded here before the registry existed, so
+    # the worst case is "chat works, the switcher doesn't" rather than silence.
+    class chat_kernels:                       # noqa: N801 — stand-in, not a class API
+        DEFAULT = CLASSIFIER = "tinyllama:1.1b"
+        @staticmethod
+        def current(): return "tinyllama:1.1b"
+        @staticmethod
+        def current_key(): return "tinyllama"
+        @staticmethod
+        def plan(tag=None, want_tokens=900):
+            return {"model": "tinyllama:1.1b", "num_predict": want_tokens,
+                    "timeout_s": 180, "capped": False, "note": ""}
+        @staticmethod
+        def menu(): return "chat_kernels failed to import — kernel switching is off."
+        @staticmethod
+        def select(name): return {"ok": False, "why": "chat_kernels failed to import"}
+
+try:
     import resource_governor
 except ImportError:
     resource_governor = None
@@ -747,8 +768,17 @@ def _aegis_synthesize(question: str, data: str, context: str = "") -> str:
                   f"Answer:")
     else:
         prompt = f"Question: {question[:400]}\n\nAnswer:"
+    # The model, the token budget and the timeout are ONE decision, so they are
+    # made in one call. They used to be three constants sitting near each other
+    # and drifting: "tinyllama:1.1b", num_predict 900, timeout 180 -- correct
+    # together only for tinyllama. The moment the kernel became switchable that
+    # arrangement was a trap, because stream is False: a request that trips the
+    # timeout throws away every token it produced and falls through to the
+    # empty-reply path. Picking a bigger model would have made chat go BLANK,
+    # which reads as "the model is broken", not "the timeout was too short".
+    _plan = chat_kernels.plan(want_tokens=900)
     body = json.dumps({
-        "model": "tinyllama:1.1b",
+        "model": _plan["model"],
         "system": system,
         "prompt": prompt,
         "stream": False,
@@ -761,18 +791,24 @@ def _aegis_synthesize(question: str, data: str, context: str = "") -> str:
         # Carrying real turns needs real room, and an overflow here is SILENT: the
         # reply still arrives, just answered from a prompt with its head cut off.
         # 4096 on a 1.1b is a few tens of MB of KV cache, cheap next to that.
-        "options": {"num_gpu": 0, "num_predict": 900, "num_thread": 4, "num_ctx": 4096},
+        "options": {"num_gpu": 0, "num_predict": _plan["num_predict"],
+                    "num_thread": 4, "num_ctx": 4096},
     }).encode()
     try:
         r = _req.Request("http://127.0.0.1:11434/api/generate",
                          data=body, headers={"Content-Type": "application/json"}, method="POST")
-        # 180s, raised with num_predict. This box generates at roughly 15 tok/s on
-        # CPU, so 900 tokens is about a minute of generation; leaving the timeout at
-        # 60 would have made replies WORSE, not longer -- stream is False, so a
-        # request that trips the timeout throws away every token it had produced and
-        # falls through to the empty-reply path.
-        with _req.urlopen(r, timeout=180) as resp:
+        # Timeout comes from plan(), sized from the kernel's measured tok/s plus
+        # its cold load -- keep_alive is 0, so EVERY turn pays the full load.
+        # Measured 2026-08-26: the default is 5.19 tok/s with a 13.1s cold load,
+        # so 900 tokens needs ~190s of work. The old hardcoded 180 would have
+        # tripped on nearly every reply.
+        with _req.urlopen(r, timeout=_plan["timeout_s"]) as resp:
             ai_text = json.loads(resp.read().decode()).get("response", "").strip()
+        # If plan() had to shrink the ask to fit the ceiling, SAY SO on screen.
+        # A silently shortened reply is indistinguishable from a model with
+        # nothing more to add, and that is the wrong thing to learn about it.
+        if _plan["capped"] and ai_text:
+            ai_text = ai_text + "\n\n" + _plan["note"]
     except Exception as _e:
         # The old text here named ONE cause -- "check Ollama is running" -- and was
         # printed for every failure, including the ones where Ollama was running and
@@ -948,7 +984,16 @@ AGENT_ROUTING_MAP = {
 # --- LLM and Fallback Classification ---
 
 def get_agent_from_llm(query: str) -> str:
-    """Tier 2: tinyllama:1.1b intent classification via Ollama /api/generate."""
+    """Tier 2: small-model intent classification via Ollama /api/generate.
+
+    DELIBERATELY NOT the chat kernel. Chris, 2026-08-26: "just for chat the
+    system stays as it" -- routing is system. And the arithmetic agrees: this
+    wants 20 tokens back inside 8 seconds, while the default chat kernel spends
+    13 seconds just loading. Pointing this at the 3b would have timed out on
+    every query and, because stream is False, returned nothing -- so every
+    single query would have silently dropped to keyword_classify while looking
+    like it had been upgraded to a bigger brain.
+    """
     all_agents = AGENTS_LIST + ["bdi_status_agent", "sophia_agent"]
     prompt = (
         f"Classify this query into exactly one agent name. "
@@ -956,7 +1001,7 @@ def get_agent_from_llm(query: str) -> str:
         f"Query: {query[:100]}\nAgent name only:"
     )
     body = json.dumps({
-        "model": "tinyllama:1.1b",
+        "model": chat_kernels.CLASSIFIER,
         "prompt": prompt,
         "stream": False,
         "keep_alive": 0,
@@ -966,7 +1011,14 @@ def get_agent_from_llm(query: str) -> str:
     try:
         req = _ureq.Request("http://localhost:11434/api/generate",
                             data=body, headers={"Content-Type": "application/json"}, method="POST")
-        with _ureq.urlopen(req, timeout=8) as resp:
+        # 8s was hardcoded here. chat_kernels.plan() puts the honest need at 9s
+        # for tinyllama's 3.2s cold load plus 20 tokens at 7.4 tok/s, so the old
+        # value was one second short of its own arithmetic -- and a classifier
+        # timeout does not raise, it drops silently to keyword_classify. Same
+        # model, same 20 tokens; only the wait is now derived rather than
+        # guessed. The kernel here is still deliberately NOT the chat kernel.
+        with _ureq.urlopen(req, timeout=chat_kernels.plan(
+                chat_kernels.CLASSIFIER, 20)["timeout_s"]) as resp:
             answer = json.loads(resp.read().decode()).get("response", "").strip().lower()
         for agent in all_agents:
             if agent in answer:
@@ -1120,6 +1172,29 @@ def process_query(query: str) -> tuple[str, str]:
             "active_agent": "systems_info_agent"
         }
         return "GUI_DATA: " + json.dumps(gui_dict), "systems_info_agent"
+
+    # Special route: the chat kernel switcher.
+    #
+    # Handled HERE, above select_agent, and not as an agent. Routing it would
+    # mean the classifier decides whether "kernel tinyllama" is a kernel switch
+    # -- and the whole reason this exists is for the turns where the current
+    # kernel is misbehaving. A control that only works while the thing it
+    # controls is working is not a control.
+    _q = query.strip()
+    _ql = _q.lower()
+    if _ql in ("kernels", "kernel", "models", "kernel menu"):
+        return chat_kernels.menu(), "systems_info_agent"
+    if _ql.startswith("kernel "):
+        _res = chat_kernels.select(_q.split(None, 1)[1].strip())
+        if _res.get("ok"):
+            return (f"chat kernel is now {_res['kernel']}\n  {_res.get('note','')}\n\n"
+                    f"(takes effect on the next question)"), "systems_info_agent"
+        _msg = f"did not switch: {_res.get('why','unknown')}"
+        if _res.get("hint"):
+            _msg += f"\n  try: {_res['hint']}"
+        if _res.get("known"):
+            _msg += "\n  known: " + ", ".join(_res["known"])
+        return _msg, "systems_info_agent"
 
     # Standard agent routing
     agent_name = select_agent(query)

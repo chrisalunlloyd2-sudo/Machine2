@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bdi-fsm-agent"
+version = "0.4.0"
+description = "The ultimate non-LLM tool-calling super agent — deterministic, mathematically-verifiable (Banburismus + Nash gate + Enigma + BDI/FSM)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Chris", email = "chrisalunlloyd2@gmail.com" }]
+keywords = ["agent", "bdi", "fsm", "banburismus", "nash", "enigma", "information-theory", "non-llm", "deterministic"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.urls]
+Homepage = "https://github.com/chrisalunlloyd2-sudo/BDI_FSM_AGENT"
+
+[tool.setuptools]
+packages = ["bdi_fsm", "bdi_fsm.compiler"]

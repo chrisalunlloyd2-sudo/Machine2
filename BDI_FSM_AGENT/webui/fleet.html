@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KERNEL — Fleet Command</title>
+<style>
+  :root{--bg:#0b0f14;--panel:#11161d;--line:#1e2732;--fg:#dbe4ee;--dim:#7d8b9a;
+        --acc:#4dd0e1;--ok:#39d353;--warn:#ffb020;--bad:#ff5252;--chip:#16212b}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--fg);font:13px/1.45 ui-monospace,Menlo,Consolas,monospace;
+       padding:12px;max-width:960px;margin:0 auto}
+  h1{font-size:16px;letter-spacing:2px;color:var(--acc);margin-bottom:2px}
+  .sub{color:var(--dim);font-size:11px;margin-bottom:12px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:8px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:8px 10px}
+  .card h2{font-size:11px;letter-spacing:1px;color:var(--acc);text-transform:uppercase;
+           margin-bottom:6px;border-bottom:1px solid var(--line);padding-bottom:4px}
+  .repo{display:flex;justify-content:space-between;align-items:center;padding:3px 0;
+        border-bottom:1px dotted var(--line)}
+  .repo:last-child{border-bottom:none}
+  .rname{font-weight:bold}
+  .rhead{color:var(--dim);font-size:11px}
+  .badge{font-size:10px;padding:1px 6px;border-radius:8px;white-space:nowrap}
+  .b-ok{background:rgba(57,211,83,.12);color:var(--ok);border:1px solid rgba(57,211,83,.35)}
+  .b-warn{background:rgba(255,176,32,.12);color:var(--warn);border:1px solid rgba(255,176,32,.35)}
+  .b-bad{background:rgba(255,82,82,.12);color:var(--bad);border:1px solid rgba(255,82,82,.35)}
+  .chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+  .chip{font-size:11px;padding:2px 8px;border-radius:10px;border:1px solid var(--line)}
+  .path{font-size:11px;color:var(--dim);margin:2px 0}
+  .livelock{color:var(--bad);font-size:11px;margin:2px 0}
+  .task{color:var(--dim);font-size:11px;margin:2px 0}
+  .todo{display:flex;justify-content:space-between;gap:8px;align-items:flex-start;
+        padding:4px 0;border-bottom:1px dotted var(--line);font-size:12px}
+  .todo.done .ttext{color:var(--dim);text-decoration:line-through}
+  .ttext{flex:1}
+  .tmeta{color:var(--dim);font-size:10px}
+  button{background:var(--chip);color:var(--fg);border:1px solid var(--line);border-radius:4px;
+         padding:4px 10px;font:11px ui-monospace,monospace;cursor:pointer}
+  button:hover{border-color:var(--acc);color:var(--acc)}
+  .acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+  .feed{font-size:11px;max-height:200px;overflow-y:auto}
+  .feed div{padding:2px 0;border-bottom:1px dotted var(--line)}
+  .t{color:var(--dim)} .ty{color:var(--acc)} .tm{color:var(--fg)}
+  .stat{display:flex;justify-content:space-between;padding:2px 0;font-size:12px}
+  .v{font-weight:bold}
+</style>
+</head>
+<body>
+<h1>KERNEL · FLEET COMMAND</h1>
+<div class="sub">live directive space — repos · proofs · directives · cues · pulse</div>
+
+<div class="grid">
+  <div class="card">
+    <h2>Repos</h2>
+    <div id="repos">loading…</div>
+  </div>
+  <div class="card">
+    <h2>Planner Proofs — can Kernel reach the exit?</h2>
+    <div class="chips" id="verdicts">loading…</div>
+    <div id="exit"></div>
+    <div id="livelocks"></div>
+    <div id="dpll" style="margin-top:6px"></div>
+    <div id="tasks"></div>
+  </div>
+</div>
+
+<div class="grid" style="margin-top:8px">
+  <div class="card">
+    <h2>Directives</h2>
+    <div id="directives">loading…</div>
+  </div>
+  <div class="card">
+    <h2>Cues</h2>
+    <div class="acts">
+      <button onclick="cue('learning_loop')">▶ learning loop</button>
+      <button onclick="cue('planner_audit')">▶ planner audit</button>
+      <button onclick="cue('workspace_scan')">▶ workspace scan</button>
+      <button onclick="cue('corpus_stats')">▶ corpus stats</button>
+    </div>
+    <div id="cueout" class="path" style="margin-top:6px"></div>
+    <h2 style="margin-top:10px">Heartbeat pulse</h2>
+    <div class="feed" id="feed">loading…</div>
+  </div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+async function j(u,o){const r=await fetch(u,o||{});return r.json();}
+function badge(ok,good,bad){return ok?`<span class="badge b-ok">${good}</span>`:`<span class="badge b-bad">${bad}</span>`;}
+
+async function loadFleet(){
+  const d=await j('/api/fleet');
+  $('repos').innerHTML=d.repos.map(r=>
+    `<div class="repo"><div><div class="rname">${esc(r.repo)}</div>
+     <div class="rhead">${esc(r.head)} · ${esc(r.msg)}</div></div>
+     <div style="text-align:right">
+       ${r.dirty?`<span class="badge b-warn">${r.dirty} dirty</span>`:badge(true,'clean','dirty')}
+       <div class="rhead">${r.todos} todos</div></div></div>`).join('');
+}
+async function loadPlanner(){
+  const v=await j('/api/planner');
+  $('verdicts').innerHTML=
+    `<span class="chip" style="color:${v.deadlock?'var(--ok)':'var(--bad)'}">deadlock ${v.deadlock?'✓':'✗'}</span>`+
+    `<span class="chip" style="color:${v.liveness?'var(--ok)':'var(--bad)'}">liveness ${v.liveness?'✓':'✗'}</span>`+
+    `<span class="chip" style="color:${v.termination?'var(--ok)':'var(--warn)'}">termination ${v.termination?'✓':'bounded'}</span>`+
+    `<span class="chip" style="color:${v.total?'var(--ok)':'var(--warn)'}">total ${v.total?'✓':'—'}</span>`;
+  $('exit').innerHTML=`<div class="path">exit provable: <b style="color:${v.exit_provable?'var(--ok)':'var(--bad)'}">${v.exit_provable?'YES':'NO'}</b> · path: ${esc((v.exit_path||[]).join(' → ')||'—')}</div>`;
+  $('livelocks').innerHTML=(v.livelock_cycles||[]).map(c=>`<div class="livelock">⚠ livelock: ${esc(c)}</div>`).join('')
+    ||'<div class="path" style="color:var(--ok)">no livelock cycles</div>';
+  const d=v.dpll||{};
+  $('dpll').innerHTML=d.engine==='dpll'
+    ? `<span class="chip" style="color:${d.liveness?'var(--ok)':'var(--bad)'}">DPLL ${d.liveness?'PROVEN':'FAIL'}</span>
+       <div class="path">${d.states} states · ${d.edges} edges · max_depth ${d.max_depth} · dead: ${esc((d.dead||[]).join(', ')||'none')}</div>`
+    : `<span class="chip" style="color:var(--warn)">DPLL ${esc(d.error||'n/a')}</span>`;
+  $('tasks').innerHTML=(v.task_cycles||[]).map(c=>`<div class="task">task-cycle: ${esc(c)}</div>`).join('');
+}
+async function loadDirectives(){
+  const d=await j('/api/directives');
+  const items=d.items||[];
+  $('directives').innerHTML=items.length?items.map(it=>
+    `<div class="todo ${it.status==='done'?'done':''}">
+       <div><div class="ttext">${esc(it.action||'')}</div>
+       <div class="tmeta">${esc(it.repo||'')} · ${esc(it.priority||'')}${it.done_ts?' · done':''}</div></div>
+       ${it.status!=='done'?`<button onclick="complete('${esc(it.id)}')">done</button>`:''}
+     </div>`).join(''):'<div class="path">no directives</div>';
+}
+async function complete(id){
+  await j('/api/directives/complete',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id})});
+  loadDirectives(); loadFeed();
+}
+async function cue(a){
+  $('cueout').textContent='running '+a+'…';
+  const r=await j('/api/actions',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:a})});
+  $('cueout').textContent=a+': '+JSON.stringify(r.result||r);
+  loadFeed();
+}
+async function loadFeed(){
+  const u=await j('/api/updates');
+  $('feed').innerHTML=u.slice().reverse().map(x=>
+    `<div><span class="t">${new Date((x.ts||0)*1000).toLocaleTimeString()}</span> `+
+    `<span class="ty">[${esc(x.type||'info')}]</span> <span class="tm">${esc(x.msg||'')}</span></div>`).join('')
+    ||'<div class="path">no pulse yet</div>';
+}
+loadFleet();loadPlanner();loadDirectives();loadFeed();
+setInterval(loadFleet,8000);setInterval(loadPlanner,15000);setInterval(loadDirectives,6000);setInterval(loadFeed,5000);
+</script>
+</body>
+</html>

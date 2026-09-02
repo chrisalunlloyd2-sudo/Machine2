@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KERNEL // DAILY ASCII MODULE</title>
+<style>
+  :root{--fg:#7ef29d;--dim:#2a6a3f;--accent:#9df;--bg:#04080a}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--fg);font:14px/1.15 monospace;
+       height:100vh;overflow:hidden;display:flex;flex-direction:column}
+  #stage{flex:1;position:relative;overflow:hidden;white-space:pre;
+         font-size:13px;line-height:1.12;padding:6px 8px;
+         text-shadow:0 0 6px rgba(126,242,157,.35);
+         display:flex;align-items:center;justify-content:center}
+  #hud{display:flex;gap:20px;padding:6px 10px;border-top:1px solid var(--dim);
+       background:#050b0e;font-size:12px;flex-wrap:wrap}
+  .hud span{white-space:nowrap}
+  .b{color:var(--accent)}
+  #views{color:#ffd75e;font-weight:bold}
+  #flex{flex:1;color:var(--accent);overflow:hidden;white-space:nowrap;
+        text-overflow:ellipsis}
+  .dim{color:var(--dim)}
+  a{color:var(--accent);text-decoration:none}
+  #modname{color:#ffd75e}
+</style>
+</head>
+<body>
+<pre id="stage">loading module…</pre>
+<div id="hud">
+  <span>KERNEL<span class="dim">://</span>DAILY</span>
+  <span>module <span id="modslot">?</span>/<span id="modtotal">?</span> <span id="modname">…</span></span>
+  <span>next: <span id="modnext" class="b">…</span></span>
+  <span id="fowline">FOW: --</span>
+  <span>views <span id="views">4328</span></span>
+  <span>votes <span id="votes">--</span></span>
+  <span id="flex">flex: --</span>
+  <span><a href="/fleet">fleet</a> <a href="/">webui</a></span>
+</div>
+<script>
+"use strict";
+// deterministic rng
+const R = (s) => () => { s|=0; s = s+0x6D2B79F5|0;
+  let t = Math.imul(s^s>>>15, 1|s);
+  t = t + Math.imul(t^t>>>7, 61|t) ^ t;
+  return ((t^t>>>14)>>>0)/4294967296; };
+const rnd = R(4328);
+
+// ---- daily module: fetch frames from the server, animate ----
+let frames = [], fi = 0, fps = 14, modInfo = null;
+async function loadModule() {
+  try {
+    const r = await fetch("/api/ascii/current");
+    const d = await r.json();
+    modInfo = d.module;
+    frames = d.frames;
+    document.getElementById("modslot").textContent = modInfo.slot + 1;
+    document.getElementById("modtotal").textContent = modInfo.total;
+    document.getElementById("modname").textContent = modInfo.name;
+    document.getElementById("modnext").textContent = modInfo.next;
+  } catch (e) {
+    frames = ["# module feed offline — warp standby"];
+  }
+}
+function animate() {
+  if (frames.length) {
+    document.getElementById("stage").textContent = frames[fi % frames.length];
+    fi++;
+  }
+}
+// ---- fake view count + votes that cycle ----
+let views = 4328, votes = 0;
+function cycleCounters() {
+  views += Math.floor(rnd()*7) + 1;
+  if (views > 4600 + Math.floor(rnd()*400)) views = 4328;
+  votes = 24 + Math.floor(rnd()*12);
+  document.getElementById("views").textContent = views;
+  document.getElementById("votes").textContent = votes;
+}
+// ---- programmatic flex ideas (real fleet doctrine) ----
+const FLEX = [
+  "DPLL proves the livelock dead · 8 states · 18 edges · 1 proof",
+  "N-retry: nothing runs forever · budget 3 · park at exhaustion",
+  "logit 12.79 bans · n_retry_fix · ban = what is right",
+  "knee at 40.5% keeps 67.2% of value · archive, never delete",
+  "ban = what is right · logit = the record · gist = the memory",
+  "sophia v0.2.1 · DPLL + reach · prove you can reach the exit",
+  "seeds minted: 24 contracts last night · FOW frontier advances",
+  "mind-palace swarm: 5 castes vote in decibans, talk in rotor symbols",
+  "the worm became the fleet · 2006 → 2026 · same invention",
+  "one correction = a rule · many corrections = an SOP (0.7 gate)",
+  "sine wave today · warp drive tomorrow · a new module every day",
+  "hex fog: UNKNOWN → VISIBLE → EXPLORED → OCCUPIED",
+  "symbolic dialogue: qQ4m4G93C5 q1A=w lEm=S.zFZ",
+  "gist unification · every agent sees every agent",
+];
+let flexIdx = 0;
+function cycleFlex() {
+  flexIdx = (flexIdx + 1) % FLEX.length;
+  document.getElementById("flex").textContent = "flex: " + FLEX[flexIdx];
+}
+// ---- FOW + automation integration ----
+async function loadFow() {
+  try {
+    const r = await fetch("/api/fow");
+    const d = await r.json();
+    const ag = (d.agents || []).join(",") || "—";
+    document.getElementById("fowline").textContent =
+      `FOW: ${d.events} events · ${d.seed_events} seeds · ${d.contract_events} contracts · agents[${ag}]`;
+  } catch (e) {
+    document.getElementById("fowline").textContent = "FOW: offline";
+  }
+}
+// ---- loop ----
+loadModule();
+loadFow();
+setInterval(() => { animate(); if (fi % 9 === 0) { cycleCounters(); cycleFlex(); } }, 1000/fps);
+setInterval(loadFow, 30000);
+</script>
+</body>
+</html>

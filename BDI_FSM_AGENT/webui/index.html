@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aegis BDI — Self</title>
+<style>
+:root{--bg:#0a0e14;--card:#141a26;--card2:#0f1420;--line:#253048;--fg:#e6edf3;
+--dim:#8b98a9;--acc:#4da3ff;--good:#2ea86b;--bad:#e5534b;--gold:#e0a83c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+font:15px/1.55 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,monospace}
+header{position:sticky;top:0;z-index:5;padding:14px 18px;background:rgba(10,14,20,.9);
+border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(6px)}
+h1{font-size:17px;margin:0;letter-spacing:.3px}
+h1 .dot{color:var(--good)}
+.wrap{max-width:720px;margin:0 auto;padding:16px;display:grid;gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px}
+.card h2{font-size:13px;margin:0 0 10px;color:var(--dim);text-transform:uppercase;letter-spacing:.8px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;font-size:13px}
+.kv b{color:var(--dim);font-weight:600}
+#chatbox{display:flex;gap:8px}
+input{flex:1;background:var(--card2);border:1px solid var(--line);color:var(--fg);
+border-radius:9px;padding:11px 12px;font:inherit}
+button{background:var(--acc);border:0;color:#00141f;border-radius:9px;padding:11px 15px;
+font:inherit;font-weight:700;cursor:pointer}
+button.ghost{background:transparent;color:var(--acc);border:1px solid var(--line)}
+.msg{margin-top:10px;padding:11px 13px;border-radius:9px;background:var(--card2);border:1px solid var(--line);font-size:14px;white-space:pre-wrap}
+.msg .meta{font-size:11px;color:var(--dim);margin-top:6px}
+.votes{margin-top:8px;display:flex;gap:8px}
+.votes button{flex:1;padding:8px}
+.like{background:var(--good)}.dislike{background:var(--bad)}
+#curve{width:100%;height:120px;background:var(--card2);border:1px solid var(--line);border-radius:9px;margin-top:10px}
+.axiom{display:flex;gap:8px;font-size:13px;padding:5px 0;border-bottom:1px solid var(--line)}
+.axiom:last-child{border-bottom:0}
+.axiom .n{color:var(--gold);font-weight:700}
+.skill{display:flex;justify-content:space-between;font-size:13px;padding:4px 0}
+.skill .bar{flex:1;height:6px;background:var(--card2);border-radius:4px;margin:6px 0 0;overflow:hidden}
+.skill .fill{height:100%;background:var(--acc)}
+.assoc{font-size:12px;font-family:monospace;color:var(--dim);display:flex;justify-content:space-between;padding:2px 0}
+.assoc .sc{color:var(--fg)}
+.tabs{display:flex;gap:6px;margin-bottom:10px}
+.tabs button{flex:1;padding:8px;font-size:12px;background:var(--card2);color:var(--dim);border:1px solid var(--line)}
+.tabs button.on{background:var(--acc);color:#00141f}
+.hidden{display:none}
+.pill{display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;background:var(--card2);border:1px solid var(--line);margin:2px 2px 0 0}
+.pill.g{color:var(--good)}.pill.b{color:var(--bad)}.pill.a{color:var(--acc)}
+#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--good);color:#00141f;
+padding:9px 18px;border-radius:20px;font-weight:700;font-size:13px;opacity:0;transition:opacity .2s;z-index:9}
+</style>
+</head>
+<body>
+<header><h1><span class="dot">●</span> Aegis BDI — Self</h1><span id="clock" style="color:var(--dim);font-size:13px"></span></header>
+
+<div class="wrap">
+
+  <div class="card" id="chatCard">
+    <h2>Talk to the agent</h2>
+    <div id="chatbox">
+      <input id="prompt" placeholder="say something…" autocomplete="off">
+      <button onclick="chat(false)">Send</button>
+    </div>
+    <div style="margin-top:8px">
+      <button class="ghost" onclick="chat(true)">⚡ Generate until entropy plateaus</button>
+    </div>
+    <div id="reply_area"></div>
+  </div>
+
+  <div class="card">
+    <h2>Self</h2>
+    <div class="tabs">
+      <button class="on" onclick="tab('axioms',this)">Axioms</button>
+      <button onclick="tab('skills',this)">Skills</button>
+      <button onclick="tab('operator',this)">Operator</button>
+      <button onclick="tab('narrative',this)">Narrative</button>
+    </div>
+    <div id="axioms"></div>
+    <div id="skills" class="hidden"></div>
+    <div id="operator" class="hidden"></div>
+    <div id="narrative" class="hidden"></div>
+  </div>
+
+  <div class="card">
+    <h2>Telemetry</h2>
+    <div id="telemetry" class="kv"></div>
+  </div>
+
+  <div class="card">
+    <h2>Learning log — reinforced associations</h2>
+    <div id="associations"></div>
+  </div>
+
+  <div class="card">
+    <h2>Heartbeat — rolling updates</h2>
+    <div id="updates"></div>
+  </div>
+
+</div>
+<div id="toast"></div>
+
+<script>
+const $=i=>document.getElementById(i);
+async function j(url,opt){const r=await fetch(url,opt);return r.json()}
+let lastReply="", lastCurve=null;
+
+function tab(name,btn){
+  document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  ['axioms','skills','operator','narrative'].forEach(n=>$(n).classList.toggle('hidden',n!==name));
+}
+
+function toast(m){const t=$('toast');t.textContent=m;t.style.opacity=1;setTimeout(()=>t.style.opacity=0,1600)}
+
+function chat(plateau){
+  const p=$('prompt').value.trim(); if(!p) return;
+  const url = plateau ? '/api/chat_plateau' : '/api/chat';
+  j(url,{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({prompt:p,max_candidates:20})})
+  .then(d=>{
+    lastReply=d.reply||''; lastCurve=d.curve||null;
+    let meta = plateau
+      ? `plateau ${d.plateaued?'✓':'✗'} · ${d.candidates} candidates · H=${Number(d.plateau_entropy||0).toFixed(3)}`
+      : 'boolean chat';
+    $('reply_area').innerHTML =
+      '<div class="msg">'+esc(d.reply)+'<div class="meta">'+meta+'</div></div>'+
+      (lastCurve&&lastCurve.length? curveSVG(lastCurve):'')+
+      '<div class="votes"><button class="like" onclick="vote(true)">👍 Good reply</button>'+
+      '<button class="dislike" onclick="vote(false)">👎 Wrong</button></div>';
+  }).catch(e=>$('reply_area').innerHTML='<div class="msg">error: '+esc(e)+'</div>');
+}
+
+function vote(positive){
+  if(!lastReply) return;
+  j('/api/feedback',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({prompt:$('prompt').value,reply:lastReply,positive:positive})})
+  .then(()=>{toast(positive?'👍 reinforced':'👎 dampened — correction recorded');refresh()});
+}
+
+function curveSVG(curve){
+  if(curve.length<2) return '';
+  const w=640,h=120,pad=12;
+  const ys=curve.map(c=>c.H), lo=Math.min(...ys), hi=Math.max(...ys), rng=(hi-lo)||1;
+  const pts=curve.map((c,i)=>{
+    const x=pad+(w-2*pad)*i/(curve.length-1);
+    const y=pad+(h-2*pad)*(1-(c.H-lo)/rng);
+    return x.toFixed(1)+','+y.toFixed(1);
+  });
+  const line=pts.join(' ');
+  return '<svg id="curve" viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none">'+
+    '<polyline points="'+line+'" fill="none" stroke="#4da3ff" stroke-width="2"/>'+
+    pts.map(p=>'<circle cx="'+p.split(',')[0]+'" cy="'+p.split(',')[1]+'" r="3" fill="#e0a83c"/>').join('')+
+    '</svg>';
+}
+
+function esc(s){return (s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+
+async function refresh(){
+  try{
+    // self
+    const s=await j('/api/self');
+    if(s&&s.axioms){
+      $('axioms').innerHTML=s.axioms.map((a,i)=>'<div class="axiom"><span class="n">'+(i+1)+'</span><span>'+esc(a)+'</span></div>').join('');
+      $('skills').innerHTML=Object.entries(s.skills||{}).slice(0,12).map(([k,v])=>
+        '<div class="skill"><span>'+esc(k)+'</span><span style="color:var(--dim)">'+Number(v).toFixed(2)+'</span>'+
+        '<div class="bar"><div class="fill" style="width:'+Math.round(v*100)+'%"></div></div></div>').join('')
+        || '<div class="dim">no skills mastered yet</div>';
+      $('operator').innerHTML=
+        '<div class="kv"><b>name</b><span>'+esc(s.operator?.name||'(unnamed)')+'</span>'+
+        '<b>likes</b><span>'+s.operator?.likes+'</span>'+
+        '<b>dislikes</b><span>'+s.operator?.dislikes+'</span>'+
+        '<b>corrections</b><span>'+s.operator?.corrections+'</span>'+
+        '<b>goals</b><span>'+((s.operator?.goals||[]).join(', ')||'—')+'</span></div>';
+      $('narrative').innerHTML=(s.narrative||[]).slice().reverse().map(n=>
+        '<div class="assoc"><span>'+esc(n.detail||n.kind)+'</span><span class="sc">'+esc(n.kind||'')+'</span></div>').join('')
+        || '<div class="dim">no narrative events yet</div>';
+    }
+    // telemetry
+    const t=await j('/api/telemetry');
+    if(t){
+      const dl=t.dual_logger||{}, ent=t.entropy||{};
+      $('telemetry').innerHTML=
+        '<b>cycles</b><span>'+dl.cycles+'</span>'+
+        '<b>errors</b><span>'+dl.errors+'</span>'+
+        '<b>error rate</b><span>'+Number(dl.error_rate||0).toFixed(2)+'</span>'+
+        '<b>cooldowns active</b><span>'+((t.pacing||{}).active_cooldowns??'—')+'</span>'+
+        '<b>entropy</b><span>'+esc(JSON.stringify(ent).slice(0,90))+'</span>';
+    }
+    // associations
+    const ass=await j('/api/associations');
+    if(Array.isArray(ass)){
+      $('associations').innerHTML=ass.slice(0,14).map(a=>
+        '<div class="assoc"><span>'+esc(a.pair)+'</span><span class="sc">'+a.score+'</span></div>').join('')
+        || '<div class="dim">no associations learned yet — rate replies to train</div>';
+    }
+  }catch(e){}
+  $('clock').textContent=new Date().toLocaleTimeString();
+}
+async function refreshUpdates(){
+  try{
+    const u=await j('/api/updates');
+    if(!Array.isArray(u))return;
+    $('updates').innerHTML = u.slice().reverse().map(x=>
+      '<div style="padding:4px 0;border-bottom:1px solid var(--line);font-size:12px">'+
+      '<span style="color:var(--dim)">'+new Date((x.ts||0)*1000).toLocaleTimeString()+'</span> '+
+      '<span style="color:var(--acc)">['+esc(x.type||'info')+']</span> '+
+      esc(x.msg||'')+'</div>').join('')
+      || '<div class="dim">no heartbeat updates yet — the fleet sync will appear here</div>';
+  }catch(e){}
+}
+refresh(); setInterval(refresh,3000);
+refreshUpdates(); setInterval(refreshUpdates,5000);
+</script>
+</body>
+</html>

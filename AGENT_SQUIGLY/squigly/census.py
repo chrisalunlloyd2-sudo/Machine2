@@ -53,17 +53,19 @@ BLOCKED_NAMES = {
     # exact signature move detection looks for. A census that indexes its own backups reports a
     # reorganisation every time the backup runs.
     "vault_staging", "g_image", "otg_archive", "recovery", "pyc_ghosts",
-    # THE EMAIL CORPUS. C:\Viper\databases\email\archive holds 84,105 .eml
-    # files, 7.01 GB, and BLOCKED_EXT alone was not enough: skipping them from
-    # the RECORD still walks all 84,105 directory entries. Censusing just
-    # C:\Viper\databases took 245s of a 600s deadline with .eml blocked by
-    # extension, almost all of it enumerating mail.
+    # NOT "archive". Tried and REVERTED 2026-09-02.
     #
-    # Pruning the subtree is the difference between a census that fits its
-    # budget and one that is always a bad night away from not fitting.
-    # Inbound mail is data with its own index; it is not code and it does not
-    # move.
-    "archive",
+    # The reasoning looked sound -- C:\Viper\databases\email\archive holds
+    # 84,105 .eml files, and BLOCKED_EXT skips them from the record while the
+    # walk still enumerates every one -- so pruning the subtree should have
+    # been the real saving. Measured: 245.4s before, 240.7s after, and the file
+    # count moved 6,124 -> 6,134. Five seconds.
+    #
+    # So enumeration was never the cost; hashing the files that REMAIN is. The
+    # .eml exclusion is what did the work (about 90,000 files down to 6,100).
+    # A generic name like "archive" would prune any directory called that
+    # anywhere in the estate, and buying a 2% saving with that risk is a bad
+    # trade. Left here as a measured dead end so it is not tried again.
 }
 
 # Extensions never recorded: regenerated, or so large the hash cost buys nothing.

@@ -34,6 +34,51 @@ STATE_DIR = os.environ.get("SQUIGLY_STATE", r"C:\Viper\databases\squigly")
 MASTER = os.path.join(STATE_DIR, "master.json")
 REPORT = os.path.join(STATE_DIR, "MASTER.md")
 
+# THE CODE, NOT THE DATA. This was [r"C:\Viper"], and C:\Viper is mostly not
+# code. Measured 2026-09-02, after .eml was excluded:
+#
+#     chats       22,621 files   15 MB    conversation logs
+#     databases    6,137 files 2,439 MB   sqlite, master lists, the mail store
+#     backups      1,631 files   190 MB
+#     projects     2,082 files    63 MB   <- code
+#     scripts        878 files    23 MB   <- code
+#     logs/quarantine/build/models  456 files
+#
+# 33,889 files walked and hashed so that 2,960 of them -- 9% -- could be
+# catalogued. The full pass took 601.7s against a 600s deadline, so it never
+# once COMPLETED: it hit the wall and stopped, every time, and the partial
+# result was indistinguishable from a finished one. That is the run that took
+# the whole hive down for seven hours on 2026-09-01.
+#
+# 601.7s is also the exact figure never_twice recorded for this cell on
+# 2026-08-28. The cost was measured, written down, and never acted on.
+#
+# This is a CODE census: it builds an import graph and detects moved source.
+# Chat logs and a 1.4 GB mail store are data with their own indexes. Naming the
+# code roots is more honest than blocking a dozen generic directory names, and
+# a caller who wants a wider sweep can still pass roots= explicitly.
+# EXHAUSTIVE, and that is the point. Chris 2026-09-02: "it doesn't matter
+# really as long as the backup is exhaustive... that USB is never leaving, its a
+# permanent backup in case the system hard fails and we lose everything."
+#
+# So this walks all of C:\Viper -- chats, databases, backups, the lot. It was
+# briefly narrowed to scripts+projects to make it fit a 600s deadline, which
+# solved the wrong problem: this census is the inventory behind a permanent
+# backup, and an inventory that skips 91% of the files is not an inventory.
+#
+# The cost is real and is now BUDGETED rather than clipped:
+#
+#     chats       22,621 files            databases  6,137 (2,439 MB)
+#     backups      1,631                 projects   2,082   scripts 878
+#     33,889 total -- 601.7s against a 600s deadline, so it never once
+#     COMPLETED. It hit the wall every run and the partial result was
+#     indistinguishable from a finished one.
+#
+# It gets 19 minutes every 20 as a SERVICE, not a hive cell. A 1,140s cell
+# would hold the hive for 95% of every hour: hive_daemon runs cells strictly
+# sequentially, so all 70 others would starve -- which is precisely the
+# 2026-09-01 outage put on a timer. Same reasoning that made miner_daemon and
+# coding_engine.soak services.
 DEFAULT_ROOTS = [r"C:\Viper"]
 
 

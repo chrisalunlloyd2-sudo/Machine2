@@ -14,3 +14,14 @@ import os
 
 def allow_delete() -> bool:
     return os.environ.get("BDI_ALLOW_DELETE", "0") == "1"
+
+# LOCATIONS - this file lives in more than one place
+#
+#   live:  C:\Viper\projects\BDI_FSM_AGENT
+#          -> C:\Users\viper\gan-otg-db\BDI_FSM_AGENT
+#   mirror: J:\ViperVault\code\projects\BDI_FSM_AGENT
+#   mirror: C:\Users\viper\gan-otg-db\BDI_FSM_AGENT
+#
+#   live detail (freshness, git coverage): docs\LOCATIONS.md
+#   regenerate: python location_stamp.py apply
+# end LOCATIONS

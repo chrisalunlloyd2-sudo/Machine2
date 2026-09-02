@@ -256,3 +256,14 @@ if __name__ == "__main__":
     f = res.get("feature", {})
     print("feature:", f.get("date"), f.get("type"), f.get("repo"), f.get("commit"),
           "|", (f.get("description") or "")[:80])
+
+# LOCATIONS - this file lives in more than one place
+#
+#   live:  C:\Viper\projects\BDI_FSM_AGENT
+#          -> C:\Users\viper\gan-otg-db\BDI_FSM_AGENT
+#   mirror: J:\ViperVault\code\projects\BDI_FSM_AGENT
+#   mirror: C:\Users\viper\gan-otg-db\BDI_FSM_AGENT
+#
+#   live detail (freshness, git coverage): docs\LOCATIONS.md
+#   regenerate: python location_stamp.py apply
+# end LOCATIONS

@@ -52,3 +52,14 @@ def backup(world: WorldModel, repo_dir: str, commit_message: Optional[str] = Non
         out["push"] = {"ok": r.returncode == 0,
                        "stderr": (r.stderr or "")[-300:]}
     return out
+
+# LOCATIONS - this file lives in more than one place
+#
+#   live:  C:\Viper\projects\BDI_FSM_AGENT
+#          -> C:\Users\viper\gan-otg-db\BDI_FSM_AGENT
+#   mirror: J:\ViperVault\code\projects\BDI_FSM_AGENT
+#   mirror: C:\Users\viper\gan-otg-db\BDI_FSM_AGENT
+#
+#   live detail (freshness, git coverage): docs\LOCATIONS.md
+#   regenerate: python location_stamp.py apply
+# end LOCATIONS

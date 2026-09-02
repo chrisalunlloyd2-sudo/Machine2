@@ -190,3 +190,14 @@ def populate(trainer, roots, limit_files=4000):
             docs += 1
             chars += got
     return {"docs": docs, "chars": chars, "corpus": trainer.corpus_stats()}
+
+# LOCATIONS - this file lives in more than one place
+#
+#   live:  C:\Viper\projects\BDI_FSM_AGENT
+#          -> C:\Users\viper\gan-otg-db\BDI_FSM_AGENT
+#   mirror: J:\ViperVault\code\projects\BDI_FSM_AGENT
+#   mirror: C:\Users\viper\gan-otg-db\BDI_FSM_AGENT
+#
+#   live detail (freshness, git coverage): docs\LOCATIONS.md
+#   regenerate: python location_stamp.py apply
+# end LOCATIONS

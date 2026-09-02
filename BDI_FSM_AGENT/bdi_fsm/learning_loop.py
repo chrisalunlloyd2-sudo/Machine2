@@ -136,3 +136,14 @@ def run_learning_loop(trace_path: str, sop_path: str,
     return {"traces": len(traces), "patterns": len(patterns),
             "promoted": len(promoted), "demoted": len(demoted),
             "new_sops": new_sops, "entry": dict(entry), "exit": dict(exitc)}
+
+# LOCATIONS - this file lives in more than one place
+#
+#   live:  C:\Viper\projects\BDI_FSM_AGENT
+#          -> C:\Users\viper\gan-otg-db\BDI_FSM_AGENT
+#   mirror: J:\ViperVault\code\projects\BDI_FSM_AGENT
+#   mirror: C:\Users\viper\gan-otg-db\BDI_FSM_AGENT
+#
+#   live detail (freshness, git coverage): docs\LOCATIONS.md
+#   regenerate: python location_stamp.py apply
+# end LOCATIONS

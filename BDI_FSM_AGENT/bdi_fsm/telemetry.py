@@ -245,3 +245,14 @@ class Telemetry:
                 "why": f"> {SPAN_ERR_HIGH} — check :5000/:5001 request health", "dry_run": dry_run})
 
         return {"snapshot": snap, "actions": actions, "trend": self.trend()}
+
+# LOCATIONS - this file lives in more than one place
+#
+#   live:  C:\Viper\projects\BDI_FSM_AGENT
+#          -> C:\Users\viper\gan-otg-db\BDI_FSM_AGENT
+#   mirror: J:\ViperVault\code\projects\BDI_FSM_AGENT
+#   mirror: C:\Users\viper\gan-otg-db\BDI_FSM_AGENT
+#
+#   live detail (freshness, git coverage): docs\LOCATIONS.md
+#   regenerate: python location_stamp.py apply
+# end LOCATIONS

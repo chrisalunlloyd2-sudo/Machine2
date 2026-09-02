@@ -602,3 +602,14 @@ def fleet_tools(bot: "Chatbot90", error_learn_path: str = "/root/hexgame/error_l
         bot.lexicon.bind(w, "hex")
     for w in ("pool", "tasks", "todo"):
         bot.lexicon.bind(w, "pool")
+
+# LOCATIONS - this file lives in more than one place
+#
+#   live:  C:\Viper\projects\BDI_FSM_AGENT
+#          -> C:\Users\viper\gan-otg-db\BDI_FSM_AGENT
+#   mirror: J:\ViperVault\code\projects\BDI_FSM_AGENT
+#   mirror: C:\Users\viper\gan-otg-db\BDI_FSM_AGENT
+#
+#   live detail (freshness, git coverage): docs\LOCATIONS.md
+#   regenerate: python location_stamp.py apply
+# end LOCATIONS

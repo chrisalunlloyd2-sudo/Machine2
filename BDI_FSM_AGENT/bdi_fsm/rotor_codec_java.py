@@ -147,3 +147,14 @@ def plain_enumerate_java(grammar: Sequence[str],
                     "attempts": attempts, "score": 1.0, "reason": "crib matched"}
     return {"found": False, "best": None, "attempts": attempts,
             "reason": "exhausted"}
+
+# LOCATIONS - this file lives in more than one place
+#
+#   live:  C:\Viper\projects\BDI_FSM_AGENT
+#          -> C:\Users\viper\gan-otg-db\BDI_FSM_AGENT
+#   mirror: J:\ViperVault\code\projects\BDI_FSM_AGENT
+#   mirror: C:\Users\viper\gan-otg-db\BDI_FSM_AGENT
+#
+#   live detail (freshness, git coverage): docs\LOCATIONS.md
+#   regenerate: python location_stamp.py apply
+# end LOCATIONS

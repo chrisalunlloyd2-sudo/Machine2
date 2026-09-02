@@ -256,3 +256,14 @@ class Lexicon:
         return {"tokens": self.size(), "domain": len(self._domain),
                 "bindings": len(self._tool_bindings),
                 "known_rate": round(len(self._freq) / max(1, len(self._freq)), 3)}
+
+# LOCATIONS - this file lives in more than one place
+#
+#   live:  C:\Viper\projects\BDI_FSM_AGENT
+#          -> C:\Users\viper\gan-otg-db\BDI_FSM_AGENT
+#   mirror: J:\ViperVault\code\projects\BDI_FSM_AGENT
+#   mirror: C:\Users\viper\gan-otg-db\BDI_FSM_AGENT
+#
+#   live detail (freshness, git coverage): docs\LOCATIONS.md
+#   regenerate: python location_stamp.py apply
+# end LOCATIONS

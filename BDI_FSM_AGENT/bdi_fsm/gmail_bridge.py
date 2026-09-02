@@ -166,3 +166,14 @@ def bridge(account: str, app_password: str, corpus_path: str,
     report = seed(corpus_path, kv_path=kv_path, dry_run=dry_run)
     report["self_sent_fetched"] = len(emails)
     return report
+
+# LOCATIONS - this file lives in more than one place
+#
+#   live:  C:\Viper\projects\BDI_FSM_AGENT
+#          -> C:\Users\viper\gan-otg-db\BDI_FSM_AGENT
+#   mirror: J:\ViperVault\code\projects\BDI_FSM_AGENT
+#   mirror: C:\Users\viper\gan-otg-db\BDI_FSM_AGENT
+#
+#   live detail (freshness, git coverage): docs\LOCATIONS.md
+#   regenerate: python location_stamp.py apply
+# end LOCATIONS

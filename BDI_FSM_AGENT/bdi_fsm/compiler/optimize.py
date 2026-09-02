@@ -111,3 +111,14 @@ def dead_code_eliminate(instrs: List[Tuple]) -> List[Tuple]:
 def optimize(instrs: List[Tuple]) -> List[Tuple]:
     """constant folding then dead code elimination."""
     return dead_code_eliminate(constant_fold(instrs))
+
+# LOCATIONS - this file lives in more than one place
+#
+#   live:  C:\Viper\projects\BDI_FSM_AGENT
+#          -> C:\Users\viper\gan-otg-db\BDI_FSM_AGENT
+#   mirror: J:\ViperVault\code\projects\BDI_FSM_AGENT
+#   mirror: C:\Users\viper\gan-otg-db\BDI_FSM_AGENT
+#
+#   live detail (freshness, git coverage): docs\LOCATIONS.md
+#   regenerate: python location_stamp.py apply
+# end LOCATIONS

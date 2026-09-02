@@ -534,3 +534,14 @@ class Contracts:
                              "text": rec.get("text", "")[:60]})
         return {"contracts": len(d), "by_party": by_party, "by_state": by_state,
                 "currently_held": held, "ttl_s": self.ttl}
+
+# LOCATIONS - this file lives in more than one place
+#
+#   live:  C:\Viper\projects\BDI_FSM_AGENT
+#          -> C:\Users\viper\gan-otg-db\BDI_FSM_AGENT
+#   mirror: J:\ViperVault\code\projects\BDI_FSM_AGENT
+#   mirror: C:\Users\viper\gan-otg-db\BDI_FSM_AGENT
+#
+#   live detail (freshness, git coverage): docs\LOCATIONS.md
+#   regenerate: python location_stamp.py apply
+# end LOCATIONS

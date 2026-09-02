@@ -53,3 +53,14 @@ def compile(source: str, optimize_ir: bool = True) -> Result:
     ir_opt = optimize(ir) if optimize_ir else ir
     asm = generate(ir_opt, vars_)
     return Result(source, tokens, tree, symbols, ir, ir_opt, asm)
+
+# LOCATIONS - this file lives in more than one place
+#
+#   live:  C:\Viper\projects\BDI_FSM_AGENT
+#          -> C:\Users\viper\gan-otg-db\BDI_FSM_AGENT
+#   mirror: J:\ViperVault\code\projects\BDI_FSM_AGENT
+#   mirror: C:\Users\viper\gan-otg-db\BDI_FSM_AGENT
+#
+#   live detail (freshness, git coverage): docs\LOCATIONS.md
+#   regenerate: python location_stamp.py apply
+# end LOCATIONS

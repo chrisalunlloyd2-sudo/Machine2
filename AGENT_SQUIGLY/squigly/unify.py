@@ -79,7 +79,36 @@ REPORT = os.path.join(STATE_DIR, "MASTER.md")
 # sequentially, so all 70 others would starve -- which is precisely the
 # 2026-09-01 outage put on a timer. Same reasoning that made miner_daemon and
 # coding_engine.soak services.
-DEFAULT_ROOTS = [r"C:\Viper"]
+# CODE FIRST, THEN EVERYTHING. Still exhaustive -- C:\Viper is the last root and
+# nothing is excluded -- but the ORDER now decides what a deadline costs.
+#
+# Measured 2026-09-03 against the 2026-08-29 baseline: of C:\Viper's 24 top-level
+# directories the census had captured SEVEN -- agents, backups, build, chats,
+# config, data, databases -- and stopped dead inside `databases` (85,088 of its
+# 101,733 rows). os.walk yields top-level names alphabetically, `databases` is
+# the 7th and the largest, and the deadline fired there every single run. So
+# `projects`, `scripts`, `models`, `quarantine`, `reports`, `snapshots` and ten
+# others were never once walked.
+#
+# Which means the change tracker's baseline did not contain Chris's CODE, and a
+# transition report built on it would have covered email archives and chats
+# while reporting nothing at all about scripts. Chris 2026-09-03, on being told:
+# *"what? OK let's fix this."*
+#
+# scripts BEFORE projects on purpose. Both are junctions into gan-otg-db and
+# `projects` CONTAINS viper-scripts, so whichever is walked first wins the path
+# recorded. walk() dedupes by os.path.realpath in a `seen_dirs` set built once
+# across all roots, so the loser is skipped rather than walked twice -- putting
+# scripts first records her code under C:\Viper\scripts, the path she actually
+# uses, instead of C:\Viper\projects\viper-scripts.
+#
+# This is ordering only. No root is dropped and no new tree is added, so a
+# completed census produces exactly the same set of files as before.
+DEFAULT_ROOTS = [
+    r"C:\Viper\scripts",    # her code, first, so a cut never costs it
+    r"C:\Viper\projects",   # the rest of gan-otg-db
+    r"C:\Viper",            # exhaustive; dedupes against the two above
+]
 
 
 def _load_master():

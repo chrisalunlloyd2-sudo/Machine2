@@ -109,6 +109,42 @@ class Action(BTNode):
             return f"never-try-twice: {fp} already failed {verdict['fail_count']}x"
         return None
 
+    # ---- run each template in the shell it was WRITTEN for ----------------
+    def _spawn(self, cmd: str, timeout: int):
+        """Execute `cmd` under the interpreter its platform names.
+
+        THE POWERSHELL TEMPLATES WERE BEING FED TO CMD.EXE.
+        Chris 2026-09-03: "doesnt that mean btree is run through cmd when it
+        SHOULD be run through powershell?" -- yes, exactly that.
+
+        This was subprocess.run(cmd, shell=True), and on Windows shell=True is
+        cmd.exe. The powershell templates separate their steps with `;`, which
+        cmd.exe does not treat as a separator, so
+
+            cd C:/Viper/scripts; git status --short; git log --oneline -3
+
+        handed `cd` the whole line as one path. Measured 2026-09-03: exit 1,
+        "The system cannot find the path specified." Since ok is
+        `returncode == 0`, EVERY multi-step powershell action reported failure
+        while being perfectly correct PowerShell. git_status and run_tests both
+        sat red for that reason, and the BTree's red X on the wall was this.
+
+        encoding="utf-8" is not decoration. subprocess.run(text=True) with no
+        encoding decodes as cp1252 on this box -- already in the never_twice
+        ledger -- so any command emitting a box-drawing character or an accent
+        raised UnicodeDecodeError and read as a failed action.
+
+        -NonInteractive so a prompt can never hang a cell instead of failing it.
+        """
+        if self.platform == "powershell":
+            return subprocess.run(
+                ["powershell", "-NoProfile", "-NonInteractive", "-Command", cmd],
+                capture_output=True, text=True, encoding="utf-8",
+                errors="replace", timeout=timeout)
+        # termux / posix: the template is written for sh, so sh is correct.
+        return subprocess.run(cmd, shell=True, capture_output=True, text=True,
+                              encoding="utf-8", errors="replace", timeout=timeout)
+
     def tick(self, ctx: Dict[str, Any]) -> str:
         block = self.pre_check(ctx)
         if block:
@@ -116,8 +152,7 @@ class Action(BTNode):
             return FAILURE
         cmd = self.render(ctx)
         try:
-            r = subprocess.run(cmd, shell=True, capture_output=True,
-                               text=True, timeout=self.timeout)
+            r = self._spawn(cmd, self.timeout)
             ok = r.returncode == 0
         except subprocess.TimeoutExpired:
             ok, r = False, type("R", (), {"stdout": "", "stderr": f"timeout {self.timeout}s"})()
@@ -125,8 +160,11 @@ class Action(BTNode):
         verified = None
         if ok and self.check_cmd:
             try:
-                v = subprocess.run(self.check_cmd.format(**ctx), shell=True,
-                                   capture_output=True, text=True, timeout=15)
+                # Same shell as the action itself. A check written in PowerShell
+                # and run by cmd.exe would fail every verification and turn a
+                # working action into a reported fault -- which is the fault
+                # this whole method just stopped doing.
+                v = self._spawn(self.check_cmd.format(**ctx), 15)
                 verified = v.returncode == 0
                 ok = ok and verified
             except Exception:

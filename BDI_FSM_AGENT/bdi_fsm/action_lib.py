@@ -14,7 +14,30 @@ The save_code action is the canonical example Chris gave:
 Pure stdlib. No cloud. No LLM. Code is real and runs on device/desktop.
 """
 
+import sys
+
 from .btree import Action
+
+# THE INTERPRETER, RESOLVED RATHER THAN ASSUMED.
+#
+# These templates ran bare `python`, and on Chris's box there is no
+# `python` on PATH -- only `py` at C:/WINDOWS/py.exe. Six actions could
+# therefore never succeed here, run_tests among them, which is half of
+# why the BTree showed a red X on 2026-09-03. The same missing-PATH
+# fault broke the pre-commit hook on 2026-09-01.
+#
+# sys.executable is the interpreter ALREADY RUNNING this agent, so it is
+# guaranteed to exist and guaranteed to have whatever the agent imports.
+# A hardcoded path would rot, and `py` resolves through the Windows
+# launcher to whatever it prefers -- measured today it gives Python311
+# while the estate's convention is C:/Python314/python.exe (a junction to
+# the same 3.11.9 build). Resolving removes the guess.
+#
+# Quoted with the call operator only when the path contains a space,
+# because in PowerShell a bare quoted string is a STRING, not a command.
+_PY = sys.executable or 'py'
+_PYQ = _PY if ' ' not in _PY else '& "%s"' % _PY
+
 
 # ---------------------------------------------------------------------------
 # The canonical action: save code to a repo (termux + powershell, both real)
@@ -53,7 +76,7 @@ RUN_TESTS = Action(
     verbs=["test", "run", "verify", "check", "validate", "prove", "green"],
     platforms={
         "termux": "cd {repo} && python3 {tests} 2>&1 | tail -5",
-        "powershell": "cd {repo}; python {tests} 2>&1 | Select-Object -Last 5",
+        "powershell": "cd {repo}; " + _PYQ + " {tests} 2>&1 | Select-Object -Last 5",
     },
     check_cmd="echo ok",
     timeout=120,
@@ -84,7 +107,7 @@ WEBCRAWL = Action(
     verbs=["crawl", "learn", "train", "fetch", "read", "research", "scrape"],
     platforms={
         "termux": "cd {repo} && python3 scripts/train_step.py --max-pages 2 2>&1 | tail -5",
-        "powershell": "cd {repo}; python scripts/train_step.py --max-pages 2 2>&1 | Select-Object -Last 5",
+        "powershell": "cd {repo}; " + _PYQ + " scripts/train_step.py --max-pages 2 2>&1 | Select-Object -Last 5",
     },
     check_cmd=None,
     timeout=90,
@@ -99,7 +122,7 @@ DREAM_PRUNE = Action(
     verbs=["dream", "prune", "archive", "consolidate", "sleep", "clean"],
     platforms={
         "termux": "cd {repo} && python3 -c \"from bdi_fsm.dream_prune import dream; print('dream ok')\" 2>&1 | tail -3",
-        "powershell": "cd {repo}; python -c \"from bdi_fsm.dream_prune import dream; print('dream ok')\" 2>&1 | Select-Object -Last 3",
+        "powershell": "cd {repo}; " + _PYQ + " -c \"from bdi_fsm.dream_prune import dream; print('dream ok')\" 2>&1 | Select-Object -Last 3",
     },
     check_cmd=None,
     timeout=60,
@@ -115,7 +138,7 @@ FOUNDRY_MINE = Action(
            "darwin", "improve"],
     platforms={
         "termux": "cd {repo} && python3 scripts/foundry_loop.py 2>&1 | tail -8",
-        "powershell": "cd {repo}; python scripts/foundry_loop.py 2>&1 | Select-Object -Last 8",
+        "powershell": "cd {repo}; " + _PYQ + " scripts/foundry_loop.py 2>&1 | Select-Object -Last 8",
     },
     check_cmd=None,
     timeout=120,
@@ -157,7 +180,7 @@ UPDATE_DAILY_FEATURE = Action(
            "highlight", "announce", "share", "post", "digest"],
     platforms={
         "termux": "cd {repo} && python3 -m bdi_fsm.daily_feature --state {state} 2>&1 | tail -6",
-        "powershell": "cd {repo}; python -m bdi_fsm.daily_feature --state {state} 2>&1 | Select-Object -Last 6",
+        "powershell": "cd {repo}; " + _PYQ + " -m bdi_fsm.daily_feature --state {state} 2>&1 | Select-Object -Last 6",
     },
     check_cmd=None,
     timeout=90,

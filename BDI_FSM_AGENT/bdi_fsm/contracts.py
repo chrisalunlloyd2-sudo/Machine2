@@ -438,6 +438,25 @@ class Contracts:
         if ok:
             rec["done_at"] = time.strftime("%Y-%m-%dT%H:%M:%S")
             rec["done_by"] = party
+            # THE FRACTAL. Chris, 2026-09-09: "Every time an agent completes a
+            # job the fractal is stored forever as a sequence."
+            #
+            # This is the single place a contract is completed by a named party
+            # on this box, so it is where the agent half of the fractal belongs
+            # -- recording it at any caller would miss whichever caller nobody
+            # remembered. Best-effort and silent: the board is the record of
+            # record, and a bookkeeping failure must never undo a delivery that
+            # actually happened.
+            try:
+                import sys as _sys
+                if r"C:\Viper\scripts" not in _sys.path:
+                    _sys.path.insert(0, r"C:\Viper\scripts")
+                import fractal as _fr
+                _fr.observe(party, kind="agent", ref=str(party),
+                            goal=str(rec.get("task") or rec.get("purpose")
+                                     or ("contract " + str(todo_id))))
+            except Exception:
+                pass
         else:
             rec.pop("holder", None)
             since = int(rec.get("attempts_since_revive",

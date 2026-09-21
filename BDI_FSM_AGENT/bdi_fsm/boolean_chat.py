@@ -8,10 +8,47 @@ a registered tool. This is the "if I ever want to chat, the boolean bot
 is there too" layer.
 """
 
+import os
 import re
+import sys
 from typing import Any, Callable, Dict, List, Optional
 
 from .lexicon import Lexicon
+
+_VIPERCLI_SRC = r"C:\Users\viper\gan-otg-db\ViperCli\src"
+
+
+def _tool_show() -> str:
+    """Real, live board status -- what 'show' now actually routes to.
+
+    Added 2026-09-21: 'show' was recognized by kqml.classify() as ask-one
+    (see kqml.py the same session) but had no lexicon binding at all here,
+    so a real BooleanChat instance still answered 'show' by falling
+    through to the boolean yes/no guesser (pos=0, neg=0 -> 'NO' -- a
+    QUERY answered as if it were a decision, confirmed live before this
+    fix). Composed with menu_system.menu() (ViperCli, same session,
+    3ad333e) rather than reimplementing a second board reader.
+
+    Bound to ONE tool rather than dispatched by content: Lexicon.lookup_tool()
+    returns on the FIRST bound token found in the message, so 'show tasks'
+    and 'show cron' would both hit 'show' before reaching 'tasks'/'cron' as
+    separate tokens -- genuine per-section routing ('show cron' specifically
+    -> CronMenu) needs either content-aware tool calling or token-priority
+    in lookup_tool() itself, a change to shared Lexicon behaviour outside
+    this scope. This binds 'show' to the single most broadly useful real
+    answer (live task board) rather than guessing at disambiguation.
+    """
+    try:
+        if _VIPERCLI_SRC not in sys.path:
+            sys.path.insert(0, _VIPERCLI_SRC)
+        import menu_system
+        r = menu_system.menu("tasks", "status")
+        if not r.get("available"):
+            return f"board unavailable: {r.get('error')}"
+        return (f"board: {r.get('done', 0)} done, {r.get('open', 0)} open, "
+                f"{r.get('parked', 0)} parked, {r.get('total', 0)} total")
+    except Exception as e:
+        return f"show failed: {e}"
 
 
 class BooleanChat:
@@ -35,6 +72,16 @@ class BooleanChat:
             self.lexicon.bind(word, "tool_test")
         for word in ["needs", "maslow"]:
             self.lexicon.bind(word, "tool_needs")
+        # Real, not just bound: register_tool() both binds the lexicon
+        # token AND populates self._tools, so reply() actually calls it --
+        # unlike tool_status/tool_test/tool_needs above, which are bound in
+        # the lexicon but were never registered here, so lookup_tool()
+        # finds them while reply()'s `tool in self._tools` check is False
+        # and every one silently falls through to the boolean guesser
+        # instead (confirmed live: reply("status") -> "NO"). Left as a
+        # known, separate, adjacent gap -- not fixed in this pass, which
+        # is scoped to 'show'.
+        self.register_tool("tool_show", _tool_show, ["show"])
 
     def register_tool(self, name: str, fn: Callable,
                       tokens: Optional[List[str]] = None) -> None:

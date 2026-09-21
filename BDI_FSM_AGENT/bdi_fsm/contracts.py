@@ -347,14 +347,39 @@ class Contracts:
         return out
 
     @_locked
-    def take(self, party):
+    def take(self, party, shape_ok=None):
         """Claim one contract. Returns None when there is nothing for this party.
 
         The lease is taken BEFORE the register is written, so a crash between the two leaves a
         claim that expires rather than a register entry nobody holds. Failing toward "the work
         comes back" is the only safe direction here.
+
+        `shape_ok(rec) -> bool`, optional. Verified 2026-09-21: attempts
+        increments a few lines below, unconditionally, on every hand-out --
+        including ones a caller immediately hands back via abandon() because
+        the shape is something it structurally cannot close. 35+ taskgen
+        scaffold contracts reached PARKED this way with zero real mining
+        tries, only dodge-and-abandon cycles, and the count was still
+        climbing (43 -> 164 in one day) because every new scaffold-shaped
+        contract offered to "bdi" fed the same cycle.
+
+        The fix is NOT moving the increment to deliver(): `bdi_cell.py`
+        reads `rec["attempts"]` immediately after take(), before any
+        deliver(), to build a collision-safe pool task id
+        (`ct_<id>_<attempts>`) -- a comment there documents this was ALREADY
+        a live bug once (two attempts on one contract collided in the pool
+        because the id did not change between them) and was fixed by
+        relying on attempts incrementing at take time. Moving it to
+        deliver() would silently reintroduce that exact bug.
+
+        So the filter runs BEFORE the claim, not after: a caller that knows
+        its own shape can decline to see (and never increments an attempt
+        against) a contract it could never close, while every other caller
+        that does not pass shape_ok keeps identical behaviour to before.
         """
         for rec in self.available(party):
+            if shape_ok is not None and not shape_ok(rec):
+                continue                      # not a shape this caller can close -- no claim, no attempt
             if not self.fow.claim(rec["id"], owner=party):
                 continue                      # someone took it between listing and claiming
             d = self._read()

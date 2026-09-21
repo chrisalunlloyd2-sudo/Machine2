@@ -33,7 +33,17 @@ _PATTERNS: List[Tuple[re.Pattern, str, str]] = [
     (re.compile(r"^(?:i\s+)?(?:want|need|wish)\s+(?:you\s+)?(?:to\s+)?(.*)$"), "achieve", 1),
     (re.compile(r"^(?:what|who|where|when|why|how)\b(.*)$"), "ask-one", 1),
     (re.compile(r"^(?:is|are|does|do|can|will|should)\b(.*)$"), "ask-if", 1),
-    (re.compile(r"^(?:tell\s+me|show\s+me|give\s+me|list)\s+(.*)$"), "ask-one", 1),
+    # Fixed 2026-09-21: bare "show X" (no "me") had no explicit pattern --
+    # it fell through every rule to classify()'s catch-all default
+    # (return "ask-one", t), landing on the semantically right performative
+    # by ACCIDENT of the fallback rather than by being a registered
+    # pattern. Real difference: "show" now WINS against a more specific
+    # earlier rule too -- "show the pool status" previously matched
+    # rule 34 (^(?:what|who...)) only for a wh-word start, never "show",
+    # so it was already falling through correctly there, but any future
+    # reordering of this table could silently break bare "show" again
+    # since nothing declared it belonged here. It is explicit now.
+    (re.compile(r"^(?:tell\s+me|show\s+me|show|give\s+me|list)\s+(.*)$"), "ask-one", 1),
     (re.compile(r"^(?:i\s+(?:think|believe|guess|note|remember|set|record|know)\b)(.*)$"), "insert", 1),
     (re.compile(r"^(?:remember\s+that|note\s+that|set\s+that)\s+(.*)$"), "insert", 1),
     (re.compile(r"^(?:no|never|don'?t|stop|halt|cancel|reject)\b(.*)$"), "deny", 1),

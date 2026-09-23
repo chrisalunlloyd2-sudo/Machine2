@@ -128,12 +128,18 @@ def _save_master(doc):
 
 
 def refresh(roots=None, hash_files=True, emit_registry=None, write_report=True,
-            deadline_s=None):
+            deadline_s=None, progress_every=0):
     """Run the whole chain. Returns a summary; writes the master list and the report.
 
     `emit_registry` is an optional symbolic registry. Passed in rather than imported so Squigly
     stays usable on a machine with no BDI agent installed -- a census tool that cannot run without
     the thing it feeds has its dependency pointing the wrong way.
+
+    `progress_every` (added 2026-09-23): census() already supported this -- printing "N files,
+    X GB, Ys" every N files, flushed -- but nothing ever passed it through, so a real run looked
+    completely silent for as long as the census took (measured: 144s on 75,644 files, once
+    genuinely investigating what was taking that long). Wired through here and from tick() below
+    so a manual/diagnostic run is observable instead of a black box.
     """
     roots = roots or DEFAULT_ROOTS
     t0 = time.time()
@@ -143,7 +149,7 @@ def refresh(roots=None, hash_files=True, emit_registry=None, write_report=True,
     prev_by_path = {r["path"]: r for r in prev_rows}
 
     c = census.census(roots, hash_files=hash_files, deadline_s=deadline_s,
-                      prev_by_path=prev_by_path)
+                      progress_every=progress_every, prev_by_path=prev_by_path)
     rows = c["rows"]
 
     # THE DEADLINE MUST COVER THE GRAPH TOO, not just the walk.
@@ -277,9 +283,26 @@ def _write_report(summary, rows, rev):
 
 
 def tick():
-    """Hive entrypoint. Never raises: a crashed cell must land as a failed cell, not a dead pass."""
+    """Hive entrypoint. Never raises: a crashed cell must land as a failed cell, not a dead pass.
+
+    Progress logging is OPT-IN (SQUIGLY_PROGRESS_EVERY env var, unset by default) -- the live hive
+    cell should stay quiet, but a manual `python -c "import squigly_cell; squigly_cell.tick()"`
+    diagnostic run can set it and watch a long census instead of it looking like a black box.
+
+    DEADLINE RAISED 600 -> 1800s, 2026-09-23. The real tree this walks has grown 10x since this
+    number was chosen (7,180 files at the last completed master.json -> 75,644 measured today).
+    600s was already tight for that at LOW contention (144s census + 456s graph, back to back);
+    under today's real load (concurrent Hermes agents, live hive, this same investigation) four
+    live timed runs each ran past 2700s of WALL CLOCK without their own internal deadline
+    producing an observable result -- not a reversion of the ReDoS/hash-timeout fixes (both
+    proven fixed in isolation, mutation-tested), but this budget was never sized for the
+    workload's new scale. 1800s gives the same 144s census real headroom for its graph half
+    under contention that used to have to fit in the remaining ~456s.
+    """
     try:
-        s = refresh(deadline_s=600)
+        progress = int(os.environ.get("SQUIGLY_PROGRESS_EVERY", "0"))
+        deadline = float(os.environ.get("SQUIGLY_DEADLINE_S", "1800"))
+        s = refresh(deadline_s=deadline, progress_every=progress)
         return {"ok": True, "files": s["files"], "edges": s["edges"],
                 "transitions": s["transitions"].get("total", 0),
                 "tape_coverage_pct": s["tape_coverage"].get("coverage_pct", 0.0),

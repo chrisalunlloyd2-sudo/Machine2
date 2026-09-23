@@ -27,7 +27,14 @@ MOVE DETECTION IS A HASH, NOT A GUESS
 import hashlib
 import os
 import stat
+import threading
 import time
+
+# How long ANY ONE file's hash gets before it is abandoned and recorded as unhashed. Found
+# 2026-09-23 while fixing the same-shaped bug in deps.py: deadline_s here is only checked BETWEEN
+# files in census()'s loop, so one file whose read() stalls (a USB drive under contention, a
+# network path, a bad sector) can block the whole census past its deadline indefinitely.
+HASH_TIMEOUT_S = float(os.environ.get("SQUIGLY_HASH_TIMEOUT_S", "10"))
 
 # --------------------------------------------------------------------------------------------
 # BLOCKED — never walked, at any depth
@@ -124,6 +131,30 @@ def _hash(path, size):
         return None
 
 
+def _hash_bounded(path, size, timeout=HASH_TIMEOUT_S):
+    """_hash(), abandoned after `timeout` rather than blocking the whole census on one file.
+
+    Python cannot cancel a running thread -- the same limitation hive_daemon._call_with_deadline
+    and squigly.deps._scan_row_bounded already document and accept. Returns None on timeout, the
+    same answer _hash() already gives for "too big, unreadable, or vanished mid-walk": a stuck
+    file and a skipped file look identical to every caller, which is exactly right here.
+    """
+    box = {}
+
+    def _work():
+        try:
+            box["value"] = _hash(path, size)
+        except BaseException:                  # noqa: BLE001 -- one file, never fatal
+            box["value"] = None
+
+    t = threading.Thread(target=_work, daemon=True, name="squigly-hash")
+    t.start()
+    t.join(timeout)
+    if t.is_alive():
+        return None
+    return box.get("value")
+
+
 def walk(roots, hash_files=True, follow_links=False):
     """Yield one dict per file. Never raises; unreadable branches are skipped, not fatal.
 
@@ -170,7 +201,7 @@ def walk(roots, hash_files=True, follow_links=False):
                     "ext": os.path.splitext(fn)[1].lower(),
                     "size": size,
                     "mtime": int(st.st_mtime),
-                    "sha256": _hash(p, size) if hash_files else None,
+                    "sha256": _hash_bounded(p, size) if hash_files else None,
                 }
 
 
@@ -208,7 +239,7 @@ def census(roots, hash_files=True, progress_every=0, deadline_s=None, prev_by_pa
                 rec["sha256"] = prev["sha256"]
                 reused += 1
             else:
-                rec["sha256"] = _hash(rec["path"], rec["size"])
+                rec["sha256"] = _hash_bounded(rec["path"], rec["size"])
         rows.append(rec)
         total += rec["size"]
         if progress_every and len(rows) % progress_every == 0:
@@ -217,3 +248,58 @@ def census(roots, hash_files=True, progress_every=0, deadline_s=None, prev_by_pa
     return {"files": len(rows), "bytes": total, "secs": round(time.time() - t0, 1),
             "roots": list(roots), "rows": rows,
             "hashes_reused": reused, "partial": stopped}
+
+
+def _selftest():
+    """OFFLINE, temp directory only. Proves the 2026-09-23 fix: a single file whose hash never
+    returns is abandoned within HASH_TIMEOUT_S, and census() finishes rather than hanging on it."""
+    import tempfile
+
+    fails = []
+    d = tempfile.mkdtemp(prefix="census_selftest_")
+    normal = os.path.join(d, "normal.txt")
+    with open(normal, "w", encoding="utf-8") as f:
+        f.write("ordinary content\n" * 100)
+
+    # 1. _hash_bounded matches plain _hash on a real, fast file.
+    a = _hash(normal, os.path.getsize(normal))
+    b = _hash_bounded(normal, os.path.getsize(normal))
+    if a != b or a is None:
+        fails.append("_hash_bounded disagreed with _hash on a normal file: %r vs %r" % (a, b))
+
+    # 2. A hash that never returns is abandoned within the timeout, not left to block forever.
+    real_hash = globals()["_hash"]
+
+    def _never_returns(*_a, **_kw):
+        while True:
+            time.sleep(0.05)
+
+    globals()["_hash"] = _never_returns
+    try:
+        t0 = time.time()
+        r = _hash_bounded(normal, 1, timeout=0.5)
+        dt = time.time() - t0
+        if r is not None:
+            fails.append("_hash_bounded returned a value from work that never finished")
+        if dt > 2.0:
+            fails.append("_hash_bounded blocked %.2fs against a 0.5s timeout" % dt)
+    finally:
+        globals()["_hash"] = real_hash
+
+    # 3. census() over a small real directory still produces a normal, non-partial result.
+    for i in range(5):
+        with open(os.path.join(d, "f%d.txt" % i), "w", encoding="utf-8") as f:
+            f.write("x" * 100)
+    c = census([d], hash_files=True)
+    if c["partial"] or c["files"] < 5:
+        fails.append("a normal small census reported partial or lost files: %r" % c)
+
+    for f in fails:
+        print("FAIL:", f)
+    print("census selftest:", "ok" if not fails else "FAILED")
+    return 0 if not fails else 1
+
+
+if __name__ == "__main__":
+    import sys
+    sys.exit(_selftest())

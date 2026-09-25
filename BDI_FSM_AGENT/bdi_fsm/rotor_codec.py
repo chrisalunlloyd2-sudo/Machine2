@@ -129,13 +129,17 @@ def _normalize(score) -> float:
 def brute_find(grammar: Sequence[str], test_fn: Callable[[str], float],
                signature: str = "def f(a, b):", max_keys: int = 20000,
                c_miss: float = 10.0, c_false: float = 1.0,
-               patience: int = 60) -> Dict:
+               patience: int = 60, k: Optional[int] = None) -> Dict:
     """Brute-force rotor keys until the crib (test_fn) is matched.
 
     test_fn(source) -> float in [0,1] (fraction of test cases passed). 1.0 = pass.
     Stops at: crib match, score plateau (no improvement for `patience` candidates),
     or max_keys. Returns theta* = nash_threshold(c_miss, c_false) in bans so the
     caller can see the Nash stop threshold that gates commit-vs-keep-searching.
+
+    `k` (added 2026-09-24, default unchanged): statements per program. None
+    uses every fragment, as before. ViperCli's code_finder passes k so an
+    n-gram-proposed grammar of 12 candidate lines can yield 1-3 line bodies.
     """
     theta_bans = nash_threshold(c_miss, c_false)
     seen = set()
@@ -143,7 +147,7 @@ def brute_find(grammar: Sequence[str], test_fn: Callable[[str], float],
     stagnant = 0
     attempts = 0
     for key in range(max_keys):
-        src = generate_program(grammar, key, signature)
+        src = generate_program(grammar, key, signature, k=k)
         if src in seen:
             continue
         seen.add(src)

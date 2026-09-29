@@ -17,6 +17,7 @@ Routes queries to 11 specialist agents:
 """
 import sys
 import os
+import re
 import json
 import sqlite3
 import time
@@ -101,6 +102,71 @@ os.makedirs(r"C:\Viper\databases\sophia", exist_ok=True)
 TURN_CHARS = 300      # per-turn budget. Was 80 -- a turn was cut mid-word.
 TURNS_BACK = 8        # turns of dialogue carried forward. Was 2.
 
+def _rag_sources(query: str) -> str:
+    """AEGIS is a one-shot call on the RAG loop (Chris, 2026-09-28): BDI/FSM + boolean MoE +
+    Turing BAN + Sophia DAGs. One labelled block per source, so every source can echo.
+    Readers are the ones bdi_status_agent / intelligence_report_agent already use."""
+    blocks = []
+    words = {w for w in re.findall(r"[a-z0-9_]{4,}", (query or "").lower())}
+    # BDI / FSM: last sophia_loop tick
+    try:
+        log = r"C:\Viper\logs\sophia_loop.jsonl"
+        ticks = []
+        with open(log, "rb") as f:
+            f.seek(max(0, os.path.getsize(log) - 8192))
+            for raw in f:
+                try:
+                    ev = json.loads(raw)
+                    if ev.get("action") == "tick":
+                        ticks.append(ev)
+                except Exception:
+                    pass
+        if ticks:
+            t = ticks[-1]
+            blocks.append("[BDI/FSM] fsm=%s performative=%s desire=%s intention=%s intent_fit=%s btree=%s"
+                          % (t.get("fsm"), t.get("performative"), str(t.get("desire"))[:80],
+                             t.get("intention"), t.get("intent_fit"), t.get("btree_action")))
+            blocks.append("[TURING BAN] verdict=%s gain=%s bans" % (t.get("ban_verdict"), t.get("ban_gain")))
+    except Exception:
+        pass
+    # Boolean MoE: which route this question takes
+    try:
+        blocks.append("[MOE ROUTE] %s" % select_agent(query))
+    except Exception:
+        pass
+    # Sophia DAGs: entities named in the question, with their live recent nodes
+    try:
+        with open(r"C:\Viper\databases\sophia\entities.json", encoding="utf-8") as f:
+            dags = json.load(f).get("dags", [])
+        hits = [d for d in dags if str(d.get("name", "")).lower() in words][:4]
+        for d in hits:
+            live = [n.get("value") for n in sorted(d.get("nodes", []), key=lambda n: -n.get("ts", 0))
+                    if not n.get("archived")][:6]
+            blocks.append("[SOPHIA DAG %s] %s: %s" % (d.get("kind"), d.get("name"), ", ".join(map(str, live))))
+    except Exception:
+        pass
+    # Events: squiggly bdi_inject lines that mention the question's words
+    try:
+        inject = r"C:\Viper\databases\squiggly\bdi_inject.jsonl"
+        hits = []
+        with open(inject, "rb") as f:
+            f.seek(max(0, os.path.getsize(inject) - 16384))
+            for raw in f:
+                try:
+                    ev = json.loads(raw)
+                    s = json.dumps(ev).lower()
+                    if any(w in s for w in words):
+                        hits.append(ev)
+                except Exception:
+                    pass
+        for ev in hits[-3:]:
+            blocks.append("[EVENT] %s %s %s" % (ev.get("type", "?"), str(ev.get("ts", ""))[:16],
+                                                 str(ev.get("path", ""))[-40:]))
+    except Exception:
+        pass
+    return ("RAG sources:\n" + "\n".join(blocks)) if blocks else ""
+
+
 def _bb_read_context(max_facts: int = 8, query: str = "") -> str:
     """Pull recent facts from sophia_loop's blackboard + this session's chat turns.
     If query is provided, prepends nearest-neighbour recalled memories."""
@@ -149,6 +215,11 @@ def _bb_read_context(max_facts: int = 8, query: str = "") -> str:
                 mem_ctx = (mem_hits + "\n\n" + mem_ctx) if mem_ctx else mem_hits
         except Exception:
             pass
+    # 3b. The RAG loop: one echo per source (BDI/FSM, Turing BAN, MoE route, Sophia DAGs, events)
+    if query:
+        rag = _rag_sources(query)
+        if rag:
+            mem_ctx = (rag + "\n\n" + mem_ctx) if mem_ctx else rag
     # 4. Always prepend axioms as ground truth
     axioms = _load_axioms()
     return (axioms + "\n\n" + mem_ctx) if mem_ctx else axioms
@@ -794,37 +865,54 @@ def _aegis_synthesize(question: str, data: str, context: str = "") -> str:
         "options": {"num_gpu": 0, "num_predict": _plan["num_predict"],
                     "num_thread": 4, "num_ctx": 4096},
     }).encode()
-    try:
-        r = _req.Request("http://127.0.0.1:11434/api/generate",
-                         data=body, headers={"Content-Type": "application/json"}, method="POST")
-        # Timeout comes from plan(), sized from the kernel's measured tok/s plus
-        # its cold load -- keep_alive is 0, so EVERY turn pays the full load.
-        # Measured 2026-08-26: the default is 5.19 tok/s with a 13.1s cold load,
-        # so 900 tokens needs ~190s of work. The old hardcoded 180 would have
-        # tripped on nearly every reply.
-        with _req.urlopen(r, timeout=_plan["timeout_s"]) as resp:
-            ai_text = json.loads(resp.read().decode()).get("response", "").strip()
-        # If plan() had to shrink the ask to fit the ceiling, SAY SO on screen.
-        # A silently shortened reply is indistinguishable from a model with
-        # nothing more to add, and that is the wrong thing to learn about it.
-        if _plan["capped"] and ai_text:
-            ai_text = ai_text + "\n\n" + _plan["note"]
-    except Exception as _e:
-        # The old text here named ONE cause -- "check Ollama is running" -- and was
-        # printed for every failure, including the ones where Ollama was running and
-        # answering on 11434. A guess rendered as a diagnosis sends you to look at
-        # the wrong thing. Say what actually threw, and write the full traceback to
-        # the log so the GUI line stays short without the detail being lost.
-        try:
-            import traceback as _tb
-            with open(os.path.join(r"C:\Viper", "logs", "moe_model_errors.log"), "a",
-                      encoding="utf-8", errors="replace") as _fh:
-                _fh.write(f"=== {datetime.utcnow().isoformat()}Z model call failed ===\n")
-                _fh.write(_tb.format_exc() + "\n")
-        except Exception:
-            pass
-        _why = f"{type(_e).__name__}: {_e}"[:160]
-        ai_text = f"Model call failed — {_why}" if not data.strip() else ""
+    # SLOW IS OK, SLOW IS GOOD (Chris, 2026-09-28). AEGIS always gives a REAL model reply:
+    # ollama first, then the house (:8765), then the backup house (:8767), same system +
+    # prompt; if all three fail, wait and go round again. No canned text, ever.
+    _wait_floor = int(os.environ.get("AEGIS_TIMEOUT_S", "900"))
+    _timeout = max(_plan["timeout_s"], _wait_floor)
+
+    def _house(port):
+        hbody = json.dumps({"model": _plan["model"], "stream": False,
+                            "max_tokens": _plan["num_predict"],
+                            "messages": [{"role": "system", "content": system},
+                                         {"role": "user", "content": prompt}]}).encode()
+        hr = _req.Request(f"http://127.0.0.1:{port}/v1/chat/completions", data=hbody,
+                          headers={"Content-Type": "application/json"}, method="POST")
+        with _req.urlopen(hr, timeout=_timeout) as hresp:
+            msg = (json.loads(hresp.read().decode()).get("choices") or [{}])[0].get("message") or {}
+        content = msg.get("content", "")
+        if isinstance(content, list):
+            content = " ".join(p.get("text", "") for p in content if isinstance(p, dict))
+        return str(content).strip()
+
+    ai_text, _round = "", 0
+    while not ai_text:
+        _round += 1
+        for _src in ("ollama", "house:8765", "house:8767"):
+            try:
+                if _src == "ollama":
+                    r = _req.Request("http://127.0.0.1:11434/api/generate", data=body,
+                                     headers={"Content-Type": "application/json"}, method="POST")
+                    with _req.urlopen(r, timeout=_timeout) as resp:
+                        ai_text = json.loads(resp.read().decode()).get("response", "").strip()
+                else:
+                    ai_text = _house(int(_src.split(":")[1]))
+                if ai_text:
+                    break
+            except Exception as _e:
+                try:
+                    import traceback as _tb
+                    with open(os.path.join(r"C:\Viper", "logs", "moe_model_errors.log"), "a",
+                              encoding="utf-8", errors="replace") as _fh:
+                        _fh.write(f"=== {datetime.utcnow().isoformat()}Z {_src} round {_round} failed ===\n")
+                        _fh.write(_tb.format_exc() + "\n")
+                except Exception:
+                    pass
+        if not ai_text:
+            time.sleep(min(120, 15 * _round))
+    if _plan["capped"] and ai_text:
+        ai_text = ai_text + "\n\n" + _plan["note"]
+    # (the old single ollama call and its 'Model call failed' reply were replaced by the loop above)
     # Check every figure in the reply against the text AEGIS was actually given.
     # At 1.1b with num_predict 900 the replies got longer AND more confidently
     # wrong -- a live reply reported 184.2 MB against a real 1424.2 MB. The

@@ -139,3 +139,69 @@ def emit_to_symbolic(registry, rows, trans, source="squigly"):
         except Exception:
             continue
     return {"source": source, "symbols": n_sym, "observations": n_obs}
+
+
+# --------------------------------------------------------------------------------------------
+# SELFTEST -- states had no direct test of its own. census and deps carried `__main__`
+# selftests since 2026-09-23; states, the module that decides WHAT HAPPENED on the disk
+# (move beats loss+create, the whole point of hashing), did not. Added 2026-09-29. Pure:
+# no disk, no DB, no model -- the transitions logic is arithmetic over two row lists.
+# --------------------------------------------------------------------------------------------
+def _selftest():
+    fails = []
+
+    def row(p, h, size=100):
+        return {"path": p, "sha256": h, "size": size}
+
+    before = [row(r"C:\a\x.py", "h1"), row(r"C:\b\gone.py", "h2"), row(r"C:\c\edit.py", "h3"),
+              row(r"C:\d\same.py", "h4")]
+    after = [row(r"C:\a2\x.py", "h1"),  # moved: same hash, new path
+             row(r"C:\c\edit.py", "h3b"),  # modified: same path, new hash
+             row(r"C:\d\same.py", "h4"),  # unchanged
+             row(r"C:\e\new.py", "h5")]  # created
+
+    trans = transitions(before, after)
+
+    def only(pressure):
+        return [t for t in trans if t["pressure"] == pressure]
+
+    m = only(MOVED)
+    if len(m) != 1 or m[0]["begin"] != r"C:\a\x.py" or m[0]["end"] != r"C:\a2\x.py":
+        fails.append("move not resolved as one move from C:\\a\\x.py: %r" % m)
+    mo = only(MODIFIED)
+    if len(mo) != 1 or mo[0]["sha256_before"] != "h3" or mo[0]["sha256_after"] != "h3b":
+        fails.append("modified not detected on same path, new hash: %r" % mo)
+    lo = only(LOST)
+    if len(lo) != 1 or lo[0]["begin"] != r"C:\b\gone.py":
+        fails.append("genuinely gone content not reported lost: %r" % lo)
+    cr = only(CREATED)
+    if len(cr) != 1 or cr[0]["end"] != r"C:\e\new.py":
+        fails.append("genuinely new content not reported created: %r" % cr)
+
+    # The one the hashing pays for: a reorganisation must NOT report a loss.
+    reorg_before = [row(r"C:\old\k.py", "hk")]
+    reorg_after = [row(r"C:\new\k.py", "hk")]
+    reorg = transitions(reorg_before, reorg_after)
+    if any(t["pressure"] == LOST for t in reorg):
+        fails.append("a move with identical content reported LOST -- the wolf-crying bug")
+
+    s = summarise(trans)
+    if s["total"] != len(trans) or s["counts"].get(LOST) != 1 or s["counts"].get(MOVED) != 1:
+        fails.append("summarise counts wrong: %r" % s["counts"])
+    if s["lost"] != [r"C:\b\gone.py"]:
+        fails.append("summarise did not spell out the loss: %r" % s["lost"])
+
+    # Two identical censuses: no transitions at all, not 'everything created'.
+    none = transitions(before, before)
+    if none:
+        fails.append("identical censuses produced transitions: %r" % none[:3])
+
+    for f in fails:
+        print("FAIL:", f)
+    print("states selftest:", "ok" if not fails else "FAILED")
+    return 0 if not fails else 1
+
+
+if __name__ == "__main__":
+    import sys
+    sys.exit(_selftest())

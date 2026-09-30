@@ -893,7 +893,13 @@ def _aegis_synthesize(question: str, data: str, context: str = "") -> str:
                 if _src == "ollama":
                     r = _req.Request("http://127.0.0.1:11434/api/generate", data=body,
                                      headers={"Content-Type": "application/json"}, method="POST")
-                    with _req.urlopen(r, timeout=_timeout) as resp:
+                    try:                         # cellular mic, Chris 2026-09-29 (tier 1: she is waiting)
+                        import model_lock
+                        _micctx = model_lock.mic(_plan["model"], tier=1, reason="moegui_chat")
+                    except Exception:
+                        import contextlib
+                        _micctx = contextlib.nullcontext()
+                    with _micctx, _req.urlopen(r, timeout=_timeout) as resp:
                         ai_text = json.loads(resp.read().decode()).get("response", "").strip()
                 else:
                     ai_text = _house(int(_src.split(":")[1]))
@@ -1105,7 +1111,13 @@ def get_agent_from_llm(query: str) -> str:
         # timeout does not raise, it drops silently to keyword_classify. Same
         # model, same 20 tokens; only the wait is now derived rather than
         # guessed. The kernel here is still deliberately NOT the chat kernel.
-        with _ureq.urlopen(req, timeout=chat_kernels.plan(
+        try:                                     # cellular mic, Chris 2026-09-29
+            import model_lock
+            _micctx = model_lock.mic(chat_kernels.CLASSIFIER, tier=1, reason="moegui_classify")
+        except Exception:
+            import contextlib
+            _micctx = contextlib.nullcontext()
+        with _micctx, _ureq.urlopen(req, timeout=chat_kernels.plan(
                 chat_kernels.CLASSIFIER, 20)["timeout_s"]) as resp:
             answer = json.loads(resp.read().decode()).get("response", "").strip().lower()
         for agent in all_agents:

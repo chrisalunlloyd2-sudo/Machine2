@@ -14,7 +14,33 @@ from bdi_fsm.rotor_codec_java import (
     plain_enumerate_java,
 )
 
-_JAVA = shutil.which("javac") is not None and shutil.which("java") is not None
+def _jdk(exe):
+    """Find a JDK binary on PATH, or under JAVA_HOME.
+
+    shutil.which() alone was skipping these four tests on a box where the JDK
+    is installed and working: JAVA_HOME points at the Android OpenJDK 21 and
+    java.exe/javac.exe are right there under bin, but PATH never exported them.
+    The same one-place lookup had already refused three agents every capability
+    they declare (authority_map, 2026-09-09).
+
+    A skip is the quietest possible failure -- the suite still reports green,
+    and the untested code is the Java path on a box whose flagship project is
+    JavaFX.
+    """
+    hit = shutil.which(exe)
+    if hit:
+        return hit
+    home = os.environ.get("JAVA_HOME")
+    if not home:
+        return None
+    for name in (exe + ".exe", exe):
+        cand = os.path.join(home, "bin", name)
+        if os.path.isfile(cand):
+            return cand
+    return None
+
+
+_JAVA = _jdk("javac") is not None and _jdk("java") is not None
 pytestmark = pytest.mark.skipif(not _JAVA, reason="javac/java not installed")
 
 
@@ -23,7 +49,8 @@ def _compile_ok(source: str) -> bool:
         p = os.path.join(tmp, "Solver.java")
         with open(p, "w") as f:
             f.write(source)
-        r = subprocess.run(["javac", "Solver.java"], cwd=tmp,
+        # Resolved, not assumed on PATH -- the same reason _jdk() exists.
+        r = subprocess.run([_jdk("javac"), "Solver.java"], cwd=tmp,
                            capture_output=True, text=True)
         return r.returncode == 0
 

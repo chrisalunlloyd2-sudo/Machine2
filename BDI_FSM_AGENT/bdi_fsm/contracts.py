@@ -103,6 +103,11 @@ CAPABILITY = {
     # they need judgement or authorisation, not because she is better at them.
     "aegis": re.compile(r"\b(decide|prioriti[sz]e|approve|review|plan|schedule|choose|"
                         r"publish|deploy|onboard|auth|oauth|credential|migrate)\b", re.I),
+    # Selftest replacement: hand each scaffolded module to Hermes, one per cell,
+    # per the 2026-09-30 decision card (option 2 execution). Checked FIRST in
+    # route(): it is the most specific shape and must not be shadowed by the
+    # broader aegis/slm patterns.
+    "hermes": re.compile(r"\breplace\s+the\s+placeholder\s+selftest\b", re.I),
 }
 
 
@@ -157,6 +162,8 @@ def route(text):
     Judged on work_clause(), not the raw text -- see above for why.
     """
     t = work_clause(text)
+    if CAPABILITY["hermes"].search(t):       # most specific shape first -- see CAPABILITY
+        return "hermes"
     if CAPABILITY["aegis"].search(t):
         return "aegis"
     if CAPABILITY["slm"].search(t):
@@ -299,8 +306,16 @@ class Contracts:
         os.replace(tmp, self.path)
 
     @_locked
-    def offer(self, todo_id, text, source="todo_crawl", repo=None):
-        """Put a todo on the board. Idempotent on todo_id — re-offering never duplicates."""
+    def offer(self, todo_id, text, source="todo_crawl", repo=None, bid=None, run_after=None):
+        """Put a todo on the board. Idempotent on todo_id — re-offering never duplicates.
+
+        AUCTION (2026-09-30, Chris: votes -> "actually auctioned on in cron or agent queue"). Two OPTIONAL fields,
+        both additive -- a record without them behaves exactly as before:
+          bid        pooled DECIBANS the quorum gave this decision. available() hands out higher bids first
+                     (stable, so equal/absent bids keep board order). Before this the board had NO priority:
+                     first-offered, first-taken, so a high-value decision queued behind 450 old contracts.
+          run_after  epoch seconds: the "cron" half. Not offered to anyone before then (e.g. the next heavy or
+                     training window from master_scheduler), so the work lands when the box can afford it."""
         d = self._read()
         if todo_id in d:
             return {"offered": False, "why": "already on the board", "id": todo_id}
@@ -309,6 +324,10 @@ class Contracts:
                "hex": [q, r], "for": route(text), "state": "open",
                "offered_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
                "attempts": 0, "history": []}
+        if bid is not None:
+            rec["bid"] = round(float(bid), 2)
+        if run_after is not None:
+            rec["run_after"] = float(run_after)
         d[todo_id] = rec
         self._write(d)
         return {"offered": True, **rec}
@@ -334,16 +353,50 @@ class Contracts:
     def available(self, party):
         """Open contracts this party may take, and nobody currently holds."""
         out = []
+        # 2026-09-28 hybrid board: hexeract writes BOTH {"hex:suggest:*"/
+        # "agent:*": {...}} record dicts AND a top-level "contracts": [ {...} ]
+        # list keyed by "status" instead of "state". Flatten lists and accept
+        # either key so one schema writer can't blind the whole board.
+        flat = []
         for rec in self._read().values():
-            if rec.get("for") != party or rec.get("state") in ("done", "parked"):
+            if isinstance(rec, list):
+                flat.extend(r for r in rec if isinstance(r, dict))
+            elif isinstance(rec, dict):
+                flat.append(rec)
+        for r in flat:
+            state = str(r.get("state", r.get("status", ""))).lower()
+            if state in ("done", "parked"):
                 continue
-            if self.fow.held(rec["id"]):
-                continue                      # somebody is genuinely working on it
+            # "held" is included ON PURPOSE: a record marked held whose lease has EXPIRED is work whose holder
+            # died (test_a_dead_holders_work_comes_back). The live-lease check below (fow.held) is what keeps a
+            # genuinely-held contract out. The 09-28 hybrid-board filter dropped "held" outright, so dead
+            # holders' work never came back -- the board carried 2 contracts stuck "held".
+            if state not in ("open", "proposed", "held"):
+                continue
+            owner = r.get("for", r.get("party"))
+            if owner is not None and owner != party:
+                continue
+            rid = r.get("id")
+            if rid is None:
+                continue
+            ra = r.get("run_after")
+            if ra is not None:
+                try:
+                    if float(ra) > time.time():
+                        continue          # the "cron" half of the auction: not before its window opens
+                except (TypeError, ValueError):
+                    pass
+            if self.fow.held(rid):
+                continue                  # somebody is genuinely working on it
             # `held` in the register with NO live lease means the holder died or stalled. The
             # lease is the source of truth about possession; the register only records what was
             # last believed. Without this the work stayed marked held forever and nobody could
             # take it again -- the lease expired into nothing.
-            out.append(rec)
+            out.append(r)
+        # THE AUCTION: higher pooled-decibans bid first. sorted() is STABLE and an absent bid is 0, so a board
+        # with no bids keeps exactly the old order and only bid-carrying contracts move.
+        if any("bid" in x for x in out):
+            out.sort(key=lambda x: -float(x.get("bid") or 0.0))
         return out
 
     @_locked

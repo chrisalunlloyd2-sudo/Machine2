@@ -13,11 +13,36 @@ NO LLM. Deterministic. Symbolic.
 """
 import os
 import subprocess
+
+
 import tempfile
 from typing import Callable, Dict, Sequence, Tuple
 
 from .enigma_lock import nash_threshold
 from .rotor_codec import _normalize, rotor_permutation
+
+
+def _jdk(exe):
+    """Absolute path to a JDK binary: PATH first, then JAVA_HOME/bin.
+
+    A bare "javac" is resolved through PATH only, and on this box the Android
+    OpenJDK 21 is installed with JAVA_HOME set and never exported to PATH. The
+    same one-place lookup had already refused three agents every capability
+    they declare, and skipped this module's four tests as "not installed".
+    """
+    import shutil as _sh
+    hit = _sh.which(exe)
+    if hit:
+        return hit
+    home = os.environ.get("JAVA_HOME")
+    if not home:
+        return None
+    for name in (exe + ".exe", exe):
+        cand = os.path.join(home, "bin", name)
+        if os.path.isfile(cand):
+            return cand
+    return None
+
 
 # Self-contained Java program whose calc() body is the rotor-chosen fragment.
 # __FRAGMENT__ is replaced verbatim (no brace-escaping footguns from .format).
@@ -58,12 +83,27 @@ def make_java_test_fn(cases: Sequence[Tuple[int, int, int]],
     match (score 1.0) for the candidate to be accepted.
     """
     def test_fn(source: str) -> float:
+        javac, java = _jdk("javac"), _jdk("java")
+        if not javac or not java:
+            # A MISSING TOOLCHAIN IS NOT A FAILED CANDIDATE.
+            #
+            # This used to fall into the `except Exception: return 0.0` below,
+            # which turned "javac could not be found" into "this code scores
+            # zero". Every Java candidate the miner ever produced would have
+            # been rejected identically, and the transcript would read as if
+            # the generator simply never wrote anything good.
+            #
+            # Raising instead: the caller can tell the difference between
+            # unusable and untested, which is the whole point of a crib.
+            raise RuntimeError(
+                "no JDK: javac/java not on PATH and not under JAVA_HOME. "
+                "The crib cannot score Java without one.")
         with tempfile.TemporaryDirectory(prefix="bdi_javac_") as tmp:
             src_path = os.path.join(tmp, "Solver.java")
             with open(src_path, "w", encoding="utf-8") as f:
                 f.write(source)
             try:
-                cp = subprocess.run(["javac", "Solver.java"], cwd=tmp,
+                cp = subprocess.run([javac, "Solver.java"], cwd=tmp,
                                     capture_output=True, text=True, timeout=timeout)
             except Exception:
                 return 0.0
@@ -72,7 +112,7 @@ def make_java_test_fn(cases: Sequence[Tuple[int, int, int]],
             passed = 0
             for a, b, expected in cases:
                 try:
-                    rp = subprocess.run(["java", "-cp", tmp, "Solver",
+                    rp = subprocess.run([java, "-cp", tmp, "Solver",
                                          str(a), str(b)],
                                         capture_output=True, text=True,
                                         timeout=timeout)

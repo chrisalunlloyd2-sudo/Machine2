@@ -1,73 +1,22 @@
-# ── Maven ────────────────────────────────────────────────
-target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
-release.properties
+# Build output. Everything under target/ regenerates from source...
+target/*
+
+# ...EXCEPT the shipped JAR, which this repo tracks on purpose. The remote has
+# a commit called "fix(gui): unlock chat input + track the shipped JAR" and
+# another called "build(jar): rebuild MoeGUI-1.0.0.jar from 09d8d1e", so the
+# deliverable is versioned alongside the source deliberately.
+#
+# An earlier version of this file ignored it. That would have been a change of
+# policy smuggled in as a cleanup: the JAR is what supervisor.py launches and
+# what release_binaries.ps1 ships, and a repo that has the source but not the
+# artifact cannot answer "which build is running".
+!target/MoeGUI-1.0.0.jar
+
+# run/ is the DEPLOY copy -- byte-identical to target/MoeGUI-1.0.0.jar, just
+# placed where supervisor.py launches it from. Tracking both would put 58 MB in
+# the repo per rebuild to store one artifact twice, and leave two copies that
+# can disagree about which is current.
+run/*.jar
+
 dependency-reduced-pom.xml
-buildNumber.properties
-.mvn/timing.properties
-.mvn/wrapper/maven-wrapper.jar
-
-# ── Java ──────────────────────────────────────────────────
 *.class
-*.jar
-*.war
-*.ear
-*.nar
-hs_err_pid*
-replay_pid*
-
-# ── JavaFX ────────────────────────────────────────────────
-*.jfxpack
-
-# ── IDEs ──────────────────────────────────────────────────
-.idea/
-*.iml
-*.ipr
-*.iws
-.classpath
-.project
-.settings/
-.factorypath
-*.code-workspace
-.vscode/
-nbactions.xml
-nb-configuration.xml
-
-# ── Logs ──────────────────────────────────────────────────
-*.log
-logs/
-
-# ── Secrets ───────────────────────────────────────────────
-*.env
-*.key
-*.pem
-application-local.properties
-application-secret.properties
-*-credentials.properties
-
-# ── OS ────────────────────────────────────────────────────
-.DS_Store
-Thumbs.db
-desktop.ini
-*.lnk
-$RECYCLE.BIN/
-
-# ── Temp ──────────────────────────────────────────────────
-*.tmp
-*.bak
-*.swp
-*.orig
-~*
-
-# ── Archives ──────────────────────────────────────────────
-*.7z
-*.zip
-*.tar.gz
-*.rar
-
-# ── Viper-specific ────────────────────────────────────────
-HEARTBEAT.json
-*.session

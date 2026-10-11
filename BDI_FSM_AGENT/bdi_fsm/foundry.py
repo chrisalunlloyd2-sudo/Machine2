@@ -180,6 +180,13 @@ class GeneticFoundry:
 
     def generation(self, n: int = 3, test_fn: Optional[Callable[[str], float]] = None) -> Dict[str, int]:
         """One full actor-critic generation. Returns stats."""
+        # BUGFIX 2026-09-28 (Lane A 2.0007): seeds default to fitness=1.0 and
+        # were never evaluated, so every untested seed was a permanent "winner"
+        # even when it failed the crib -- an unsatisfiable spec reported
+        # best=1.00. Evaluate any unevaluated (attempts==0) plan first.
+        for p in list(self.population):
+            if p.attempts == 0:
+                self.evaluate(p, test_fn)
         produced = 0
         for cand in self.produce_candidates(n):
             self.evaluate(cand, test_fn)

@@ -16,7 +16,7 @@ machinery Alan Turing used to break Naval Enigma.
 | **Formal kernel** | Gödel-coded Ω operator dictionary · canonical AST hashing (never code twice) · weakest-precondition guards (never mistake twice) · energy-manifold Q.E.D. (zero-repeat) |
 | **Core promise** | Deterministic reliability · complete mathematical explainability · every claim is a test |
 | **Self-training** | Webcrawl → lexicon (syntax) + Markov corpus (semantics), dream-pruned, hot-pushed to GitHub every heartbeat |
-| **State** | v0.3.0 — **405 deterministic tests green**, zero model inference |
+| **State** | v0.3.0 — **785 deterministic tests green, 0 skipped**, zero model inference (measured 2026-09-09) |
 
 ---
 

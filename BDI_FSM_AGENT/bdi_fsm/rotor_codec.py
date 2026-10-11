@@ -129,7 +129,8 @@ def _normalize(score) -> float:
 def brute_find(grammar: Sequence[str], test_fn: Callable[[str], float],
                signature: str = "def f(a, b):", max_keys: int = 20000,
                c_miss: float = 10.0, c_false: float = 1.0,
-               patience: int = 60, k: Optional[int] = None) -> Dict:
+               patience: int = 60, k: Optional[int] = None,
+               prior_keys: Optional[Sequence[int]] = None) -> Dict:
     """Brute-force rotor keys until the crib (test_fn) is matched.
 
     test_fn(source) -> float in [0,1] (fraction of test cases passed). 1.0 = pass.
@@ -146,7 +147,14 @@ def brute_find(grammar: Sequence[str], test_fn: Callable[[str], float],
     best = None
     stagnant = 0
     attempts = 0
-    for key in range(max_keys):
+    # prior_keys (Lane A 2.0044): learn key regions per shape — try prior
+    # winners first (ban-weighted order from rotor_priors.load), then the
+    # natural key order. Only-add behaviour unchanged; budget still counts
+    # every candidate actually evaluated, not skipped duplicates.
+    _pk = [int(k) for k in (prior_keys or []) if 0 <= int(k) < max_keys]
+    ordered = list(dict.fromkeys(_pk))
+    ordered += [key for key in range(max_keys) if key not in set(_pk)]
+    for key in ordered:
         src = generate_program(grammar, key, signature, k=k)
         if src in seen:
             continue

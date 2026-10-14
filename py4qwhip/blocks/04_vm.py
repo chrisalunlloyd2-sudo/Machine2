@@ -122,10 +122,10 @@ class Machine:
         elif name == "LOAD_CONST":
             self.regs[code[off]] = self._const(u16(off + 1)); off += 3
         elif name == "LOAD_LOCAL":
-            slot = rd(); dst = code[off + 1]; off += 2
+            slot = code[off]; dst = code[off + 1]; off += 2  # 2026-10-14: rd() was undefined (NameError on every LOAD_LOCAL)
             self.regs[dst] = self.regs[slot]
         elif name == "STORE_LOCAL":
-            src = rd(); slot = code[off + 1]; off += 2
+            src = code[off]; slot = code[off + 1]; off += 2  # 2026-10-14: rd() was undefined (NameError on every STORE_LOCAL)
             self.regs[slot] = self.regs[src]
         elif name in ("ADD", "SUB", "MUL", "EQ", "LT"):
             d, a, b = code[off], code[off + 1], code[off + 2]; off += 3
@@ -135,6 +135,8 @@ class Machine:
             elif name == "SUB":
                 self.regs[d] = (va - vb) if (va is not None and vb is not None) else None
             elif name == "MUL":
+                if isinstance(va, (str, bytes)) or isinstance(vb, (str, bytes)):
+                    raise TypeError("MUL on sequence")   # 2026-10-14 fuzz finding: str*huge-int hung the VM
                 self.regs[d] = (va * vb) if (va is not None and vb is not None) else None
             elif name == "EQ":
                 self.regs[d] = (va == vb)
@@ -142,6 +144,9 @@ class Machine:
                 self.regs[d] = (va < vb) if (va is not None and vb is not None
                                              and isinstance(va, (int, float))
                                              and isinstance(vb, (int, float))) else None
+            if name in ("ADD", "SUB", "MUL") and isinstance(self.regs[d], int) and not isinstance(self.regs[d], bool):
+                if not (-(1 << 63) <= self.regs[d] < (1 << 63)):
+                    raise OverflowError("i64")   # 2026-10-14: ints are i64 (spec for the Rust port); bigints would diverge
         elif name == "JUMP":
             rel = s16(off); off += 2
             self.pc = self.pc + 3 + rel  # base = next-instr byte + signed rel

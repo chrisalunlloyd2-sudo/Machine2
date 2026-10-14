@@ -17,7 +17,7 @@ def load(f, n):
 
 def gen(rng):
     n = rng.randint(3, 14)
-    lines, labels = [], 0
+    lines, labels = ["S0:"], 0     # S0 = program start: backward jumps to offset 0 must validate
     for i in range(n):
         k = rng.random()
         r = lambda: "r%d" % rng.randint(0, 5)
@@ -26,13 +26,15 @@ def gen(rng):
         elif k < 0.55:
             lines.append("%s %s, %s, %s" % (rng.choice(["add", "sub", "mul", "eq", "lt"]), r(), r(), r()))
         elif k < 0.70:
-            lines.append("out %s" % r())
+            lines.append(rng.choice(["out %s" % r(), "load_local %s, %s" % (r(), r()), "store_local %s, %s" % (r(), r()), "strcat %s, %s, %s" % (r(), r(), r()), "len %s, %s" % (r(), r())]))
         elif k < 0.80:
             lines.append("jif %s, L%d" % (r(), labels)); lines.append("load_const %s, 1" % r())
             lines.append("L%d:" % labels); labels += 1
         elif k < 0.88:
             lines.append("jump L%d" % labels); lines.append("load_const %s, 2" % r())
             lines.append("L%d:" % labels); labels += 1
+        elif k < 0.94:
+            lines.append("jif %s, S0" % r())
         else:
             lines.append("load_const %s, 'fz%d'" % (r(), rng.randint(0, 3)))
     lines.append("halt")
@@ -40,6 +42,7 @@ def gen(rng):
 
 
 def main(N):
+    import faulthandler; faulthandler.dump_traceback_later(60, exit=True)   # a hang must print its stack and stop, never block the hive cell
     vm = load("04_vm.py", "pq_vm"); b1 = vm.b01
     rng = random.Random(20261014)
     bad = {"assemble": 0, "hash_unstable": 0, "roundtrip": 0, "vm_nondeterministic": 0,
@@ -68,7 +71,7 @@ def main(N):
             t = dict(p); c = bytearray(p["code"]); c[rng.randrange(len(c))] ^= rng.randint(1, 255); t["code"] = bytes(c)
             try:
                 s = vm.Machine(t, None, 500).run()
-                if s["status"] not in ("HALTED", "FAULT"): bad["tamper_untrapped"] += 1
+                if s["status"] not in ("HALTED", "FAULT", "SYNTH_PENDING"): bad["tamper_untrapped"] += 1   # a flipped byte may become IMPORT
             except Exception as e:
                 bad["tamper_untrapped"] += 1; first_fail.setdefault("tamper", (asm, "%s: %s" % (type(e).__name__, str(e)[:80])))
         if i < 200:

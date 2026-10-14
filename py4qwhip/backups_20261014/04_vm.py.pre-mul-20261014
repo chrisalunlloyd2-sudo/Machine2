@@ -1,0 +1,312 @@
+"""py4qwhip block 04 — vm: the bytecode-eating runtime (loop-closure dispatch).
+
+Design notes (Chris, verbatim, 2026-10-12):
+  "py4qwhip is a runtime that *eats* bytecode on its way to Redox the 'main
+   port,' with Rust owning the metal and Python riding as the guest world."
+  "Every one of those is a crash in a normal runtime and a *synthesis job* in
+   py4qwhip. Loop closure instead of ModuleNotFoundError, forever."
+
+The VM executes block-01 programs (stdlib-only, deterministic, step-limited
+— conventions from ledger id 1728). Its distinguishing op is IMPORT (0x0D):
+   a normal runtime raises ModuleNotFoundError;
+   this VM pauses with status 'SYNTH_PENDING' and asks the synthesize engine
+   (block 03) to close the loop, then retries — ModuleNotFoundError, never.
+No I/O, no network, no model calls. QW-7 credential tagging note: programs
+are content-hashed (block 01); the hash is the grant key — to run someone's
+bytecode you must be *handed* the hash (block 05 wires this into checks).
+
+Author: Hermes (Hermes=dense-code lane, per tasks/py4qwhip_lanes_20261012.md)
+"""
+from __future__ import annotations
+
+import json
+import struct
+import sys, os
+from typing import Any, Dict, List, Optional, Tuple
+
+import importlib.util  # 2026-10-14: sys.path edit removed; siblings load by file path
+
+
+def _load_local(fname: str, modname: str):
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), fname)
+    spec = importlib.util.spec_from_file_location(modname, path)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+b01 = _load_local("01_bytespace.py", "pq4_b01")
+b03 = _load_local("03_synthesize.py", "pq4_b03")
+
+
+class VMError(Exception):
+    """Deterministic VM fault (trapped at a pc, never a bare crash)."""
+
+
+# Statuses (deterministic, part of the contract)
+RUNNING = "RUNNING"
+HALTED = "HALTED"
+SYNTH_PENDING = "SYNTH_PENDING"   # IMPORT op needs loop closure
+FAULT = "FAULT"
+
+MAX_STEPS_DEFAULT = 100_000
+MAX_SYNTH_RETRIES = 3
+MAX_STR = 10_000  # string ops clamp (deterministic, no runaway builds)
+
+
+class Machine:
+    """One executing frame. nlocals registers; const_pool; IMPORT loop-closure."""
+
+    def __init__(self, program: Dict[str, Any], inputs: Optional[List[Any]] = None,
+                 max_steps: int = MAX_STEPS_DEFAULT):
+        try:
+            b01.validate(program)
+        except Exception as e:          # hand-tampered bytecode: trap, don't crash
+            self.regs = []
+            self.program = program
+            self.pool = []
+            self.nlocals = 0
+            self.pc = 0
+            self.steps = 0
+            self.max_steps = int(max_steps)
+            self.status = FAULT
+            self.fault = "validate: %s" % e
+            self.pending_import = None
+            self.synth_retries = 0
+            self._outs: List[Any] = []
+            self._inputs = []
+            return
+        self.program = program
+        self.pool = list(program.get("const_pool", []))
+        self.nlocals = int(program["nlocals"])
+        self.regs: List[Any] = [None] * self.nlocals
+        self.pc = 0
+        self.steps = 0
+        self.max_steps = int(max_steps)
+        self.status = RUNNING
+        self.fault: Optional[str] = None
+        self.pending_import: Optional[str] = None
+        self.synth_retries = 0
+        self._outs: List[Any] = []
+        self._inputs = list(inputs or [])
+
+    # ---- helpers
+    def out(self) -> List[Any]:
+        return list(self._outs)
+
+    def _const(self, idx: int) -> Any:
+        if not (0 <= idx < len(self.pool)):
+            raise VMError("const idx %d out of pool" % idx)
+        return self.pool[idx]
+
+    def _str(self, v: Any) -> str:
+        s = "" if v is None else (v if isinstance(v, str) else json.dumps(v)
+                                  if not isinstance(v, (int, float, bool)) else str(v))
+        return s[:MAX_STR]
+
+    # ---- the step function
+    def step(self) -> None:
+        code = self.program["code"]
+        if self.pc >= len(code):
+            self.status = HALTED
+            return
+        opc = code[self.pc]
+        name, kinds = b01.OPS[opc]
+        off = self.pc + 1
+        # operand readers: explicit offsets (lambda closures overlapped operands)
+        u16 = lambda o: struct.unpack("<H", code[o:o + 2])[0]  # noqa: E731
+        s16 = lambda o: struct.unpack("<h", code[o:o + 2])[0]  # noqa: E731
+
+        if name == "NOP":
+            pass
+        elif name == "LOAD_CONST":
+            self.regs[code[off]] = self._const(u16(off + 1)); off += 3
+        elif name == "LOAD_LOCAL":
+            slot = code[off]; dst = code[off + 1]; off += 2  # 2026-10-14: rd() was undefined (NameError on every LOAD_LOCAL)
+            self.regs[dst] = self.regs[slot]
+        elif name == "STORE_LOCAL":
+            src = code[off]; slot = code[off + 1]; off += 2  # 2026-10-14: rd() was undefined (NameError on every STORE_LOCAL)
+            self.regs[slot] = self.regs[src]
+        elif name in ("ADD", "SUB", "MUL", "EQ", "LT"):
+            d, a, b = code[off], code[off + 1], code[off + 2]; off += 3
+            va, vb = self.regs[a], self.regs[b]
+            if name == "ADD":
+                self.regs[d] = (va + vb) if (va is not None and vb is not None) else None
+            elif name == "SUB":
+                self.regs[d] = (va - vb) if (va is not None and vb is not None) else None
+            elif name == "MUL":
+                self.regs[d] = (va * vb) if (va is not None and vb is not None) else None
+            elif name == "EQ":
+                self.regs[d] = (va == vb)
+            else:
+                self.regs[d] = (va < vb) if (va is not None and vb is not None
+                                             and isinstance(va, (int, float))
+                                             and isinstance(vb, (int, float))) else None
+        elif name == "JUMP":
+            rel = s16(off); off += 2
+            self.pc = self.pc + 3 + rel  # base = next-instr byte + signed rel
+            return
+        elif name == "JIF":
+            r = code[off]; rel = s16(off + 1); off += 3
+            if self.regs[r]:
+                self.pc = self.pc + 1 + 1 + 2 + rel
+                return
+        elif name == "CALL":
+            raise VMError("CALL unimplemented in block 04 (function frames land in block 06)")
+        elif name == "RET":
+            self.status = HALTED
+            return
+        elif name == "IMPORT":
+            dst = code[off]; idx = u16(off + 1); off += 3
+            modname = self._str(self._const(idx))
+            self.pending_import = modname
+            self.status = SYNTH_PENDING
+            self.regs[dst] = None
+            return
+        elif name == "HALT":
+            self.status = HALTED
+            return
+        elif name == "STRCAT":
+            d, a, b = code[off], code[off + 1], code[off + 2]; off += 3
+            self.regs[d] = self._str(self.regs[a]) + self._str(self.regs[b])
+        elif name == "LEN":
+            d, a = code[off], code[off + 1]; off += 2
+            v = self.regs[a]
+            self.regs[d] = 0 if v is None else (len(v) if hasattr(v, "__len__") else len(str(v)))
+        elif name == "OUT":
+            self._outs.append(self.regs[code[off]]); off += 1
+        else:
+            raise VMError("unhandled opcode %s" % name)
+        self.pc = off
+
+    def run(self) -> Dict[str, Any]:
+        """Run to HALT/FAULT/step-limit. Returns final state (deterministic)."""
+        while self.status == RUNNING:
+            self.steps += 1
+            if self.steps > self.max_steps:
+                self.status = FAULT
+                self.fault = "step_limit_exceeded"
+                break
+            try:
+                self.step()
+            except VMError as e:
+                self.status = FAULT
+                self.fault = str(e)
+                break
+            except (TypeError, ValueError, ArithmeticError, IndexError, KeyError) as e:
+                # 2026-10-14 (fuzz finding): operand type mismatch (e.g. SUB str-int) escaped as a bare
+                # crash. Trap it as a deterministic fault; type NAME only so a Rust port can match it.
+                self.status = FAULT
+                self.fault = "trap:" + type(e).__name__
+                break
+        return {"status": self.status, "steps": self.steps,
+                "fault": self.fault, "pending_import": self.pending_import,
+                "outs": self.out(), "regs": list(self.regs)}
+
+
+# ---- loop-closure driver: VM + synthesize engine working together
+
+def resolve_and_run(program: Dict[str, Any],
+                    inputs: Optional[List[Any]] = None,
+                    max_steps: int = MAX_STEPS_DEFAULT,
+                    feed_path: str = b03.GAP_FEED_DEFAULT) -> Dict[str, Any]:
+    """Run a program; on SYNTH_PENDING, synthesize+register the module, resume.
+
+    This IS the loop closure: the VM never returns ModuleNotFoundError. It
+    returns either HALTED (with outs) or FAULT (real faults only).
+    """
+    m = Machine(program, inputs, max_steps)
+    synth_log: List[Dict[str, Any]] = []
+    while True:
+        state = m.run()
+        if state["status"] != SYNTH_PENDING:
+            state["synth_log"] = synth_log
+            return state
+        modname = state["pending_import"]
+        job = {"kind": "MODULE_MISSING", "module": modname,
+               "imported_by": ["py4qwhip_vm"], "gap_id": "MODULE_MISSING:%s" % modname}
+        try:
+            prior = b03.lookup_prior_art(job)
+            synth = b03.synth_skeleton(job)
+            b03.submit_synthesis(job, synth, prior)
+            action = "synthesized"
+        except Exception as e:
+            action = "synth_error: %s" % e
+        synth_log.append({"module": modname, "action": action,
+                          "content_hash": b01.content_hash(synth["program"])
+                          if action == "synthesized" else None})
+        m.synth_retries += 1
+        if m.synth_retries >= MAX_SYNTH_RETRIES:
+            m.status = FAULT
+            m.fault = "synth_retry_exhausted"
+            state2 = m.run()
+            state2["synth_log"] = synth_log
+            return state2
+        # resume: import placeholder resolves to a stub marker; pc moves past IMPORT
+        m.pc += 1 + 1 + 2
+        m.status = RUNNING
+        m.pending_import = None
+
+
+# ---------------------------------------------------------------- selftest
+
+def selftest() -> dict:
+    checks = {}
+    # 1. arithmetic program
+    p = b01.assemble("load_const r0, 6\n"
+                     "load_const r1, 7\n"
+                     "mul r2, r0, r1\n"
+                     "out r2\n"
+                     "halt\n", "t_mul", nlocals=4)
+    st = resolve_and_run(p)
+    checks["mul_6x7"] = (st["status"] == "HALTED" and st["outs"] == [42])
+    # 2. loop closure: IMPORT triggers synthesis, run resumes, no ModuleNotFoundError
+    p2 = b01.assemble("import r0, 'cpuinfo'\n"
+                      "load_const r1, 'after'\n"
+                      "out r1\n"
+                      "halt\n", "t_import", nlocals=4,
+                      const_extra=["cpuinfo", "after"])
+    st2 = resolve_and_run(p2)
+    checks["loop_closure"] = (st2["status"] == "HALTED"
+                              and st2["synth_log"]
+                              and st2["synth_log"][0]["module"] == "cpuinfo"
+                              and st2["outs"] == ["after"])
+    # 3. step limit (boundless spin)
+    p3 = b01.assemble("load_const r0, 1\n"
+                      "L:\n"
+                      "jif r0, L\n", "t_spin", nlocals=4)
+    st3 = resolve_and_run(p3, max_steps=1000)
+    checks["step_limit"] = (st3["status"] == "FAULT"
+                            and st3["fault"] == "step_limit_exceeded")
+    # 4. jump semantics: backward loop that terminates
+    p4 = b01.assemble("load_const r0, 3\n"
+                      "loop:\n"
+                      "load_const r1, 1\n"
+                      "sub r0, r0, r1\n"
+                      "load_const r2, 0\n"
+                      "jif r2, done\n"
+                      "jif r0, loop\n"
+                      "done:\n"
+                      "out r0\n"
+                      "halt\n", "t_loop", nlocals=4)
+    st4 = resolve_and_run(p4)
+    checks["loop_term"] = (st4["status"] == "HALTED" and st4["outs"] == [0])
+    # 5. fault trapping: hand-tampered bytecode -> FAULT status, never a raise
+    bad = {"magic": "PY4QW01", "version": 1, "name": "bad", "nlocals": 2,
+           "const_pool": [5, 6], "code": bytes([0x01, 0x00, 0x00])}
+    st5 = resolve_and_run(bad)
+    checks["fault_trapped"] = (st5["status"] == "FAULT"
+                               and str(st5["fault"]).startswith("validate:"))
+    # 6. determinism: same program twice -> same outs
+    st6a = resolve_and_run(p)
+    st6b = resolve_and_run(p)
+    checks["deterministic"] = (st6a["outs"] == st6b["outs"]
+                               and st6a["steps"] == st6b["steps"])
+    ok = all(checks.values())
+    return {"ok": ok, "name": "vm", "checks": checks}
+
+
+if __name__ == "__main__":
+    r = selftest()
+    print(json.dumps(r, default=str))
+    sys.exit(0 if r["ok"] else 1)

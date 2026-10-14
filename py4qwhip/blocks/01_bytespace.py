@@ -329,8 +329,8 @@ def validate(program: Dict[str, Any]) -> None:
                 raise BytespaceError("%s: const idx out of pool at %d" % (name, pc))
             if k == "J":
                 rel = struct.unpack("<h", code[oi:oi + 2])[0]
-                tgt = pc + rel
-                if tgt < 0 or tgt >= len(code):
+                tgt = pc + size + rel   # 2026-10-14 fuzz/port finding: base is the NEXT instruction (was pc + rel)
+                if tgt < 0 or tgt > len(code):   # == len(code) = jump to end-of-program, which assemble() allows
                     raise BytespaceError("%s: jump target out of program at %d"
                                          % (name, pc))
             oi += 2 if k in ("C", "J") else 1

@@ -1,6 +1,6 @@
 [
 {
-"asm": "sub r3, r4, r4\nmul r2, r4, r2\njif r4, L0\nload_const r3, 1\nL0:\njump L1\nload_const r3, 2\nL1:\nsub r0, r5, r3\njif r5, L2\nload_const r4, 1\nL2:\njif r4, L3\nload_const r5, 1\nL3:\nmul r3, r4, r1\nload_const r5, 'fz2'\nload_const r3, -38\nload_const r5, -44\neq r0, r3, r3\nload_const r1, 43\njif r2, L4\nload_const r2, 1\nL4:\nhalt\n",
+"asm": "S0:\nsub r3, r4, r4\nmul r2, r4, r2\njif r4, L0\nload_const r3, 1\nL0:\njump L1\nload_const r3, 2\nL1:\nsub r0, r5, r3\njif r5, L2\nload_const r4, 1\nL2:\njif r4, L3\nload_const r5, 1\nL3:\nmul r3, r4, r1\nload_const r5, 'fz2'\nload_const r3, -38\nload_const r5, -44\neq r0, r3, r3\nload_const r1, 43\njif r2, L4\nload_const r2, 1\nL4:\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -13,7 +13,7 @@
 "outs": []
 },
 {
-"asm": "load_const r0, 'fz1'\nload_const r2, 16\nout r0\nload_const r2, 'fz0'\neq r5, r0, r2\nload_const r0, -36\njif r3, L0\nload_const r5, 1\nL0:\nload_const r0, 45\nload_const r4, -10\nout r2\nload_const r1, -32\nload_const r5, 24\nout r1\nload_const r1, -4\nhalt\n",
+"asm": "S0:\nload_const r0, 'fz1'\nload_const r2, 16\nstore_local r2, r4\nload_const r0, -36\njif r3, L0\nload_const r5, 1\nL0:\nload_const r0, 45\nload_const r4, -10\nload_local r2, r0\nload_const r1, -4\nload_const r2, 'fz1'\njif r4, L1\nload_const r1, 1\nL1:\nload_const r0, 8\njump L2\nload_const r4, 2\nL2:\nlt r3, r5, r5\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -21,29 +21,12 @@
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "c500ee8a9d6d0792",
-"status": "HALTED",
-"outs": [
-"fz1",
-"fz0",
--32
-]
-},
-{
-"asm": "jump L0\nload_const r4, 2\nL0:\nload_const r4, -23\nload_const r0, 8\njump L1\nload_const r4, 2\nL1:\nlt r3, r5, r5\njump L2\nload_const r3, 2\nL2:\njump L3\nload_const r3, 2\nL3:\njif r2, L4\nload_const r1, 1\nL4:\njump L5\nload_const r2, 2\nL5:\nload_const r3, 12\nlt r1, r3, r3\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "abb540f4c7886bf1",
+"content_hash": "224c0c7bae449e39",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "load_const r3, 0\nout r3\nload_const r2, 'fz2'\nadd r1, r3, r4\nout r5\nload_const r1, -1\nload_const r1, -5\nmul r3, r1, r5\nadd r2, r4, r0\nadd r0, r1, r1\nhalt\n",
+"asm": "S0:\neq r2, r2, r1\njump L0\nload_const r2, 2\nL0:\nload_const r3, 12\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -51,7 +34,1188 @@
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "6222a65a23267909",
+"content_hash": "d8dca64c6aea031c",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nlt r1, r3, r3\neq r3, r3, r4\nload_const r3, -11\nadd r1, r3, r4\nload_local r1, r1\njif r3, L0\nload_const r0, 1\nL0:\nadd r3, r4, r0\nload_const r1, -29\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "9e55dc240e1857dd",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nmul r5, r1, r5\nadd r2, r1, r3\nadd r5, r4, r4\nload_const r0, 17\nstore_local r1, r3\neq r1, r2, r1\nout r1\nadd r5, r0, r5\njif r1, L0\nload_const r4, 1\nL0:\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "0ff123a682cb3e48",
+"status": "HALTED",
+"outs": [
+true
+]
+},
+{
+"asm": "S0:\nlt r3, r2, r5\nload_local r5, r5\nmul r1, r1, r1\nlt r4, r0, r0\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "bd7b84bf61a77195",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r5, -6\neq r3, r2, r3\njif r5, S0\nload_const r3, 25\nload_const r4, -24\nload_const r5, -8\nstrcat r0, r1, r1\nlen r1, r5\nlt r1, r0, r4\nload_const r1, -28\nload_const r0, -43\njif r5, S0\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "ced7d3b6f432158e",
+"status": "FAULT",
+"outs": []
+},
+{
+"asm": "S0:\njif r3, L0\nload_const r1, 1\nL0:\nload_const r4, 'fz3'\njif r4, S0\njump L1\nload_const r0, 2\nL1:\nstore_local r2, r2\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "a09ac31ee26b0b96",
+"status": "FAULT",
+"outs": []
+},
+{
+"asm": "S0:\nout r2\nsub r2, r2, r0\nload_const r5, 0\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "ca0865390c27e818",
+"status": "HALTED",
+"outs": [
+null
+]
+},
+{
+"asm": "S0:\nsub r4, r1, r3\nload_const r0, 'fz0'\njif r2, S0\neq r0, r0, r3\nstrcat r0, r0, r2\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "d92f7593bd3817b1",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r1, 'fz0'\nload_const r2, 7\nload_const r3, 43\nmul r0, r4, r4\nload_const r2, -50\nload_const r2, -32\njif r3, S0\nload_const r3, 35\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "7ad86a1412672e5f",
+"status": "FAULT",
+"outs": []
+},
+{
+"asm": "S0:\nload_local r1, r5\nstore_local r1, r1\njump L0\nload_const r3, 2\nL0:\njump L1\nload_const r4, 2\nL1:\njump L2\nload_const r2, 2\nL2:\nstore_local r5, r1\njump L3\nload_const r0, 2\nL3:\nload_const r0, 8\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "31cb874f2bc804f9",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r4, 38\njif r4, L0\nload_const r3, 1\nL0:\nload_const r1, 3\njump L1\nload_const r2, 2\nL1:\nlt r4, r5, r5\nmul r3, r4, r2\njif r0, L2\nload_const r4, 1\nL2:\nlt r0, r5, r3\nload_const r1, 'fz1'\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "612ba79de4e721f9",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\njif r2, S0\njif r0, L0\nload_const r1, 1\nL0:\nmul r1, r3, r4\njump L1\nload_const r5, 2\nL1:\nload_const r3, 18\nload_const r2, 'fz0'\nload_const r0, -36\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "b5fe634bd513d527",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r3, -35\nload_const r3, -36\nlt r3, r1, r1\nload_const r3, 'fz2'\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "1e3967c789450ead",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nsub r1, r2, r5\nload_const r1, -40\njif r4, L0\nload_const r3, 1\nL0:\nload_const r2, 9\nadd r5, r1, r3\nload_const r2, 6\njump L1\nload_const r3, 2\nL1:\nload_const r5, -26\nload_local r0, r4\nlen r0, r1\njif r2, L2\nload_const r2, 1\nL2:\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "94b084ef580f163a",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\njump L0\nload_const r1, 2\nL0:\njump L1\nload_const r2, 2\nL1:\nload_const r2, 18\nload_const r5, 'fz0'\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "f351b1a77ae45f08",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r3, 31\nload_const r1, -8\nload_const r2, 4\njif r4, S0\nload_const r1, -49\nload_const r4, -11\nadd r1, r2, r3\nload_const r3, -25\nlt r3, r1, r1\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "575adc05aa193cc6",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\njif r5, S0\nmul r2, r3, r1\njump L0\nload_const r4, 2\nL0:\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "e59233112411d5bc",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nadd r0, r2, r3\nmul r4, r3, r1\njif r0, L0\nload_const r0, 1\nL0:\nload_const r0, 47\njump L1\nload_const r1, 2\nL1:\nload_const r2, 32\nload_const r2, 12\njif r0, L2\nload_const r1, 1\nL2:\nlt r2, r2, r1\nload_const r2, 7\nadd r1, r3, r2\nload_local r0, r3\nload_const r1, 8\nmul r2, r5, r0\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "864c200eea7aab83",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r0, 2\neq r3, r3, r1\nload_const r4, -35\njif r1, L0\nload_const r2, 1\nL0:\nload_const r1, -36\nload_const r4, 'fz2'\nload_local r0, r3\nsub r2, r1, r5\nload_const r2, -48\nload_const r3, 'fz0'\njif r0, L1\nload_const r2, 1\nL1:\nload_const r0, -3\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "edcfa92b069b453d",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nlt r5, r3, r4\nload_const r1, 47\nstore_local r3, r4\nload_const r0, 'fz3'\neq r0, r4, r1\nlt r4, r0, r3\njif r3, S0\nstore_local r5, r5\nload_const r3, -44\nload_const r0, 25\neq r0, r3, r5\njif r1, L0\nload_const r4, 1\nL0:\nload_const r0, -37\nout r4\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "b0cc1543367e65e7",
+"status": "HALTED",
+"outs": [
+null
+]
+},
+{
+"asm": "S0:\nmul r2, r4, r4\nload_const r0, 45\nstrcat r3, r5, r1\nlen r1, r2\nmul r2, r5, r4\nstrcat r3, r5, r1\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "5f12c8e53349c33c",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r4, 'fz0'\nload_const r3, 1\nload_const r3, -12\njif r2, L0\nload_const r5, 1\nL0:\nlt r5, r5, r3\njif r1, L1\nload_const r1, 1\nL1:\njif r2, L2\nload_const r1, 1\nL2:\njump L3\nload_const r5, 2\nL3:\nstore_local r4, r1\nload_const r2, -14\njump L4\nload_const r0, 2\nL4:\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "d1bfc36e83aa1a3a",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r4, -21\njif r0, S0\njif r5, S0\nadd r0, r0, r2\nload_const r5, 19\nmul r1, r4, r4\neq r5, r5, r1\nadd r5, r4, r2\njif r2, L0\nload_const r5, 1\nL0:\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "0181a21d985d1856",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nadd r4, r0, r0\nload_const r2, -49\nstrcat r5, r5, r0\njif r0, L0\nload_const r3, 1\nL0:\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "757688af0d8552bd",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nlt r3, r4, r5\njif r2, L0\nload_const r3, 1\nL0:\njif r0, L1\nload_const r3, 1\nL1:\njif r5, L2\nload_const r2, 1\nL2:\nload_const r5, -49\nload_const r2, 42\nload_const r3, 0\nload_const r5, -18\nload_local r4, r1\njif r0, S0\njif r4, S0\nload_local r5, r5\neq r5, r0, r0\nload_const r1, 'fz0'\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "1da310b3b1bfe3f0",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nlen r4, r4\nstrcat r1, r0, r0\njif r4, L0\nload_const r1, 1\nL0:\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "59f18bdd3ef07536",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nstrcat r2, r3, r0\nload_const r3, -47\nload_const r1, 12\neq r5, r1, r2\nload_const r4, -19\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "6cc2c96ae2edc990",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r1, -46\nsub r2, r1, r2\nmul r0, r3, r5\njif r4, L0\nload_const r1, 1\nL0:\nload_const r2, -41\nlt r5, r1, r3\nadd r0, r5, r1\nload_const r2, 40\njif r4, L1\nload_const r2, 1\nL1:\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "59b568143e55f800",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\njif r3, L0\nload_const r2, 1\nL0:\nload_const r3, -8\nstore_local r0, r5\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "50958064906df243",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\njump L0\nload_const r2, 2\nL0:\nload_const r1, -15\njump L1\nload_const r3, 2\nL1:\nstore_local r3, r2\nsub r2, r3, r2\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "9162a7b7cc69030d",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r1, -25\nload_const r5, -10\njump L0\nload_const r4, 2\nL0:\nlt r1, r2, r4\nload_const r3, -29\nload_const r4, 37\njif r4, S0\nsub r4, r0, r5\nload_const r3, -39\njif r2, L1\nload_const r5, 1\nL1:\nload_const r2, -37\nload_const r3, -9\nadd r2, r3, r3\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "244f5aea6e2334cb",
+"status": "FAULT",
+"outs": []
+},
+{
+"asm": "S0:\nadd r2, r5, r3\njif r1, S0\nlen r4, r4\nadd r0, r2, r3\njif r4, L0\nload_const r3, 1\nL0:\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "27bddb2c9a5011cc",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nmul r1, r2, r2\neq r5, r0, r3\nload_const r0, 'fz2'\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "0472decdb83154f6",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r4, 14\njif r4, S0\nload_const r5, -2\nstrcat r1, r2, r5\neq r5, r3, r1\nload_const r5, 16\nadd r0, r0, r2\njump L0\nload_const r3, 2\nL0:\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "221b6975b7321e62",
+"status": "FAULT",
+"outs": []
+},
+{
+"asm": "S0:\njif r0, S0\nsub r2, r5, r5\njif r4, L0\nload_const r2, 1\nL0:\njif r0, L1\nload_const r0, 1\nL1:\nload_const r2, 33\nlt r4, r2, r1\nload_const r0, -24\njif r1, L2\nload_const r2, 1\nL2:\nload_const r5, 34\njif r0, S0\nadd r3, r4, r1\nload_const r1, 36\njif r2, L3\nload_const r2, 1\nL3:\neq r0, r2, r1\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "cded86a870a4404b",
+"status": "FAULT",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r3, 'fz1'\nload_const r2, -22\nload_const r4, -45\nload_const r3, 3\nload_const r4, 18\nload_const r1, -6\nload_const r5, 'fz3'\nmul r1, r5, r3\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "ebc2fc1c0afda330",
+"status": "FAULT",
+"outs": []
+},
+{
+"asm": "S0:\njump L0\nload_const r0, 2\nL0:\nadd r5, r3, r2\nload_const r0, -26\nload_const r2, 'fz3'\njif r1, L1\nload_const r5, 1\nL1:\nmul r1, r1, r4\nadd r2, r3, r2\nload_const r0, 10\nload_const r4, 'fz0'\nload_const r1, -16\nstrcat r1, r5, r4\nload_const r2, 'fz0'\nadd r1, r4, r1\nstrcat r3, r3, r3\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "bdb2149972f71de0",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nadd r3, r2, r2\nload_const r4, -28\njump L0\nload_const r4, 2\nL0:\njump L1\nload_const r1, 2\nL1:\nlt r2, r0, r2\nload_const r2, -46\neq r0, r5, r4\nout r3\nload_const r2, 18\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "eea7154489a80f9b",
+"status": "HALTED",
+"outs": [
+null
+]
+},
+{
+"asm": "S0:\njif r2, L0\nload_const r1, 1\nL0:\nlen r2, r3\nload_const r5, -35\nload_const r5, 49\nload_const r5, 12\nload_const r2, -9\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "8c1e8250eaa9a7b8",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r1, 37\nload_const r3, 7\nload_const r3, 'fz1'\nlen r4, r1\nlt r3, r2, r5\nmul r4, r5, r5\nlt r1, r1, r1\neq r1, r1, r0\nlt r4, r0, r5\nload_const r3, 'fz1'\nload_const r0, 8\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "4946a5263a8c3cd4",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r0, -9\nmul r5, r2, r2\nstrcat r5, r0, r2\nout r0\neq r2, r5, r3\nlt r1, r2, r4\nload_const r5, 9\njif r3, L0\nload_const r0, 1\nL0:\njif r5, L1\nload_const r3, 1\nL1:\nload_local r4, r1\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "3294c8fd2efb9326",
+"status": "HALTED",
+"outs": [
+-9
+]
+},
+{
+"asm": "S0:\nload_local r4, r5\nload_const r5, 'fz1'\nload_const r4, -22\nload_const r4, 40\nstrcat r2, r0, r2\nload_const r0, 'fz3'\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "8ac2e27f45826431",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\njif r2, S0\nload_const r3, 2\nload_const r0, 2\nload_const r2, -8\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "9296d23bf7f6e0d3",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nlt r5, r3, r2\njif r5, L0\nload_const r1, 1\nL0:\njump L1\nload_const r0, 2\nL1:\nlen r5, r0\nload_const r2, 'fz3'\njif r3, S0\nload_const r0, -29\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "3b04757a49cdb6d0",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\neq r2, r2, r1\njif r5, L0\nload_const r4, 1\nL0:\nsub r0, r3, r1\njif r2, L1\nload_const r5, 1\nL1:\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "90474862f9f86374",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\njif r2, L0\nload_const r3, 1\nL0:\nload_const r3, 17\nload_const r2, 28\neq r0, r3, r1\nlen r0, r5\nmul r2, r4, r3\nload_const r2, 34\nadd r3, r3, r5\nload_const r2, 43\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "d40105f6dd471647",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\njump L0\nload_const r4, 2\nL0:\njif r4, L1\nload_const r2, 1\nL1:\nload_const r1, 'fz0'\nload_const r2, 14\nload_const r1, 41\njif r5, L2\nload_const r4, 1\nL2:\nload_const r2, -43\nload_const r1, 'fz2'\neq r2, r0, r0\neq r4, r1, r3\neq r4, r3, r0\njump L3\nload_const r4, 2\nL3:\nlen r5, r3\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "2b529a1251580792",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nsub r3, r0, r0\neq r5, r5, r1\nsub r3, r3, r3\nadd r2, r4, r5\nadd r0, r3, r3\nload_const r1, 'fz3'\nload_const r0, 46\nlt r5, r4, r5\njump L0\nload_const r5, 2\nL0:\njump L1\nload_const r4, 2\nL1:\nload_const r1, 'fz1'\njif r4, S0\nload_const r2, 36\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "828aaa02a46500e9",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\neq r1, r4, r0\nmul r5, r4, r4\nsub r2, r2, r1\njump L0\nload_const r0, 2\nL0:\nsub r4, r2, r4\nmul r0, r2, r4\nstore_local r5, r2\nstrcat r2, r5, r5\njif r2, L1\nload_const r3, 1\nL1:\nlt r4, r2, r4\nload_const r4, 'fz3'\nload_const r1, 44\nload_const r5, 35\nout r5\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "7427bda392839b03",
+"status": "HALTED",
+"outs": [
+35
+]
+},
+{
+"asm": "S0:\njif r1, S0\nload_const r0, 9\nsub r0, r1, r4\nsub r1, r0, r4\nlt r4, r5, r4\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "b1e153a3f7ec437f",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r1, 23\njump L0\nload_const r3, 2\nL0:\nload_const r0, -22\njif r3, L1\nload_const r0, 1\nL1:\nsub r0, r5, r5\neq r1, r0, r0\nload_const r0, 24\nload_const r4, -26\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "99a312c3c7cc0f79",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nlt r4, r5, r2\njif r0, S0\nload_local r0, r0\nload_const r0, 4\nsub r0, r0, r2\nlen r5, r4\nout r1\nload_local r3, r5\nmul r0, r0, r0\njif r5, S0\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "6779d7aba57d31ec",
+"status": "HALTED",
+"outs": [
+null
+]
+},
+{
+"asm": "S0:\nsub r2, r3, r4\nload_const r5, 18\njif r1, L0\nload_const r1, 1\nL0:\njif r2, L1\nload_const r2, 1\nL1:\nload_const r3, -10\nload_local r4, r4\nload_const r3, -40\nload_const r0, 'fz2'\nlen r3, r4\njump L2\nload_const r4, 2\nL2:\nload_const r5, 5\nload_const r5, 47\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "c40a7e4770019a4e",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\neq r4, r0, r1\nlen r0, r3\njif r0, L0\nload_const r0, 1\nL0:\nload_const r0, -49\njump L1\nload_const r0, 2\nL1:\nlen r2, r0\nload_const r0, -4\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "994a05fa6e833271",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nstore_local r2, r0\nmul r4, r2, r3\nstore_local r3, r2\nadd r3, r3, r3\njif r1, L0\nload_const r3, 1\nL0:\njump L1\nload_const r2, 2\nL1:\nload_local r4, r5\nload_const r5, 'fz1'\neq r3, r3, r3\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "7608359d04117a9a",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r5, 8\nadd r1, r1, r0\nsub r5, r4, r4\nload_const r3, 17\nload_const r1, -14\nstore_local r2, r3\nload_const r5, -12\njump L0\nload_const r3, 2\nL0:\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "6e72eb74d1df51c6",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nadd r1, r2, r2\njif r5, L0\nload_const r3, 1\nL0:\nadd r2, r4, r5\nsub r3, r0, r2\nadd r0, r2, r2\njump L1\nload_const r4, 2\nL1:\nload_const r3, 35\nlen r4, r3\nlt r1, r4, r5\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "9f48d44eec30d58a",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\njif r3, S0\nload_local r4, r2\nload_const r5, 13\njif r1, L0\nload_const r2, 1\nL0:\njif r2, S0\nlen r0, r3\njif r5, L1\nload_const r5, 1\nL1:\nstrcat r4, r1, r5\nload_const r1, 23\njump L2\nload_const r0, 2\nL2:\nload_const r1, -17\neq r1, r4, r2\nout r2\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "6966d18e317c01ff",
+"status": "FAULT",
+"outs": []
+},
+{
+"asm": "S0:\nmul r3, r0, r1\nadd r5, r1, r3\nout r1\njif r5, L0\nload_const r4, 1\nL0:\nstore_local r0, r0\nload_const r5, 11\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "ea7219114a45f253",
+"status": "HALTED",
+"outs": [
+null
+]
+},
+{
+"asm": "S0:\njump L0\nload_const r3, 2\nL0:\nmul r0, r4, r2\njif r5, L1\nload_const r0, 1\nL1:\njump L2\nload_const r0, 2\nL2:\nmul r0, r2, r0\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "4ad3744268cb078d",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r5, -10\nload_const r1, 29\nsub r1, r3, r0\nadd r5, r3, r1\nload_const r1, 'fz0'\njif r1, L0\nload_const r5, 1\nL0:\nload_local r0, r3\nload_const r0, -50\nstrcat r3, r4, r1\nout r0\nload_const r0, -36\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "ebcb201f47985e8f",
+"status": "HALTED",
+"outs": [
+-50
+]
+},
+{
+"asm": "S0:\nload_local r2, r2\nload_const r4, 3\nstrcat r5, r5, r1\nmul r2, r2, r3\nload_const r5, 'fz1'\njump L0\nload_const r3, 2\nL0:\njif r4, L1\nload_const r5, 1\nL1:\nadd r5, r3, r2\nload_const r4, -26\nload_local r3, r0\nload_const r5, 26\nlt r0, r2, r2\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "35f6da71f78ddaa0",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r4, -45\nmul r0, r1, r1\njif r0, L0\nload_const r4, 1\nL0:\nlen r0, r1\njif r4, L1\nload_const r3, 1\nL1:\njif r5, L2\nload_const r4, 1\nL2:\njif r3, S0\nload_const r3, 29\nload_const r2, 17\njif r2, L3\nload_const r3, 1\nL3:\nload_const r4, -6\nload_const r1, -36\nmul r1, r1, r4\nload_const r1, -2\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "8e4c7be3cb1280e9",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nstore_local r1, r5\njump L0\nload_const r0, 2\nL0:\nsub r0, r4, r0\nsub r5, r5, r0\nadd r5, r4, r1\nload_const r1, 'fz3'\nload_const r2, -5\nload_const r0, -39\njif r3, L1\nload_const r2, 1\nL1:\neq r3, r4, r0\njif r2, L2\nload_const r2, 1\nL2:\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "c6f57c87aa8de17e",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nlen r0, r0\njump L0\nload_const r5, 2\nL0:\nload_const r0, 4\nload_const r3, 0\njif r2, S0\njif r5, L1\nload_const r0, 1\nL1:\nload_const r0, -46\nlen r4, r5\njif r5, L2\nload_const r2, 1\nL2:\nload_const r3, -14\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "a050a42fcb3c479f",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r2, -33\nlen r5, r1\nstrcat r3, r3, r5\njump L0\nload_const r4, 2\nL0:\neq r3, r5, r5\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "07ab2593b5378faf",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\neq r1, r2, r3\nlt r1, r3, r4\nadd r2, r2, r3\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "fcc6b2512aac3516",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nadd r0, r1, r3\nlt r2, r2, r4\nlen r4, r2\neq r2, r2, r4\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "44222f5d336e0c61",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r2, 28\njump L0\nload_const r3, 2\nL0:\nstrcat r3, r5, r3\nsub r5, r5, r0\njif r1, L1\nload_const r0, 1\nL1:\nstore_local r2, r0\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "e4fad63c4948d380",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\njump L0\nload_const r1, 2\nL0:\neq r3, r5, r0\njif r1, L1\nload_const r3, 1\nL1:\nload_const r0, 1\nout r4\nadd r1, r4, r4\nstrcat r0, r4, r4\nload_const r5, -4\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "41e7165dc41c0765",
+"status": "HALTED",
+"outs": [
+null
+]
+},
+{
+"asm": "S0:\nlen r4, r0\nload_const r4, -4\njump L0\nload_const r2, 2\nL0:\nstrcat r0, r4, r3\neq r2, r1, r2\njif r1, L1\nload_const r5, 1\nL1:\nload_const r4, -22\nload_const r4, 'fz2'\neq r4, r0, r3\nload_const r0, 21\neq r1, r2, r2\nload_const r4, 18\nload_const r1, 'fz0'\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "4079bcfe91e62442",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\njif r2, L0\nload_const r5, 1\nL0:\nload_const r1, -32\nload_const r5, -31\nload_const r1, 'fz0'\nadd r2, r2, r3\njif r4, L1\nload_const r0, 1\nL1:\nload_const r3, -48\nload_const r1, -8\neq r5, r1, r3\nmul r1, r2, r4\njump L2\nload_const r1, 2\nL2:\nmul r4, r2, r4\nlt r1, r1, r5\neq r2, r2, r1\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "5b64a31897c495d6",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nsub r1, r3, r3\njif r3, L0\nload_const r3, 1\nL0:\nload_const r2, -14\nload_const r2, -30\nmul r3, r5, r3\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "bd7c621e30780c01",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nout r1\njif r5, L0\nload_const r0, 1\nL0:\nload_const r4, 'fz1'\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "6da0d8306f8ed894",
+"status": "HALTED",
+"outs": [
+null
+]
+},
+{
+"asm": "S0:\nload_const r3, 14\nload_const r2, 'fz1'\njump L0\nload_const r2, 2\nL0:\nload_const r5, 'fz2'\nload_local r3, r3\njif r1, L1\nload_const r0, 1\nL1:\nload_const r1, 0\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "851afd0755768b96",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r0, -17\njump L0\nload_const r4, 2\nL0:\nload_const r3, -27\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "31ec44f815f9e767",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r1, -25\nload_local r4, r2\nmul r3, r3, r0\njump L0\nload_const r0, 2\nL0:\njump L1\nload_const r0, 2\nL1:\nsub r4, r5, r3\nload_const r3, -36\nload_local r5, r3\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "75a386ddeb5d15df",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nlt r3, r4, r4\nlen r5, r0\njump L0\nload_const r1, 2\nL0:\nload_local r4, r3\nlt r4, r1, r5\njump L1\nload_const r5, 2\nL1:\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "911cb30f1f1d30a6",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r4, 25\nlt r5, r4, r1\njif r5, L0\nload_const r2, 1\nL0:\nsub r1, r2, r3\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "5f1ef57dfc9b1c41",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\njump L0\nload_const r3, 2\nL0:\nstore_local r0, r4\nload_const r5, 2\nload_const r1, -50\nload_const r2, 'fz2'\neq r5, r1, r4\neq r1, r2, r5\njump L1\nload_const r4, 2\nL1:\njump L2\nload_const r3, 2\nL2:\nadd r4, r4, r3\nload_const r0, -19\njif r0, L3\nload_const r2, 1\nL3:\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "2bbfb00cea6985e0",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r1, 'fz1'\njump L0\nload_const r3, 2\nL0:\nsub r1, r2, r0\njif r5, L1\nload_const r0, 1\nL1:\nload_const r1, -50\nload_const r4, -41\nadd r5, r1, r3\nsub r4, r1, r2\njif r1, S0\njump L2\nload_const r3, 2\nL2:\nload_const r0, 'fz3'\nmul r1, r1, r2\nsub r4, r4, r5\nload_const r3, 1\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "d1043bf30f055786",
+"status": "FAULT",
+"outs": []
+},
+{
+"asm": "S0:\nout r0\nload_const r3, 35\nlt r2, r5, r2\nload_const r3, 6\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "35133a5a07866f56",
+"status": "HALTED",
+"outs": [
+null
+]
+},
+{
+"asm": "S0:\nlen r0, r4\nload_local r5, r4\njif r3, L0\nload_const r4, 1\nL0:\njif r4, L1\nload_const r0, 1\nL1:\nload_const r3, 27\njump L2\nload_const r2, 2\nL2:\njif r3, L3\nload_const r2, 1\nL3:\njif r0, S0\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "9055471458bee605",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r0, -3\nload_const r0, -35\njif r3, S0\nsub r2, r4, r1\nload_const r2, -50\nsub r2, r3, r3\neq r1, r1, r3\njif r3, S0\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "341c543885e4aafe",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\njump L0\nload_const r0, 2\nL0:\njif r3, S0\nload_const r0, 'fz2'\njump L1\nload_const r1, 2\nL1:\nsub r4, r5, r4\nload_const r3, -21\neq r5, r2, r3\nload_const r3, 'fz1'\njif r1, L2\nload_const r4, 1\nL2:\nlt r4, r2, r0\nload_const r3, 25\nload_const r3, -39\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "13a5161f0ff00ed6",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nlen r3, r5\neq r3, r4, r4\njif r2, L0\nload_const r5, 1\nL0:\nload_const r2, 24\nlt r5, r0, r3\nstore_local r2, r3\njif r1, L1\nload_const r4, 1\nL1:\njif r2, L2\nload_const r1, 1\nL2:\nmul r4, r0, r3\nstore_local r0, r0\neq r4, r1, r4\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "eb9d9da1eac4f420",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r0, 46\nadd r5, r1, r4\nadd r2, r3, r3\nload_const r2, 4\neq r2, r1, r3\njif r5, L0\nload_const r3, 1\nL0:\nmul r3, r1, r4\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "3b706ece7dcaae54",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nstrcat r3, r5, r4\nload_const r5, 17\nload_const r5, 37\njif r0, L0\nload_const r4, 1\nL0:\nsub r1, r2, r2\nlt r4, r3, r5\nlt r2, r5, r4\nload_const r4, 15\nmul r3, r2, r4\nsub r4, r4, r3\njif r2, S0\neq r2, r5, r5\neq r1, r5, r5\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "82909f1dd7cc49ce",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_local r3, r4\njif r1, L0\nload_const r5, 1\nL0:\nlt r1, r0, r4\nload_const r4, -21\nload_const r0, -3\nstore_local r1, r1\nload_const r2, -9\nload_const r3, -34\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "2f885f5976795f1f",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r0, 0\nout r0\nload_const r3, -4\neq r4, r2, r3\njump L0\nload_const r0, 2\nL0:\nlt r1, r2, r3\nload_const r5, 10\nload_const r4, 21\nload_const r2, 37\nlt r5, r4, r1\nout r5\nstore_local r5, r0\njif r1, S0\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "9f01c84234ff00b0",
 "status": "HALTED",
 "outs": [
 0,
@@ -59,7 +1223,7 @@ null
 ]
 },
 {
-"asm": "mul r5, r1, r5\nadd r2, r1, r3\nadd r5, r4, r4\nload_const r0, 17\nout r4\njif r0, L0\nload_const r5, 1\nL0:\nload_const r1, 26\nout r0\njif r4, L1\nload_const r4, 1\nL1:\nhalt\n",
+"asm": "S0:\nload_const r4, -48\nload_const r3, 28\nout r2\nload_const r4, 'fz1'\njif r0, L0\nload_const r3, 1\nL0:\nload_const r3, -46\nload_local r3, r0\nstrcat r4, r5, r5\nload_local r4, r2\nlen r0, r5\njif r4, S0\njump L1\nload_const r0, 2\nL1:\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -67,15 +1231,14 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "6291473e0eaf40fe",
+"content_hash": "cbb9f0355343d11a",
 "status": "HALTED",
 "outs": [
-null,
-17
+null
 ]
 },
 {
-"asm": "load_const r3, -25\njump L0\nload_const r2, 2\nL0:\nload_const r1, 5\nlt r5, r0, r3\nadd r5, r1, r4\nadd r3, r4, r3\nsub r0, r5, r5\neq r0, r4, r2\nhalt\n",
+"asm": "S0:\nload_const r3, -40\neq r4, r5, r3\nlen r5, r3\njump L0\nload_const r0, 2\nL0:\nload_const r5, -13\neq r4, r5, r1\nstrcat r0, r2, r0\nload_local r4, r5\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -83,12 +1246,12 @@ null,
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "e13243d45f301afb",
+"content_hash": "1b5947650e7d2ba3",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "load_const r2, -28\nload_const r4, -44\nadd r0, r4, r1\nout r2\neq r3, r2, r3\nload_const r5, 'fz0'\nload_const r4, 'fz0'\nload_const r4, 'fz1'\nload_const r5, -8\nout r5\nhalt\n",
+"asm": "S0:\nload_const r4, 35\njif r1, S0\nload_const r0, 26\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -96,105 +1259,12 @@ null,
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "62a7b054ff3580ae",
-"status": "HALTED",
-"outs": [
--28,
--8
-]
-},
-{
-"asm": "load_const r3, 'fz0'\nload_const r1, 'fz0'\nload_const r5, 8\nsub r1, r4, r2\nload_const r1, 36\nout r4\nlt r1, r0, r4\nload_const r1, -28\nload_const r0, -43\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "c1e99ae6754dd86e",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "jif r5, L0\nload_const r5, 1\nL0:\nlt r3, r0, r4\njump L1\nload_const r0, 2\nL1:\nout r5\nmul r2, r2, r1\nout r3\nmul r2, r5, r0\nadd r2, r2, r2\nload_const r3, 46\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "05da25826b4729eb",
-"status": "HALTED",
-"outs": [
-1,
-null
-]
-},
-{
-"asm": "jif r0, L0\nload_const r5, 1\nL0:\nout r3\nout r2\njif r4, L1\nload_const r1, 1\nL1:\nsub r0, r4, r0\nload_const r2, 'fz3'\nload_const r0, -48\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "e2ba04a5e6762eb7",
-"status": "HALTED",
-"outs": [
-null,
-null
-]
-},
-{
-"asm": "out r4\neq r2, r0, r0\nload_const r1, 'fz1'\njump L0\nload_const r3, 2\nL0:\njump L1\nload_const r5, 2\nL1:\nload_const r0, -25\nsub r5, r3, r5\nmul r0, r4, r4\nload_const r2, -50\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "14adfe5a4bd7c4f4",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "jif r1, L0\nload_const r1, 1\nL0:\nadd r3, r5, r2\nout r1\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "46f119679be8908c",
-"status": "HALTED",
-"outs": [
-1
-]
-},
-{
-"asm": "jif r3, L0\nload_const r4, 1\nL0:\nload_const r3, 'fz3'\nload_const r1, 37\nlt r4, r1, r1\nmul r0, r4, r2\njump L1\nload_const r3, 2\nL1:\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "9385a53f1c16a4bb",
+"content_hash": "8996c4412ac046a4",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "load_const r5, -25\nadd r2, r2, r2\njump L0\nload_const r0, 2\nL0:\nload_const r0, 8\nhalt\n",
+"asm": "S0:\nmul r2, r3, r2\nlt r5, r4, r4\neq r2, r3, r0\nload_const r5, 'fz0'\nload_const r3, 10\nload_const r1, 11\njif r2, S0\nout r3\nload_const r4, 33\nlen r4, r3\nsub r1, r3, r2\nadd r1, r1, r1\nload_const r2, -1\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -202,12 +1272,27 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "88adabde8ea99ede",
+"content_hash": "68d1bbc53a93ad51",
+"status": "HALTED",
+"outs": [
+10
+]
+},
+{
+"asm": "S0:\njif r1, S0\njif r3, S0\nload_const r4, 43\nadd r2, r1, r4\nmul r2, r4, r1\nadd r5, r2, r4\nadd r5, r2, r2\nload_const r4, 43\nadd r5, r2, r0\nload_const r3, 39\nload_const r0, -37\nlt r5, r2, r5\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "fdec8310a7308539",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "load_const r4, 38\njif r4, L0\nload_const r3, 1\nL0:\nload_const r1, 3\njump L1\nload_const r2, 2\nL1:\nlt r4, r5, r5\nmul r3, r4, r2\njif r0, L2\nload_const r4, 1\nL2:\nlt r0, r5, r3\nload_const r1, 'fz1'\nhalt\n",
+"asm": "S0:\nload_const r4, -34\nload_local r1, r0\nload_local r3, r2\nload_const r3, -38\nlen r2, r5\nload_const r4, -46\nmul r5, r5, r3\nload_const r2, 47\nlt r2, r3, r4\nload_const r5, -16\nstore_local r5, r3\nadd r1, r1, r2\nstore_local r0, r3\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -215,12 +1300,12 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "4f036880abe6e4f8",
+"content_hash": "7cc38f3c4acfb393",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "jif r2, L0\nload_const r5, 1\nL0:\nout r1\nmul r1, r3, r4\nhalt\n",
+"asm": "S0:\nload_const r0, 25\nstrcat r5, r5, r2\neq r4, r4, r4\nload_const r4, 'fz1'\nadd r2, r0, r3\nload_const r5, -3\neq r5, r5, r1\njump L0\nload_const r1, 2\nL0:\njif r4, L1\nload_const r4, 1\nL1:\njump L2\nload_const r0, 2\nL2:\nload_const r5, 'fz2'\njif r3, S0\njump L3\nload_const r0, 2\nL3:\nstore_local r5, r0\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -228,89 +1313,12 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "3ed8e5ca290d9d19",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "out r1\nload_const r4, 'fz2'\nload_const r4, -42\nload_const r0, -36\njif r0, L0\nload_const r0, 1\nL0:\nload_const r0, 'fz0'\nload_const r0, 'fz3'\nload_const r3, 'fz1'\nload_const r3, -11\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "53091be051d04b15",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "out r1\nload_const r0, -18\nload_const r0, 28\nsub r2, r3, r2\nadd r5, r1, r3\nload_const r2, 6\njump L0\nload_const r3, 2\nL0:\nload_const r5, -26\nout r4\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "36fde3c48a85f8ac",
-"status": "HALTED",
-"outs": [
-null,
-null
-]
-},
-{
-"asm": "mul r4, r5, r0\nout r5\nload_const r3, -24\nout r5\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "c2850c1bb7a41d2a",
-"status": "HALTED",
-"outs": [
-null,
-null
-]
-},
-{
-"asm": "out r3\nsub r4, r1, r2\nload_const r0, 'fz1'\njump L0\nload_const r2, 2\nL0:\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "4272e7f588079519",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "lt r5, r5, r0\neq r2, r5, r3\nload_const r0, 'fz1'\nload_const r1, 4\njump L0\nload_const r2, 2\nL0:\nlt r4, r0, r3\nload_const r0, 26\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "b3076f88258217c0",
+"content_hash": "2d20d101562728db",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "jif r1, L0\nload_const r2, 1\nL0:\neq r1, r3, r0\njif r3, L1\nload_const r1, 1\nL1:\nhalt\n",
+"asm": "S0:\nstore_local r1, r1\nsub r1, r5, r4\nstore_local r3, r0\nlt r5, r3, r1\nload_const r4, 50\nmul r1, r4, r3\nload_const r1, 5\nload_const r0, 'fz0'\nlt r1, r3, r2\njif r2, L0\nload_const r0, 1\nL0:\nload_const r3, 43\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -318,12 +1326,12 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "adb669470686786b",
+"content_hash": "e4cec8981099ffb8",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "load_const r5, 31\nmul r2, r3, r1\njump L0\nload_const r4, 2\nL0:\njif r1, L1\nload_const r0, 1\nL1:\nload_const r2, 'fz3'\nmul r4, r3, r1\nhalt\n",
+"asm": "S0:\nload_const r3, -3\nstrcat r5, r5, r0\nload_const r5, 5\nload_const r2, 'fz2'\nload_const r5, 37\nload_const r2, 19\nload_const r3, 'fz3'\nload_const r1, -12\njif r4, L0\nload_const r2, 1\nL0:\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -331,12 +1339,12 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "1b490d1a505234de",
+"content_hash": "226cc2a5e37e6d95",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "load_const r2, -50\nload_const r3, 'fz1'\nload_const r2, 32\nload_const r2, 12\nhalt\n",
+"asm": "S0:\nload_const r3, -11\njump L0\nload_const r0, 2\nL0:\nsub r0, r5, r5\njump L1\nload_const r1, 2\nL1:\njump L2\nload_const r5, 2\nL2:\nload_const r4, 20\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -344,12 +1352,12 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "8a28ddb80c330e99",
+"content_hash": "29ca612b1965d82e",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "load_const r4, -39\nmul r1, r1, r0\nload_const r3, -4\nload_const r3, -10\nout r2\nload_const r0, -23\nout r0\njump L0\nload_const r4, 2\nL0:\nload_const r1, 8\nmul r2, r5, r0\nhalt\n",
+"asm": "S0:\neq r2, r5, r3\njump L0\nload_const r1, 2\nL0:\njif r4, L1\nload_const r4, 1\nL1:\nload_const r0, -19\nload_const r0, 'fz1'\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -357,28 +1365,12 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "2dd1843178124e29",
-"status": "HALTED",
-"outs": [
-null,
--23
-]
-},
-{
-"asm": "load_const r3, 16\nload_const r3, 10\nload_const r2, 20\nload_const r4, -34\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "85cf82a89ac72603",
+"content_hash": "fef42bafa101670a",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "load_const r1, -36\nload_const r4, 'fz2'\nout r5\nload_const r1, 41\njif r1, L0\nload_const r4, 1\nL0:\nload_const r0, 'fz1'\nsub r2, r1, r5\nload_const r2, -48\nhalt\n",
+"asm": "S0:\nlen r2, r2\nload_local r2, r2\nload_const r0, 4\njif r5, L0\nload_const r3, 1\nL0:\nload_const r4, 29\njif r4, L1\nload_const r5, 1\nL1:\njif r1, L2\nload_const r1, 1\nL2:\njif r3, L3\nload_const r5, 1\nL3:\nload_const r1, -40\nstrcat r0, r0, r4\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -386,27 +1378,12 @@ null,
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "afe3c3598cd7fdb9",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "add r5, r0, r2\nload_const r0, -3\nmul r5, r4, r5\nmul r1, r5, r3\nsub r3, r4, r0\nsub r4, r2, r2\nload_const r3, 'fz3'\nadd r4, r1, r3\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "bf5efe468696a5af",
+"content_hash": "9eb86f61220a07c4",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "add r3, r0, r3\nout r5\nload_const r2, 'fz0'\njif r2, L0\nload_const r4, 1\nL0:\nmul r1, r3, r0\nload_const r0, 25\neq r0, r3, r5\njif r1, L1\nload_const r4, 1\nL1:\nload_const r0, -37\nout r4\nload_const r3, 'fz3'\nhalt\n",
+"asm": "S0:\nadd r4, r2, r1\nmul r2, r1, r4\nadd r0, r3, r0\nstore_local r5, r3\nstrcat r4, r3, r4\njump L0\nload_const r4, 2\nL0:\neq r5, r0, r0\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -414,28 +1391,12 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "2e28ffc15acf475d",
-"status": "HALTED",
-"outs": [
-null,
-1
-]
-},
-{
-"asm": "jump L0\nload_const r4, 2\nL0:\nload_const r3, 48\njif r2, L1\nload_const r4, 1\nL1:\njif r2, L2\nload_const r0, 1\nL2:\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "0c199198c5c9b216",
+"content_hash": "f00d4726e0a2b415",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "jif r1, L0\nload_const r3, 1\nL0:\nload_const r2, -49\nsub r0, r1, r3\nout r4\nhalt\n",
+"asm": "S0:\njump L0\nload_const r3, 2\nL0:\nstore_local r5, r4\nload_const r3, 1\njump L1\nload_const r2, 2\nL1:\njif r5, L2\nload_const r3, 1\nL2:\neq r0, r0, r3\nload_const r5, -23\nsub r5, r1, r3\nload_local r4, r5\njump L3\nload_const r1, 2\nL3:\njif r1, L4\nload_const r3, 1\nL4:\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -443,27 +1404,12 @@ null,
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "508c3c75a7a2a311",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "jump L0\nload_const r3, 2\nL0:\nload_const r0, 24\njif r1, L1\nload_const r2, 1\nL1:\nlt r2, r2, r5\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "ed6c5ee2ffd3f047",
+"content_hash": "ee52869dffc274e5",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "out r1\nload_const r0, 'fz1'\nload_const r5, -34\neq r4, r4, r4\nload_const r0, 'fz2'\nload_const r3, -30\nload_const r3, -12\njif r2, L0\nload_const r5, 1\nL0:\nlt r5, r5, r3\njif r1, L1\nload_const r1, 1\nL1:\njif r2, L2\nload_const r1, 1\nL2:\njump L3\nload_const r5, 2\nL3:\nhalt\n",
+"asm": "S0:\nload_const r0, 31\njump L0\nload_const r5, 2\nL0:\nsub r2, r5, r3\nmul r0, r1, r4\nsub r1, r4, r3\njump L1\nload_const r4, 2\nL1:\nload_const r2, 34\njif r0, L2\nload_const r2, 1\nL2:\nstore_local r1, r3\nsub r0, r0, r3\neq r4, r1, r5\nload_const r4, 45\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -471,105 +1417,12 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "ac6330481ab50ac8",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "load_const r0, 14\nload_const r4, 29\nmul r2, r1, r4\njump L0\nload_const r2, 2\nL0:\njump L1\nload_const r0, 2\nL1:\nadd r4, r1, r3\nload_const r5, 0\nload_const r0, 'fz0'\nlt r3, r5, r2\nload_const r4, -1\nsub r3, r0, r5\njif r2, L2\nload_const r4, 1\nL2:\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "9ea03077ec2444dd",
-"status": "FAULT",
-"outs": []
-},
-{
-"asm": "jif r0, L0\nload_const r3, 1\nL0:\nadd r4, r0, r0\nload_const r2, -49\nout r2\nout r3\nload_const r2, 'fz0'\nload_const r3, 41\nout r0\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "6d95b22549e0d637",
-"status": "HALTED",
-"outs": [
--49,
-1,
-null
-]
-},
-{
-"asm": "jif r2, L0\nload_const r5, 1\nL0:\nload_const r5, 'fz3'\nout r5\nout r3\njif r0, L1\nload_const r3, 1\nL1:\njif r5, L2\nload_const r2, 1\nL2:\nload_const r5, -49\nload_const r2, 42\nload_const r3, 0\nload_const r5, -18\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "cc77034c0b16b0b5",
-"status": "HALTED",
-"outs": [
-"fz3",
-null
-]
-},
-{
-"asm": "out r4\nload_const r1, 'fz1'\nload_const r1, 'fz3'\nout r5\nload_const r0, 'fz0'\njif r5, L0\nload_const r0, 1\nL0:\nmul r5, r3, r4\nload_const r3, 12\nout r0\nload_const r1, 'fz0'\nload_const r2, 39\njif r0, L1\nload_const r2, 1\nL1:\njif r0, L2\nload_const r5, 1\nL2:\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "20cfe91453444a24",
-"status": "HALTED",
-"outs": [
-null,
-null,
-1
-]
-},
-{
-"asm": "out r3\nload_const r1, 'fz0'\nload_const r0, 7\neq r1, r4, r1\nload_const r3, 3\neq r0, r2, r3\nload_const r5, 4\nload_const r3, -47\nload_const r1, 12\neq r5, r1, r2\nload_const r4, -19\nload_const r3, 'fz1'\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "e7ecbaf07a592544",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "load_const r2, 26\nload_const r2, -20\nmul r0, r3, r5\njif r4, L0\nload_const r1, 1\nL0:\nload_const r2, -41\nlt r5, r1, r3\nadd r0, r5, r1\nload_const r2, 40\njif r4, L1\nload_const r2, 1\nL1:\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "a2e619e4e742a0ad",
+"content_hash": "6bcbf7d4c15ce75e",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "jif r3, L0\nload_const r2, 1\nL0:\nload_const r3, -8\nout r1\nhalt\n",
+"asm": "S0:\nload_const r3, 'fz0'\nout r3\nlen r0, r0\nlt r3, r0, r5\nsub r1, r3, r4\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -577,785 +1430,14 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "1959f11e208f4991",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "eq r0, r4, r3\nload_const r1, 27\nload_const r4, -31\nload_const r2, 10\nout r4\nload_const r0, 11\nload_const r0, 'fz1'\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "4231c06acc32e8cf",
-"status": "HALTED",
-"outs": [
--31
-]
-},
-{
-"asm": "jif r3, L0\nload_const r5, 1\nL0:\nload_const r3, -8\nload_const r0, 'fz3'\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "68d8c747f3826bc2",
-"status": "HALTED",
-"outs": []
-},
-{
-"asm": "load_const r4, 40\nlt r4, r1, r4\njump L0\nload_const r2, 2\nL0:\nout r3\nsub r5, r4, r5\nload_const r4, 'fz3'\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "51fead972fa71077",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "load_const r4, -42\nload_const r2, 'fz0'\nadd r5, r2, r5\nload_const r2, -37\nload_const r3, -9\nadd r2, r3, r3\nload_const r1, 16\nadd r2, r5, r3\nload_const r1, 'fz0'\nload_const r3, 10\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "ca1d382e6a5095f0",
-"status": "HALTED",
-"outs": []
-},
-{
-"asm": "load_const r4, 'fz3'\nout r0\nload_const r2, 11\njif r4, L0\nload_const r3, 1\nL0:\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "99a3a0534f880659",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "out r5\nload_const r1, 'fz2'\nlt r5, r3, r5\nload_const r3, 'fz0'\njif r5, L0\nload_const r4, 1\nL0:\nload_const r1, 50\nload_const r4, 'fz1'\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "6818957cbfdf570b",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "load_const r5, -2\nout r5\nsub r1, r2, r5\nout r3\neq r5, r3, r1\nload_const r5, 16\nadd r0, r0, r2\njump L0\nload_const r3, 2\nL0:\njif r3, L1\nload_const r0, 1\nL1:\nsub r2, r5, r5\njif r4, L2\nload_const r2, 1\nL2:\njif r0, L3\nload_const r0, 1\nL3:\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "35b6d017371fa6b8",
-"status": "HALTED",
-"outs": [
--2,
-null
-]
-},
-{
-"asm": "lt r4, r4, r4\nsub r2, r0, r1\njif r1, L0\nload_const r2, 1\nL0:\nload_const r5, 34\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "a83991db36b1165d",
-"status": "HALTED",
-"outs": []
-},
-{
-"asm": "add r3, r4, r1\nload_const r1, 36\njif r2, L0\nload_const r2, 1\nL0:\neq r0, r2, r1\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "01e61c27f2456cae",
-"status": "HALTED",
-"outs": []
-},
-{
-"asm": "load_const r3, 'fz1'\nload_const r2, -22\nload_const r4, -45\nload_const r3, 3\nload_const r4, 18\nload_const r1, -6\nload_const r5, 'fz3'\nmul r1, r5, r3\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "078b0462c8f6ab40",
-"status": "HALTED",
-"outs": []
-},
-{
-"asm": "jump L0\nload_const r0, 2\nL0:\nadd r5, r3, r2\nload_const r0, -26\nload_const r2, 'fz3'\njif r1, L1\nload_const r5, 1\nL1:\nmul r1, r1, r4\nadd r2, r3, r2\nload_const r0, 10\nload_const r4, 'fz0'\nload_const r1, -16\nout r1\nload_const r0, 30\nload_const r4, 3\nload_const r5, -4\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "2e9d2fb22b00edb3",
-"status": "HALTED",
-"outs": [
--16
-]
-},
-{
-"asm": "load_const r0, 'fz2'\nload_const r4, -27\nout r4\nlt r5, r3, r3\nadd r3, r3, r3\njif r3, L0\nload_const r2, 1\nL0:\nload_const r0, 24\nload_const r1, 18\njump L1\nload_const r1, 2\nL1:\nlt r2, r0, r2\nload_const r2, -46\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "560aa0a46759fea5",
-"status": "HALTED",
-"outs": [
--27
-]
-},
-{
-"asm": "load_const r3, -40\nout r5\nadd r5, r0, r1\nlt r5, r0, r0\nload_const r2, 'fz1'\njif r2, L0\nload_const r1, 1\nL0:\nout r2\nadd r2, r1, r2\nload_const r2, 'fz3'\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "52575fde312496b8",
-"status": "HALTED",
-"outs": [
-null,
-"fz1"
-]
-},
-{
-"asm": "load_const r0, 32\njif r4, L0\nload_const r5, 1\nL0:\nmul r2, r4, r4\nload_const r1, 37\nload_const r3, 7\nload_const r3, 'fz1'\nout r1\njump L1\nload_const r4, 2\nL1:\nout r3\njif r3, L2\nload_const r0, 1\nL2:\nload_const r1, 'fz3'\nload_const r3, -9\nout r5\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "4c3ea1b1d12f8c01",
-"status": "HALTED",
-"outs": [
-37,
-"fz1",
-1
-]
-},
-{
-"asm": "load_const r5, 'fz2'\nlt r1, r1, r1\neq r1, r1, r0\nlt r4, r0, r5\nload_const r3, 'fz1'\nload_const r0, 8\nsub r0, r2, r3\nmul r2, r4, r1\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "495be83afa8fc878",
-"status": "HALTED",
-"outs": []
-},
-{
-"asm": "load_const r1, 21\nadd r2, r5, r3\nadd r1, r1, r5\nmul r3, r4, r5\nlt r0, r3, r2\njif r3, L0\nload_const r4, 1\nL0:\nload_const r4, -14\neq r4, r3, r0\njif r5, L1\nload_const r3, 1\nL1:\nout r2\nout r1\nload_const r0, -5\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "669fe702c13d208d",
-"status": "HALTED",
-"outs": [
-null,
-null
-]
-},
-{
-"asm": "load_const r5, -31\nload_const r5, 48\nout r5\nload_const r5, 15\nload_const r0, 'fz3'\njump L0\nload_const r5, 2\nL0:\nload_const r3, 27\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "5940d8f31250fab9",
-"status": "HALTED",
-"outs": [
-48
-]
-},
-{
-"asm": "jif r1, L0\nload_const r3, 1\nL0:\nout r1\njif r0, L1\nload_const r2, 1\nL1:\nlt r3, r3, r0\nout r3\nload_const r4, -5\nload_const r3, 2\nload_const r0, 2\nload_const r2, -8\nload_const r2, -10\neq r2, r2, r5\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "ea81f13512317b84",
-"status": "HALTED",
-"outs": [
-null,
-null
-]
-},
-{
-"asm": "jump L0\nload_const r0, 2\nL0:\nout r3\njump L1\nload_const r2, 2\nL1:\nload_const r5, 49\nload_const r1, 31\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "b2f29a8fe9189e64",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "jif r4, L0\nload_const r2, 1\nL0:\nmul r3, r1, r0\nload_const r3, 0\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "802cc2ca6f479460",
-"status": "HALTED",
-"outs": []
-},
-{
-"asm": "load_const r1, 49\nlt r3, r1, r1\nload_const r1, 42\neq r5, r2, r2\nadd r3, r4, r0\nload_const r4, 'fz2'\nload_const r0, 3\nload_const r5, 20\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "08491887525519b0",
-"status": "HALTED",
-"outs": []
-},
-{
-"asm": "load_const r2, -40\nload_const r5, 'fz3'\nload_const r2, 16\neq r2, r5, r3\nload_const r3, 'fz3'\njump L0\nload_const r2, 2\nL0:\nload_const r5, 34\njump L1\nload_const r4, 2\nL1:\njif r4, L2\nload_const r2, 1\nL2:\nload_const r1, 'fz0'\nload_const r2, 14\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "d544ca0a373e86be",
-"status": "HALTED",
-"outs": []
-},
-{
-"asm": "load_const r5, 41\nlt r1, r2, r2\nload_const r3, -25\nload_const r3, 'fz0'\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "07455051db3a2f7d",
-"status": "HALTED",
-"outs": []
-},
-{
-"asm": "load_const r0, -10\njif r3, L0\nload_const r4, 1\nL0:\nload_const r2, 10\njif r4, L1\nload_const r3, 1\nL1:\nload_const r3, 14\nout r0\njif r2, L2\nload_const r0, 1\nL2:\nsub r5, r5, r3\nadd r5, r3, r0\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "eef16cbf88265298",
-"status": "HALTED",
-"outs": [
--10
-]
-},
-{
-"asm": "add r2, r3, r5\njif r1, L0\nload_const r3, 1\nL0:\nload_const r1, 5\nmul r4, r0, r2\neq r0, r0, r3\nlt r1, r3, r0\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "6fb32ab966eb2394",
-"status": "HALTED",
-"outs": []
-},
-{
-"asm": "load_const r4, 31\nout r5\njump L0\nload_const r4, 2\nL0:\nload_const r1, 'fz1'\nload_const r4, 'fz0'\nload_const r5, 41\neq r1, r4, r0\nmul r5, r4, r4\nsub r2, r2, r1\njump L1\nload_const r0, 2\nL1:\nsub r4, r2, r4\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "4031add0f61b88a1",
-"status": "FAULT",
-"outs": [
-null
-]
-},
-{
-"asm": "load_const r5, 47\nadd r2, r4, r5\njump L0\nload_const r2, 2\nL0:\nout r5\nload_const r4, -18\nload_const r2, 33\nload_const r0, 1\nout r2\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "91e352fbcb84b683",
-"status": "HALTED",
-"outs": [
-47,
-33
-]
-},
-{
-"asm": "load_const r3, 'fz2'\nsub r2, r3, r3\nlt r4, r2, r4\nload_const r4, 'fz3'\nload_const r1, 44\nload_const r5, 35\nout r5\nsub r4, r1, r5\njif r5, L0\nload_const r0, 1\nL0:\nload_const r3, -32\nload_const r0, 9\nsub r0, r1, r4\nsub r1, r0, r4\nlt r4, r5, r4\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "01db0a222dab96a3",
-"status": "FAULT",
-"outs": []
-},
-{
-"asm": "load_const r1, 23\njump L0\nload_const r3, 2\nL0:\nload_const r0, -22\njif r3, L1\nload_const r0, 1\nL1:\nsub r0, r5, r5\neq r1, r0, r0\nload_const r0, 24\nload_const r4, -26\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "dc05445a569d8b17",
-"status": "HALTED",
-"outs": []
-},
-{
-"asm": "lt r4, r5, r2\nload_const r0, 'fz0'\nload_const r5, 50\nload_const r5, 2\nout r0\neq r3, r2, r5\nload_const r0, -17\nout r5\neq r0, r3, r3\nload_const r4, 34\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "5e66dd02d4bcd997",
-"status": "HALTED",
-"outs": [
-"fz0",
-2
-]
-},
-{
-"asm": "out r1\nout r5\nload_const r0, 7\njif r4, L0\nload_const r5, 1\nL0:\nload_const r3, 25\nlt r2, r5, r3\nload_const r1, -9\nmul r0, r0, r0\nload_const r5, 'fz2'\njif r1, L1\nload_const r2, 1\nL1:\nsub r1, r5, r4\njif r1, L2\nload_const r1, 1\nL2:\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "345014108541e3c5",
-"status": "HALTED",
-"outs": [
-null,
-null
-]
-},
-{
-"asm": "load_const r1, -34\nmul r5, r2, r2\nload_const r4, 'fz3'\njif r2, L0\nload_const r3, 1\nL0:\nmul r1, r2, r0\nadd r2, r0, r2\nout r1\nout r1\nload_const r4, 8\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "6271650d74241b18",
-"status": "HALTED",
-"outs": [
-null,
-null
-]
-},
-{
-"asm": "out r4\njump L0\nload_const r4, 2\nL0:\nload_const r5, 5\nload_const r5, 47\nload_const r3, 14\nload_const r5, 4\nload_const r2, -47\neq r5, r3, r0\nlt r4, r0, r0\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "61dc6be489dc07c5",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "load_const r1, -36\nout r0\nadd r3, r4, r2\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "884936f00ff4d549",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "load_const r2, 'fz0'\njif r0, L0\nload_const r0, 1\nL0:\nload_const r2, -2\nout r2\nmul r0, r4, r1\nout r4\nload_const r3, 'fz2'\njif r2, L1\nload_const r3, 1\nL1:\nout r2\neq r2, r2, r5\njump L2\nload_const r2, 2\nL2:\nmul r3, r5, r0\neq r1, r1, r3\njump L3\nload_const r2, 2\nL3:\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "c389e58ddec0f486",
-"status": "HALTED",
-"outs": [
--2,
-null,
--2
-]
-},
-{
-"asm": "lt r4, r5, r4\njump L0\nload_const r5, 2\nL0:\nload_const r2, 'fz3'\nadd r5, r1, r2\neq r3, r3, r4\nmul r1, r0, r5\nsub r0, r1, r1\nload_const r3, -23\njif r5, L1\nload_const r4, 1\nL1:\nout r3\nlt r1, r0, r1\njump L2\nload_const r4, 2\nL2:\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "89272a142d451325",
-"status": "HALTED",
-"outs": [
--23
-]
-},
-{
-"asm": "load_const r4, 50\nlt r5, r2, r1\nload_const r1, -32\nout r2\njif r3, L0\nload_const r3, 1\nL0:\nadd r1, r2, r2\njif r5, L1\nload_const r3, 1\nL1:\nadd r2, r4, r5\nsub r3, r0, r2\nadd r0, r2, r2\njump L2\nload_const r4, 2\nL2:\nload_const r3, 35\nout r3\nout r1\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "f9c5a846008943e6",
-"status": "HALTED",
-"outs": [
-null,
-35,
-null
-]
-},
-{
-"asm": "eq r4, r3, r4\nload_const r4, 31\nout r3\nout r1\nout r1\nout r0\nsub r1, r2, r5\njump L0\nload_const r5, 2\nL0:\nload_const r2, 'fz2'\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "31c75a4af4e403f0",
-"status": "HALTED",
-"outs": [
-null,
-null,
-null,
-null
-]
-},
-{
-"asm": "sub r3, r5, r1\nload_const r3, -42\nlt r5, r0, r3\nload_const r3, 22\nload_const r5, -25\nload_const r1, 1\njif r1, L0\nload_const r4, 1\nL0:\njump L1\nload_const r0, 2\nL1:\nload_const r1, -17\neq r1, r4, r2\nout r2\nload_const r0, 9\nmul r2, r3, r5\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "3fd703261b17b1cc",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "load_const r3, -14\nload_const r3, 'fz0'\nload_const r0, 32\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "43c44ca51bb1a97d",
-"status": "HALTED",
-"outs": []
-},
-{
-"asm": "sub r1, r4, r1\njump L0\nload_const r3, 2\nL0:\njif r5, L1\nload_const r2, 1\nL1:\njif r1, L2\nload_const r0, 1\nL2:\njif r5, L3\nload_const r4, 1\nL3:\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "60ba49d99b8212a4",
-"status": "HALTED",
-"outs": []
-},
-{
-"asm": "load_const r0, -16\njump L0\nload_const r5, 2\nL0:\nadd r2, r0, r5\nsub r1, r1, r1\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "01c6c73710146bde",
-"status": "HALTED",
-"outs": []
-},
-{
-"asm": "mul r0, r4, r2\njif r5, L0\nload_const r0, 1\nL0:\njump L1\nload_const r0, 2\nL1:\nmul r0, r2, r0\nmul r5, r2, r2\nsub r4, r3, r4\nload_const r3, -36\nadd r5, r3, r1\nload_const r1, 'fz0'\njif r1, L2\nload_const r5, 1\nL2:\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "9fa043b0b7edd4fc",
-"status": "HALTED",
-"outs": []
-},
-{
-"asm": "add r3, r1, r2\njif r2, L0\nload_const r4, 1\nL0:\nload_const r1, -20\nout r0\nout r3\njif r1, L1\nload_const r4, 1\nL1:\nlt r1, r4, r4\nout r5\njif r0, L2\nload_const r3, 1\nL2:\nload_const r2, -47\nadd r4, r4, r0\nload_const r0, -36\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "fe2b40e38de427e0",
-"status": "HALTED",
-"outs": [
-null,
-null,
-null
-]
-},
-{
-"asm": "out r1\nload_const r2, -10\nload_const r2, 'fz3'\nload_const r3, 'fz1'\nload_const r4, 3\nout r0\nload_const r5, 40\njif r5, L0\nload_const r1, 1\nL0:\nload_const r0, 'fz3'\nmul r2, r2, r3\nload_const r5, 'fz1'\njump L1\nload_const r3, 2\nL1:\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "46806cdc5ad0401c",
-"status": "FAULT",
-"outs": [
-null,
-null
-]
-},
-{
-"asm": "out r2\nload_const r5, 'fz3'\nload_const r0, 28\njump L0\nload_const r5, 2\nL0:\njump L1\nload_const r3, 2\nL1:\nload_const r5, 4\nlt r2, r1, r2\nload_const r4, 'fz3'\nload_const r4, 'fz0'\nmul r5, r0, r3\nout r4\nout r0\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "d8fd250b84f3dcf5",
-"status": "HALTED",
-"outs": [
-null,
-"fz0",
-28
-]
-},
-{
-"asm": "load_const r3, -44\nout r2\nmul r4, r0, r5\nsub r4, r5, r5\nout r5\nload_const r4, -37\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "a877a3b5be3438df",
-"status": "HALTED",
-"outs": [
-null,
-null
-]
-},
-{
-"asm": "load_const r3, 29\nload_const r2, 17\njif r2, L0\nload_const r3, 1\nL0:\nload_const r4, -6\nload_const r1, -36\nmul r1, r1, r4\nload_const r1, -2\nload_const r4, 'fz1'\nload_const r2, 'fz0'\nload_const r3, 7\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "7933a4bbd340dfbc",
-"status": "HALTED",
-"outs": []
-},
-{
-"asm": "load_const r3, -3\njump L0\nload_const r0, 2\nL0:\nsub r0, r4, r0\nsub r5, r5, r0\nadd r5, r4, r1\nload_const r1, 'fz3'\nload_const r2, -5\nload_const r0, -39\njif r3, L1\nload_const r2, 1\nL1:\neq r3, r4, r0\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "3d4f785b0a45d88e",
-"status": "HALTED",
-"outs": []
-},
-{
-"asm": "eq r5, r5, r3\nmul r3, r4, r0\nload_const r3, 40\nload_const r0, 4\nload_const r3, 0\nload_const r2, 'fz2'\nout r1\nadd r4, r4, r4\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "d05f3e3bdfa195e8",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "out r3\nout r4\nout r5\nout r5\nload_const r2, 'fz0'\nload_const r2, -30\nload_const r2, -33\nout r0\njump L0\nload_const r2, 2\nL0:\nload_const r4, 'fz1'\nload_const r5, 'fz1'\nout r4\nout r5\nload_const r3, 13\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "9ee5532700758814",
-"status": "HALTED",
-"outs": [
-null,
-null,
-null,
-null,
-null,
-"fz1",
-"fz1"
-]
-},
-{
-"asm": "add r5, r3, r3\nmul r3, r3, r5\nload_const r5, 'fz0'\neq r1, r2, r3\nlt r1, r3, r4\nadd r2, r2, r3\nload_const r0, 'fz0'\nadd r0, r1, r3\nlt r2, r2, r4\nout r5\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "683175031cded02e",
+"content_hash": "cf133c306cd95029",
 "status": "HALTED",
 "outs": [
 "fz0"
 ]
 },
 {
-"asm": "mul r4, r1, r0\nlt r3, r1, r3\nlt r1, r1, r1\nload_const r3, 47\njif r4, L0\nload_const r3, 1\nL0:\njif r1, L1\nload_const r5, 1\nL1:\neq r5, r3, r5\nload_const r3, 7\nout r5\nout r0\njif r1, L2\nload_const r0, 1\nL2:\nout r4\nmul r0, r2, r4\nlt r3, r5, r2\nhalt\n",
+"asm": "S0:\njif r5, S0\nload_const r5, 'fz2'\nload_const r5, 27\nlt r1, r3, r5\nload_const r5, -20\nstore_local r4, r2\nload_const r5, 'fz1'\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -1363,75 +1445,12 @@ null,
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "4afe88fd37254de1",
-"status": "HALTED",
-"outs": [
-true,
-null,
-null
-]
-},
-{
-"asm": "load_const r4, -2\nadd r5, r5, r1\nload_const r2, 'fz3'\njif r3, L0\nload_const r4, 1\nL0:\nload_const r4, -10\nload_const r2, -20\njump L1\nload_const r2, 2\nL1:\nload_const r2, -45\nadd r1, r4, r4\nout r3\njump L2\nload_const r2, 2\nL2:\njump L3\nload_const r2, 2\nL3:\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "0ec4d7c06a3005fd",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "lt r5, r3, r1\nload_const r2, 30\nout r0\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "79072fc290ca824b",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "jump L0\nload_const r5, 2\nL0:\nload_const r4, 35\nadd r4, r0, r1\nmul r4, r1, r5\nsub r3, r4, r0\nout r5\nload_const r3, -37\nsub r2, r5, r3\nload_const r0, 24\njump L1\nload_const r1, 2\nL1:\nout r2\neq r4, r0, r3\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "fbd79aecc3a635f0",
-"status": "HALTED",
-"outs": [
-null,
-null
-]
-},
-{
-"asm": "jump L0\nload_const r4, 2\nL0:\neq r1, r2, r2\nload_const r4, 18\nload_const r1, 'fz0'\njif r5, L1\nload_const r0, 1\nL1:\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "f6956f6a0d2335ee",
+"content_hash": "84dd30520288dd4d",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "load_const r1, -32\nload_const r5, -31\nload_const r1, 'fz0'\nadd r2, r2, r3\njif r4, L0\nload_const r0, 1\nL0:\nload_const r3, -48\nload_const r1, -8\neq r5, r1, r3\nmul r1, r2, r4\njump L1\nload_const r1, 2\nL1:\nmul r4, r2, r4\nlt r1, r1, r5\neq r2, r2, r1\nhalt\n",
+"asm": "S0:\nload_const r5, -37\njump L0\nload_const r3, 2\nL0:\nload_const r3, 50\nload_const r2, -17\nload_const r4, -37\nload_const r0, 39\nload_const r2, 35\njump L1\nload_const r2, 2\nL1:\nlen r0, r2\nload_const r2, 'fz2'\nload_const r2, -25\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -1439,12 +1458,12 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "41f1f1c5ed224153",
+"content_hash": "946d8787e829d014",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "sub r1, r3, r3\njif r3, L0\nload_const r3, 1\nL0:\nload_const r2, -14\nload_const r2, -30\nmul r3, r5, r3\nhalt\n",
+"asm": "S0:\nsub r2, r0, r2\nmul r3, r2, r5\njif r2, L0\nload_const r2, 1\nL0:\nload_const r4, 12\njif r2, L1\nload_const r4, 1\nL1:\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -1452,12 +1471,12 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "96b6ba2e563db98c",
+"content_hash": "45de97b52d3519cb",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "out r1\nload_const r5, 'fz3'\nload_const r0, -4\nhalt\n",
+"asm": "S0:\nload_const r4, 23\njump L0\nload_const r1, 2\nL0:\neq r1, r5, r3\nload_const r3, 35\nsub r4, r0, r4\nstore_local r1, r2\nload_const r4, -10\neq r1, r0, r4\nlt r3, r3, r5\nsub r1, r1, r3\njif r4, L1\nload_const r0, 1\nL1:\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -1465,94 +1484,12 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "38cc8b8624f4eae2",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "load_const r5, 15\nout r4\nsub r2, r0, r3\nmul r2, r1, r1\nload_const r5, 44\nmul r3, r3, r2\nout r2\nadd r1, r1, r0\nload_const r1, 0\nadd r2, r0, r2\njump L0\nload_const r4, 2\nL0:\nload_const r3, -27\nlt r1, r1, r4\nload_const r4, -15\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "3f24205c39470be0",
-"status": "HALTED",
-"outs": [
-null,
-null
-]
-},
-{
-"asm": "jump L0\nload_const r4, 2\nL0:\nout r4\nout r1\nmul r3, r3, r0\njump L1\nload_const r0, 2\nL1:\njump L2\nload_const r0, 2\nL2:\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "584c8a54fe26cfcb",
-"status": "HALTED",
-"outs": [
-null,
-null
-]
-},
-{
-"asm": "lt r5, r3, r0\nadd r4, r4, r2\nout r0\nsub r0, r5, r0\nout r1\nlt r3, r4, r4\nout r1\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "08b0badd77466e0d",
-"status": "HALTED",
-"outs": [
-null,
-null,
-null
-]
-},
-{
-"asm": "out r1\nload_const r1, 'fz2'\nadd r4, r1, r4\nlt r3, r2, r3\nlt r2, r5, r4\nload_const r2, 20\nout r5\njump L0\nload_const r5, 2\nL0:\nload_const r5, 21\nout r4\nout r4\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "fe1a93b09471ccd4",
-"status": "HALTED",
-"outs": [
-null,
-null,
-null,
-null
-]
-},
-{
-"asm": "jif r5, L0\nload_const r2, 1\nL0:\nsub r1, r2, r3\nload_const r4, 21\nsub r0, r4, r1\nload_const r5, 18\nadd r2, r1, r5\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "80dcc37e69ec9b70",
+"content_hash": "065d18a8234c6892",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "load_const r1, -50\nload_const r2, 'fz2'\neq r5, r1, r4\neq r1, r2, r5\njump L0\nload_const r4, 2\nL0:\njump L1\nload_const r3, 2\nL1:\nadd r4, r4, r3\nload_const r0, -19\njif r0, L2\nload_const r2, 1\nL2:\nhalt\n",
+"asm": "S0:\njif r5, S0\nstrcat r0, r3, r2\nlt r5, r2, r2\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -1560,12 +1497,12 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "1efbe0562f6c482b",
+"content_hash": "b1f62c4de9ad2500",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "load_const r1, 'fz1'\njump L0\nload_const r3, 2\nL0:\nsub r1, r2, r0\njif r5, L1\nload_const r0, 1\nL1:\nload_const r1, -50\nload_const r4, -41\nadd r5, r1, r3\nsub r4, r1, r2\nload_const r1, 'fz3'\nload_const r0, 'fz3'\nmul r1, r1, r2\nsub r4, r4, r5\nload_const r3, 1\nload_const r5, 'fz2'\nhalt\n",
+"asm": "S0:\nload_const r5, -22\nload_const r1, -44\nmul r1, r2, r3\nload_const r4, 38\nload_const r2, 49\njif r4, L0\nload_const r2, 1\nL0:\nload_const r1, -24\njump L1\nload_const r3, 2\nL1:\njif r1, L2\nload_const r4, 1\nL2:\njump L3\nload_const r5, 2\nL3:\nload_const r0, -40\nadd r0, r1, r3\nload_const r3, 41\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -1573,12 +1510,12 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "4e73427b4bf8c14e",
+"content_hash": "56c060ef108a9e75",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "add r1, r3, r0\nload_const r5, 'fz2'\njump L0\nload_const r5, 2\nL0:\nhalt\n",
+"asm": "S0:\nmul r3, r3, r2\njif r0, L0\nload_const r2, 1\nL0:\nload_const r2, -10\njif r2, L1\nload_const r5, 1\nL1:\nload_local r2, r0\njif r5, L2\nload_const r1, 1\nL2:\nlt r4, r5, r2\njif r0, L3\nload_const r4, 1\nL3:\nload_const r5, 'fz2'\nload_const r5, -24\njif r4, L4\nload_const r1, 1\nL4:\nsub r5, r1, r4\nload_const r3, -21\nmul r3, r2, r0\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -1586,12 +1523,12 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "295d5065ffd2bde2",
+"content_hash": "e0f813781e69d2f9",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "load_const r3, 35\nlt r2, r5, r2\nload_const r3, 6\nload_const r5, 'fz3'\nhalt\n",
+"asm": "S0:\nload_const r1, 'fz3'\njif r2, L0\nload_const r1, 1\nL0:\nlen r2, r0\njif r5, S0\nmul r0, r2, r5\nsub r3, r4, r2\njif r3, S0\nload_const r3, -26\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -1599,12 +1536,12 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "3dfc35a864c8c056",
+"content_hash": "eae4ad05bbfbb3eb",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "out r5\nload_const r1, -48\nlt r4, r1, r5\nout r5\nload_const r2, 'fz0'\nload_const r4, 'fz3'\nload_const r3, 15\njif r4, L0\nload_const r0, 1\nL0:\nload_const r3, 27\njump L1\nload_const r2, 2\nL1:\njif r3, L2\nload_const r2, 1\nL2:\nload_const r0, 'fz2'\nhalt\n",
+"asm": "S0:\nload_const r2, 26\nload_const r3, -34\njump L0\nload_const r5, 2\nL0:\nload_const r5, 46\nlt r4, r1, r4\nstrcat r2, r5, r3\njif r4, S0\njif r1, L1\nload_const r1, 1\nL1:\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -1612,28 +1549,12 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "0e58812ce076ae1e",
-"status": "HALTED",
-"outs": [
-null,
-null
-]
-},
-{
-"asm": "add r2, r2, r0\nload_const r0, -28\nsub r2, r4, r1\nload_const r2, -50\nsub r2, r3, r3\neq r1, r1, r3\nload_const r3, 'fz3'\nload_const r2, 7\nload_const r0, 'fz2'\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "3eb953a934ba2101",
+"content_hash": "caf827483dd27de4",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "load_const r5, 30\nload_const r4, 44\njif r1, L0\nload_const r3, 1\nL0:\nload_const r3, 'fz3'\nout r2\nhalt\n",
+"asm": "S0:\nload_const r2, 18\nload_const r1, 'fz0'\neq r3, r3, r5\nadd r1, r5, r2\nload_const r0, 'fz0'\nsub r2, r5, r5\nload_const r1, -28\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -1641,42 +1562,12 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "cdc2ce572679af03",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "load_const r3, 'fz1'\njif r1, L0\nload_const r4, 1\nL0:\nlt r4, r2, r0\nload_const r3, 25\nload_const r3, -39\njump L1\nload_const r4, 2\nL1:\njif r5, L2\nload_const r2, 1\nL2:\nout r1\njif r2, L3\nload_const r3, 1\nL3:\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "1f57561f67bf8aa1",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "load_const r3, 14\nlt r2, r5, r1\nload_const r4, 'fz2'\nload_const r5, 45\njif r5, L0\nload_const r0, 1\nL0:\njif r3, L1\nload_const r5, 1\nL1:\nload_const r0, -33\nload_const r0, -4\nsub r2, r1, r4\njif r2, L2\nload_const r1, 1\nL2:\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "7566247a44445f4b",
+"content_hash": "c309426a2761c6cc",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "load_const r4, -49\nsub r4, r4, r1\nload_const r3, 48\njif r1, L0\nload_const r5, 1\nL0:\njif r5, L1\nload_const r2, 1\nL1:\neq r4, r1, r4\nload_const r4, -35\njif r0, L2\nload_const r5, 1\nL2:\njif r4, L3\nload_const r3, 1\nL3:\nmul r3, r3, r2\nhalt\n",
+"asm": "S0:\njif r5, S0\nload_const r3, -41\nload_local r5, r3\nload_const r5, 4\nadd r1, r2, r2\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -1684,12 +1575,12 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "3c0823eb0986173d",
+"content_hash": "90ee39aff1679183",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "sub r3, r2, r1\neq r3, r2, r2\nlt r4, r3, r3\nload_const r4, 'fz3'\njump L0\nload_const r1, 2\nL0:\nsub r3, r5, r4\njump L1\nload_const r1, 2\nL1:\nhalt\n",
+"asm": "S0:\nload_local r1, r1\nload_const r0, -16\nload_const r4, -34\njif r4, L0\nload_const r2, 1\nL0:\nstrcat r0, r5, r3\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -1697,12 +1588,12 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "31d0115ab3d9597d",
+"content_hash": "0f54fcb0d19013e8",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "load_const r5, 17\nload_const r5, 37\njif r0, L0\nload_const r4, 1\nL0:\nsub r1, r2, r2\nlt r4, r3, r5\nlt r2, r5, r4\nload_const r4, 15\nmul r3, r2, r4\nsub r4, r4, r3\nload_const r2, 'fz3'\nhalt\n",
+"asm": "S0:\nload_const r5, 9\nlt r2, r0, r4\njif r2, S0\nlt r5, r3, r5\nadd r0, r1, r4\njif r4, S0\nload_const r1, 31\njif r0, L0\nload_const r2, 1\nL0:\nlt r0, r2, r1\nload_const r4, -10\nadd r3, r5, r2\nload_const r3, 23\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -1710,12 +1601,12 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "3a6d25e4057df905",
+"content_hash": "88498a75f751f923",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "out r5\neq r1, r5, r5\nsub r0, r3, r4\nload_const r2, 'fz2'\njump L0\nload_const r0, 2\nL0:\nout r1\njif r1, L1\nload_const r5, 1\nL1:\nlt r1, r0, r4\nhalt\n",
+"asm": "S0:\neq r2, r3, r4\nload_const r5, 'fz0'\nload_const r5, 'fz2'\neq r0, r3, r5\nload_const r3, -48\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -1723,59 +1614,12 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "a5933824c4ea49d5",
-"status": "HALTED",
-"outs": [
-null,
-true
-]
-},
-{
-"asm": "sub r1, r3, r0\njump L0\nload_const r2, 2\nL0:\nout r5\nout r4\nload_const r5, 22\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "646a6086cbe22f6d",
-"status": "HALTED",
-"outs": [
-null,
-null
-]
-},
-{
-"asm": "load_const r2, 'fz2'\nload_const r2, -9\nload_const r3, -34\nout r4\nload_const r5, -45\nload_const r4, -20\nsub r3, r0, r2\njif r2, L0\nload_const r4, 1\nL0:\nload_const r3, 18\njif r2, L1\nload_const r3, 1\nL1:\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "d0f5db66827eb676",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "lt r1, r2, r3\nload_const r5, 10\nload_const r4, 21\nload_const r2, 37\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "0d698bd7ae198dd6",
+"content_hash": "f523f52d8470eafb",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "out r1\nout r5\njif r2, L0\nload_const r3, 1\nL0:\nload_const r2, 'fz0'\nload_const r3, 'fz3'\nload_const r5, 22\nload_const r5, 'fz0'\nload_const r0, 34\nsub r4, r0, r0\nadd r0, r3, r4\nout r2\neq r0, r2, r1\nhalt\n",
+"asm": "S0:\nload_local r4, r4\nstrcat r3, r5, r4\nload_const r1, 39\nstrcat r3, r2, r5\neq r3, r0, r1\nload_const r2, 'fz1'\neq r2, r1, r4\nsub r3, r3, r0\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -1783,79 +1627,12 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "d9299dd098b9a275",
-"status": "FAULT",
-"outs": [
-null,
-null
-]
-},
-{
-"asm": "add r0, r0, r4\nload_const r0, 0\nload_const r3, -46\nout r1\nmul r5, r3, r5\njif r2, L0\nload_const r3, 1\nL0:\nload_const r2, -32\nout r1\nout r5\njif r4, L1\nload_const r5, 1\nL1:\nlt r4, r2, r5\nload_const r3, -30\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "d24f88b53fe178b5",
-"status": "HALTED",
-"outs": [
-null,
-null,
-null
-]
-},
-{
-"asm": "load_const r1, 22\nload_const r5, 'fz0'\njump L0\nload_const r4, 2\nL0:\nout r0\nout r5\nout r4\nload_const r5, -4\nload_const r3, -40\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "0402cfc8db7a8738",
-"status": "HALTED",
-"outs": [
-null,
-"fz0",
-null
-]
-},
-{
-"asm": "load_const r3, 29\nload_const r3, 'fz0'\nload_const r1, -48\neq r3, r4, r5\nsub r0, r0, r1\nout r3\nout r4\nout r5\nload_const r2, 33\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "022d3789b1c51c79",
-"status": "HALTED",
-"outs": [
-true,
-null,
-null
-]
-},
-{
-"asm": "load_const r0, 38\nload_const r4, -30\nload_const r4, 'fz0'\njump L0\nload_const r5, 2\nL0:\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "ac21ec27f0e86e63",
+"content_hash": "af42adb64a8e74e6",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "mul r1, r0, r2\nsub r1, r2, r0\nout r5\nmul r2, r3, r2\nlt r5, r4, r4\nhalt\n",
+"asm": "S0:\neq r1, r0, r1\nload_const r3, 45\nlt r1, r2, r2\nload_const r2, -14\njif r3, L0\nload_const r3, 1\nL0:\njump L1\nload_const r4, 2\nL1:\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -1863,263 +1640,12 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "1643f8a1b9ada770",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "load_const r2, 1\nload_const r5, -40\nload_const r3, 10\nload_const r1, 11\nload_const r2, 'fz2'\nmul r3, r5, r4\nout r3\nload_const r0, -45\nout r5\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "e7ea1f63c8235ef5",
-"status": "HALTED",
-"outs": [
-null,
--40
-]
-},
-{
-"asm": "add r1, r2, r1\njif r4, L0\nload_const r3, 1\nL0:\nout r1\nload_const r3, -16\nadd r1, r1, r1\nload_const r2, -1\nout r4\nload_const r1, 2\nload_const r4, 43\nadd r2, r1, r4\nmul r2, r4, r1\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "be901c95a800f6d8",
-"status": "HALTED",
-"outs": [
-null,
-null
-]
-},
-{
-"asm": "load_const r2, 'fz3'\nload_const r5, 'fz0'\nout r2\nload_const r4, 43\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "4a8dc738d92a0804",
-"status": "HALTED",
-"outs": [
-"fz3"
-]
-},
-{
-"asm": "out r5\nload_const r2, 'fz0'\nload_const r3, 39\nload_const r0, -37\nlt r5, r2, r5\nload_const r5, -43\nout r4\nload_const r3, -23\nload_const r5, -22\nadd r4, r2, r1\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "2f506c123772edeb",
-"status": "HALTED",
-"outs": [
-null,
-null
-]
-},
-{
-"asm": "out r3\nlt r3, r3, r3\nsub r2, r3, r0\nout r0\nload_const r2, 'fz3'\nload_const r1, 2\njump L0\nload_const r5, 2\nL0:\njif r0, L1\nload_const r0, 1\nL1:\nload_const r0, 'fz2'\nload_const r5, -18\nload_const r5, 'fz3'\nload_const r2, 47\nlt r2, r3, r4\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "70b839ba05419a0c",
-"status": "HALTED",
-"outs": [
-null,
-null
-]
-},
-{
-"asm": "mul r5, r4, r5\neq r2, r2, r0\njif r2, L0\nload_const r2, 1\nL0:\nadd r1, r1, r2\nout r1\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "5d4be298c70044a4",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "jif r2, L0\nload_const r1, 1\nL0:\njif r0, L1\nload_const r5, 1\nL1:\nadd r5, r0, r4\nout r2\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "8b1f01a96c47a666",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "load_const r4, 30\njif r1, L0\nload_const r5, 1\nL0:\nmul r3, r4, r4\nout r4\nload_const r1, -50\neq r0, r1, r5\nsub r3, r5, r5\nload_const r1, 42\nlt r4, r0, r4\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "824e03db9d78a136",
-"status": "HALTED",
-"outs": [
-30
-]
-},
-{
-"asm": "out r5\njump L0\nload_const r3, 2\nL0:\njump L1\nload_const r0, 2\nL1:\nout r2\nout r5\njump L2\nload_const r0, 2\nL2:\nmul r0, r5, r2\njif r4, L3\nload_const r4, 1\nL3:\nload_const r4, -7\nload_const r1, -34\nload_const r5, 8\neq r1, r1, r5\nmul r0, r3, r4\neq r0, r2, r2\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "13775f41d0529f3d",
-"status": "HALTED",
-"outs": [
-null,
-null,
-null
-]
-},
-{
-"asm": "jif r3, L0\nload_const r4, 1\nL0:\nout r1\nload_const r4, 50\nmul r1, r4, r3\nload_const r1, 5\nload_const r0, 'fz0'\nlt r1, r3, r2\njif r2, L1\nload_const r0, 1\nL1:\nload_const r3, 43\neq r3, r2, r4\nout r4\njif r1, L2\nload_const r1, 1\nL2:\nload_const r5, -38\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "d4618cd6a36ac7ed",
-"status": "HALTED",
-"outs": [
-null,
-50
-]
-},
-{
-"asm": "load_const r5, 5\nload_const r2, 'fz2'\nload_const r5, 37\nload_const r2, 19\nload_const r3, 'fz3'\nload_const r1, -12\njif r4, L0\nload_const r2, 1\nL0:\nout r1\nload_const r3, -11\njump L1\nload_const r0, 2\nL1:\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "e18d9868add978a6",
-"status": "HALTED",
-"outs": [
--12
-]
-},
-{
-"asm": "out r1\nload_const r5, -47\nload_const r4, 36\nload_const r4, 20\nload_const r4, 42\nmul r5, r3, r1\nload_const r3, 48\njump L0\nload_const r4, 2\nL0:\nload_const r0, -19\nload_const r0, 'fz1'\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "77df394b32bc46f3",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "out r2\nload_const r0, -25\nadd r2, r2, r4\nout r0\njif r2, L0\nload_const r0, 1\nL0:\nload_const r1, -23\njif r0, L1\nload_const r1, 1\nL1:\nload_const r0, 4\njif r5, L2\nload_const r3, 1\nL2:\nload_const r4, 29\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "ddec65e12e97923a",
-"status": "HALTED",
-"outs": [
-null,
--25
-]
-},
-{
-"asm": "out r0\nload_const r2, 5\nout r5\nload_const r5, 0\nload_const r0, -46\njump L0\nload_const r0, 2\nL0:\nload_const r5, 5\nmul r0, r0, r4\nmul r4, r2, r2\nload_const r4, 17\nadd r3, r0, r5\nload_const r3, 30\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "9e84d19e640d8f14",
-"status": "HALTED",
-"outs": [
-null,
-null
-]
-},
-{
-"asm": "mul r0, r5, r2\nout r1\nload_const r5, 'fz0'\neq r4, r4, r0\nlt r4, r5, r3\nout r0\nload_const r4, 18\njump L0\nload_const r3, 2\nL0:\nout r3\nload_const r5, 17\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "4df7fa91de088a8b",
-"status": "HALTED",
-"outs": [
-null,
-null,
-null
-]
-},
-{
-"asm": "eq r5, r2, r1\neq r3, r1, r2\njif r5, L0\nload_const r3, 1\nL0:\neq r0, r0, r3\nload_const r5, -23\nsub r5, r1, r3\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "ecfed841a766e700",
+"content_hash": "492fa1e0c549d5b8",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "load_const r4, 43\nload_const r1, 'fz3'\nload_const r2, -8\nload_const r4, -26\njif r1, L0\nload_const r3, 1\nL0:\nout r5\nload_const r4, 34\nsub r2, r5, r3\nmul r0, r1, r4\nsub r1, r4, r3\njump L1\nload_const r4, 2\nL1:\nload_const r2, 34\nhalt\n",
+"asm": "S0:\nload_const r0, 38\nload_const r0, 38\nsub r5, r0, r0\nload_const r4, 38\nsub r4, r2, r5\neq r2, r5, r5\nsub r5, r0, r0\nsub r2, r1, r1\nsub r0, r3, r0\nmul r2, r4, r1\nload_const r1, -40\nload_const r0, 22\nload_const r3, 43\nload_const r1, -14\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -2127,153 +1653,12 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "046ef7147aaf9d00",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "load_const r4, 47\nout r5\njif r1, L0\nload_const r3, 1\nL0:\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "bf5f7bf7444d83db",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "out r4\njump L0\nload_const r2, 2\nL0:\nsub r0, r0, r3\neq r4, r1, r5\nload_const r4, 45\nload_const r1, 6\nout r4\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "02ae36068f56c827",
-"status": "HALTED",
-"outs": [
-null,
-45
-]
-},
-{
-"asm": "mul r3, r2, r0\njif r0, L0\nload_const r0, 1\nL0:\nout r3\nload_const r2, 'fz0'\njif r4, L1\nload_const r3, 1\nL1:\nload_const r4, -1\nload_const r3, 'fz0'\njump L2\nload_const r4, 2\nL2:\nload_const r1, 'fz3'\nout r5\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "ceb8a6a3a31c2c91",
-"status": "HALTED",
-"outs": [
-null,
-null
-]
-},
-{
-"asm": "out r5\nout r2\nload_const r5, 27\nlt r1, r3, r5\nload_const r5, -20\nout r1\njif r3, L0\nload_const r2, 1\nL0:\nout r0\njump L1\nload_const r1, 2\nL1:\nload_const r2, 47\njump L2\nload_const r1, 2\nL2:\nload_const r4, -47\nload_const r0, 31\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "4ddb3736bdabfb15",
-"status": "HALTED",
-"outs": [
-null,
-null,
-null,
-null
-]
-},
-{
-"asm": "load_const r3, 50\nload_const r2, -17\nload_const r4, -37\nload_const r0, 39\nload_const r2, 35\njump L0\nload_const r2, 2\nL0:\nout r3\nout r3\nload_const r0, 'fz3'\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "eb3b885291864e13",
-"status": "HALTED",
-"outs": [
-50,
-50
-]
-},
-{
-"asm": "out r5\nmul r1, r3, r2\nload_const r2, -34\nload_const r2, 47\nload_const r3, -46\nmul r5, r5, r2\nlt r3, r2, r4\nadd r4, r4, r3\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "2cfd59ab720ec0b5",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "eq r1, r5, r3\nload_const r3, 35\nsub r4, r0, r4\nout r2\nload_const r1, -11\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "ee24c6f66e9a5563",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "jump L0\nload_const r2, 2\nL0:\neq r2, r1, r4\nout r3\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "ff60800cd5512ad3",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "add r4, r2, r4\nload_const r4, 'fz3'\neq r0, r1, r1\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "919290e869bf1f9c",
+"content_hash": "5e16be0a267322fc",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "out r0\nload_const r2, 35\nout r5\njif r0, L0\nload_const r2, 1\nL0:\nload_const r3, -6\nload_const r3, 11\nload_const r5, 'fz2'\nmul r5, r1, r2\njif r1, L1\nload_const r2, 1\nL1:\njif r0, L2\nload_const r3, 1\nL2:\nload_const r2, -22\nadd r5, r4, r5\nload_const r2, 49\njif r4, L3\nload_const r2, 1\nL3:\nhalt\n",
+"asm": "S0:\nload_const r3, 15\nload_const r5, 9\nload_const r3, 21\njif r2, S0\nsub r3, r4, r4\nload_const r3, 'fz2'\nstrcat r4, r4, r3\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -2281,28 +1666,12 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "0a9de4705027b874",
-"status": "HALTED",
-"outs": [
-null,
-null
-]
-},
-{
-"asm": "sub r1, r5, r3\njif r1, L0\nload_const r4, 1\nL0:\njump L1\nload_const r5, 2\nL1:\nload_const r0, -40\nadd r0, r1, r3\nload_const r3, 41\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "64b303ba8062e970",
+"content_hash": "c58dbf46fd8a34fe",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "mul r3, r3, r2\njif r0, L0\nload_const r2, 1\nL0:\nload_const r2, -10\njif r2, L1\nload_const r5, 1\nL1:\nout r0\nlt r0, r1, r1\nout r2\njif r5, L2\nload_const r1, 1\nL2:\njif r5, L3\nload_const r1, 1\nL3:\nlt r4, r5, r2\njif r0, L4\nload_const r4, 1\nL4:\nload_const r5, 'fz2'\nload_const r5, -24\njif r4, L5\nload_const r1, 1\nL5:\nhalt\n",
+"asm": "S0:\njif r3, L0\nload_const r5, 1\nL0:\njif r4, L1\nload_const r2, 1\nL1:\nload_local r4, r4\nload_const r5, -33\nadd r3, r5, r3\njif r1, L2\nload_const r1, 1\nL2:\nload_const r1, 30\nload_const r3, -6\nlt r4, r3, r5\nload_const r0, 7\njif r2, S0\njif r1, L3\nload_const r5, 1\nL3:\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -2310,296 +1679,12 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "2bb526cd2ec91994",
-"status": "HALTED",
-"outs": [
-null,
--10
-]
-},
-{
-"asm": "sub r4, r1, r3\nload_const r2, -7\nadd r2, r0, r1\nsub r2, r1, r5\nadd r5, r4, r4\nout r5\nout r0\neq r2, r2, r0\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "d267fcc49de22ffa",
-"status": "HALTED",
-"outs": [
-null,
-null
-]
-},
-{
-"asm": "sub r3, r4, r2\nload_const r3, 'fz0'\nout r1\nmul r4, r1, r2\nmul r5, r2, r2\nload_const r2, 'fz0'\nout r1\nout r3\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "3a4cc40092b6b23c",
-"status": "HALTED",
-"outs": [
-null,
-null,
-"fz0"
-]
-},
-{
-"asm": "out r3\nload_const r2, 42\nmul r3, r4, r4\njif r1, L0\nload_const r1, 1\nL0:\nload_const r2, -16\njump L1\nload_const r2, 2\nL1:\nsub r5, r4, r0\neq r3, r3, r5\nadd r1, r5, r2\nload_const r0, 'fz0'\nsub r2, r5, r5\nload_const r1, -28\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "e5a134612e2c4e57",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "load_const r5, 'fz0'\nload_const r0, 'fz1'\njif r3, L0\nload_const r5, 1\nL0:\nsub r5, r5, r3\nout r1\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "1e09c5ddd48f7153",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "load_const r3, -7\nout r5\nload_const r1, 48\nsub r4, r3, r5\nload_const r1, -2\nload_const r3, 'fz0'\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "2beee94c74505a0c",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "load_const r1, 'fz2'\nload_const r2, -18\nlt r1, r5, r4\nlt r5, r1, r4\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "f2440470ac71fbbd",
-"status": "HALTED",
-"outs": []
-},
-{
-"asm": "add r5, r3, r4\nload_const r5, 13\njump L0\nload_const r0, 2\nL0:\neq r3, r5, r4\njump L1\nload_const r0, 2\nL1:\nout r2\nlt r5, r3, r5\nadd r0, r1, r4\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "9b84d67a24f23b3c",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "out r0\nload_const r5, -46\nadd r4, r0, r2\nload_const r2, 48\neq r2, r0, r3\nload_const r2, 'fz0'\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "58c7371aa5ba0190",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "jif r4, L0\nload_const r3, 1\nL0:\nload_const r2, 'fz1'\nload_const r2, 'fz3'\nout r1\njif r5, L1\nload_const r5, 1\nL1:\nout r4\nload_const r3, -41\njump L2\nload_const r5, 2\nL2:\nload_const r3, -48\njump L3\nload_const r4, 2\nL3:\nlt r4, r2, r3\nmul r2, r2, r5\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "5c3d826f24299f20",
-"status": "HALTED",
-"outs": [
-null,
-null
-]
-},
-{
-"asm": "eq r1, r1, r1\nload_const r5, 'fz1'\nload_const r3, 'fz2'\nmul r2, r5, r2\nload_const r3, 'fz2'\njump L0\nload_const r5, 2\nL0:\njump L1\nload_const r4, 2\nL1:\nadd r5, r3, r3\nload_const r1, -7\nload_const r1, 'fz3'\nload_const r2, 'fz1'\nadd r1, r3, r3\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "cb4a91b93671c6d9",
-"status": "HALTED",
-"outs": []
-},
-{
-"asm": "load_const r3, -22\njif r1, L0\nload_const r0, 1\nL0:\njif r3, L1\nload_const r5, 1\nL1:\nlt r1, r2, r2\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "e2b78ead5b70fe89",
-"status": "HALTED",
-"outs": []
-},
-{
-"asm": "mul r3, r3, r4\nmul r5, r0, r5\nload_const r0, 38\nsub r5, r0, r0\nload_const r4, 38\nsub r4, r2, r5\neq r2, r5, r5\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "793ebcd313bf3144",
-"status": "HALTED",
-"outs": []
-},
-{
-"asm": "load_const r1, 43\nload_const r0, 'fz3'\nload_const r1, -5\njump L0\nload_const r1, 2\nL0:\nload_const r2, -33\njump L1\nload_const r3, 2\nL1:\nload_const r0, 'fz3'\njump L2\nload_const r2, 2\nL2:\nout r1\nload_const r1, -40\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "3360b4b5859a0114",
-"status": "HALTED",
-"outs": [
--5
-]
-},
-{
-"asm": "out r1\nsub r4, r1, r2\nload_const r2, 'fz2'\nload_const r3, 15\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "d2f791aad478710b",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "eq r0, r4, r3\nout r3\nsub r1, r3, r4\nout r5\nlt r3, r1, r2\nout r3\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "3ea95aafc5107a77",
-"status": "HALTED",
-"outs": [
-null,
-null,
-null
-]
-},
-{
-"asm": "out r3\njif r5, L0\nload_const r4, 1\nL0:\neq r5, r5, r3\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "89f4cf6381b6fcbd",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "eq r3, r4, r4\nload_const r1, 15\nlt r5, r1, r1\njif r1, L0\nload_const r3, 1\nL0:\nload_const r0, 'fz3'\nout r3\njif r1, L1\nload_const r1, 1\nL1:\nload_const r1, 30\nload_const r3, -6\nlt r4, r3, r5\nload_const r0, 7\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "13585fd76aa95dda",
-"status": "HALTED",
-"outs": [
-true
-]
-},
-{
-"asm": "sub r2, r2, r1\njump L0\nload_const r2, 2\nL0:\nlt r0, r5, r0\neq r0, r1, r5\nload_const r2, -12\njif r0, L1\nload_const r5, 1\nL1:\nload_const r0, 'fz2'\nload_const r3, 32\njif r1, L2\nload_const r5, 1\nL2:\nmul r1, r2, r4\nout r3\nlt r4, r5, r0\nload_const r4, 'fz1'\nload_const r5, 18\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "9b28bc3aa42a9051",
-"status": "HALTED",
-"outs": [
-32
-]
-},
-{
-"asm": "load_const r3, 'fz3'\nload_const r0, -45\nsub r4, r1, r3\nload_const r5, -4\nadd r4, r0, r5\nload_const r4, 'fz3'\neq r2, r1, r2\nload_const r0, 6\nadd r2, r5, r4\nload_const r1, 'fz3'\njump L0\nload_const r2, 2\nL0:\nlt r5, r5, r2\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "30cf951533f5065a",
+"content_hash": "f24bc006ce7e8386",
 "status": "FAULT",
 "outs": []
 },
 {
-"asm": "load_const r4, 47\njump L0\nload_const r0, 2\nL0:\nout r1\nhalt\n",
+"asm": "S0:\nload_const r2, 'fz1'\njump L0\nload_const r2, 2\nL0:\nlt r0, r5, r0\neq r0, r1, r5\nload_const r2, -12\njif r0, L1\nload_const r5, 1\nL1:\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -2607,14 +1692,66 @@ true
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "ab86d9f8b46ba7f8",
+"content_hash": "48f62b4698ef04db",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r1, 26\nload_const r5, 'fz1'\njif r2, L0\nload_const r1, 1\nL0:\neq r3, r2, r3\nload_local r0, r3\nmul r0, r0, r4\njump L1\nload_const r5, 2\nL1:\nload_const r4, -20\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "6bf2917603dc3f68",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nstrcat r5, r5, r4\njif r5, S0\nsub r2, r1, r4\njif r3, S0\nadd r2, r5, r4\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "f549660c433e9a60",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r3, -5\nlt r5, r5, r2\nload_const r4, 47\njump L0\nload_const r0, 2\nL0:\nload_local r4, r5\nsub r1, r3, r1\njif r5, L1\nload_const r1, 1\nL1:\nmul r5, r5, r1\nload_const r5, -30\njump L2\nload_const r1, 2\nL2:\njif r0, L3\nload_const r1, 1\nL3:\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "4dc088d087ba4198",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\neq r5, r2, r3\nload_const r3, 16\nload_const r3, 20\nout r2\njif r0, L0\nload_const r3, 1\nL0:\nload_const r5, -29\nload_const r3, -4\njif r5, L1\nload_const r0, 1\nL1:\njif r0, L2\nload_const r3, 1\nL2:\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "f2430a992465824e",
 "status": "HALTED",
 "outs": [
 null
 ]
 },
 {
-"asm": "jif r0, L0\nload_const r2, 1\nL0:\neq r1, r4, r1\nsub r1, r3, r1\njif r5, L1\nload_const r1, 1\nL1:\nmul r5, r5, r1\nload_const r5, -30\njump L2\nload_const r1, 2\nL2:\njif r0, L3\nload_const r1, 1\nL3:\nload_const r4, 'fz3'\njump L4\nload_const r2, 2\nL4:\nadd r3, r4, r1\nload_const r3, 20\nhalt\n",
+"asm": "S0:\nload_const r0, 46\nstrcat r1, r2, r1\nload_const r0, -4\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -2622,12 +1759,92 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "5b184b4ae584619a",
+"content_hash": "5108c96ee6a23cac",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r3, 39\nload_const r1, -33\njump L0\nload_const r3, 2\nL0:\nload_const r2, 35\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "dc631889638ba7c6",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nout r2\njif r4, S0\nload_const r3, -41\nload_const r5, 35\nmul r5, r2, r0\nload_const r2, 'fz3'\nload_const r2, -7\njif r0, L0\nload_const r2, 1\nL0:\nload_const r3, 15\nlt r5, r2, r1\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "f497163874bde538",
+"status": "HALTED",
+"outs": [
+null
+]
+},
+{
+"asm": "S0:\nload_const r4, -20\nadd r2, r0, r2\nload_const r2, -7\nload_local r1, r0\nstrcat r1, r3, r2\nload_const r5, 40\njump L0\nload_const r1, 2\nL0:\nload_local r3, r1\njump L1\nload_const r4, 2\nL1:\nload_const r2, 46\nsub r2, r4, r0\njif r1, S0\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "fdaea6f7157c0341",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r3, 0\njif r1, S0\nload_local r1, r4\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "242163d8bb8235df",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nmul r4, r2, r2\nload_const r5, 17\nsub r0, r2, r3\njif r5, L0\nload_const r2, 1\nL0:\nsub r3, r5, r0\nload_const r5, -35\nload_const r0, 25\nadd r2, r3, r0\nmul r1, r2, r2\neq r0, r1, r1\njif r4, S0\nload_const r2, -8\nadd r1, r2, r4\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "badc52d994b3b2d1",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\njif r0, L0\nload_const r5, 1\nL0:\njif r4, L1\nload_const r5, 1\nL1:\nload_const r2, 33\nload_const r2, -40\nsub r0, r2, r5\nmul r2, r3, r5\njif r1, S0\njif r5, S0\nload_local r3, r2\nload_const r1, -32\nload_const r1, 0\nload_const r5, 7\nload_const r2, 36\neq r1, r3, r3\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "db3798af162605f2",
 "status": "FAULT",
 "outs": []
 },
 {
-"asm": "load_const r0, 'fz1'\njump L0\nload_const r2, 2\nL0:\nsub r0, r0, r3\nload_const r5, -29\nhalt\n",
+"asm": "S0:\njif r4, L0\nload_const r5, 1\nL0:\nstrcat r4, r5, r0\nsub r0, r4, r0\nmul r2, r1, r4\njif r2, L1\nload_const r4, 1\nL1:\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -2635,104 +1852,12 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "0780670a02443a18",
-"status": "HALTED",
-"outs": []
-},
-{
-"asm": "jif r2, L0\nload_const r1, 1\nL0:\njif r0, L1\nload_const r0, 1\nL1:\nsub r0, r4, r2\nmul r4, r2, r1\nload_const r4, 2\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "037bf081a852e0c2",
-"status": "HALTED",
-"outs": []
-},
-{
-"asm": "load_const r0, -4\nadd r0, r3, r5\nload_const r1, -33\njump L0\nload_const r3, 2\nL0:\nload_const r2, 35\njump L1\nload_const r4, 2\nL1:\nlt r5, r0, r3\nout r1\nadd r3, r4, r0\nload_const r3, -41\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "01927b39b26444de",
-"status": "HALTED",
-"outs": [
--33
-]
-},
-{
-"asm": "out r5\nout r5\nmul r0, r0, r2\nout r0\nload_const r2, 42\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "0baeb5a264589533",
-"status": "HALTED",
-"outs": [
-null,
-null,
-null
-]
-},
-{
-"asm": "eq r4, r3, r1\nload_const r4, 'fz2'\nload_const r2, -7\nout r2\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "ea90cdf6fbbe42fa",
-"status": "HALTED",
-"outs": [
--7
-]
-},
-{
-"asm": "load_const r0, -13\nload_const r2, -7\nout r1\nload_const r0, 20\nload_const r5, 'fz2'\nload_const r2, -30\nout r5\neq r3, r1, r3\neq r3, r0, r3\njif r5, L0\nload_const r1, 1\nL0:\nout r2\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "eba54df2ca840ef6",
-"status": "HALTED",
-"outs": [
-null,
-"fz2",
--30
-]
-},
-{
-"asm": "load_const r5, 48\nsub r1, r2, r4\nload_const r2, 46\nsub r2, r4, r0\nload_const r1, 'fz0'\nload_const r3, 0\nload_const r1, 'fz2'\nout r4\nmul r0, r0, r2\nsub r3, r1, r5\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "0f5a8c1ccf48477d",
+"content_hash": "a3092327f0931faf",
 "status": "FAULT",
-"outs": [
-null
-]
+"outs": []
 },
 {
-"asm": "jif r4, L0\nload_const r2, 1\nL0:\nlt r3, r1, r0\nmul r5, r2, r2\njif r1, L1\nload_const r3, 1\nL1:\nload_const r0, 'fz1'\nload_const r0, -45\nload_const r0, 25\nadd r2, r3, r0\nmul r1, r2, r2\neq r0, r1, r1\nhalt\n",
+"asm": "S0:\neq r3, r0, r4\neq r0, r0, r5\nlen r2, r2\njump L0\nload_const r5, 2\nL0:\nload_const r3, 26\nlen r1, r3\njump L1\nload_const r1, 2\nL1:\nload_const r4, -50\nload_const r4, -2\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -2740,12 +1865,12 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "b52a02f4a223eaf0",
+"content_hash": "b027c290cd92dfe0",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "load_const r3, 20\njif r1, L0\nload_const r2, 1\nL0:\nout r5\nlt r5, r1, r0\njif r5, L1\nload_const r0, 1\nL1:\nload_const r2, -40\nsub r0, r2, r5\nmul r2, r3, r5\nload_const r1, 'fz1'\nhalt\n",
+"asm": "S0:\njif r5, L0\nload_const r0, 1\nL0:\nload_const r5, 17\nmul r3, r4, r4\njif r1, L1\nload_const r1, 1\nL1:\nsub r0, r5, r2\nmul r4, r2, r0\nstore_local r1, r3\nlen r0, r5\nstrcat r0, r3, r0\nload_const r5, 45\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -2753,73 +1878,12 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "cfc86742203f9393",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "jif r2, L0\nload_const r0, 1\nL0:\njif r0, L1\nload_const r3, 1\nL1:\njump L2\nload_const r2, 2\nL2:\nsub r0, r0, r1\nload_const r0, 'fz1'\nload_const r1, 'fz3'\nload_const r2, 36\neq r1, r3, r3\nload_const r1, 26\nout r5\nload_const r3, 'fz2'\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "74915cdc2d47142a",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "load_const r5, -36\nload_const r3, -11\nload_const r0, 27\nload_const r1, -3\nsub r4, r1, r2\nlt r3, r3, r0\nout r5\nadd r5, r4, r2\nadd r1, r4, r4\nout r2\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "23f39989c85944c7",
-"status": "HALTED",
-"outs": [
--36,
-null
-]
-},
-{
-"asm": "load_const r3, 31\nload_const r3, 26\nout r1\njump L0\nload_const r0, 2\nL0:\nload_const r1, -9\nsub r1, r3, r5\nload_const r4, 'fz1'\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "492a303d4355feea",
-"status": "HALTED",
-"outs": [
-null
-]
-},
-{
-"asm": "mul r5, r4, r3\njif r3, L0\nload_const r5, 1\nL0:\nadd r1, r5, r5\nhalt\n",
-"const_extra": [
-"fz0",
-"fz1",
-"fz2",
-"fz3"
-],
-"nlocals": 6,
-"content_hash": "cdfef48cd7d07e62",
+"content_hash": "684e4aa5093d7ed2",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "mul r3, r4, r4\njif r1, L0\nload_const r1, 1\nL0:\nsub r0, r5, r2\nmul r4, r2, r0\nout r3\nlt r1, r3, r0\nload_const r3, -14\nload_const r4, 'fz2'\njif r5, L1\nload_const r2, 1\nL1:\nload_const r2, 'fz2'\nadd r5, r4, r4\nhalt\n",
+"asm": "S0:\nload_const r3, -34\nsub r0, r1, r3\nload_const r1, -47\nlt r0, r0, r0\nlen r3, r1\nload_const r2, 23\nlt r5, r1, r4\nlt r1, r5, r5\nout r2\nmul r5, r0, r4\nadd r3, r5, r4\nmul r3, r2, r5\njif r5, S0\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -2827,14 +1891,61 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "700ea9cf2e44b483",
+"content_hash": "a4f492187c946346",
+"status": "HALTED",
+"outs": [
+23
+]
+},
+{
+"asm": "S0:\nload_const r2, -30\nload_local r3, r4\nlt r4, r4, r4\neq r2, r2, r0\neq r0, r1, r2\nout r2\nmul r3, r0, r0\njif r4, L0\nload_const r3, 1\nL0:\njump L1\nload_const r4, 2\nL1:\nload_const r5, 34\nstore_local r2, r3\nload_local r1, r1\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "455527de5f16dcb1",
+"status": "HALTED",
+"outs": [
+false
+]
+},
+{
+"asm": "S0:\nload_const r4, 13\nout r5\nout r4\nout r2\nload_const r2, -40\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "62fa740c2748fbc6",
+"status": "HALTED",
+"outs": [
+null,
+13,
+null
+]
+},
+{
+"asm": "S0:\nout r5\nstore_local r3, r0\njif r0, L0\nload_const r4, 1\nL0:\nload_const r0, 2\njump L1\nload_const r4, 2\nL1:\nadd r3, r3, r1\nstore_local r3, r0\njif r0, L2\nload_const r0, 1\nL2:\njump L3\nload_const r4, 2\nL3:\nload_const r1, -11\nsub r3, r0, r5\njif r5, S0\nload_const r4, 'fz2'\nload_local r1, r1\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "8b776642ebe3e03a",
 "status": "HALTED",
 "outs": [
 null
 ]
 },
 {
-"asm": "lt r2, r5, r0\njump L0\nload_const r3, 2\nL0:\nload_const r0, 3\nhalt\n",
+"asm": "S0:\nload_const r3, -34\nload_const r4, -17\nmul r4, r3, r0\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -2842,12 +1953,12 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "e673b22342044eb4",
+"content_hash": "77a8b6c3f9159eb7",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "load_const r5, 'fz1'\nsub r3, r1, r1\nload_const r1, 3\nload_const r1, -47\nhalt\n",
+"asm": "S0:\nload_const r0, -42\nload_const r1, 'fz2'\nload_const r1, 'fz1'\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -2855,12 +1966,12 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "83ce3f3cf7e8b2c7",
+"content_hash": "bf94b638cf4c0e0c",
 "status": "HALTED",
 "outs": []
 },
 {
-"asm": "load_const r0, 34\nload_const r3, 49\nout r5\nout r4\njif r3, L0\nload_const r1, 1\nL0:\nout r4\nload_const r4, -5\nsub r4, r3, r5\nout r5\nout r0\njump L1\nload_const r2, 2\nL1:\nhalt\n",
+"asm": "S0:\nstrcat r5, r5, r1\nload_local r3, r3\nadd r3, r4, r3\nmul r2, r2, r0\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -2868,18 +1979,79 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "bcc46ce9da040db4",
+"content_hash": "d75d196d1d8d139a",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r4, 35\nadd r5, r2, r2\nmul r1, r2, r2\nstore_local r2, r2\nlen r3, r3\njif r4, S0\neq r1, r5, r5\njump L0\nload_const r0, 2\nL0:\njif r0, L1\nload_const r0, 1\nL1:\njif r4, L2\nload_const r1, 1\nL2:\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "e615fa1b100ded74",
+"status": "FAULT",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r3, -30\nadd r5, r3, r5\nload_const r5, 12\nload_const r5, 36\nlt r3, r2, r5\nstrcat r5, r4, r3\njif r0, S0\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "1cd23d91b702fe2f",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r5, 'fz3'\njif r0, S0\njump L0\nload_const r2, 2\nL0:\nsub r0, r1, r4\nlt r4, r0, r1\nlen r4, r2\nload_const r1, -13\nload_const r1, 36\nlen r0, r2\nlt r4, r3, r1\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "80424ce7bf5faf56",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nstrcat r1, r1, r3\nsub r5, r5, r0\neq r2, r3, r0\njif r4, S0\nload_const r1, -1\nstrcat r5, r5, r2\neq r1, r4, r4\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "bf0fff9bc27a1557",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r5, 37\nload_const r2, 11\nload_const r4, 'fz2'\nout r4\njif r2, L0\nload_const r0, 1\nL0:\nadd r2, r5, r3\nload_const r4, -8\nlen r4, r5\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "4c7ce2225a1f9f36",
 "status": "HALTED",
 "outs": [
-null,
-null,
-null,
-null,
-34
+"fz2"
 ]
 },
 {
-"asm": "load_const r4, 'fz3'\njif r2, L0\nload_const r5, 1\nL0:\njif r5, L1\nload_const r0, 1\nL1:\nmul r5, r0, r4\nadd r3, r5, r4\nmul r3, r2, r5\nload_const r5, 'fz1'\nout r2\nload_const r3, -17\nadd r4, r2, r4\nload_const r5, -25\nlt r4, r4, r4\neq r2, r2, r0\neq r0, r1, r2\nhalt\n",
+"asm": "S0:\nmul r0, r2, r4\njif r2, L0\nload_const r4, 1\nL0:\neq r5, r5, r0\nload_const r5, 8\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -2887,14 +2059,53 @@ null,
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "865bf213663df895",
+"content_hash": "f4ff2542bffd43a4",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r2, 'fz0'\njif r0, L0\nload_const r2, 1\nL0:\nload_const r0, 25\nstrcat r0, r0, r1\nload_local r5, r4\nmul r4, r4, r4\nsub r3, r2, r4\nload_const r2, 19\nload_const r2, 2\nload_const r2, -7\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "ff3ec983f13ccb54",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r5, -24\njif r1, S0\nlt r4, r0, r5\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "c1089312912e4782",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\njump L0\nload_const r1, 2\nL0:\nadd r1, r5, r0\nout r2\nload_const r4, -38\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "b4a808ca3e7bd63b",
 "status": "HALTED",
 "outs": [
 null
 ]
 },
 {
-"asm": "add r3, r5, r1\nsub r0, r4, r5\njif r0, L0\nload_const r3, 1\nL0:\nload_const r3, -45\nload_const r5, 'fz1'\njif r3, L1\nload_const r4, 1\nL1:\nadd r5, r5, r4\nload_const r5, -40\nload_const r3, 1\nload_const r3, 'fz2'\nout r1\nload_const r1, 5\nout r2\nhalt\n",
+"asm": "S0:\nstrcat r1, r4, r3\njif r0, L0\nload_const r0, 1\nL0:\nload_const r4, 8\nload_const r0, 24\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -2902,15 +2113,239 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "64e1d723949d66c7",
+"content_hash": "7ebe1ce188678f3e",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\neq r3, r5, r0\nstrcat r3, r4, r3\njif r4, S0\nload_local r1, r1\nmul r3, r2, r2\njif r4, S0\nstrcat r1, r4, r0\nadd r1, r3, r1\nload_const r4, 'fz0'\nsub r1, r1, r0\neq r5, r0, r4\njif r3, L0\nload_const r0, 1\nL0:\nload_local r3, r3\nload_const r3, 36\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "af89943fc71c87a9",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\njif r4, S0\nstrcat r1, r2, r0\nmul r2, r4, r2\njump L0\nload_const r4, 2\nL0:\njif r0, L1\nload_const r1, 1\nL1:\njump L2\nload_const r5, 2\nL2:\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "2d68ef00334f510e",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\njump L0\nload_const r4, 2\nL0:\nlt r5, r4, r1\nlt r1, r4, r3\nload_const r0, -31\njif r0, L1\nload_const r3, 1\nL1:\nload_const r5, 34\nload_const r0, 'fz2'\nlt r0, r1, r1\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "681f327fb947f490",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nstrcat r5, r0, r1\nsub r1, r4, r5\njump L0\nload_const r2, 2\nL0:\nload_const r3, 17\nload_const r3, 48\nload_const r1, 36\njump L1\nload_const r3, 2\nL1:\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "6c4531621167d801",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nmul r2, r0, r4\nload_const r5, 50\nload_const r4, 20\nlt r4, r4, r3\nload_const r1, -49\nload_const r3, 32\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "9a13a5e1a11d82bb",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\neq r3, r3, r5\nload_const r4, 40\nlt r3, r2, r1\nload_const r1, 'fz3'\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "4d0180e53f3f073f",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r5, -20\nload_const r1, 'fz3'\nload_const r5, 36\nlt r3, r4, r2\nload_const r4, -43\neq r4, r3, r1\nload_const r0, 'fz3'\nstrcat r5, r2, r1\nload_const r3, -14\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "40f906b9a7d66c87",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r2, -3\nsub r1, r2, r1\nmul r5, r1, r2\nadd r1, r4, r1\nstore_local r4, r4\njump L0\nload_const r1, 2\nL0:\njif r2, S0\nadd r4, r1, r5\njump L1\nload_const r2, 2\nL1:\njif r0, L2\nload_const r4, 1\nL2:\njump L3\nload_const r4, 2\nL3:\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "37e2b7c80e30e708",
+"status": "FAULT",
+"outs": []
+},
+{
+"asm": "S0:\nstrcat r0, r0, r2\nmul r3, r1, r5\nsub r5, r0, r5\nadd r5, r0, r0\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "98bd67fa6edc3e93",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r5, 38\nload_const r3, -43\nload_const r2, -4\nstrcat r0, r1, r4\nsub r3, r5, r3\nload_const r2, 'fz0'\njump L0\nload_const r0, 2\nL0:\nload_const r3, -8\nout r5\nlen r5, r5\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "f486537bd31a2c97",
 "status": "HALTED",
 "outs": [
-null,
+38
+]
+},
+{
+"asm": "S0:\njif r4, L0\nload_const r0, 1\nL0:\nsub r4, r3, r4\njif r2, S0\neq r4, r4, r5\nload_local r0, r0\nload_const r2, 22\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "d75b77efdc21a27a",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nmul r4, r5, r4\nstore_local r5, r2\nmul r3, r1, r2\nload_local r2, r1\nsub r5, r5, r0\nsub r4, r4, r1\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "e3bc495398f30157",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nstore_local r3, r5\nload_const r1, 14\njump L0\nload_const r0, 2\nL0:\njump L1\nload_const r1, 2\nL1:\njump L2\nload_const r2, 2\nL2:\njump L3\nload_const r0, 2\nL3:\nmul r0, r5, r5\nsub r5, r2, r5\neq r2, r2, r0\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "998cfcfc4b5ba071",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r2, -29\nload_const r1, 19\nadd r3, r2, r0\nlen r3, r1\nload_local r2, r5\nload_const r5, -19\nmul r4, r2, r1\nload_const r4, 26\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "92b4c1d571f0d248",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r0, -13\nsub r1, r2, r5\nload_const r5, 8\nout r5\njump L0\nload_const r4, 2\nL0:\nadd r0, r0, r2\nload_const r1, -19\njif r3, S0\njif r5, L1\nload_const r4, 1\nL1:\nlen r5, r1\nload_const r4, -35\nload_const r5, 1\njump L2\nload_const r5, 2\nL2:\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "56b6070fca0b2d2b",
+"status": "HALTED",
+"outs": [
+8
+]
+},
+{
+"asm": "S0:\nstore_local r0, r1\nsub r2, r3, r3\nload_const r2, -25\njump L0\nload_const r4, 2\nL0:\nload_local r2, r1\nload_const r3, -1\nstrcat r5, r3, r1\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "f63b1317e9adab73",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nmul r2, r1, r5\nload_const r5, -11\njif r1, L0\nload_const r4, 1\nL0:\nload_const r5, 17\nload_const r5, 33\njump L1\nload_const r3, 2\nL1:\nload_const r2, 31\nstore_local r2, r4\nout r3\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "99dff514dcb2534a",
+"status": "HALTED",
+"outs": [
 null
 ]
 },
 {
-"asm": "out r1\njump L0\nload_const r1, 2\nL0:\neq r4, r1, r5\njif r0, L1\nload_const r3, 1\nL1:\nload_const r2, 40\nhalt\n",
+"asm": "S0:\njump L0\nload_const r5, 2\nL0:\nload_const r4, 'fz3'\nsub r0, r4, r3\njif r4, S0\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -2918,14 +2353,53 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "0da257b3c273f587",
+"content_hash": "24780e2b1e4f7053",
+"status": "FAULT",
+"outs": []
+},
+{
+"asm": "S0:\neq r3, r1, r0\neq r0, r4, r0\nmul r3, r0, r4\nload_const r0, 'fz3'\neq r2, r2, r3\njif r3, S0\nload_const r4, 43\nload_const r5, 'fz1'\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "5f07640623e56701",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r3, 27\neq r4, r0, r5\nload_const r3, 14\nsub r1, r3, r3\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "c52814d808f89b3c",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\njif r1, L0\nload_const r0, 1\nL0:\nload_const r5, -43\nout r3\nload_const r4, -48\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "2e37fc347370088a",
 "status": "HALTED",
 "outs": [
 null
 ]
 },
 {
-"asm": "out r4\njif r4, L0\nload_const r3, 1\nL0:\nlt r5, r0, r0\nhalt\n",
+"asm": "S0:\njump L0\nload_const r2, 2\nL0:\nload_const r4, 20\nlen r4, r5\nlen r5, r1\nload_const r3, 'fz3'\nlen r5, r4\nadd r5, r3, r4\nout r1\nload_const r2, -48\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -2933,14 +2407,131 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "dd0e587f8fd6fe66",
+"content_hash": "87adc52930d1b358",
+"status": "FAULT",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r4, 21\nload_const r1, 20\nlt r4, r0, r0\nadd r5, r3, r4\nload_const r1, -47\nlen r0, r2\nsub r4, r4, r5\nload_const r2, 3\nload_const r4, -7\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "5d01e29a291454c6",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\njif r0, L0\nload_const r1, 1\nL0:\nload_local r2, r5\nmul r4, r3, r0\nlen r4, r1\neq r5, r0, r2\nload_const r1, 'fz0'\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "ad51bd099b39b198",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r0, 'fz0'\nload_const r3, 'fz3'\nload_const r1, 'fz1'\nsub r1, r1, r4\njif r1, S0\nload_const r2, 'fz3'\nload_const r5, 40\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "315ad6ffd80c2b90",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\njif r3, L0\nload_const r1, 1\nL0:\neq r1, r1, r1\nlt r3, r5, r5\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "9f151a8b7610f30d",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\njump L0\nload_const r0, 2\nL0:\nload_const r5, 'fz2'\nadd r0, r5, r3\nload_const r3, 16\nload_const r4, -6\njif r1, S0\nload_const r0, 'fz1'\nload_const r0, -40\neq r4, r5, r0\njif r0, L1\nload_const r5, 1\nL1:\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "93d093f51fe2a57a",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r3, 9\nload_const r0, 4\nload_const r5, 10\nload_const r3, -27\nload_const r0, 12\njump L0\nload_const r3, 2\nL0:\nload_const r1, 'fz1'\nload_local r1, r4\nload_const r2, 10\njif r0, S0\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "3da76d40c960f985",
+"status": "FAULT",
+"outs": []
+},
+{
+"asm": "S0:\nmul r4, r1, r1\njif r1, L0\nload_const r1, 1\nL0:\nload_local r1, r2\nload_const r0, -25\njif r0, S0\nload_const r5, 50\nadd r3, r5, r4\njif r3, S0\nout r2\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "b29ec317efd27ba5",
+"status": "FAULT",
+"outs": []
+},
+{
+"asm": "S0:\neq r3, r1, r0\njif r2, L0\nload_const r1, 1\nL0:\nload_const r5, 32\nload_const r4, -7\nload_const r4, -43\nload_const r4, -22\nadd r2, r2, r2\nload_const r0, 5\njif r4, L1\nload_const r0, 1\nL1:\nload_const r5, 22\nmul r0, r5, r5\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "035e3be586545b2f",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r1, 'fz0'\njif r1, L0\nload_const r0, 1\nL0:\nout r4\nload_const r5, 30\neq r5, r4, r4\nload_const r2, 50\njif r1, L1\nload_const r4, 1\nL1:\njif r5, L2\nload_const r1, 1\nL2:\nload_const r0, 23\njump L3\nload_const r2, 2\nL3:\nsub r3, r1, r4\nsub r2, r5, r0\njif r3, L4\nload_const r3, 1\nL4:\nlt r4, r0, r5\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "b4ec13246d947c04",
 "status": "HALTED",
 "outs": [
 null
 ]
 },
 {
-"asm": "out r2\nload_const r1, 30\nload_const r0, 10\nout r3\nhalt\n",
+"asm": "S0:\njif r3, S0\nload_const r5, 7\nlt r1, r5, r0\nlen r1, r5\nadd r0, r2, r0\nstrcat r3, r2, r4\njif r0, L0\nload_const r5, 1\nL0:\nload_local r5, r4\njump L1\nload_const r0, 2\nL1:\nstore_local r3, r5\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -2948,15 +2539,79 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "b5ea7abe572afa62",
+"content_hash": "a4e6c4b72842feeb",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nlt r0, r4, r5\nload_const r1, -39\nload_const r4, 1\nload_const r3, -27\njif r2, L0\nload_const r3, 1\nL0:\nload_const r1, -21\njump L1\nload_const r1, 2\nL1:\njump L2\nload_const r2, 2\nL2:\njif r2, L3\nload_const r4, 1\nL3:\nload_const r3, 32\njif r5, S0\nstrcat r0, r2, r4\nload_const r2, 23\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "03edd6086e16644c",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r5, 'fz3'\nlt r5, r5, r5\nload_const r3, 37\nstore_local r0, r0\nload_const r4, -49\nadd r1, r1, r2\njif r1, L0\nload_const r3, 1\nL0:\nload_const r5, -16\njif r5, L1\nload_const r5, 1\nL1:\neq r3, r3, r4\nload_const r5, 32\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "588b89a53c9fda47",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r1, 24\nload_const r1, 2\njif r3, L0\nload_const r4, 1\nL0:\nload_const r4, 'fz2'\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "ddf5c09b57c91cd7",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\nload_const r1, 35\njif r0, S0\njump L0\nload_const r2, 2\nL0:\njif r5, S0\nload_local r0, r4\nload_const r5, 50\nstrcat r1, r4, r2\nstrcat r2, r0, r0\njif r5, S0\nmul r3, r0, r4\njump L1\nload_const r5, 2\nL1:\njump L2\nload_const r0, 2\nL2:\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "82025b06bc1a50e9",
+"status": "FAULT",
+"outs": []
+},
+{
+"asm": "S0:\nout r4\nadd r2, r1, r3\njif r1, L0\nload_const r2, 1\nL0:\nload_const r0, 46\nadd r0, r1, r5\nload_const r2, 19\nload_const r3, -30\njump L1\nload_const r4, 2\nL1:\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "b746bcd09f853b2e",
 "status": "HALTED",
 "outs": [
-null,
 null
 ]
 },
 {
-"asm": "load_const r2, -40\nload_const r5, 30\nout r5\nhalt\n",
+"asm": "S0:\nmul r2, r3, r4\nstrcat r1, r2, r5\njif r2, S0\nlt r3, r1, r2\nadd r0, r1, r2\nmul r3, r2, r3\nhalt\n",
 "const_extra": [
 "fz0",
 "fz1",
@@ -2964,10 +2619,49 @@ null
 "fz3"
 ],
 "nlocals": 6,
-"content_hash": "534356569ddda817",
+"content_hash": "bd2ffa9d14d8e245",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\njif r3, L0\nload_const r0, 1\nL0:\nload_const r4, 43\nload_const r1, 11\nadd r1, r1, r3\nstrcat r2, r5, r2\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "d3c523ff9dbddb48",
+"status": "HALTED",
+"outs": []
+},
+{
+"asm": "S0:\neq r2, r4, r4\njump L0\nload_const r1, 2\nL0:\nload_local r3, r1\nload_const r5, 30\nload_const r2, -23\nstrcat r4, r2, r2\nadd r2, r0, r5\nload_const r5, -12\nload_const r0, 'fz0'\njif r1, S0\nadd r3, r5, r0\nmul r4, r3, r2\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "1098048bb22fffb0",
+"status": "FAULT",
+"outs": []
+},
+{
+"asm": "S0:\nout r0\nload_const r2, 10\nlt r2, r3, r2\nstore_local r2, r5\nload_const r3, 25\neq r5, r2, r5\nhalt\n",
+"const_extra": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"nlocals": 6,
+"content_hash": "323456c35b972fce",
 "status": "HALTED",
 "outs": [
-30
+null
 ]
 }
 ]

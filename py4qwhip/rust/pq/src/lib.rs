@@ -3,6 +3,9 @@
 use sha2::{Digest, Sha256};
 use std::collections::HashMap;
 
+pub mod karaka;
+pub mod vm;
+
 pub const MAGIC: &[u8] = b"PY4QW01";
 pub const VERSION: u8 = 1;
 const MAX_POOL: usize = 65535;
@@ -216,13 +219,13 @@ pub fn validate(p: &Program) -> Result<(), PqError> {
             match k {
                 K::R => {
                     if code[oi] >= p.nlocals {
-                        return err(format!("reg/slot {} >= nlocals at {pc}", code[oi]));
+                        return err(format!("{}: reg/slot {} >= nlocals at {pc}", NAMES[opc as usize], code[oi]));
                     }
                     oi += 1;
                 }
                 K::C => {
                     if u16::from_le_bytes([code[oi], code[oi + 1]]) as usize >= p.pool.len() {
-                        return err(format!("const idx out of pool at {pc}"));
+                        return err(format!("{}: const idx out of pool at {pc}", NAMES[opc as usize]));
                     }
                     oi += 2;
                 }
@@ -230,7 +233,7 @@ pub fn validate(p: &Program) -> Result<(), PqError> {
                     let rel = i16::from_le_bytes([code[oi], code[oi + 1]]) as i64;
                     let tgt = pc as i64 + size as i64 + rel;
                     if tgt < 0 || tgt > code.len() as i64 {
-                        return err(format!("jump target out of program at {pc}"));
+                        return err(format!("{}: jump target out of program at {pc}", NAMES[opc as usize]));
                     }
                     oi += 2;
                 }

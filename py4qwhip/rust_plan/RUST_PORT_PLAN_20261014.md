@@ -34,3 +34,13 @@ Hive cells, supervisor, gateway: stay Python (guest world). Rust = libraries + l
 3. Skeleton: marker vs fault (docstring corrected 10-14).
 4. QW-7 end-cap tag fields (design note) affect the envelope layout -> decide before step 4.
 Next: Chris go on rustup -> `cargo new` crate pq, port 01 against golden vectors.
+
+## PROGRESS 10-14 (late)
+- Toolchain installed: rustc/cargo 1.99.0 (rustup-init sha256 verified vs static.rust-lang.org). Build in PowerShell
+  (Git Bash resolves coreutils `link` before MSVC link.exe).
+- STEP 1 DONE: crate rust\pq (src\lib.rs): assemble + validate + canonical_bytes + content_hash.
+  cargo test: 3/3 -- 45 skeleton hashes + 2 VM programs + 200 fuzz-corpus programs byte-identical to Python.
+- Fuzz-driven spec fixes made in Python FIRST (the Rust port mirrors these): validate jump base = next instruction,
+  target may equal len(code); disassemble same base + end label; VM ints are i64 with overflow trap; MUL on
+  str/bytes traps; operand-type errors trap as fault "trap:<TypeName>"; LOAD_LOCAL/STORE_LOCAL fixed (rd() was undefined).
+- NEXT: port 02_karaka, then 04_vm Machine (status/outs/fault strings vs fuzz_corpus.json), then envelope.

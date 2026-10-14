@@ -47,7 +47,7 @@ def main(N):
     rng = random.Random(20261014)
     bad = {"assemble": 0, "hash_unstable": 0, "roundtrip": 0, "vm_nondeterministic": 0,
            "vm_not_terminating": 0, "tamper_untrapped": 0}
-    first_fail, corpus, t0 = {}, [], time.time()
+    first_fail, corpus, tcorpus, t0 = {}, [], [], time.time()
     stat = {"HALTED": 0, "FAULT": 0, "other": 0}
     for i in range(N):
         asm = gen(rng)
@@ -71,14 +71,20 @@ def main(N):
             t = dict(p); c = bytearray(p["code"]); c[rng.randrange(len(c))] ^= rng.randint(1, 255); t["code"] = bytes(c)
             try:
                 s = vm.Machine(t, None, 500).run()
+                if len(tcorpus) < 400:
+                    tcorpus.append({"nlocals": 6, "pool": t["const_pool"], "code_hex": t["code"].hex(), "status": s["status"],
+                                    "fault": s["fault"], "steps": s["steps"], "pending_import": s["pending_import"],
+                                    "outs": s["outs"], "regs": s["regs"]})
                 if s["status"] not in ("HALTED", "FAULT", "SYNTH_PENDING"): bad["tamper_untrapped"] += 1   # a flipped byte may become IMPORT
             except Exception as e:
                 bad["tamper_untrapped"] += 1; first_fail.setdefault("tamper", (asm, "%s: %s" % (type(e).__name__, str(e)[:80])))
         if i < 200:
             corpus.append({"asm": asm, "const_extra": pool, "nlocals": 6, "content_hash": h,
-                           "status": a["status"], "outs": a["outs"]})
+                           "status": a["status"], "outs": a["outs"],
+                           "fault": a["fault"], "steps": a["steps"], "regs": a["regs"]})
     try:
         json.dump(corpus, open(os.path.join(HERE, "..", "rust_plan", "fuzz_corpus.json"), "w"), indent=0)
+        json.dump(tcorpus, open(os.path.join(HERE, "..", "rust_plan", "fuzz_tamper_corpus.json"), "w"), indent=0)
     except Exception:
         pass
     ok = not any(bad.values())

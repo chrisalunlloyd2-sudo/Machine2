@@ -110,12 +110,18 @@ class Machine:
         if self.pc >= len(code):
             self.status = HALTED
             return
+        if self.pc < 0:
+            raise IndexError("pc")   # 2026-10-14: a jump into mid-instruction bytes can go negative; never wrap
         opc = code[self.pc]
         name, kinds = b01.OPS[opc]
         off = self.pc + 1
-        # operand readers: explicit offsets (lambda closures overlapped operands)
-        u16 = lambda o: struct.unpack("<H", code[o:o + 2])[0]  # noqa: E731
-        s16 = lambda o: struct.unpack("<h", code[o:o + 2])[0]  # noqa: E731
+
+        def _rd(o, fmt):
+            if o < 0 or o + 2 > len(code):
+                raise IndexError("operand")   # 2026-10-14: short read = IndexError (was struct.error, untrapped)
+            return struct.unpack(fmt, code[o:o + 2])[0]
+        u16 = lambda o: _rd(o, "<H")  # noqa: E731
+        s16 = lambda o: _rd(o, "<h")  # noqa: E731
 
         if name == "NOP":
             pass
@@ -131,22 +137,23 @@ class Machine:
             d, a, b = code[off], code[off + 1], code[off + 2]; off += 3
             va, vb = self.regs[a], self.regs[b]
             if name == "ADD":
-                self.regs[d] = (va + vb) if (va is not None and vb is not None) else None
+                v = (va + vb) if (va is not None and vb is not None) else None
             elif name == "SUB":
-                self.regs[d] = (va - vb) if (va is not None and vb is not None) else None
+                v = (va - vb) if (va is not None and vb is not None) else None
             elif name == "MUL":
                 if isinstance(va, (str, bytes)) or isinstance(vb, (str, bytes)):
                     raise TypeError("MUL on sequence")   # 2026-10-14 fuzz finding: str*huge-int hung the VM
-                self.regs[d] = (va * vb) if (va is not None and vb is not None) else None
+                v = (va * vb) if (va is not None and vb is not None) else None
             elif name == "EQ":
-                self.regs[d] = (va == vb)
+                v = (va == vb)
             else:
-                self.regs[d] = (va < vb) if (va is not None and vb is not None
-                                             and isinstance(va, (int, float))
-                                             and isinstance(vb, (int, float))) else None
-            if name in ("ADD", "SUB", "MUL") and isinstance(self.regs[d], int) and not isinstance(self.regs[d], bool):
-                if not (-(1 << 63) <= self.regs[d] < (1 << 63)):
-                    raise OverflowError("i64")   # 2026-10-14: ints are i64 (spec for the Rust port); bigints would diverge
+                v = (va < vb) if (va is not None and vb is not None
+                                  and isinstance(va, (int, float))
+                                  and isinstance(vb, (int, float))) else None
+            if name in ("ADD", "SUB", "MUL") and isinstance(v, int) and not isinstance(v, bool):
+                if not (-(1 << 63) <= v < (1 << 63)):
+                    raise OverflowError("i64")   # 2026-10-14: ints are i64 (spec for the Rust port); checked BEFORE the store, dest unchanged on fault
+            self.regs[d] = v
         elif name == "JUMP":
             rel = s16(off); off += 2
             self.pc = self.pc + 3 + rel  # base = next-instr byte + signed rel

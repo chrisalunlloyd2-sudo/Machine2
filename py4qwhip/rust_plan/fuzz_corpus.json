@@ -10,7 +10,17 @@
 "nlocals": 6,
 "content_hash": "75f94e263c28ca36",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 18,
+"regs": [
+true,
+43,
+1,
+-38,
+1,
+-44
+]
 },
 {
 "asm": "S0:\nload_const r0, 'fz1'\nload_const r2, 16\nstore_local r2, r4\nload_const r0, -36\njif r3, L0\nload_const r5, 1\nL0:\nload_const r0, 45\nload_const r4, -10\nload_local r2, r0\nload_const r1, -4\nload_const r2, 'fz1'\njif r4, L1\nload_const r1, 1\nL1:\nload_const r0, 8\njump L2\nload_const r4, 2\nL2:\nlt r3, r5, r5\nhalt\n",
@@ -23,7 +33,17 @@
 "nlocals": 6,
 "content_hash": "224c0c7bae449e39",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 16,
+"regs": [
+8,
+-4,
+"fz1",
+false,
+-10,
+1
+]
 },
 {
 "asm": "S0:\neq r2, r2, r1\njump L0\nload_const r2, 2\nL0:\nload_const r3, 12\nhalt\n",
@@ -36,7 +56,17 @@
 "nlocals": 6,
 "content_hash": "d8dca64c6aea031c",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 4,
+"regs": [
+null,
+null,
+true,
+12,
+null,
+null
+]
 },
 {
 "asm": "S0:\nlt r1, r3, r3\neq r3, r3, r4\nload_const r3, -11\nadd r1, r3, r4\nload_local r1, r1\njif r3, L0\nload_const r0, 1\nL0:\nadd r3, r4, r0\nload_const r1, -29\nhalt\n",
@@ -49,7 +79,17 @@
 "nlocals": 6,
 "content_hash": "9e55dc240e1857dd",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 9,
+"regs": [
+null,
+-29,
+null,
+null,
+null,
+null
+]
 },
 {
 "asm": "S0:\nmul r5, r1, r5\nadd r2, r1, r3\nadd r5, r4, r4\nload_const r0, 17\nstore_local r1, r3\neq r1, r2, r1\nout r1\nadd r5, r0, r5\njif r1, L0\nload_const r4, 1\nL0:\nhalt\n",
@@ -64,6 +104,16 @@
 "status": "HALTED",
 "outs": [
 true
+],
+"fault": null,
+"steps": 10,
+"regs": [
+17,
+true,
+null,
+null,
+null,
+null
 ]
 },
 {
@@ -77,7 +127,17 @@ true
 "nlocals": 6,
 "content_hash": "bd7b84bf61a77195",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 5,
+"regs": [
+null,
+null,
+null,
+null,
+null,
+null
+]
 },
 {
 "asm": "S0:\nload_const r5, -6\neq r3, r2, r3\njif r5, S0\nload_const r3, 25\nload_const r4, -24\nload_const r5, -8\nstrcat r0, r1, r1\nlen r1, r5\nlt r1, r0, r4\nload_const r1, -28\nload_const r0, -43\njif r5, S0\nhalt\n",
@@ -90,7 +150,17 @@ true
 "nlocals": 6,
 "content_hash": "ced7d3b6f432158e",
 "status": "FAULT",
-"outs": []
+"outs": [],
+"fault": "step_limit_exceeded",
+"steps": 501,
+"regs": [
+null,
+null,
+null,
+false,
+null,
+-6
+]
 },
 {
 "asm": "S0:\njif r3, L0\nload_const r1, 1\nL0:\nload_const r4, 'fz3'\njif r4, S0\njump L1\nload_const r0, 2\nL1:\nstore_local r2, r2\nhalt\n",
@@ -103,7 +173,17 @@ true
 "nlocals": 6,
 "content_hash": "a09ac31ee26b0b96",
 "status": "FAULT",
-"outs": []
+"outs": [],
+"fault": "step_limit_exceeded",
+"steps": 501,
+"regs": [
+null,
+1,
+null,
+null,
+"fz3",
+null
+]
 },
 {
 "asm": "S0:\nout r2\nsub r2, r2, r0\nload_const r5, 0\nhalt\n",
@@ -118,6 +198,16 @@ true
 "status": "HALTED",
 "outs": [
 null
+],
+"fault": null,
+"steps": 4,
+"regs": [
+null,
+null,
+null,
+null,
+null,
+0
 ]
 },
 {
@@ -131,7 +221,17 @@ null
 "nlocals": 6,
 "content_hash": "d92f7593bd3817b1",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 6,
+"regs": [
+"False",
+null,
+null,
+null,
+null,
+null
+]
 },
 {
 "asm": "S0:\nload_const r1, 'fz0'\nload_const r2, 7\nload_const r3, 43\nmul r0, r4, r4\nload_const r2, -50\nload_const r2, -32\njif r3, S0\nload_const r3, 35\nhalt\n",
@@ -144,7 +244,17 @@ null
 "nlocals": 6,
 "content_hash": "7ad86a1412672e5f",
 "status": "FAULT",
-"outs": []
+"outs": [],
+"fault": "step_limit_exceeded",
+"steps": 501,
+"regs": [
+null,
+"fz0",
+7,
+43,
+null,
+null
+]
 },
 {
 "asm": "S0:\nload_local r1, r5\nstore_local r1, r1\njump L0\nload_const r3, 2\nL0:\njump L1\nload_const r4, 2\nL1:\njump L2\nload_const r2, 2\nL2:\nstore_local r5, r1\njump L3\nload_const r0, 2\nL3:\nload_const r0, 8\nhalt\n",
@@ -157,7 +267,17 @@ null
 "nlocals": 6,
 "content_hash": "31cb874f2bc804f9",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 9,
+"regs": [
+8,
+null,
+null,
+null,
+null,
+null
+]
 },
 {
 "asm": "S0:\nload_const r4, 38\njif r4, L0\nload_const r3, 1\nL0:\nload_const r1, 3\njump L1\nload_const r2, 2\nL1:\nlt r4, r5, r5\nmul r3, r4, r2\njif r0, L2\nload_const r4, 1\nL2:\nlt r0, r5, r3\nload_const r1, 'fz1'\nhalt\n",
@@ -170,7 +290,17 @@ null
 "nlocals": 6,
 "content_hash": "612ba79de4e721f9",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 11,
+"regs": [
+null,
+"fz1",
+null,
+null,
+1,
+null
+]
 },
 {
 "asm": "S0:\njif r2, S0\njif r0, L0\nload_const r1, 1\nL0:\nmul r1, r3, r4\njump L1\nload_const r5, 2\nL1:\nload_const r3, 18\nload_const r2, 'fz0'\nload_const r0, -36\nhalt\n",
@@ -183,7 +313,17 @@ null
 "nlocals": 6,
 "content_hash": "b5fe634bd513d527",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 9,
+"regs": [
+-36,
+null,
+"fz0",
+18,
+null,
+null
+]
 },
 {
 "asm": "S0:\nload_const r3, -35\nload_const r3, -36\nlt r3, r1, r1\nload_const r3, 'fz2'\nhalt\n",
@@ -196,7 +336,17 @@ null
 "nlocals": 6,
 "content_hash": "1e3967c789450ead",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 5,
+"regs": [
+null,
+null,
+null,
+"fz2",
+null,
+null
+]
 },
 {
 "asm": "S0:\nsub r1, r2, r5\nload_const r1, -40\njif r4, L0\nload_const r3, 1\nL0:\nload_const r2, 9\nadd r5, r1, r3\nload_const r2, 6\njump L1\nload_const r3, 2\nL1:\nload_const r5, -26\nload_local r0, r4\nlen r0, r1\njif r2, L2\nload_const r2, 1\nL2:\nhalt\n",
@@ -209,7 +359,17 @@ null
 "nlocals": 6,
 "content_hash": "94b084ef580f163a",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 13,
+"regs": [
+3,
+-40,
+6,
+1,
+null,
+-26
+]
 },
 {
 "asm": "S0:\njump L0\nload_const r1, 2\nL0:\njump L1\nload_const r2, 2\nL1:\nload_const r2, 18\nload_const r5, 'fz0'\nhalt\n",
@@ -222,7 +382,17 @@ null
 "nlocals": 6,
 "content_hash": "f351b1a77ae45f08",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 5,
+"regs": [
+null,
+null,
+18,
+null,
+null,
+"fz0"
+]
 },
 {
 "asm": "S0:\nload_const r3, 31\nload_const r1, -8\nload_const r2, 4\njif r4, S0\nload_const r1, -49\nload_const r4, -11\nadd r1, r2, r3\nload_const r3, -25\nlt r3, r1, r1\nhalt\n",
@@ -235,7 +405,17 @@ null
 "nlocals": 6,
 "content_hash": "575adc05aa193cc6",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 10,
+"regs": [
+null,
+35,
+4,
+false,
+-11,
+null
+]
 },
 {
 "asm": "S0:\njif r5, S0\nmul r2, r3, r1\njump L0\nload_const r4, 2\nL0:\nhalt\n",
@@ -248,7 +428,17 @@ null
 "nlocals": 6,
 "content_hash": "e59233112411d5bc",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 4,
+"regs": [
+null,
+null,
+null,
+null,
+null,
+null
+]
 },
 {
 "asm": "S0:\nadd r0, r2, r3\nmul r4, r3, r1\njif r0, L0\nload_const r0, 1\nL0:\nload_const r0, 47\njump L1\nload_const r1, 2\nL1:\nload_const r2, 32\nload_const r2, 12\njif r0, L2\nload_const r1, 1\nL2:\nlt r2, r2, r1\nload_const r2, 7\nadd r1, r3, r2\nload_local r0, r3\nload_const r1, 8\nmul r2, r5, r0\nhalt\n",
@@ -261,7 +451,17 @@ null
 "nlocals": 6,
 "content_hash": "864c200eea7aab83",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 16,
+"regs": [
+47,
+8,
+null,
+47,
+null,
+null
+]
 },
 {
 "asm": "S0:\nload_const r0, 2\neq r3, r3, r1\nload_const r4, -35\njif r1, L0\nload_const r2, 1\nL0:\nload_const r1, -36\nload_const r4, 'fz2'\nload_local r0, r3\nsub r2, r1, r5\nload_const r2, -48\nload_const r3, 'fz0'\njif r0, L1\nload_const r2, 1\nL1:\nload_const r0, -3\nhalt\n",
@@ -274,7 +474,17 @@ null
 "nlocals": 6,
 "content_hash": "edcfa92b069b453d",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 14,
+"regs": [
+-3,
+-36,
+-48,
+"fz0",
+"fz2",
+null
+]
 },
 {
 "asm": "S0:\nlt r5, r3, r4\nload_const r1, 47\nstore_local r3, r4\nload_const r0, 'fz3'\neq r0, r4, r1\nlt r4, r0, r3\njif r3, S0\nstore_local r5, r5\nload_const r3, -44\nload_const r0, 25\neq r0, r3, r5\njif r1, L0\nload_const r4, 1\nL0:\nload_const r0, -37\nout r4\nhalt\n",
@@ -289,6 +499,16 @@ null
 "status": "HALTED",
 "outs": [
 null
+],
+"fault": null,
+"steps": 15,
+"regs": [
+-37,
+47,
+null,
+-44,
+null,
+null
 ]
 },
 {
@@ -302,7 +522,17 @@ null
 "nlocals": 6,
 "content_hash": "5f12c8e53349c33c",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 7,
+"regs": [
+45,
+0,
+null,
+"0",
+null,
+null
+]
 },
 {
 "asm": "S0:\nload_const r4, 'fz0'\nload_const r3, 1\nload_const r3, -12\njif r2, L0\nload_const r5, 1\nL0:\nlt r5, r5, r3\njif r1, L1\nload_const r1, 1\nL1:\njif r2, L2\nload_const r1, 1\nL2:\njump L3\nload_const r5, 2\nL3:\nstore_local r4, r1\nload_const r2, -14\njump L4\nload_const r0, 2\nL4:\nhalt\n",
@@ -315,7 +545,17 @@ null
 "nlocals": 6,
 "content_hash": "d1bfc36e83aa1a3a",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 15,
+"regs": [
+null,
+"fz0",
+-14,
+-12,
+"fz0",
+false
+]
 },
 {
 "asm": "S0:\nload_const r4, -21\njif r0, S0\njif r5, S0\nadd r0, r0, r2\nload_const r5, 19\nmul r1, r4, r4\neq r5, r5, r1\nadd r5, r4, r2\njif r2, L0\nload_const r5, 1\nL0:\nhalt\n",
@@ -328,7 +568,17 @@ null
 "nlocals": 6,
 "content_hash": "0181a21d985d1856",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 11,
+"regs": [
+null,
+441,
+null,
+null,
+-21,
+1
+]
 },
 {
 "asm": "S0:\nadd r4, r0, r0\nload_const r2, -49\nstrcat r5, r5, r0\njif r0, L0\nload_const r3, 1\nL0:\nhalt\n",
@@ -341,7 +591,17 @@ null
 "nlocals": 6,
 "content_hash": "757688af0d8552bd",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 6,
+"regs": [
+null,
+null,
+-49,
+1,
+null,
+""
+]
 },
 {
 "asm": "S0:\nlt r3, r4, r5\njif r2, L0\nload_const r3, 1\nL0:\njif r0, L1\nload_const r3, 1\nL1:\njif r5, L2\nload_const r2, 1\nL2:\nload_const r5, -49\nload_const r2, 42\nload_const r3, 0\nload_const r5, -18\nload_local r4, r1\njif r0, S0\njif r4, S0\nload_local r5, r5\neq r5, r0, r0\nload_const r1, 'fz0'\nhalt\n",
@@ -354,7 +614,17 @@ null
 "nlocals": 6,
 "content_hash": "1da310b3b1bfe3f0",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 18,
+"regs": [
+null,
+"fz0",
+42,
+0,
+null,
+true
+]
 },
 {
 "asm": "S0:\nlen r4, r4\nstrcat r1, r0, r0\njif r4, L0\nload_const r1, 1\nL0:\nhalt\n",
@@ -367,7 +637,17 @@ null
 "nlocals": 6,
 "content_hash": "59f18bdd3ef07536",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 5,
+"regs": [
+null,
+1,
+null,
+null,
+0,
+null
+]
 },
 {
 "asm": "S0:\nstrcat r2, r3, r0\nload_const r3, -47\nload_const r1, 12\neq r5, r1, r2\nload_const r4, -19\nhalt\n",
@@ -380,7 +660,17 @@ null
 "nlocals": 6,
 "content_hash": "6cc2c96ae2edc990",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 6,
+"regs": [
+null,
+12,
+"",
+-47,
+-19,
+false
+]
 },
 {
 "asm": "S0:\nload_const r1, -46\nsub r2, r1, r2\nmul r0, r3, r5\njif r4, L0\nload_const r1, 1\nL0:\nload_const r2, -41\nlt r5, r1, r3\nadd r0, r5, r1\nload_const r2, 40\njif r4, L1\nload_const r2, 1\nL1:\nhalt\n",
@@ -393,7 +683,17 @@ null
 "nlocals": 6,
 "content_hash": "59b568143e55f800",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 12,
+"regs": [
+null,
+1,
+1,
+null,
+null,
+null
+]
 },
 {
 "asm": "S0:\njif r3, L0\nload_const r2, 1\nL0:\nload_const r3, -8\nstore_local r0, r5\nhalt\n",
@@ -406,7 +706,17 @@ null
 "nlocals": 6,
 "content_hash": "50958064906df243",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 5,
+"regs": [
+null,
+null,
+1,
+-8,
+null,
+null
+]
 },
 {
 "asm": "S0:\njump L0\nload_const r2, 2\nL0:\nload_const r1, -15\njump L1\nload_const r3, 2\nL1:\nstore_local r3, r2\nsub r2, r3, r2\nhalt\n",
@@ -419,7 +729,17 @@ null
 "nlocals": 6,
 "content_hash": "9162a7b7cc69030d",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 6,
+"regs": [
+null,
+-15,
+null,
+null,
+null,
+null
+]
 },
 {
 "asm": "S0:\nload_const r1, -25\nload_const r5, -10\njump L0\nload_const r4, 2\nL0:\nlt r1, r2, r4\nload_const r3, -29\nload_const r4, 37\njif r4, S0\nsub r4, r0, r5\nload_const r3, -39\njif r2, L1\nload_const r5, 1\nL1:\nload_const r2, -37\nload_const r3, -9\nadd r2, r3, r3\nhalt\n",
@@ -432,7 +752,17 @@ null
 "nlocals": 6,
 "content_hash": "244f5aea6e2334cb",
 "status": "FAULT",
-"outs": []
+"outs": [],
+"fault": "step_limit_exceeded",
+"steps": 501,
+"regs": [
+null,
+-25,
+null,
+-29,
+37,
+-10
+]
 },
 {
 "asm": "S0:\nadd r2, r5, r3\njif r1, S0\nlen r4, r4\nadd r0, r2, r3\njif r4, L0\nload_const r3, 1\nL0:\nhalt\n",
@@ -445,7 +775,17 @@ null
 "nlocals": 6,
 "content_hash": "27bddb2c9a5011cc",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 7,
+"regs": [
+null,
+null,
+null,
+1,
+0,
+null
+]
 },
 {
 "asm": "S0:\nmul r1, r2, r2\neq r5, r0, r3\nload_const r0, 'fz2'\nhalt\n",
@@ -458,7 +798,17 @@ null
 "nlocals": 6,
 "content_hash": "0472decdb83154f6",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 4,
+"regs": [
+"fz2",
+null,
+null,
+null,
+null,
+true
+]
 },
 {
 "asm": "S0:\nload_const r4, 14\njif r4, S0\nload_const r5, -2\nstrcat r1, r2, r5\neq r5, r3, r1\nload_const r5, 16\nadd r0, r0, r2\njump L0\nload_const r3, 2\nL0:\nhalt\n",
@@ -471,7 +821,17 @@ null
 "nlocals": 6,
 "content_hash": "221b6975b7321e62",
 "status": "FAULT",
-"outs": []
+"outs": [],
+"fault": "step_limit_exceeded",
+"steps": 501,
+"regs": [
+null,
+null,
+null,
+null,
+14,
+null
+]
 },
 {
 "asm": "S0:\njif r0, S0\nsub r2, r5, r5\njif r4, L0\nload_const r2, 1\nL0:\njif r0, L1\nload_const r0, 1\nL1:\nload_const r2, 33\nlt r4, r2, r1\nload_const r0, -24\njif r1, L2\nload_const r2, 1\nL2:\nload_const r5, 34\njif r0, S0\nadd r3, r4, r1\nload_const r1, 36\njif r2, L3\nload_const r2, 1\nL3:\neq r0, r2, r1\nhalt\n",
@@ -484,7 +844,17 @@ null
 "nlocals": 6,
 "content_hash": "cded86a870a4404b",
 "status": "FAULT",
-"outs": []
+"outs": [],
+"fault": "step_limit_exceeded",
+"steps": 501,
+"regs": [
+-24,
+null,
+1,
+null,
+null,
+34
+]
 },
 {
 "asm": "S0:\nload_const r3, 'fz1'\nload_const r2, -22\nload_const r4, -45\nload_const r3, 3\nload_const r4, 18\nload_const r1, -6\nload_const r5, 'fz3'\nmul r1, r5, r3\nhalt\n",
@@ -497,7 +867,17 @@ null
 "nlocals": 6,
 "content_hash": "ebc2fc1c0afda330",
 "status": "FAULT",
-"outs": []
+"outs": [],
+"fault": "trap:TypeError",
+"steps": 8,
+"regs": [
+null,
+-6,
+-22,
+3,
+18,
+"fz3"
+]
 },
 {
 "asm": "S0:\njump L0\nload_const r0, 2\nL0:\nadd r5, r3, r2\nload_const r0, -26\nload_const r2, 'fz3'\njif r1, L1\nload_const r5, 1\nL1:\nmul r1, r1, r4\nadd r2, r3, r2\nload_const r0, 10\nload_const r4, 'fz0'\nload_const r1, -16\nstrcat r1, r5, r4\nload_const r2, 'fz0'\nadd r1, r4, r1\nstrcat r3, r3, r3\nhalt\n",
@@ -510,7 +890,17 @@ null
 "nlocals": 6,
 "content_hash": "bdb2149972f71de0",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 16,
+"regs": [
+10,
+"fz01fz0",
+"fz0",
+"",
+"fz0",
+1
+]
 },
 {
 "asm": "S0:\nadd r3, r2, r2\nload_const r4, -28\njump L0\nload_const r4, 2\nL0:\njump L1\nload_const r1, 2\nL1:\nlt r2, r0, r2\nload_const r2, -46\neq r0, r5, r4\nout r3\nload_const r2, 18\nhalt\n",
@@ -525,6 +915,16 @@ null
 "status": "HALTED",
 "outs": [
 null
+],
+"fault": null,
+"steps": 10,
+"regs": [
+false,
+null,
+18,
+null,
+-28,
+null
 ]
 },
 {
@@ -538,7 +938,17 @@ null
 "nlocals": 6,
 "content_hash": "8c1e8250eaa9a7b8",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 8,
+"regs": [
+null,
+1,
+-9,
+null,
+null,
+12
+]
 },
 {
 "asm": "S0:\nload_const r1, 37\nload_const r3, 7\nload_const r3, 'fz1'\nlen r4, r1\nlt r3, r2, r5\nmul r4, r5, r5\nlt r1, r1, r1\neq r1, r1, r0\nlt r4, r0, r5\nload_const r3, 'fz1'\nload_const r0, 8\nhalt\n",
@@ -551,7 +961,17 @@ null
 "nlocals": 6,
 "content_hash": "4946a5263a8c3cd4",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 12,
+"regs": [
+8,
+false,
+null,
+"fz1",
+null,
+null
+]
 },
 {
 "asm": "S0:\nload_const r0, -9\nmul r5, r2, r2\nstrcat r5, r0, r2\nout r0\neq r2, r5, r3\nlt r1, r2, r4\nload_const r5, 9\njif r3, L0\nload_const r0, 1\nL0:\njif r5, L1\nload_const r3, 1\nL1:\nload_local r4, r1\nhalt\n",
@@ -566,6 +986,16 @@ null
 "status": "HALTED",
 "outs": [
 -9
+],
+"fault": null,
+"steps": 12,
+"regs": [
+1,
+null,
+false,
+null,
+null,
+9
 ]
 },
 {
@@ -579,7 +1009,17 @@ null
 "nlocals": 6,
 "content_hash": "8ac2e27f45826431",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 7,
+"regs": [
+"fz3",
+null,
+"",
+null,
+40,
+"fz1"
+]
 },
 {
 "asm": "S0:\njif r2, S0\nload_const r3, 2\nload_const r0, 2\nload_const r2, -8\nhalt\n",
@@ -592,7 +1032,17 @@ null
 "nlocals": 6,
 "content_hash": "9296d23bf7f6e0d3",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 5,
+"regs": [
+2,
+null,
+-8,
+2,
+null,
+null
+]
 },
 {
 "asm": "S0:\nlt r5, r3, r2\njif r5, L0\nload_const r1, 1\nL0:\njump L1\nload_const r0, 2\nL1:\nlen r5, r0\nload_const r2, 'fz3'\njif r3, S0\nload_const r0, -29\nhalt\n",
@@ -605,7 +1055,17 @@ null
 "nlocals": 6,
 "content_hash": "3b04757a49cdb6d0",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 9,
+"regs": [
+-29,
+1,
+"fz3",
+null,
+null,
+0
+]
 },
 {
 "asm": "S0:\neq r2, r2, r1\njif r5, L0\nload_const r4, 1\nL0:\nsub r0, r3, r1\njif r2, L1\nload_const r5, 1\nL1:\nhalt\n",
@@ -618,7 +1078,17 @@ null
 "nlocals": 6,
 "content_hash": "90474862f9f86374",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 6,
+"regs": [
+null,
+null,
+true,
+null,
+1,
+null
+]
 },
 {
 "asm": "S0:\njif r2, L0\nload_const r3, 1\nL0:\nload_const r3, 17\nload_const r2, 28\neq r0, r3, r1\nlen r0, r5\nmul r2, r4, r3\nload_const r2, 34\nadd r3, r3, r5\nload_const r2, 43\nhalt\n",
@@ -631,7 +1101,17 @@ null
 "nlocals": 6,
 "content_hash": "d40105f6dd471647",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 11,
+"regs": [
+0,
+null,
+43,
+null,
+null,
+null
+]
 },
 {
 "asm": "S0:\njump L0\nload_const r4, 2\nL0:\njif r4, L1\nload_const r2, 1\nL1:\nload_const r1, 'fz0'\nload_const r2, 14\nload_const r1, 41\njif r5, L2\nload_const r4, 1\nL2:\nload_const r2, -43\nload_const r1, 'fz2'\neq r2, r0, r0\neq r4, r1, r3\neq r4, r3, r0\njump L3\nload_const r4, 2\nL3:\nlen r5, r3\nhalt\n",
@@ -644,7 +1124,17 @@ null
 "nlocals": 6,
 "content_hash": "2b529a1251580792",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 16,
+"regs": [
+null,
+"fz2",
+true,
+null,
+true,
+0
+]
 },
 {
 "asm": "S0:\nsub r3, r0, r0\neq r5, r5, r1\nsub r3, r3, r3\nadd r2, r4, r5\nadd r0, r3, r3\nload_const r1, 'fz3'\nload_const r0, 46\nlt r5, r4, r5\njump L0\nload_const r5, 2\nL0:\njump L1\nload_const r4, 2\nL1:\nload_const r1, 'fz1'\njif r4, S0\nload_const r2, 36\nhalt\n",
@@ -657,7 +1147,17 @@ null
 "nlocals": 6,
 "content_hash": "828aaa02a46500e9",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 14,
+"regs": [
+46,
+"fz1",
+36,
+null,
+null,
+null
+]
 },
 {
 "asm": "S0:\neq r1, r4, r0\nmul r5, r4, r4\nsub r2, r2, r1\njump L0\nload_const r0, 2\nL0:\nsub r4, r2, r4\nmul r0, r2, r4\nstore_local r5, r2\nstrcat r2, r5, r5\njif r2, L1\nload_const r3, 1\nL1:\nlt r4, r2, r4\nload_const r4, 'fz3'\nload_const r1, 44\nload_const r5, 35\nout r5\nhalt\n",
@@ -672,6 +1172,16 @@ null
 "status": "HALTED",
 "outs": [
 35
+],
+"fault": null,
+"steps": 16,
+"regs": [
+null,
+44,
+"",
+1,
+"fz3",
+35
 ]
 },
 {
@@ -685,7 +1195,17 @@ null
 "nlocals": 6,
 "content_hash": "b1e153a3f7ec437f",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 6,
+"regs": [
+null,
+null,
+null,
+null,
+null,
+null
+]
 },
 {
 "asm": "S0:\nload_const r1, 23\njump L0\nload_const r3, 2\nL0:\nload_const r0, -22\njif r3, L1\nload_const r0, 1\nL1:\nsub r0, r5, r5\neq r1, r0, r0\nload_const r0, 24\nload_const r4, -26\nhalt\n",
@@ -698,7 +1218,17 @@ null
 "nlocals": 6,
 "content_hash": "99a312c3c7cc0f79",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 10,
+"regs": [
+24,
+true,
+null,
+null,
+-26,
+null
+]
 },
 {
 "asm": "S0:\nlt r4, r5, r2\njif r0, S0\nload_local r0, r0\nload_const r0, 4\nsub r0, r0, r2\nlen r5, r4\nout r1\nload_local r3, r5\nmul r0, r0, r0\njif r5, S0\nhalt\n",
@@ -713,6 +1243,16 @@ null
 "status": "HALTED",
 "outs": [
 null
+],
+"fault": null,
+"steps": 11,
+"regs": [
+null,
+null,
+null,
+null,
+null,
+null
 ]
 },
 {
@@ -726,7 +1266,17 @@ null
 "nlocals": 6,
 "content_hash": "c40a7e4770019a4e",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 15,
+"regs": [
+"fz2",
+1,
+1,
+0,
+null,
+47
+]
 },
 {
 "asm": "S0:\neq r4, r0, r1\nlen r0, r3\njif r0, L0\nload_const r0, 1\nL0:\nload_const r0, -49\njump L1\nload_const r0, 2\nL1:\nlen r2, r0\nload_const r0, -4\nhalt\n",
@@ -739,7 +1289,17 @@ null
 "nlocals": 6,
 "content_hash": "994a05fa6e833271",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 9,
+"regs": [
+-4,
+null,
+3,
+null,
+true,
+null
+]
 },
 {
 "asm": "S0:\nstore_local r2, r0\nmul r4, r2, r3\nstore_local r3, r2\nadd r3, r3, r3\njif r1, L0\nload_const r3, 1\nL0:\njump L1\nload_const r2, 2\nL1:\nload_local r4, r5\nload_const r5, 'fz1'\neq r3, r3, r3\nhalt\n",
@@ -752,7 +1312,17 @@ null
 "nlocals": 6,
 "content_hash": "7608359d04117a9a",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 11,
+"regs": [
+null,
+null,
+null,
+true,
+null,
+"fz1"
+]
 },
 {
 "asm": "S0:\nload_const r5, 8\nadd r1, r1, r0\nsub r5, r4, r4\nload_const r3, 17\nload_const r1, -14\nstore_local r2, r3\nload_const r5, -12\njump L0\nload_const r3, 2\nL0:\nhalt\n",
@@ -765,7 +1335,17 @@ null
 "nlocals": 6,
 "content_hash": "6e72eb74d1df51c6",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 9,
+"regs": [
+null,
+-14,
+null,
+null,
+null,
+-12
+]
 },
 {
 "asm": "S0:\nadd r1, r2, r2\njif r5, L0\nload_const r3, 1\nL0:\nadd r2, r4, r5\nsub r3, r0, r2\nadd r0, r2, r2\njump L1\nload_const r4, 2\nL1:\nload_const r3, 35\nlen r4, r3\nlt r1, r4, r5\nhalt\n",
@@ -778,7 +1358,17 @@ null
 "nlocals": 6,
 "content_hash": "9f48d44eec30d58a",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 11,
+"regs": [
+null,
+null,
+null,
+35,
+2,
+null
+]
 },
 {
 "asm": "S0:\njif r3, S0\nload_local r4, r2\nload_const r5, 13\njif r1, L0\nload_const r2, 1\nL0:\njif r2, S0\nlen r0, r3\njif r5, L1\nload_const r5, 1\nL1:\nstrcat r4, r1, r5\nload_const r1, 23\njump L2\nload_const r0, 2\nL2:\nload_const r1, -17\neq r1, r4, r2\nout r2\nhalt\n",
@@ -791,7 +1381,17 @@ null
 "nlocals": 6,
 "content_hash": "6966d18e317c01ff",
 "status": "FAULT",
-"outs": []
+"outs": [],
+"fault": "step_limit_exceeded",
+"steps": 501,
+"regs": [
+null,
+null,
+null,
+null,
+null,
+13
+]
 },
 {
 "asm": "S0:\nmul r3, r0, r1\nadd r5, r1, r3\nout r1\njif r5, L0\nload_const r4, 1\nL0:\nstore_local r0, r0\nload_const r5, 11\nhalt\n",
@@ -806,6 +1406,16 @@ null
 "status": "HALTED",
 "outs": [
 null
+],
+"fault": null,
+"steps": 8,
+"regs": [
+null,
+null,
+null,
+null,
+1,
+11
 ]
 },
 {
@@ -819,7 +1429,17 @@ null
 "nlocals": 6,
 "content_hash": "4ad3744268cb078d",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 7,
+"regs": [
+null,
+null,
+null,
+null,
+null,
+null
+]
 },
 {
 "asm": "S0:\nload_const r5, -10\nload_const r1, 29\nsub r1, r3, r0\nadd r5, r3, r1\nload_const r1, 'fz0'\njif r1, L0\nload_const r5, 1\nL0:\nload_local r0, r3\nload_const r0, -50\nstrcat r3, r4, r1\nout r0\nload_const r0, -36\nhalt\n",
@@ -834,6 +1454,16 @@ null
 "status": "HALTED",
 "outs": [
 -50
+],
+"fault": null,
+"steps": 12,
+"regs": [
+-36,
+"fz0",
+null,
+"fz0",
+null,
+null
 ]
 },
 {
@@ -847,7 +1477,17 @@ null
 "nlocals": 6,
 "content_hash": "35f6da71f78ddaa0",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 13,
+"regs": [
+null,
+null,
+null,
+null,
+-26,
+26
+]
 },
 {
 "asm": "S0:\nload_const r4, -45\nmul r0, r1, r1\njif r0, L0\nload_const r4, 1\nL0:\nlen r0, r1\njif r4, L1\nload_const r3, 1\nL1:\njif r5, L2\nload_const r4, 1\nL2:\njif r3, S0\nload_const r3, 29\nload_const r2, 17\njif r2, L3\nload_const r3, 1\nL3:\nload_const r4, -6\nload_const r1, -36\nmul r1, r1, r4\nload_const r1, -2\nhalt\n",
@@ -860,7 +1500,17 @@ null
 "nlocals": 6,
 "content_hash": "8e4c7be3cb1280e9",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 17,
+"regs": [
+0,
+-2,
+17,
+29,
+-6,
+null
+]
 },
 {
 "asm": "S0:\nstore_local r1, r5\njump L0\nload_const r0, 2\nL0:\nsub r0, r4, r0\nsub r5, r5, r0\nadd r5, r4, r1\nload_const r1, 'fz3'\nload_const r2, -5\nload_const r0, -39\njif r3, L1\nload_const r2, 1\nL1:\neq r3, r4, r0\njif r2, L2\nload_const r2, 1\nL2:\nhalt\n",
@@ -873,7 +1523,17 @@ null
 "nlocals": 6,
 "content_hash": "c6f57c87aa8de17e",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 13,
+"regs": [
+-39,
+"fz3",
+1,
+false,
+null,
+null
+]
 },
 {
 "asm": "S0:\nlen r0, r0\njump L0\nload_const r5, 2\nL0:\nload_const r0, 4\nload_const r3, 0\njif r2, S0\njif r5, L1\nload_const r0, 1\nL1:\nload_const r0, -46\nlen r4, r5\njif r5, L2\nload_const r2, 1\nL2:\nload_const r3, -14\nhalt\n",
@@ -886,7 +1546,17 @@ null
 "nlocals": 6,
 "content_hash": "a050a42fcb3c479f",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 13,
+"regs": [
+-46,
+null,
+1,
+-14,
+0,
+null
+]
 },
 {
 "asm": "S0:\nload_const r2, -33\nlen r5, r1\nstrcat r3, r3, r5\njump L0\nload_const r4, 2\nL0:\neq r3, r5, r5\nhalt\n",
@@ -899,7 +1569,17 @@ null
 "nlocals": 6,
 "content_hash": "07ab2593b5378faf",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 6,
+"regs": [
+null,
+null,
+-33,
+true,
+null,
+0
+]
 },
 {
 "asm": "S0:\neq r1, r2, r3\nlt r1, r3, r4\nadd r2, r2, r3\nhalt\n",
@@ -912,7 +1592,17 @@ null
 "nlocals": 6,
 "content_hash": "fcc6b2512aac3516",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 4,
+"regs": [
+null,
+null,
+null,
+null,
+null,
+null
+]
 },
 {
 "asm": "S0:\nadd r0, r1, r3\nlt r2, r2, r4\nlen r4, r2\neq r2, r2, r4\nhalt\n",
@@ -925,7 +1615,17 @@ null
 "nlocals": 6,
 "content_hash": "44222f5d336e0c61",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 5,
+"regs": [
+null,
+null,
+false,
+null,
+0,
+null
+]
 },
 {
 "asm": "S0:\nload_const r2, 28\njump L0\nload_const r3, 2\nL0:\nstrcat r3, r5, r3\nsub r5, r5, r0\njif r1, L1\nload_const r0, 1\nL1:\nstore_local r2, r0\nhalt\n",
@@ -938,7 +1638,17 @@ null
 "nlocals": 6,
 "content_hash": "e4fad63c4948d380",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 8,
+"regs": [
+28,
+null,
+28,
+"",
+null,
+null
+]
 },
 {
 "asm": "S0:\njump L0\nload_const r1, 2\nL0:\neq r3, r5, r0\njif r1, L1\nload_const r3, 1\nL1:\nload_const r0, 1\nout r4\nadd r1, r4, r4\nstrcat r0, r4, r4\nload_const r5, -4\nhalt\n",
@@ -953,6 +1663,16 @@ null
 "status": "HALTED",
 "outs": [
 null
+],
+"fault": null,
+"steps": 10,
+"regs": [
+"",
+null,
+null,
+1,
+null,
+-4
 ]
 },
 {
@@ -966,7 +1686,17 @@ null
 "nlocals": 6,
 "content_hash": "4079bcfe91e62442",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 15,
+"regs": [
+21,
+"fz0",
+true,
+null,
+18,
+1
+]
 },
 {
 "asm": "S0:\njif r2, L0\nload_const r5, 1\nL0:\nload_const r1, -32\nload_const r5, -31\nload_const r1, 'fz0'\nadd r2, r2, r3\njif r4, L1\nload_const r0, 1\nL1:\nload_const r3, -48\nload_const r1, -8\neq r5, r1, r3\nmul r1, r2, r4\njump L2\nload_const r1, 2\nL2:\nmul r4, r2, r4\nlt r1, r1, r5\neq r2, r2, r1\nhalt\n",
@@ -979,7 +1709,17 @@ null
 "nlocals": 6,
 "content_hash": "5b64a31897c495d6",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 17,
+"regs": [
+1,
+null,
+true,
+-48,
+null,
+false
+]
 },
 {
 "asm": "S0:\nsub r1, r3, r3\njif r3, L0\nload_const r3, 1\nL0:\nload_const r2, -14\nload_const r2, -30\nmul r3, r5, r3\nhalt\n",
@@ -992,7 +1732,17 @@ null
 "nlocals": 6,
 "content_hash": "bd7c621e30780c01",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 7,
+"regs": [
+null,
+null,
+-30,
+null,
+null,
+null
+]
 },
 {
 "asm": "S0:\nout r1\njif r5, L0\nload_const r0, 1\nL0:\nload_const r4, 'fz1'\nhalt\n",
@@ -1007,6 +1757,16 @@ null
 "status": "HALTED",
 "outs": [
 null
+],
+"fault": null,
+"steps": 5,
+"regs": [
+1,
+null,
+null,
+null,
+"fz1",
+null
 ]
 },
 {
@@ -1020,7 +1780,17 @@ null
 "nlocals": 6,
 "content_hash": "851afd0755768b96",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 9,
+"regs": [
+1,
+0,
+"fz1",
+14,
+null,
+"fz2"
+]
 },
 {
 "asm": "S0:\nload_const r0, -17\njump L0\nload_const r4, 2\nL0:\nload_const r3, -27\nhalt\n",
@@ -1033,7 +1803,17 @@ null
 "nlocals": 6,
 "content_hash": "31ec44f815f9e767",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 4,
+"regs": [
+-17,
+null,
+null,
+-27,
+null,
+null
+]
 },
 {
 "asm": "S0:\nload_const r1, -25\nload_local r4, r2\nmul r3, r3, r0\njump L0\nload_const r0, 2\nL0:\njump L1\nload_const r0, 2\nL1:\nsub r4, r5, r3\nload_const r3, -36\nload_local r5, r3\nhalt\n",
@@ -1046,7 +1826,17 @@ null
 "nlocals": 6,
 "content_hash": "75a386ddeb5d15df",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 9,
+"regs": [
+null,
+-25,
+null,
+null,
+null,
+null
+]
 },
 {
 "asm": "S0:\nlt r3, r4, r4\nlen r5, r0\njump L0\nload_const r1, 2\nL0:\nload_local r4, r3\nlt r4, r1, r5\njump L1\nload_const r5, 2\nL1:\nhalt\n",
@@ -1059,7 +1849,17 @@ null
 "nlocals": 6,
 "content_hash": "911cb30f1f1d30a6",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 7,
+"regs": [
+null,
+null,
+null,
+null,
+null,
+0
+]
 },
 {
 "asm": "S0:\nload_const r4, 25\nlt r5, r4, r1\njif r5, L0\nload_const r2, 1\nL0:\nsub r1, r2, r3\nhalt\n",
@@ -1072,7 +1872,17 @@ null
 "nlocals": 6,
 "content_hash": "5f1ef57dfc9b1c41",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 6,
+"regs": [
+null,
+null,
+1,
+null,
+25,
+null
+]
 },
 {
 "asm": "S0:\njump L0\nload_const r3, 2\nL0:\nstore_local r0, r4\nload_const r5, 2\nload_const r1, -50\nload_const r2, 'fz2'\neq r5, r1, r4\neq r1, r2, r5\njump L1\nload_const r4, 2\nL1:\njump L2\nload_const r3, 2\nL2:\nadd r4, r4, r3\nload_const r0, -19\njif r0, L3\nload_const r2, 1\nL3:\nhalt\n",
@@ -1085,7 +1895,17 @@ null
 "nlocals": 6,
 "content_hash": "2bbfb00cea6985e0",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 13,
+"regs": [
+-19,
+false,
+"fz2",
+null,
+null,
+false
+]
 },
 {
 "asm": "S0:\nload_const r1, 'fz1'\njump L0\nload_const r3, 2\nL0:\nsub r1, r2, r0\njif r5, L1\nload_const r0, 1\nL1:\nload_const r1, -50\nload_const r4, -41\nadd r5, r1, r3\nsub r4, r1, r2\njif r1, S0\njump L2\nload_const r3, 2\nL2:\nload_const r0, 'fz3'\nmul r1, r1, r2\nsub r4, r4, r5\nload_const r3, 1\nhalt\n",
@@ -1098,7 +1918,17 @@ null
 "nlocals": 6,
 "content_hash": "d1043bf30f055786",
 "status": "FAULT",
-"outs": []
+"outs": [],
+"fault": "step_limit_exceeded",
+"steps": 501,
+"regs": [
+1,
+-50,
+null,
+null,
+null,
+null
+]
 },
 {
 "asm": "S0:\nout r0\nload_const r3, 35\nlt r2, r5, r2\nload_const r3, 6\nhalt\n",
@@ -1113,6 +1943,16 @@ null
 "status": "HALTED",
 "outs": [
 null
+],
+"fault": null,
+"steps": 5,
+"regs": [
+null,
+null,
+null,
+6,
+null,
+null
 ]
 },
 {
@@ -1126,7 +1966,17 @@ null
 "nlocals": 6,
 "content_hash": "9055471458bee605",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 10,
+"regs": [
+0,
+null,
+null,
+27,
+1,
+null
+]
 },
 {
 "asm": "S0:\nload_const r0, -3\nload_const r0, -35\njif r3, S0\nsub r2, r4, r1\nload_const r2, -50\nsub r2, r3, r3\neq r1, r1, r3\njif r3, S0\nhalt\n",
@@ -1139,7 +1989,17 @@ null
 "nlocals": 6,
 "content_hash": "341c543885e4aafe",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 9,
+"regs": [
+-35,
+true,
+null,
+null,
+null,
+null
+]
 },
 {
 "asm": "S0:\njump L0\nload_const r0, 2\nL0:\njif r3, S0\nload_const r0, 'fz2'\njump L1\nload_const r1, 2\nL1:\nsub r4, r5, r4\nload_const r3, -21\neq r5, r2, r3\nload_const r3, 'fz1'\njif r1, L2\nload_const r4, 1\nL2:\nlt r4, r2, r0\nload_const r3, 25\nload_const r3, -39\nhalt\n",
@@ -1152,7 +2012,17 @@ null
 "nlocals": 6,
 "content_hash": "13a5161f0ff00ed6",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 14,
+"regs": [
+"fz2",
+null,
+null,
+-39,
+null,
+false
+]
 },
 {
 "asm": "S0:\nlen r3, r5\neq r3, r4, r4\njif r2, L0\nload_const r5, 1\nL0:\nload_const r2, 24\nlt r5, r0, r3\nstore_local r2, r3\njif r1, L1\nload_const r4, 1\nL1:\njif r2, L2\nload_const r1, 1\nL2:\nmul r4, r0, r3\nstore_local r0, r0\neq r4, r1, r4\nhalt\n",
@@ -1165,7 +2035,17 @@ null
 "nlocals": 6,
 "content_hash": "eb9d9da1eac4f420",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 14,
+"regs": [
+null,
+null,
+24,
+24,
+true,
+null
+]
 },
 {
 "asm": "S0:\nload_const r0, 46\nadd r5, r1, r4\nadd r2, r3, r3\nload_const r2, 4\neq r2, r1, r3\njif r5, L0\nload_const r3, 1\nL0:\nmul r3, r1, r4\nhalt\n",
@@ -1178,7 +2058,17 @@ null
 "nlocals": 6,
 "content_hash": "3b706ece7dcaae54",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 9,
+"regs": [
+46,
+null,
+true,
+null,
+null,
+null
+]
 },
 {
 "asm": "S0:\nstrcat r3, r5, r4\nload_const r5, 17\nload_const r5, 37\njif r0, L0\nload_const r4, 1\nL0:\nsub r1, r2, r2\nlt r4, r3, r5\nlt r2, r5, r4\nload_const r4, 15\nmul r3, r2, r4\nsub r4, r4, r3\njif r2, S0\neq r2, r5, r5\neq r1, r5, r5\nhalt\n",
@@ -1191,7 +2081,17 @@ null
 "nlocals": 6,
 "content_hash": "82909f1dd7cc49ce",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 15,
+"regs": [
+null,
+true,
+true,
+null,
+null,
+37
+]
 },
 {
 "asm": "S0:\nload_local r3, r4\njif r1, L0\nload_const r5, 1\nL0:\nlt r1, r0, r4\nload_const r4, -21\nload_const r0, -3\nstore_local r1, r1\nload_const r2, -9\nload_const r3, -34\nhalt\n",
@@ -1204,7 +2104,17 @@ null
 "nlocals": 6,
 "content_hash": "2f885f5976795f1f",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 10,
+"regs": [
+-3,
+null,
+-9,
+-34,
+-21,
+1
+]
 },
 {
 "asm": "S0:\nload_const r0, 0\nout r0\nload_const r3, -4\neq r4, r2, r3\njump L0\nload_const r0, 2\nL0:\nlt r1, r2, r3\nload_const r5, 10\nload_const r4, 21\nload_const r2, 37\nlt r5, r4, r1\nout r5\nstore_local r5, r0\njif r1, S0\nhalt\n",
@@ -1219,6 +2129,16 @@ null
 "status": "HALTED",
 "outs": [
 0,
+null
+],
+"fault": null,
+"steps": 14,
+"regs": [
+null,
+null,
+37,
+-4,
+21,
 null
 ]
 },
@@ -1235,6 +2155,16 @@ null
 "status": "HALTED",
 "outs": [
 null
+],
+"fault": null,
+"steps": 14,
+"regs": [
+0,
+null,
+"",
+-46,
+"",
+null
 ]
 },
 {
@@ -1248,7 +2178,17 @@ null
 "nlocals": 6,
 "content_hash": "1b5947650e7d2ba3",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 9,
+"regs": [
+"",
+null,
+null,
+-40,
+false,
+false
+]
 },
 {
 "asm": "S0:\nload_const r4, 35\njif r1, S0\nload_const r0, 26\nhalt\n",
@@ -1261,7 +2201,17 @@ null
 "nlocals": 6,
 "content_hash": "8996c4412ac046a4",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 4,
+"regs": [
+26,
+null,
+null,
+null,
+35,
+null
+]
 },
 {
 "asm": "S0:\nmul r2, r3, r2\nlt r5, r4, r4\neq r2, r3, r0\nload_const r5, 'fz0'\nload_const r3, 10\nload_const r1, 11\njif r2, S0\nout r3\nload_const r4, 33\nlen r4, r3\nsub r1, r3, r2\nadd r1, r1, r1\nload_const r2, -1\nhalt\n",
@@ -1276,6 +2226,16 @@ null
 "status": "HALTED",
 "outs": [
 10
+],
+"fault": null,
+"steps": 21,
+"regs": [
+null,
+20,
+-1,
+10,
+2,
+"fz0"
 ]
 },
 {
@@ -1289,7 +2249,17 @@ null
 "nlocals": 6,
 "content_hash": "fdec8310a7308539",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 13,
+"regs": [
+-37,
+null,
+null,
+39,
+43,
+null
+]
 },
 {
 "asm": "S0:\nload_const r4, -34\nload_local r1, r0\nload_local r3, r2\nload_const r3, -38\nlen r2, r5\nload_const r4, -46\nmul r5, r5, r3\nload_const r2, 47\nlt r2, r3, r4\nload_const r5, -16\nstore_local r5, r3\nadd r1, r1, r2\nstore_local r0, r3\nhalt\n",
@@ -1302,7 +2272,17 @@ null
 "nlocals": 6,
 "content_hash": "7cc38f3c4acfb393",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 14,
+"regs": [
+null,
+null,
+false,
+null,
+-46,
+-16
+]
 },
 {
 "asm": "S0:\nload_const r0, 25\nstrcat r5, r5, r2\neq r4, r4, r4\nload_const r4, 'fz1'\nadd r2, r0, r3\nload_const r5, -3\neq r5, r5, r1\njump L0\nload_const r1, 2\nL0:\njif r4, L1\nload_const r4, 1\nL1:\njump L2\nload_const r0, 2\nL2:\nload_const r5, 'fz2'\njif r3, S0\njump L3\nload_const r0, 2\nL3:\nstore_local r5, r0\nhalt\n",
@@ -1315,7 +2295,17 @@ null
 "nlocals": 6,
 "content_hash": "2d20d101562728db",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 15,
+"regs": [
+"fz2",
+null,
+null,
+null,
+"fz1",
+"fz2"
+]
 },
 {
 "asm": "S0:\nstore_local r1, r1\nsub r1, r5, r4\nstore_local r3, r0\nlt r5, r3, r1\nload_const r4, 50\nmul r1, r4, r3\nload_const r1, 5\nload_const r0, 'fz0'\nlt r1, r3, r2\njif r2, L0\nload_const r0, 1\nL0:\nload_const r3, 43\nhalt\n",
@@ -1328,7 +2318,17 @@ null
 "nlocals": 6,
 "content_hash": "e4cec8981099ffb8",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 13,
+"regs": [
+1,
+null,
+null,
+43,
+50,
+null
+]
 },
 {
 "asm": "S0:\nload_const r3, -3\nstrcat r5, r5, r0\nload_const r5, 5\nload_const r2, 'fz2'\nload_const r5, 37\nload_const r2, 19\nload_const r3, 'fz3'\nload_const r1, -12\njif r4, L0\nload_const r2, 1\nL0:\nhalt\n",
@@ -1341,7 +2341,17 @@ null
 "nlocals": 6,
 "content_hash": "226cc2a5e37e6d95",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 11,
+"regs": [
+null,
+-12,
+1,
+"fz3",
+null,
+37
+]
 },
 {
 "asm": "S0:\nload_const r3, -11\njump L0\nload_const r0, 2\nL0:\nsub r0, r5, r5\njump L1\nload_const r1, 2\nL1:\njump L2\nload_const r5, 2\nL2:\nload_const r4, 20\nhalt\n",
@@ -1354,7 +2364,17 @@ null
 "nlocals": 6,
 "content_hash": "29ca612b1965d82e",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 7,
+"regs": [
+null,
+null,
+null,
+-11,
+20,
+null
+]
 },
 {
 "asm": "S0:\neq r2, r5, r3\njump L0\nload_const r1, 2\nL0:\njif r4, L1\nload_const r4, 1\nL1:\nload_const r0, -19\nload_const r0, 'fz1'\nhalt\n",
@@ -1367,7 +2387,17 @@ null
 "nlocals": 6,
 "content_hash": "fef42bafa101670a",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 7,
+"regs": [
+"fz1",
+null,
+true,
+null,
+1,
+null
+]
 },
 {
 "asm": "S0:\nlen r2, r2\nload_local r2, r2\nload_const r0, 4\njif r5, L0\nload_const r3, 1\nL0:\nload_const r4, 29\njif r4, L1\nload_const r5, 1\nL1:\njif r1, L2\nload_const r1, 1\nL2:\njif r3, L3\nload_const r5, 1\nL3:\nload_const r1, -40\nstrcat r0, r0, r4\nhalt\n",
@@ -1380,7 +2410,17 @@ null
 "nlocals": 6,
 "content_hash": "9eb86f61220a07c4",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 13,
+"regs": [
+"429",
+-40,
+0,
+1,
+29,
+null
+]
 },
 {
 "asm": "S0:\nadd r4, r2, r1\nmul r2, r1, r4\nadd r0, r3, r0\nstore_local r5, r3\nstrcat r4, r3, r4\njump L0\nload_const r4, 2\nL0:\neq r5, r0, r0\nhalt\n",
@@ -1393,7 +2433,17 @@ null
 "nlocals": 6,
 "content_hash": "f00d4726e0a2b415",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 8,
+"regs": [
+null,
+null,
+null,
+null,
+"",
+true
+]
 },
 {
 "asm": "S0:\njump L0\nload_const r3, 2\nL0:\nstore_local r5, r4\nload_const r3, 1\njump L1\nload_const r2, 2\nL1:\njif r5, L2\nload_const r3, 1\nL2:\neq r0, r0, r3\nload_const r5, -23\nsub r5, r1, r3\nload_local r4, r5\njump L3\nload_const r1, 2\nL3:\njif r1, L4\nload_const r3, 1\nL4:\nhalt\n",
@@ -1406,7 +2456,17 @@ null
 "nlocals": 6,
 "content_hash": "ee52869dffc274e5",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 14,
+"regs": [
+false,
+null,
+null,
+1,
+null,
+null
+]
 },
 {
 "asm": "S0:\nload_const r0, 31\njump L0\nload_const r5, 2\nL0:\nsub r2, r5, r3\nmul r0, r1, r4\nsub r1, r4, r3\njump L1\nload_const r4, 2\nL1:\nload_const r2, 34\njif r0, L2\nload_const r2, 1\nL2:\nstore_local r1, r3\nsub r0, r0, r3\neq r4, r1, r5\nload_const r4, 45\nhalt\n",
@@ -1419,7 +2479,17 @@ null
 "nlocals": 6,
 "content_hash": "6bcbf7d4c15ce75e",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 14,
+"regs": [
+null,
+null,
+1,
+null,
+45,
+null
+]
 },
 {
 "asm": "S0:\nload_const r3, 'fz0'\nout r3\nlen r0, r0\nlt r3, r0, r5\nsub r1, r3, r4\nhalt\n",
@@ -1434,6 +2504,16 @@ null
 "status": "HALTED",
 "outs": [
 "fz0"
+],
+"fault": null,
+"steps": 6,
+"regs": [
+0,
+null,
+null,
+null,
+null,
+null
 ]
 },
 {
@@ -1447,7 +2527,17 @@ null
 "nlocals": 6,
 "content_hash": "84dd30520288dd4d",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 8,
+"regs": [
+null,
+null,
+null,
+null,
+null,
+"fz1"
+]
 },
 {
 "asm": "S0:\nload_const r5, -37\njump L0\nload_const r3, 2\nL0:\nload_const r3, 50\nload_const r2, -17\nload_const r4, -37\nload_const r0, 39\nload_const r2, 35\njump L1\nload_const r2, 2\nL1:\nlen r0, r2\nload_const r2, 'fz2'\nload_const r2, -25\nhalt\n",
@@ -1460,7 +2550,17 @@ null
 "nlocals": 6,
 "content_hash": "946d8787e829d014",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 12,
+"regs": [
+2,
+null,
+-25,
+50,
+-37,
+-37
+]
 },
 {
 "asm": "S0:\nsub r2, r0, r2\nmul r3, r2, r5\njif r2, L0\nload_const r2, 1\nL0:\nload_const r4, 12\njif r2, L1\nload_const r4, 1\nL1:\nhalt\n",
@@ -1473,7 +2573,17 @@ null
 "nlocals": 6,
 "content_hash": "45de97b52d3519cb",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 7,
+"regs": [
+null,
+null,
+1,
+null,
+12,
+null
+]
 },
 {
 "asm": "S0:\nload_const r4, 23\njump L0\nload_const r1, 2\nL0:\neq r1, r5, r3\nload_const r3, 35\nsub r4, r0, r4\nstore_local r1, r2\nload_const r4, -10\neq r1, r0, r4\nlt r3, r3, r5\nsub r1, r1, r3\njif r4, L1\nload_const r0, 1\nL1:\nhalt\n",
@@ -1486,7 +2596,17 @@ null
 "nlocals": 6,
 "content_hash": "065d18a8234c6892",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 12,
+"regs": [
+null,
+null,
+true,
+null,
+-10,
+null
+]
 },
 {
 "asm": "S0:\njif r5, S0\nstrcat r0, r3, r2\nlt r5, r2, r2\nhalt\n",
@@ -1499,7 +2619,17 @@ null
 "nlocals": 6,
 "content_hash": "b1f62c4de9ad2500",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 4,
+"regs": [
+"",
+null,
+null,
+null,
+null,
+null
+]
 },
 {
 "asm": "S0:\nload_const r5, -22\nload_const r1, -44\nmul r1, r2, r3\nload_const r4, 38\nload_const r2, 49\njif r4, L0\nload_const r2, 1\nL0:\nload_const r1, -24\njump L1\nload_const r3, 2\nL1:\njif r1, L2\nload_const r4, 1\nL2:\njump L3\nload_const r5, 2\nL3:\nload_const r0, -40\nadd r0, r1, r3\nload_const r3, 41\nhalt\n",
@@ -1512,7 +2642,17 @@ null
 "nlocals": 6,
 "content_hash": "56c060ef108a9e75",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 14,
+"regs": [
+null,
+-24,
+49,
+41,
+38,
+-22
+]
 },
 {
 "asm": "S0:\nmul r3, r3, r2\njif r0, L0\nload_const r2, 1\nL0:\nload_const r2, -10\njif r2, L1\nload_const r5, 1\nL1:\nload_local r2, r0\njif r5, L2\nload_const r1, 1\nL2:\nlt r4, r5, r2\njif r0, L3\nload_const r4, 1\nL3:\nload_const r5, 'fz2'\nload_const r5, -24\njif r4, L4\nload_const r1, 1\nL4:\nsub r5, r1, r4\nload_const r3, -21\nmul r3, r2, r0\nhalt\n",
@@ -1525,7 +2665,17 @@ null
 "nlocals": 6,
 "content_hash": "e0f813781e69d2f9",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 18,
+"regs": [
+-10,
+1,
+-10,
+100,
+null,
+null
+]
 },
 {
 "asm": "S0:\nload_const r1, 'fz3'\njif r2, L0\nload_const r1, 1\nL0:\nlen r2, r0\njif r5, S0\nmul r0, r2, r5\nsub r3, r4, r2\njif r3, S0\nload_const r3, -26\nhalt\n",
@@ -1538,7 +2688,17 @@ null
 "nlocals": 6,
 "content_hash": "eae4ad05bbfbb3eb",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 10,
+"regs": [
+null,
+1,
+0,
+-26,
+null,
+null
+]
 },
 {
 "asm": "S0:\nload_const r2, 26\nload_const r3, -34\njump L0\nload_const r5, 2\nL0:\nload_const r5, 46\nlt r4, r1, r4\nstrcat r2, r5, r3\njif r4, S0\njif r1, L1\nload_const r1, 1\nL1:\nhalt\n",
@@ -1551,7 +2711,17 @@ null
 "nlocals": 6,
 "content_hash": "caf827483dd27de4",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 10,
+"regs": [
+null,
+1,
+"46-34",
+-34,
+null,
+46
+]
 },
 {
 "asm": "S0:\nload_const r2, 18\nload_const r1, 'fz0'\neq r3, r3, r5\nadd r1, r5, r2\nload_const r0, 'fz0'\nsub r2, r5, r5\nload_const r1, -28\nhalt\n",
@@ -1564,7 +2734,17 @@ null
 "nlocals": 6,
 "content_hash": "c309426a2761c6cc",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 8,
+"regs": [
+"fz0",
+-28,
+null,
+true,
+null,
+null
+]
 },
 {
 "asm": "S0:\njif r5, S0\nload_const r3, -41\nload_local r5, r3\nload_const r5, 4\nadd r1, r2, r2\nhalt\n",
@@ -1577,7 +2757,17 @@ null
 "nlocals": 6,
 "content_hash": "90ee39aff1679183",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 6,
+"regs": [
+null,
+null,
+null,
+null,
+null,
+4
+]
 },
 {
 "asm": "S0:\nload_local r1, r1\nload_const r0, -16\nload_const r4, -34\njif r4, L0\nload_const r2, 1\nL0:\nstrcat r0, r5, r3\nhalt\n",
@@ -1590,7 +2780,17 @@ null
 "nlocals": 6,
 "content_hash": "0f54fcb0d19013e8",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 6,
+"regs": [
+"",
+null,
+null,
+null,
+-34,
+null
+]
 },
 {
 "asm": "S0:\nload_const r5, 9\nlt r2, r0, r4\njif r2, S0\nlt r5, r3, r5\nadd r0, r1, r4\njif r4, S0\nload_const r1, 31\njif r0, L0\nload_const r2, 1\nL0:\nlt r0, r2, r1\nload_const r4, -10\nadd r3, r5, r2\nload_const r3, 23\nhalt\n",
@@ -1603,7 +2803,17 @@ null
 "nlocals": 6,
 "content_hash": "88498a75f751f923",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 14,
+"regs": [
+true,
+31,
+1,
+23,
+-10,
+null
+]
 },
 {
 "asm": "S0:\neq r2, r3, r4\nload_const r5, 'fz0'\nload_const r5, 'fz2'\neq r0, r3, r5\nload_const r3, -48\nhalt\n",
@@ -1616,7 +2826,17 @@ null
 "nlocals": 6,
 "content_hash": "f523f52d8470eafb",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 6,
+"regs": [
+false,
+null,
+true,
+-48,
+null,
+"fz2"
+]
 },
 {
 "asm": "S0:\nload_local r4, r4\nstrcat r3, r5, r4\nload_const r1, 39\nstrcat r3, r2, r5\neq r3, r0, r1\nload_const r2, 'fz1'\neq r2, r1, r4\nsub r3, r3, r0\nhalt\n",
@@ -1629,7 +2849,17 @@ null
 "nlocals": 6,
 "content_hash": "af42adb64a8e74e6",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 9,
+"regs": [
+null,
+39,
+false,
+null,
+null,
+null
+]
 },
 {
 "asm": "S0:\neq r1, r0, r1\nload_const r3, 45\nlt r1, r2, r2\nload_const r2, -14\njif r3, L0\nload_const r3, 1\nL0:\njump L1\nload_const r4, 2\nL1:\nhalt\n",
@@ -1642,7 +2872,17 @@ null
 "nlocals": 6,
 "content_hash": "492fa1e0c549d5b8",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 7,
+"regs": [
+null,
+null,
+-14,
+45,
+null,
+null
+]
 },
 {
 "asm": "S0:\nload_const r0, 38\nload_const r0, 38\nsub r5, r0, r0\nload_const r4, 38\nsub r4, r2, r5\neq r2, r5, r5\nsub r5, r0, r0\nsub r2, r1, r1\nsub r0, r3, r0\nmul r2, r4, r1\nload_const r1, -40\nload_const r0, 22\nload_const r3, 43\nload_const r1, -14\nhalt\n",
@@ -1655,7 +2895,17 @@ null
 "nlocals": 6,
 "content_hash": "5e16be0a267322fc",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 15,
+"regs": [
+22,
+-14,
+null,
+43,
+null,
+0
+]
 },
 {
 "asm": "S0:\nload_const r3, 15\nload_const r5, 9\nload_const r3, 21\njif r2, S0\nsub r3, r4, r4\nload_const r3, 'fz2'\nstrcat r4, r4, r3\nhalt\n",
@@ -1668,7 +2918,17 @@ null
 "nlocals": 6,
 "content_hash": "c58dbf46fd8a34fe",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 8,
+"regs": [
+null,
+null,
+null,
+"fz2",
+"fz2",
+9
+]
 },
 {
 "asm": "S0:\njif r3, L0\nload_const r5, 1\nL0:\njif r4, L1\nload_const r2, 1\nL1:\nload_local r4, r4\nload_const r5, -33\nadd r3, r5, r3\njif r1, L2\nload_const r1, 1\nL2:\nload_const r1, 30\nload_const r3, -6\nlt r4, r3, r5\nload_const r0, 7\njif r2, S0\njif r1, L3\nload_const r5, 1\nL3:\nhalt\n",
@@ -1681,7 +2941,17 @@ null
 "nlocals": 6,
 "content_hash": "f24bc006ce7e8386",
 "status": "FAULT",
-"outs": []
+"outs": [],
+"fault": "step_limit_exceeded",
+"steps": 501,
+"regs": [
+7,
+30,
+1,
+-39,
+false,
+-33
+]
 },
 {
 "asm": "S0:\nload_const r2, 'fz1'\njump L0\nload_const r2, 2\nL0:\nlt r0, r5, r0\neq r0, r1, r5\nload_const r2, -12\njif r0, L1\nload_const r5, 1\nL1:\nhalt\n",
@@ -1694,7 +2964,17 @@ null
 "nlocals": 6,
 "content_hash": "48f62b4698ef04db",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 7,
+"regs": [
+true,
+null,
+-12,
+null,
+null,
+null
+]
 },
 {
 "asm": "S0:\nload_const r1, 26\nload_const r5, 'fz1'\njif r2, L0\nload_const r1, 1\nL0:\neq r3, r2, r3\nload_local r0, r3\nmul r0, r0, r4\njump L1\nload_const r5, 2\nL1:\nload_const r4, -20\nhalt\n",
@@ -1707,7 +2987,17 @@ null
 "nlocals": 6,
 "content_hash": "6bf2917603dc3f68",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 10,
+"regs": [
+null,
+1,
+null,
+null,
+-20,
+"fz1"
+]
 },
 {
 "asm": "S0:\nstrcat r5, r5, r4\njif r5, S0\nsub r2, r1, r4\njif r3, S0\nadd r2, r5, r4\nhalt\n",
@@ -1720,7 +3010,17 @@ null
 "nlocals": 6,
 "content_hash": "f549660c433e9a60",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 6,
+"regs": [
+null,
+null,
+null,
+null,
+null,
+""
+]
 },
 {
 "asm": "S0:\nload_const r3, -5\nlt r5, r5, r2\nload_const r4, 47\njump L0\nload_const r0, 2\nL0:\nload_local r4, r5\nsub r1, r3, r1\njif r5, L1\nload_const r1, 1\nL1:\nmul r5, r5, r1\nload_const r5, -30\njump L2\nload_const r1, 2\nL2:\njif r0, L3\nload_const r1, 1\nL3:\nhalt\n",
@@ -1733,7 +3033,17 @@ null
 "nlocals": 6,
 "content_hash": "4dc088d087ba4198",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 13,
+"regs": [
+null,
+1,
+null,
+-5,
+47,
+-30
+]
 },
 {
 "asm": "S0:\neq r5, r2, r3\nload_const r3, 16\nload_const r3, 20\nout r2\njif r0, L0\nload_const r3, 1\nL0:\nload_const r5, -29\nload_const r3, -4\njif r5, L1\nload_const r0, 1\nL1:\njif r0, L2\nload_const r3, 1\nL2:\nhalt\n",
@@ -1748,6 +3058,16 @@ null
 "status": "HALTED",
 "outs": [
 null
+],
+"fault": null,
+"steps": 12,
+"regs": [
+null,
+null,
+null,
+1,
+null,
+-29
 ]
 },
 {
@@ -1761,7 +3081,17 @@ null
 "nlocals": 6,
 "content_hash": "5108c96ee6a23cac",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 4,
+"regs": [
+-4,
+"",
+null,
+null,
+null,
+null
+]
 },
 {
 "asm": "S0:\nload_const r3, 39\nload_const r1, -33\njump L0\nload_const r3, 2\nL0:\nload_const r2, 35\nhalt\n",
@@ -1774,7 +3104,17 @@ null
 "nlocals": 6,
 "content_hash": "dc631889638ba7c6",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 5,
+"regs": [
+null,
+-33,
+35,
+39,
+null,
+null
+]
 },
 {
 "asm": "S0:\nout r2\njif r4, S0\nload_const r3, -41\nload_const r5, 35\nmul r5, r2, r0\nload_const r2, 'fz3'\nload_const r2, -7\njif r0, L0\nload_const r2, 1\nL0:\nload_const r3, 15\nlt r5, r2, r1\nhalt\n",
@@ -1789,6 +3129,16 @@ null
 "status": "HALTED",
 "outs": [
 null
+],
+"fault": null,
+"steps": 12,
+"regs": [
+null,
+null,
+1,
+15,
+null,
+null
 ]
 },
 {
@@ -1802,7 +3152,17 @@ null
 "nlocals": 6,
 "content_hash": "fdaea6f7157c0341",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 13,
+"regs": [
+null,
+null,
+null,
+null,
+-20,
+40
+]
 },
 {
 "asm": "S0:\nload_const r3, 0\njif r1, S0\nload_local r1, r4\nhalt\n",
@@ -1815,7 +3175,17 @@ null
 "nlocals": 6,
 "content_hash": "242163d8bb8235df",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 4,
+"regs": [
+null,
+null,
+null,
+0,
+null,
+null
+]
 },
 {
 "asm": "S0:\nmul r4, r2, r2\nload_const r5, 17\nsub r0, r2, r3\njif r5, L0\nload_const r2, 1\nL0:\nsub r3, r5, r0\nload_const r5, -35\nload_const r0, 25\nadd r2, r3, r0\nmul r1, r2, r2\neq r0, r1, r1\njif r4, S0\nload_const r2, -8\nadd r1, r2, r4\nhalt\n",
@@ -1828,7 +3198,17 @@ null
 "nlocals": 6,
 "content_hash": "badc52d994b3b2d1",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 14,
+"regs": [
+true,
+null,
+-8,
+null,
+null,
+-35
+]
 },
 {
 "asm": "S0:\njif r0, L0\nload_const r5, 1\nL0:\njif r4, L1\nload_const r5, 1\nL1:\nload_const r2, 33\nload_const r2, -40\nsub r0, r2, r5\nmul r2, r3, r5\njif r1, S0\njif r5, S0\nload_local r3, r2\nload_const r1, -32\nload_const r1, 0\nload_const r5, 7\nload_const r2, 36\neq r1, r3, r3\nhalt\n",
@@ -1841,7 +3221,17 @@ null
 "nlocals": 6,
 "content_hash": "db3798af162605f2",
 "status": "FAULT",
-"outs": []
+"outs": [],
+"fault": "step_limit_exceeded",
+"steps": 501,
+"regs": [
+-41,
+null,
+33,
+null,
+null,
+1
+]
 },
 {
 "asm": "S0:\njif r4, L0\nload_const r5, 1\nL0:\nstrcat r4, r5, r0\nsub r0, r4, r0\nmul r2, r1, r4\njif r2, L1\nload_const r4, 1\nL1:\nhalt\n",
@@ -1854,7 +3244,17 @@ null
 "nlocals": 6,
 "content_hash": "a3092327f0931faf",
 "status": "FAULT",
-"outs": []
+"outs": [],
+"fault": "trap:TypeError",
+"steps": 5,
+"regs": [
+null,
+null,
+null,
+null,
+"1",
+1
+]
 },
 {
 "asm": "S0:\neq r3, r0, r4\neq r0, r0, r5\nlen r2, r2\njump L0\nload_const r5, 2\nL0:\nload_const r3, 26\nlen r1, r3\njump L1\nload_const r1, 2\nL1:\nload_const r4, -50\nload_const r4, -2\nhalt\n",
@@ -1867,7 +3267,17 @@ null
 "nlocals": 6,
 "content_hash": "b027c290cd92dfe0",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 10,
+"regs": [
+true,
+2,
+0,
+26,
+-2,
+null
+]
 },
 {
 "asm": "S0:\njif r5, L0\nload_const r0, 1\nL0:\nload_const r5, 17\nmul r3, r4, r4\njif r1, L1\nload_const r1, 1\nL1:\nsub r0, r5, r2\nmul r4, r2, r0\nstore_local r1, r3\nlen r0, r5\nstrcat r0, r3, r0\nload_const r5, 45\nhalt\n",
@@ -1880,7 +3290,17 @@ null
 "nlocals": 6,
 "content_hash": "684e4aa5093d7ed2",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 13,
+"regs": [
+"12",
+1,
+null,
+1,
+null,
+45
+]
 },
 {
 "asm": "S0:\nload_const r3, -34\nsub r0, r1, r3\nload_const r1, -47\nlt r0, r0, r0\nlen r3, r1\nload_const r2, 23\nlt r5, r1, r4\nlt r1, r5, r5\nout r2\nmul r5, r0, r4\nadd r3, r5, r4\nmul r3, r2, r5\njif r5, S0\nhalt\n",
@@ -1895,6 +3315,16 @@ null
 "status": "HALTED",
 "outs": [
 23
+],
+"fault": null,
+"steps": 14,
+"regs": [
+null,
+null,
+23,
+null,
+null,
+null
 ]
 },
 {
@@ -1910,6 +3340,16 @@ null
 "status": "HALTED",
 "outs": [
 false
+],
+"fault": null,
+"steps": 14,
+"regs": [
+false,
+null,
+false,
+false,
+null,
+34
 ]
 },
 {
@@ -1924,6 +3364,16 @@ false
 "content_hash": "62fa740c2748fbc6",
 "status": "HALTED",
 "outs": [
+null,
+13,
+null
+],
+"fault": null,
+"steps": 6,
+"regs": [
+null,
+null,
+-40,
 null,
 13,
 null
@@ -1942,6 +3392,16 @@ null
 "status": "HALTED",
 "outs": [
 null
+],
+"fault": null,
+"steps": 17,
+"regs": [
+1,
+-11,
+null,
+null,
+"fz2",
+null
 ]
 },
 {
@@ -1955,7 +3415,17 @@ null
 "nlocals": 6,
 "content_hash": "77a8b6c3f9159eb7",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 4,
+"regs": [
+null,
+null,
+null,
+-34,
+null,
+null
+]
 },
 {
 "asm": "S0:\nload_const r0, -42\nload_const r1, 'fz2'\nload_const r1, 'fz1'\nhalt\n",
@@ -1968,7 +3438,17 @@ null
 "nlocals": 6,
 "content_hash": "bf94b638cf4c0e0c",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 4,
+"regs": [
+-42,
+"fz1",
+null,
+null,
+null,
+null
+]
 },
 {
 "asm": "S0:\nstrcat r5, r5, r1\nload_local r3, r3\nadd r3, r4, r3\nmul r2, r2, r0\nhalt\n",
@@ -1981,7 +3461,17 @@ null
 "nlocals": 6,
 "content_hash": "d75d196d1d8d139a",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 5,
+"regs": [
+null,
+null,
+null,
+null,
+null,
+""
+]
 },
 {
 "asm": "S0:\nload_const r4, 35\nadd r5, r2, r2\nmul r1, r2, r2\nstore_local r2, r2\nlen r3, r3\njif r4, S0\neq r1, r5, r5\njump L0\nload_const r0, 2\nL0:\njif r0, L1\nload_const r0, 1\nL1:\njif r4, L2\nload_const r1, 1\nL2:\nhalt\n",
@@ -1994,7 +3484,17 @@ null
 "nlocals": 6,
 "content_hash": "e615fa1b100ded74",
 "status": "FAULT",
-"outs": []
+"outs": [],
+"fault": "step_limit_exceeded",
+"steps": 501,
+"regs": [
+null,
+null,
+null,
+1,
+35,
+null
+]
 },
 {
 "asm": "S0:\nload_const r3, -30\nadd r5, r3, r5\nload_const r5, 12\nload_const r5, 36\nlt r3, r2, r5\nstrcat r5, r4, r3\njif r0, S0\nhalt\n",
@@ -2007,7 +3507,17 @@ null
 "nlocals": 6,
 "content_hash": "1cd23d91b702fe2f",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 8,
+"regs": [
+null,
+null,
+null,
+null,
+null,
+""
+]
 },
 {
 "asm": "S0:\nload_const r5, 'fz3'\njif r0, S0\njump L0\nload_const r2, 2\nL0:\nsub r0, r1, r4\nlt r4, r0, r1\nlen r4, r2\nload_const r1, -13\nload_const r1, 36\nlen r0, r2\nlt r4, r3, r1\nhalt\n",
@@ -2020,7 +3530,17 @@ null
 "nlocals": 6,
 "content_hash": "80424ce7bf5faf56",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 11,
+"regs": [
+0,
+36,
+null,
+null,
+null,
+"fz3"
+]
 },
 {
 "asm": "S0:\nstrcat r1, r1, r3\nsub r5, r5, r0\neq r2, r3, r0\njif r4, S0\nload_const r1, -1\nstrcat r5, r5, r2\neq r1, r4, r4\nhalt\n",
@@ -2033,7 +3553,17 @@ null
 "nlocals": 6,
 "content_hash": "bf0fff9bc27a1557",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 8,
+"regs": [
+null,
+true,
+true,
+null,
+null,
+"True"
+]
 },
 {
 "asm": "S0:\nload_const r5, 37\nload_const r2, 11\nload_const r4, 'fz2'\nout r4\njif r2, L0\nload_const r0, 1\nL0:\nadd r2, r5, r3\nload_const r4, -8\nlen r4, r5\nhalt\n",
@@ -2048,6 +3578,16 @@ null
 "status": "HALTED",
 "outs": [
 "fz2"
+],
+"fault": null,
+"steps": 9,
+"regs": [
+null,
+null,
+null,
+null,
+2,
+37
 ]
 },
 {
@@ -2061,7 +3601,17 @@ null
 "nlocals": 6,
 "content_hash": "f4ff2542bffd43a4",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 6,
+"regs": [
+null,
+null,
+null,
+null,
+1,
+8
+]
 },
 {
 "asm": "S0:\nload_const r2, 'fz0'\njif r0, L0\nload_const r2, 1\nL0:\nload_const r0, 25\nstrcat r0, r0, r1\nload_local r5, r4\nmul r4, r4, r4\nsub r3, r2, r4\nload_const r2, 19\nload_const r2, 2\nload_const r2, -7\nhalt\n",
@@ -2074,7 +3624,17 @@ null
 "nlocals": 6,
 "content_hash": "ff3ec983f13ccb54",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 12,
+"regs": [
+"25",
+null,
+-7,
+null,
+null,
+null
+]
 },
 {
 "asm": "S0:\nload_const r5, -24\njif r1, S0\nlt r4, r0, r5\nhalt\n",
@@ -2087,7 +3647,17 @@ null
 "nlocals": 6,
 "content_hash": "c1089312912e4782",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 4,
+"regs": [
+null,
+null,
+null,
+null,
+null,
+-24
+]
 },
 {
 "asm": "S0:\njump L0\nload_const r1, 2\nL0:\nadd r1, r5, r0\nout r2\nload_const r4, -38\nhalt\n",
@@ -2102,6 +3672,16 @@ null
 "status": "HALTED",
 "outs": [
 null
+],
+"fault": null,
+"steps": 5,
+"regs": [
+null,
+null,
+null,
+null,
+-38,
+null
 ]
 },
 {
@@ -2115,7 +3695,17 @@ null
 "nlocals": 6,
 "content_hash": "7ebe1ce188678f3e",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 6,
+"regs": [
+24,
+"",
+null,
+null,
+8,
+null
+]
 },
 {
 "asm": "S0:\neq r3, r5, r0\nstrcat r3, r4, r3\njif r4, S0\nload_local r1, r1\nmul r3, r2, r2\njif r4, S0\nstrcat r1, r4, r0\nadd r1, r3, r1\nload_const r4, 'fz0'\nsub r1, r1, r0\neq r5, r0, r4\njif r3, L0\nload_const r0, 1\nL0:\nload_local r3, r3\nload_const r3, 36\nhalt\n",
@@ -2128,7 +3718,17 @@ null
 "nlocals": 6,
 "content_hash": "af89943fc71c87a9",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 16,
+"regs": [
+1,
+null,
+null,
+36,
+"fz0",
+false
+]
 },
 {
 "asm": "S0:\njif r4, S0\nstrcat r1, r2, r0\nmul r2, r4, r2\njump L0\nload_const r4, 2\nL0:\njif r0, L1\nload_const r1, 1\nL1:\njump L2\nload_const r5, 2\nL2:\nhalt\n",
@@ -2141,7 +3741,17 @@ null
 "nlocals": 6,
 "content_hash": "2d68ef00334f510e",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 8,
+"regs": [
+null,
+1,
+null,
+null,
+null,
+null
+]
 },
 {
 "asm": "S0:\njump L0\nload_const r4, 2\nL0:\nlt r5, r4, r1\nlt r1, r4, r3\nload_const r0, -31\njif r0, L1\nload_const r3, 1\nL1:\nload_const r5, 34\nload_const r0, 'fz2'\nlt r0, r1, r1\nhalt\n",
@@ -2154,7 +3764,17 @@ null
 "nlocals": 6,
 "content_hash": "681f327fb947f490",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 9,
+"regs": [
+null,
+null,
+null,
+null,
+null,
+34
+]
 },
 {
 "asm": "S0:\nstrcat r5, r0, r1\nsub r1, r4, r5\njump L0\nload_const r2, 2\nL0:\nload_const r3, 17\nload_const r3, 48\nload_const r1, 36\njump L1\nload_const r3, 2\nL1:\nhalt\n",
@@ -2167,7 +3787,17 @@ null
 "nlocals": 6,
 "content_hash": "6c4531621167d801",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 8,
+"regs": [
+null,
+36,
+null,
+48,
+null,
+""
+]
 },
 {
 "asm": "S0:\nmul r2, r0, r4\nload_const r5, 50\nload_const r4, 20\nlt r4, r4, r3\nload_const r1, -49\nload_const r3, 32\nhalt\n",
@@ -2180,7 +3810,17 @@ null
 "nlocals": 6,
 "content_hash": "9a13a5e1a11d82bb",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 7,
+"regs": [
+null,
+-49,
+null,
+32,
+null,
+50
+]
 },
 {
 "asm": "S0:\neq r3, r3, r5\nload_const r4, 40\nlt r3, r2, r1\nload_const r1, 'fz3'\nhalt\n",
@@ -2193,7 +3833,17 @@ null
 "nlocals": 6,
 "content_hash": "4d0180e53f3f073f",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 5,
+"regs": [
+null,
+"fz3",
+null,
+null,
+40,
+null
+]
 },
 {
 "asm": "S0:\nload_const r5, -20\nload_const r1, 'fz3'\nload_const r5, 36\nlt r3, r4, r2\nload_const r4, -43\neq r4, r3, r1\nload_const r0, 'fz3'\nstrcat r5, r2, r1\nload_const r3, -14\nhalt\n",
@@ -2206,7 +3856,17 @@ null
 "nlocals": 6,
 "content_hash": "40f906b9a7d66c87",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 10,
+"regs": [
+"fz3",
+"fz3",
+null,
+-14,
+false,
+"fz3"
+]
 },
 {
 "asm": "S0:\nload_const r2, -3\nsub r1, r2, r1\nmul r5, r1, r2\nadd r1, r4, r1\nstore_local r4, r4\njump L0\nload_const r1, 2\nL0:\njif r2, S0\nadd r4, r1, r5\njump L1\nload_const r2, 2\nL1:\njif r0, L2\nload_const r4, 1\nL2:\njump L3\nload_const r4, 2\nL3:\nhalt\n",
@@ -2219,7 +3879,17 @@ null
 "nlocals": 6,
 "content_hash": "37e2b7c80e30e708",
 "status": "FAULT",
-"outs": []
+"outs": [],
+"fault": "step_limit_exceeded",
+"steps": 501,
+"regs": [
+null,
+null,
+-3,
+null,
+null,
+null
+]
 },
 {
 "asm": "S0:\nstrcat r0, r0, r2\nmul r3, r1, r5\nsub r5, r0, r5\nadd r5, r0, r0\nhalt\n",
@@ -2232,7 +3902,17 @@ null
 "nlocals": 6,
 "content_hash": "98bd67fa6edc3e93",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 5,
+"regs": [
+"",
+null,
+null,
+null,
+null,
+""
+]
 },
 {
 "asm": "S0:\nload_const r5, 38\nload_const r3, -43\nload_const r2, -4\nstrcat r0, r1, r4\nsub r3, r5, r3\nload_const r2, 'fz0'\njump L0\nload_const r0, 2\nL0:\nload_const r3, -8\nout r5\nlen r5, r5\nhalt\n",
@@ -2247,6 +3927,16 @@ null
 "status": "HALTED",
 "outs": [
 38
+],
+"fault": null,
+"steps": 11,
+"regs": [
+"",
+null,
+"fz0",
+-8,
+null,
+2
 ]
 },
 {
@@ -2260,7 +3950,17 @@ null
 "nlocals": 6,
 "content_hash": "d75b77efdc21a27a",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 8,
+"regs": [
+1,
+null,
+22,
+null,
+true,
+null
+]
 },
 {
 "asm": "S0:\nmul r4, r5, r4\nstore_local r5, r2\nmul r3, r1, r2\nload_local r2, r1\nsub r5, r5, r0\nsub r4, r4, r1\nhalt\n",
@@ -2273,7 +3973,17 @@ null
 "nlocals": 6,
 "content_hash": "e3bc495398f30157",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 7,
+"regs": [
+null,
+null,
+null,
+null,
+null,
+null
+]
 },
 {
 "asm": "S0:\nstore_local r3, r5\nload_const r1, 14\njump L0\nload_const r0, 2\nL0:\njump L1\nload_const r1, 2\nL1:\njump L2\nload_const r2, 2\nL2:\njump L3\nload_const r0, 2\nL3:\nmul r0, r5, r5\nsub r5, r2, r5\neq r2, r2, r0\nhalt\n",
@@ -2286,7 +3996,17 @@ null
 "nlocals": 6,
 "content_hash": "998cfcfc4b5ba071",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 10,
+"regs": [
+null,
+14,
+true,
+null,
+null,
+null
+]
 },
 {
 "asm": "S0:\nload_const r2, -29\nload_const r1, 19\nadd r3, r2, r0\nlen r3, r1\nload_local r2, r5\nload_const r5, -19\nmul r4, r2, r1\nload_const r4, 26\nhalt\n",
@@ -2299,7 +4019,17 @@ null
 "nlocals": 6,
 "content_hash": "92b4c1d571f0d248",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 9,
+"regs": [
+null,
+19,
+-29,
+2,
+26,
+-19
+]
 },
 {
 "asm": "S0:\nload_const r0, -13\nsub r1, r2, r5\nload_const r5, 8\nout r5\njump L0\nload_const r4, 2\nL0:\nadd r0, r0, r2\nload_const r1, -19\njif r3, S0\njif r5, L1\nload_const r4, 1\nL1:\nlen r5, r1\nload_const r4, -35\nload_const r5, 1\njump L2\nload_const r5, 2\nL2:\nhalt\n",
@@ -2314,6 +4044,16 @@ null
 "status": "HALTED",
 "outs": [
 8
+],
+"fault": null,
+"steps": 14,
+"regs": [
+null,
+-19,
+null,
+null,
+-35,
+1
 ]
 },
 {
@@ -2327,7 +4067,17 @@ null
 "nlocals": 6,
 "content_hash": "f63b1317e9adab73",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 8,
+"regs": [
+null,
+-25,
+-25,
+-1,
+null,
+"-1-25"
+]
 },
 {
 "asm": "S0:\nmul r2, r1, r5\nload_const r5, -11\njif r1, L0\nload_const r4, 1\nL0:\nload_const r5, 17\nload_const r5, 33\njump L1\nload_const r3, 2\nL1:\nload_const r2, 31\nstore_local r2, r4\nout r3\nhalt\n",
@@ -2342,6 +4092,16 @@ null
 "status": "HALTED",
 "outs": [
 null
+],
+"fault": null,
+"steps": 11,
+"regs": [
+null,
+null,
+31,
+null,
+31,
+33
 ]
 },
 {
@@ -2355,7 +4115,17 @@ null
 "nlocals": 6,
 "content_hash": "24780e2b1e4f7053",
 "status": "FAULT",
-"outs": []
+"outs": [],
+"fault": "step_limit_exceeded",
+"steps": 501,
+"regs": [
+null,
+null,
+null,
+null,
+"fz3",
+null
+]
 },
 {
 "asm": "S0:\neq r3, r1, r0\neq r0, r4, r0\nmul r3, r0, r4\nload_const r0, 'fz3'\neq r2, r2, r3\njif r3, S0\nload_const r4, 43\nload_const r5, 'fz1'\nhalt\n",
@@ -2368,7 +4138,17 @@ null
 "nlocals": 6,
 "content_hash": "5f07640623e56701",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 9,
+"regs": [
+"fz3",
+null,
+true,
+null,
+43,
+"fz1"
+]
 },
 {
 "asm": "S0:\nload_const r3, 27\neq r4, r0, r5\nload_const r3, 14\nsub r1, r3, r3\nhalt\n",
@@ -2381,7 +4161,17 @@ null
 "nlocals": 6,
 "content_hash": "c52814d808f89b3c",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 5,
+"regs": [
+null,
+0,
+null,
+14,
+true,
+null
+]
 },
 {
 "asm": "S0:\njif r1, L0\nload_const r0, 1\nL0:\nload_const r5, -43\nout r3\nload_const r4, -48\nhalt\n",
@@ -2396,6 +4186,16 @@ null
 "status": "HALTED",
 "outs": [
 null
+],
+"fault": null,
+"steps": 6,
+"regs": [
+1,
+null,
+null,
+null,
+-48,
+-43
 ]
 },
 {
@@ -2409,7 +4209,17 @@ null
 "nlocals": 6,
 "content_hash": "87adc52930d1b358",
 "status": "FAULT",
-"outs": []
+"outs": [],
+"fault": "trap:TypeError",
+"steps": 7,
+"regs": [
+null,
+null,
+null,
+"fz3",
+0,
+1
+]
 },
 {
 "asm": "S0:\nload_const r4, 21\nload_const r1, 20\nlt r4, r0, r0\nadd r5, r3, r4\nload_const r1, -47\nlen r0, r2\nsub r4, r4, r5\nload_const r2, 3\nload_const r4, -7\nhalt\n",
@@ -2422,7 +4232,17 @@ null
 "nlocals": 6,
 "content_hash": "5d01e29a291454c6",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 10,
+"regs": [
+0,
+-47,
+3,
+null,
+-7,
+null
+]
 },
 {
 "asm": "S0:\njif r0, L0\nload_const r1, 1\nL0:\nload_local r2, r5\nmul r4, r3, r0\nlen r4, r1\neq r5, r0, r2\nload_const r1, 'fz0'\nhalt\n",
@@ -2435,7 +4255,17 @@ null
 "nlocals": 6,
 "content_hash": "ad51bd099b39b198",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 8,
+"regs": [
+null,
+"fz0",
+null,
+null,
+1,
+true
+]
 },
 {
 "asm": "S0:\nload_const r0, 'fz0'\nload_const r3, 'fz3'\nload_const r1, 'fz1'\nsub r1, r1, r4\njif r1, S0\nload_const r2, 'fz3'\nload_const r5, 40\nhalt\n",
@@ -2448,7 +4278,17 @@ null
 "nlocals": 6,
 "content_hash": "315ad6ffd80c2b90",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 8,
+"regs": [
+"fz0",
+null,
+"fz3",
+"fz3",
+null,
+40
+]
 },
 {
 "asm": "S0:\njif r3, L0\nload_const r1, 1\nL0:\neq r1, r1, r1\nlt r3, r5, r5\nhalt\n",
@@ -2461,7 +4301,17 @@ null
 "nlocals": 6,
 "content_hash": "9f151a8b7610f30d",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 5,
+"regs": [
+null,
+true,
+null,
+null,
+null,
+null
+]
 },
 {
 "asm": "S0:\njump L0\nload_const r0, 2\nL0:\nload_const r5, 'fz2'\nadd r0, r5, r3\nload_const r3, 16\nload_const r4, -6\njif r1, S0\nload_const r0, 'fz1'\nload_const r0, -40\neq r4, r5, r0\njif r0, L1\nload_const r5, 1\nL1:\nhalt\n",
@@ -2474,7 +4324,17 @@ null
 "nlocals": 6,
 "content_hash": "93d093f51fe2a57a",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 11,
+"regs": [
+-40,
+null,
+null,
+16,
+false,
+"fz2"
+]
 },
 {
 "asm": "S0:\nload_const r3, 9\nload_const r0, 4\nload_const r5, 10\nload_const r3, -27\nload_const r0, 12\njump L0\nload_const r3, 2\nL0:\nload_const r1, 'fz1'\nload_local r1, r4\nload_const r2, 10\njif r0, S0\nhalt\n",
@@ -2487,7 +4347,17 @@ null
 "nlocals": 6,
 "content_hash": "3da76d40c960f985",
 "status": "FAULT",
-"outs": []
+"outs": [],
+"fault": "step_limit_exceeded",
+"steps": 501,
+"regs": [
+12,
+"fz1",
+10,
+-27,
+"fz1",
+10
+]
 },
 {
 "asm": "S0:\nmul r4, r1, r1\njif r1, L0\nload_const r1, 1\nL0:\nload_local r1, r2\nload_const r0, -25\njif r0, S0\nload_const r5, 50\nadd r3, r5, r4\njif r3, S0\nout r2\nhalt\n",
@@ -2500,7 +4370,17 @@ null
 "nlocals": 6,
 "content_hash": "b29ec317efd27ba5",
 "status": "FAULT",
-"outs": []
+"outs": [],
+"fault": "step_limit_exceeded",
+"steps": 501,
+"regs": [
+-25,
+1,
+1,
+null,
+1,
+null
+]
 },
 {
 "asm": "S0:\neq r3, r1, r0\njif r2, L0\nload_const r1, 1\nL0:\nload_const r5, 32\nload_const r4, -7\nload_const r4, -43\nload_const r4, -22\nadd r2, r2, r2\nload_const r0, 5\njif r4, L1\nload_const r0, 1\nL1:\nload_const r5, 22\nmul r0, r5, r5\nhalt\n",
@@ -2513,7 +4393,17 @@ null
 "nlocals": 6,
 "content_hash": "035e3be586545b2f",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 13,
+"regs": [
+484,
+1,
+null,
+true,
+-22,
+22
+]
 },
 {
 "asm": "S0:\nload_const r1, 'fz0'\njif r1, L0\nload_const r0, 1\nL0:\nout r4\nload_const r5, 30\neq r5, r4, r4\nload_const r2, 50\njif r1, L1\nload_const r4, 1\nL1:\njif r5, L2\nload_const r1, 1\nL2:\nload_const r0, 23\njump L3\nload_const r2, 2\nL3:\nsub r3, r1, r4\nsub r2, r5, r0\njif r3, L4\nload_const r3, 1\nL4:\nlt r4, r0, r5\nhalt\n",
@@ -2528,6 +4418,16 @@ null
 "status": "HALTED",
 "outs": [
 null
+],
+"fault": null,
+"steps": 16,
+"regs": [
+23,
+"fz0",
+-22,
+1,
+false,
+true
 ]
 },
 {
@@ -2541,7 +4441,17 @@ null
 "nlocals": 6,
 "content_hash": "a4e6c4b72842feeb",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 12,
+"regs": [
+null,
+1,
+null,
+"",
+1,
+""
+]
 },
 {
 "asm": "S0:\nlt r0, r4, r5\nload_const r1, -39\nload_const r4, 1\nload_const r3, -27\njif r2, L0\nload_const r3, 1\nL0:\nload_const r1, -21\njump L1\nload_const r1, 2\nL1:\njump L2\nload_const r2, 2\nL2:\njif r2, L3\nload_const r4, 1\nL3:\nload_const r3, 32\njif r5, S0\nstrcat r0, r2, r4\nload_const r2, 23\nhalt\n",
@@ -2554,7 +4464,17 @@ null
 "nlocals": 6,
 "content_hash": "03edd6086e16644c",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 16,
+"regs": [
+"1",
+-21,
+23,
+32,
+1,
+null
+]
 },
 {
 "asm": "S0:\nload_const r5, 'fz3'\nlt r5, r5, r5\nload_const r3, 37\nstore_local r0, r0\nload_const r4, -49\nadd r1, r1, r2\njif r1, L0\nload_const r3, 1\nL0:\nload_const r5, -16\njif r5, L1\nload_const r5, 1\nL1:\neq r3, r3, r4\nload_const r5, 32\nhalt\n",
@@ -2567,7 +4487,17 @@ null
 "nlocals": 6,
 "content_hash": "588b89a53c9fda47",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 13,
+"regs": [
+null,
+null,
+null,
+false,
+-49,
+32
+]
 },
 {
 "asm": "S0:\nload_const r1, 24\nload_const r1, 2\njif r3, L0\nload_const r4, 1\nL0:\nload_const r4, 'fz2'\nhalt\n",
@@ -2580,7 +4510,17 @@ null
 "nlocals": 6,
 "content_hash": "ddf5c09b57c91cd7",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 6,
+"regs": [
+null,
+2,
+null,
+null,
+"fz2",
+null
+]
 },
 {
 "asm": "S0:\nload_const r1, 35\njif r0, S0\njump L0\nload_const r2, 2\nL0:\njif r5, S0\nload_local r0, r4\nload_const r5, 50\nstrcat r1, r4, r2\nstrcat r2, r0, r0\njif r5, S0\nmul r3, r0, r4\njump L1\nload_const r5, 2\nL1:\njump L2\nload_const r0, 2\nL2:\nhalt\n",
@@ -2593,7 +4533,17 @@ null
 "nlocals": 6,
 "content_hash": "82025b06bc1a50e9",
 "status": "FAULT",
-"outs": []
+"outs": [],
+"fault": "step_limit_exceeded",
+"steps": 501,
+"regs": [
+null,
+35,
+"",
+null,
+null,
+50
+]
 },
 {
 "asm": "S0:\nout r4\nadd r2, r1, r3\njif r1, L0\nload_const r2, 1\nL0:\nload_const r0, 46\nadd r0, r1, r5\nload_const r2, 19\nload_const r3, -30\njump L1\nload_const r4, 2\nL1:\nhalt\n",
@@ -2608,6 +4558,16 @@ null
 "status": "HALTED",
 "outs": [
 null
+],
+"fault": null,
+"steps": 10,
+"regs": [
+null,
+null,
+19,
+-30,
+null,
+null
 ]
 },
 {
@@ -2621,7 +4581,17 @@ null
 "nlocals": 6,
 "content_hash": "bd2ffa9d14d8e245",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 7,
+"regs": [
+null,
+"",
+null,
+null,
+null,
+null
+]
 },
 {
 "asm": "S0:\njif r3, L0\nload_const r0, 1\nL0:\nload_const r4, 43\nload_const r1, 11\nadd r1, r1, r3\nstrcat r2, r5, r2\nhalt\n",
@@ -2634,7 +4604,17 @@ null
 "nlocals": 6,
 "content_hash": "d3c523ff9dbddb48",
 "status": "HALTED",
-"outs": []
+"outs": [],
+"fault": null,
+"steps": 7,
+"regs": [
+1,
+null,
+"",
+null,
+43,
+null
+]
 },
 {
 "asm": "S0:\neq r2, r4, r4\njump L0\nload_const r1, 2\nL0:\nload_local r3, r1\nload_const r5, 30\nload_const r2, -23\nstrcat r4, r2, r2\nadd r2, r0, r5\nload_const r5, -12\nload_const r0, 'fz0'\njif r1, S0\nadd r3, r5, r0\nmul r4, r3, r2\nhalt\n",
@@ -2647,7 +4627,17 @@ null
 "nlocals": 6,
 "content_hash": "1098048bb22fffb0",
 "status": "FAULT",
-"outs": []
+"outs": [],
+"fault": "trap:TypeError",
+"steps": 11,
+"regs": [
+"fz0",
+null,
+null,
+null,
+"-23-23",
+-12
+]
 },
 {
 "asm": "S0:\nout r0\nload_const r2, 10\nlt r2, r3, r2\nstore_local r2, r5\nload_const r3, 25\neq r5, r2, r5\nhalt\n",
@@ -2662,6 +4652,16 @@ null
 "status": "HALTED",
 "outs": [
 null
+],
+"fault": null,
+"steps": 7,
+"regs": [
+null,
+null,
+null,
+25,
+null,
+true
 ]
 }
 ]

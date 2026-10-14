@@ -6,6 +6,4 @@ description = "py4qwhip block 01 (byte-space) in Rust: assemble + canonical byte
 
 [dependencies]
 sha2 = "0.10"
-
-[dev-dependencies]
 serde_json = "1"

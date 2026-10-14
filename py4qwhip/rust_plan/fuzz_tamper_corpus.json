@@ -1,0 +1,7948 @@
+[
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+2,
+-38,
+-44,
+43
+],
+"code_hex": "05030404060204620a0404000103040009040001030500050005030a050400010404000a040400010504000603040101050200010306000105070007000303010108000a020400010204000e",
+"status": "FAULT",
+"fault": "validate: MUL: reg/slot 98 >= nlocals at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+17,
+1
+],
+"code_hex": "060501050402010304050404010004000301030701020111010f0500050a010400010405000e",
+"status": "HALTED",
+"fault": null,
+"steps": 10,
+"pending_import": null,
+"outs": [
+true
+],
+"regs": [
+17,
+true,
+null,
+null,
+null,
+"17"
+]
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+0
+],
+"code_hex": "1102050202008e0504000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x8e at 6",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+38,
+1,
+3,
+2
+],
+"code_hex": "01c004000a04040001030500010106000904000102070008040505060304020a0004000104050008000503010101000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 192 >= nlocals at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+18
+],
+"code_hex": "090400010104000904000102480001020500010500000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 10",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+-35,
+1,
+-36,
+-48,
+-3
+],
+"code_hex": "0100040007030301010405000a0104000102060001010700011f02000200030502010501020800010300000a00040001020600010009000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 31 >= nlocals at 24",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-21,
+19,
+1
+],
+"code_hex": "010404000a00f8ff0a05f4ff040000ff010505000601040407050501040504020a020400010506000e",
+"status": "FAULT",
+"fault": "validate: ADD: reg/slot 255 >= nlocals at 12",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-47,
+12,
+-19
+],
+"code_hex": "0f0203f3010304000101050007050102010406000e",
+"status": "FAULT",
+"fault": "validate: STRCAT: reg/slot 243 >= nlocals at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-25,
+-10,
+2,
+-29,
+37,
+-39,
+1,
+-37,
+-9
+],
+"code_hex": "010104000105050009040001040600c501020401030700010408000a04e1ff05040005010309000a02040001050a0001020b0001030c00040203030e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xc5 at 15",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+33,
+-24,
+34,
+36
+],
+"code_hex": "0a00fcff050205050a040400010204000a000400010004000102050008f80201010006000a01040001020400010507000a00ccff04030401010108000a02040001020400070002010e",
+"status": "FAULT",
+"fault": "validate: LT: reg/slot 248 >= nlocals at 28",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-35,
+49,
+12,
+-9
+],
+"code_hex": "0a020400010104001002030105050001dc060001050700010208000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 220 >= nlocals at 15",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+-8
+],
+"code_hex": "0a02fcff0128040001000400010205000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 40 >= nlocals at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+1,
+14,
+41,
+-43
+],
+"code_hex": "090400010404000a040400010205000101000001020600010107000a05040001041c000102080001010200070200000704010307040300090400010404001005030e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 31",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+23,
+2,
+-22,
+1,
+24,
+-26
+],
+"code_hex": "0101040009040001030500010006000a03040092000700050005050701000001000800010409000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x92 at 19",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+2
+],
+"code_hex": "03020006040203030302040303030a0104000103040009040001020500020405017d0100070303030e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 125 >= nlocals at 32",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+11
+],
+"code_hex": "060300013805010311010a05040001040400030000010505000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x38 at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-45,
+1,
+29,
+17,
+-6,
+-36,
+-2
+],
+"code_hex": "01040400060001010a000400010405001000010a040400010305000a050400010405000a03d9ff01030600010207000a0204000103050001040800018c09000601010401010a000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 140 >= nlocals at 59",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"code_hex": "07010203080103040402020316",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x16 at 12",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-4,
+2,
+1,
+-22,
+21,
+18
+],
+"code_hex": "10040001040400090400010205000f000403070201020a010400010506000104070001040200070400030100085b0701020201040900010100000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 42",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+14,
+2,
+1,
+0
+],
+"code_hex": "010304000102010009040001020500010502000203030a0104000100060001b207000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 178 >= nlocals at 30",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+25,
+1
+],
+"code_hex": "0104040008e904010a05040001020500050102030e",
+"status": "FAULT",
+"fault": "validate: LT: reg/slot 233 >= nlocals at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+27,
+2
+],
+"code_hex": "1000040205040a030400010404000a0404006d00040001030500090400010206000a030400010204000a00d3ff0e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x6d at 18",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+46,
+4,
+1
+],
+"code_hex": "01000400040501040402030301020500070201030a05040081030600060301040e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x81 at 24",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-48,
+28,
+1,
+-46,
+2
+],
+"code_hex": "01040400010305001102010401000a00040001030600010307000203000f0405050204021000050a046bff090400010008000e",
+"status": "FAULT",
+"fault": "validate: JIF: jump target out of program at 39",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+43,
+39,
+-37
+],
+"code_hex": "0a01fcff0a03f8ff010404000402010437020401040502040405020201040400040502000103050001000600080502050e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x37 at 16",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-3,
+5,
+37,
+19,
+-12,
+1
+],
+"code_hex": "010304000f0505000105050001020200010506000102070001030300010108000a040400bd0209000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xbd at 36",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2
+],
+"code_hex": "0404020106020104040003000305030f04030409040001040400078900000e",
+"status": "FAULT",
+"fault": "validate: EQ: reg/slot 137 >= nlocals at 26",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+27,
+-20
+],
+"code_hex": "0a05fcff010502de010504000801030501050500030402010501000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"code_hex": "0a05fcff0ff20302080502020e",
+"status": "FAULT",
+"fault": "validate: STRCAT: reg/slot 242 >= nlocals at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+26,
+-34,
+2,
+46,
+1
+],
+"code_hex": "010204000103050009040001050600010507c9080401040f0205030a04e1ff0a010400010108000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 15",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+9,
+31,
+1,
+-10,
+23
+],
+"code_hex": "01050400080200040a02f4ff08050305040001040a04e8ff01010500ec00040001020600080002010104070004030502010308000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xec at 28",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+38,
+-40,
+22,
+43,
+-14
+],
+"code_hex": "01000400010004000505000001040400050402050702050505050000050201010500030006020401010105000100065501030700010108000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 44",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+26,
+1,
+2,
+-20
+],
+"code_hex": "01010400010501000a020400010105000703020302000306000004090400013c0600010407000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 60 >= nlocals at 30",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+46,
+-4
+],
+"code_hex": "010004000f011201010005000e",
+"status": "FAULT",
+"fault": "validate: STRCAT: reg/slot 18 >= nlocals at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+0
+],
+"code_hex": "010304000a01f8bf0201040e",
+"status": "FAULT",
+"fault": "validate: JIF: jump target out of program at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+26,
+-50,
+-2
+],
+"code_hex": "0703000407000005c5020209040001050400010305001001030904000101040001040600010407000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xc5 at 8",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+13,
+-40
+],
+"code_hex": "0104c000110511041102010205000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"code_hex": "0f05ab0102030304030403060202000e",
+"status": "FAULT",
+"fault": "validate: STRCAT: reg/slot 171 >= nlocals at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-1
+],
+"code_hex": "0f01010305050599070203000a04f0ff010104000f050502070104040e",
+"status": "FAULT",
+"fault": "validate: SUB: reg/slot 153 >= nlocals at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-24
+],
+"code_hex": "010504000a01f819080400050e",
+"status": "FAULT",
+"fault": "validate: JIF: jump target out of program at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+1
+],
+"code_hex": "0a04fcff0f01020006020402090400010404000a0004000101050009040001050400d2",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xd2 at 34",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+40
+],
+"code_hex": "070303050141040008030201010103000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 65 >= nlocals at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+38,
+-43,
+-4,
+2,
+-8
+],
+"code_hex": "0105040001030500010b06000f0001040503050301020000090400010007000103080011051005050e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 11 >= nlocals at 8",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-29,
+19,
+-19,
+26
+],
+"code_hex": "01e9040001010500040302001003010202050105060006040201010407000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 233 >= nlocals at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2
+],
+"code_hex": "0904000505040001040300050004030a04edff0e",
+"status": "FAULT",
+"fault": "step_limit_exceeded",
+"steps": 501,
+"pending_import": null,
+"outs": [],
+"regs": [
+null,
+null,
+null,
+null,
+"fz3",
+null
+]
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+20,
+-48
+],
+"code_hex": "090400010204000104050010040510050142030300100504040503041101010206000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x42 at 17",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1
+],
+"code_hex": "0a03040001010400bc010101080305050e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xbc at 8",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+32,
+-7,
+-43,
+-22,
+5,
+22
+],
+"code_hex": "070301000a020400010104000105050001040600010407000104080004020202010009000a0404002a00040001050a00060005050e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x2a at 40",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+37,
+-49,
+1,
+-16,
+32
+],
+"code_hex": "01050300080505050103040003000001040500040101020a01040001030600010507000a0504000105060007ce0304010508000e",
+"status": "FAULT",
+"fault": "validate: EQ: reg/slot 206 >= nlocals at 43",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"code_hex": "060203040f2002050a02f4ff0803010204000102060302030e",
+"status": "FAULT",
+"fault": "validate: STRCAT: reg/slot 32 >= nlocals at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+8,
+9,
+-5,
+0,
+-48,
+-41,
+-34
+],
+"code_hex": "01020400010105009400060005020301010307000a05e8ff08050103010308000103090001000a0004010303040101020e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x94 at 8",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2
+],
+"code_hex": "0501040109040001000400040502031104070005010703010303090102030509040001010400010503000e",
+"status": "FAULT",
+"fault": "validate: STORE_LOCAL: reg/slot 9 >= nlocals at 25",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+14,
+-43
+],
+"code_hex": "050203030a03f8ff05040100010503000104047c010305000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 16",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+26
+],
+"code_hex": "01059e0004040505060205010a01f0ff0a05ecff0e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+1
+],
+"code_hex": "090400010304000a01030001030500050302030201030e",
+"status": "HALTED",
+"fault": null,
+"steps": 6,
+"pending_import": null,
+"outs": [],
+"regs": [
+null,
+null,
+null,
+null,
+null,
+null
+]
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-38,
+1,
+-32,
+-45
+],
+"code_hex": "040100050704040101020400040305030a010400010405000805df0510020001000600010101000a05d5ff110001040700050203040e",
+"status": "FAULT",
+"fault": "validate: LT: reg/slot 223 >= nlocals at 24",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+8,
+48
+],
+"code_hex": "0104040001d90500020305100104070001000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 217 >= nlocals at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-44,
+1,
+39,
+12,
+38
+],
+"code_hex": "040201020a01f8ff0a03f4ff010404000a050400010105000300050100060001000700010408000a0304000100058f110011050e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 43",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-36,
+2
+],
+"code_hex": "4e0300010203020a0304000100040001030500090400010506000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x4e at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-16
+],
+"code_hex": "070005030a00f8ff01040200250002050302040a03040001050400010005000a01ddff0e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x25 at 12",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+2,
+11,
+40,
+29,
+36
+],
+"code_hex": "0a040400010204000201010702030209040001030500013a0600010007000a02deff0401050101040800060102020703000301040900060102030e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 58 >= nlocals at 22",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+16
+],
+"code_hex": "060405030104040004d704010e",
+"status": "FAULT",
+"fault": "validate: ADD: reg/slot 215 >= nlocals at 8",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-7,
+32,
+-17,
+2
+],
+"code_hex": "5f0203010a04f8ff0a01040001020400010505000104060001030700090400010408000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x5f at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+28,
+50
+],
+"code_hex": "060301010103040001000500050102031000141003050300020e",
+"status": "FAULT",
+"fault": "validate: LEN: reg/slot 20 >= nlocals at 16",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+34,
+2,
+-3,
+-31
+],
+"code_hex": "01030300100403010300000a05040001030400010005000904000102060004050101110108ba0002040402050a01d0ff0100070001050800010402000e",
+"status": "FAULT",
+"fault": "validate: LT: reg/slot 186 >= nlocals at 36",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+30
+],
+"code_hex": "050401050a010400010204000d040502010105001000040a01040001000400010304000e",
+"status": "FAULT",
+"fault": "validate: IMPORT: const idx out of pool at 12",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-44,
+39,
+-39,
+-12,
+43,
+-29
+],
+"code_hex": "11050a010400010504000101050001010600010102000105070001020800040504000f7103000104090001040a000e",
+"status": "FAULT",
+"fault": "validate: STRCAT: reg/slot 113 >= nlocals at 34",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+0
+],
+"code_hex": "060003041000030a01130001030400010305000e",
+"status": "FAULT",
+"fault": "validate: JIF: jump target out of program at 7",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+5,
+1,
+8
+],
+"code_hex": "0f00050108010303040301040102030001030000010504000a02e41c0a00040001020500010006000e",
+"status": "FAULT",
+"fault": "validate: JIF: jump target out of program at 24",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+47,
+35,
+39,
+11
+],
+"code_hex": "09040001010400010305700603000001030600010205000701020506010100010207000402030104050303080104040904000104040001040800010502000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 7",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+-48,
+-18,
+1
+],
+"code_hex": "0904000105040006020200100401060205010100050004040505030001010406000a0104000102070006020505090400010004740e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 48",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+37,
+36,
+1,
+-35,
+-17,
+0,
+14
+],
+"code_hex": "01020400010305000a02040001020600010507000104030001030800040002020105090e01050a00070301050a04040001020600060404000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 32",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-37
+],
+"code_hex": "0a010400010004000401020401040500a6",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xa6 at 16",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-42,
+-2,
+30,
+1,
+36
+],
+"code_hex": "0104040001050500010406000a00040001020700050104041004010600a70301000800070500010e",
+"status": "FAULT",
+"fault": "validate: MUL: reg/slot 167 >= nlocals at 27",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-43,
+42,
+-34,
+1,
+-1
+],
+"code_hex": "07010403010104001002013e01050102050004010203010406000a0304000102070001020800070305040300050a0304000101070006000301010203000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x3e at 11",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-19
+],
+"code_hex": "01030400010502000a43f4ff06030301040203010e",
+"status": "FAULT",
+"fault": "validate: JIF: reg/slot 67 >= nlocals at 8",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+16,
+50
+],
+"code_hex": "0100040001040500010223000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 8",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-26,
+39
+],
+"code_hex": "01000400010005000f0405050a03f0ff12",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x12 at 16",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+13,
+-26,
+41
+],
+"code_hex": "0a02fcff03050209040001040400010205000a05eaff0105010009040001020400110509040001000400b604060001030000030202010407000304020e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xb6 at 42",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+-27,
+9
+],
+"code_hex": "0904000101040001010100010405000f05043109040001020400090400010504001101020500110201050600090400010004000e",
+"status": "FAULT",
+"fault": "validate: STRCAT: reg/slot 49 >= nlocals at 15",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-12,
+2,
+8
+],
+"code_hex": "050401010101040009040001020500b40406000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xb4 at 15",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"code_hex": "0402000508025a00070400050e",
+"status": "FAULT",
+"fault": "validate: LT: reg/slot 90 >= nlocals at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+4,
+20,
+-25,
+-46,
+1,
+47
+],
+"code_hex": "010004000103050001020600030303010107000a00040001020800050503010a030400010008009103010006010105010209000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x91 at 39",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+41,
+2,
+1
+],
+"code_hex": "0605f101060500050304030102020001040400090400010205000a05040001010600010001000e",
+"status": "FAULT",
+"fault": "validate: MUL: reg/slot 241 >= nlocals at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-29,
+-47,
+-40,
+49,
+-11,
+-1,
+13
+],
+"code_hex": "070201020103040001030500010203000100060001044e000a02e4ff040301040104070001050800040103030104090001010a001000030e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 20",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-22,
+2,
+1
+],
+"code_hex": "010004001004030804040506040304090400010005000a020400010006000705c6000e",
+"status": "FAULT",
+"fault": "validate: EQ: reg/slot 198 >= nlocals at 30",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-26,
+7
+],
+"code_hex": "010404000a0495ff07020203010205000e",
+"status": "FAULT",
+"fault": "validate: JIF: jump target out of program at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-7,
+-4,
+-44
+],
+"code_hex": "040505020404010401eb0400010105000603010403040001010600070401020e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 235 >= nlocals at 8",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-8,
+-24
+],
+"code_hex": "010204000a00f8ff010105000804010407010401030000cc",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xcc at 23",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+27,
+-18,
+2,
+-2,
+40
+],
+"code_hex": "01010400110301050500080503000904000104060010040008000402010207000102080001040000062a04020e",
+"status": "FAULT",
+"fault": "validate: MUL: reg/slot 42 >= nlocals at 40",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+1
+],
+"code_hex": "09040001040400080201040703050009040001040400d40001010a040400010505000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xd4 at 22",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+49,
+48,
+14
+],
+"code_hex": "07030002010404000103050001010600990100080301050e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x99 at 16",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+40,
+-30,
+1,
+23,
+-5
+],
+"code_hex": "0a05fcff0102040001050500040403040a03049a0103060001020700010108000e",
+"status": "FAULT",
+"fault": "validate: JIF: jump target out of program at 16",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+30,
+2,
+-39,
+-48,
+-11,
+1
+],
+"code_hex": "0103040001030200090400010205d90102060001040700010308000a04040001020900070303001101010002000904000101050007020403050004050e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 11",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-3,
+1,
+46,
+47
+],
+"code_hex": "030500010304000a0204000104050001030600013007000a0104000102050005030200080500010e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 48 >= nlocals at 19",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-8,
+-11,
+7,
+1,
+-1,
+-6,
+2,
+39,
+29
+],
+"code_hex": "0101040001040500010406000a0104000102070001040800010309000a03e0ff0701010202020309040001010a000f02010101030b009e000401050c000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x9e at 54",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+25,
+22,
+-44
+],
+"code_hex": "0a010400ee0304000300030104050001050600080405020605000301000000010207000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xee at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+2,
+6,
+-20,
+-30,
+-2
+],
+"code_hex": "0a03fcff0a04040001030400080201040304000401000409040001020500080303020101060009040001000500040001053c0307000402050101030800010009000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x3c at 49",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-48,
+-27,
+2,
+-32,
+1,
+26
+],
+"code_hex": "01040400070504030101f000090400010406000202010904000103060001020700010402000a04d7ff0a02040001050800090400010506000a04040001020800010409000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 8",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+12,
+-22
+],
+"code_hex": "05040105060402020a02f4ff080503010f0001000a03040001020400010205050a04040001040400010206000a01040001030400060204040a05c4ff010502000a05bcff0e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 28",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-26
+],
+"code_hex": "0103030001042b00020304080103020e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+22,
+1,
+-33
+],
+"code_hex": "010204000a0004000103057c010006000303010a05e9ff0e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 8",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-17,
+21,
+17,
+-11
+],
+"code_hex": "01040400020200010205000a03f1ff010506001105070404020101070001010100e5050300010001000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xe5 at 33",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1
+],
+"code_hex": "0a040400010204000a000400010404000405040308030104d4020400010204000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xd4 at 24",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-39
+],
+"code_hex": "0f0001010a00040001057d00010305000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 8",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+1,
+-31,
+22,
+-30,
+26
+],
+"code_hex": "090400010304000a0404000105050001040600660004000103050001050700010008000501000201030900010402000a01040001020500080302050e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x66 at 19",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+40,
+8
+],
+"code_hex": "010404000a01f8ff0101050008050405470403000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x47 at 16",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+-44,
+24
+],
+"code_hex": "040303010301030705040008010302090400010504000a00e6ff010405d803050010000502010504010103010006000a05cdff060001020e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 26",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-39,
+1,
+-7,
+8,
+-15,
+2
+],
+"code_hex": "010304000a050400010205000a02f0ff0802030401040600060200020102070001030800090400019e09000a02040001000500010409000a05040001040500050205030e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 158 >= nlocals at 39",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+-39,
+-36,
+23
+],
+"code_hex": "090400010204002f01f5ff0102050011000105060001000100100502010407000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x2f at 7",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-36,
+22,
+7,
+-40
+],
+"code_hex": "01010400010505000a01f4ff060201000704020201030600100002010007000404e503080500040a00d5ff06050501060004020e",
+"status": "FAULT",
+"fault": "validate: ADD: reg/slot 229 >= nlocals at 31",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-32,
+2,
+-26
+],
+"code_hex": "04000103010104000c0400010405000a01edff010006000e",
+"status": "HALTED",
+"fault": null,
+"steps": 3,
+"pending_import": null,
+"outs": [],
+"regs": [
+null,
+-32,
+null,
+null,
+null,
+null
+]
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+27,
+8,
+42
+],
+"code_hex": "010302000a040400010004000a01f0ff010405000501010204010405050004001105fe00060007000205010507000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xfe at 34",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-3,
+-25,
+1
+],
+"code_hex": "0800050201030400060201010f040304010205001005030f04e3000a040400010306001005040e",
+"status": "FAULT",
+"fault": "validate: STRCAT: reg/slot 227 >= nlocals at 23",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+27,
+1,
+6
+],
+"code_hex": "01010300010204000a040400010005000a02040001010500010306000a00e0ff01",
+"status": "FAULT",
+"fault": "validate: truncated instruction at 32",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-41,
+-35,
+-30,
+-21,
+-13
+],
+"code_hex": "0104040005050000010105000400030001020200010206000701030301030700040405020104050001012f000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 40",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-17,
+40
+],
+"code_hex": "0a05fcff0a0204000104040006052103050403050305030100030001030500010206000e",
+"status": "FAULT",
+"fault": "validate: MUL: reg/slot 33 >= nlocals at 12",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+24,
+2
+],
+"code_hex": "0a000400010204001001050a04f1ff0705030404030302010305000502010309040001010600090400010487000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 41",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-6,
+-20
+],
+"code_hex": "050502000a000400010004000505030107030005d90205000801000101050600010303000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xd9 at 20",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-15,
+43,
+2,
+-8,
+-36
+],
+"code_hex": "01000400018e05000904000102060001040700010508000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 142 >= nlocals at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+49,
+27
+],
+"code_hex": "090400010204000505030401010500010206960e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 15",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-33,
+-41,
+2,
+-6,
+-44
+],
+"code_hex": "110301040400010005000601020509040001000600010307000904aa01020600010008000e",
+"status": "FAULT",
+"fault": "validate: JUMP: jump target out of program at 25",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+1,
+22,
+25
+],
+"code_hex": "0802000209040001010400070105000a04040001030500090400010104000100060006020202010107ff0e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 38",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+1,
+-11
+],
+"code_hex": "11050a04faff0904000104040008d70003010400000a050400010405000f0303030904000101040007020204010506000e",
+"status": "FAULT",
+"fault": "validate: LT: reg/slot 215 >= nlocals at 13",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-41,
+2,
+-9,
+-19,
+-12
+],
+"code_hex": "01010400080200050a05f4ff090400010405000100060007010203040104030a05ddff0600030001040700114c01020800050101030e",
+"status": "FAULT",
+"fault": "validate: OUT: reg/slot 76 >= nlocals at 43",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+36
+],
+"code_hex": "01ed03000a0304000104040001050300010205000a04040001050400050301040e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 237 >= nlocals at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-8,
+39,
+2,
+43,
+21,
+7,
+23
+],
+"code_hex": "010204000605050511040104050009040001050600050204000f040504010394000103070001010800010209000a01cfff01050a00010209000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 29",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-41,
+3,
+-25,
+1
+],
+"code_hex": "01cf0400010305000704010210000402000301040600040104040300051104060302030a04040001040700050404040e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 207 >= nlocals at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-29,
+1,
+-9,
+9
+],
+"code_hex": "1101040102040f0502010101000011000805010001050400060103020a02040001020500077001000604020201010600010507000e",
+"status": "FAULT",
+"fault": "validate: EQ: reg/slot 112 >= nlocals at 36",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+41,
+-35,
+-21
+],
+"code_hex": "010204000105020001e30500010206000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 227 >= nlocals at 8",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+40
+],
+"code_hex": "0700e1010a00040001030400020202010005000e",
+"status": "FAULT",
+"fault": "validate: EQ: reg/slot 225 >= nlocals at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+2,
+-27,
+-30
+],
+"code_hex": "0a000400010404000a02f4e90701050407000205080102040a05e4ff0904000103050001000600010507000e",
+"status": "FAULT",
+"fault": "validate: JIF: jump target out of program at 8",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-31,
+1,
+-40
+],
+"code_hex": "010004000a0404000103050010042c010206000e",
+"status": "FAULT",
+"fault": "validate: LEN: reg/slot 44 >= nlocals at 12",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-2,
+2,
+1,
+34
+],
+"code_hex": "01040400090400010405000a0404000104060001050700fc050400010106000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xfc at 23",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-49,
+2
+],
+"code_hex": "0a04fcff040001010105040004040103090400010201000e",
+"status": "HALTED",
+"fault": null,
+"steps": 6,
+"pending_import": null,
+"outs": [],
+"regs": [
+null,
+null,
+null,
+null,
+null,
+-49
+]
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+30
+],
+"code_hex": "0404050101030100030404010104430e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 11",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-2
+],
+"code_hex": "010403000f00e700010404000a02f0ff0e",
+"status": "FAULT",
+"fault": "validate: STRCAT: reg/slot 231 >= nlocals at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-38
+],
+"code_hex": "0804030507050103042601030a040400010204000a00040001050400110401020500020305050302030e",
+"status": "FAULT",
+"fault": "validate: ADD: reg/slot 38 >= nlocals at 8",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+4,
+16,
+43,
+2,
+29
+],
+"code_hex": "01060400010205000101000001030600090400010207000104020008010102010208000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 6 >= nlocals at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+2,
+-22
+],
+"code_hex": "0a05040001010400040401030904000101050002030307030505010001000204040100010001010a000a0004000102040006040004020400080304030e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 37",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1
+],
+"code_hex": "05010305010500000f0104020a010400010104000a23e8ff0e",
+"status": "FAULT",
+"fault": "validate: JIF: reg/slot 35 >= nlocals at 20",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+4,
+1,
+-7,
+34,
+-38,
+-23
+],
+"code_hex": "0904000101040008000005010205000800e3030a02040001010600010407000605050201010800050304010102090001050a0009040001050400050303020e",
+"status": "FAULT",
+"fault": "validate: LT: reg/slot 227 >= nlocals at 15",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-27,
+39,
+22
+],
+"code_hex": "050005030804020404020105010404000105020008010505010305ec010106000f0000010e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 24",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-13,
+15,
+28
+],
+"code_hex": "010500000304010105040007030403010205000401000101430600050504040e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 67 >= nlocals at 23",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+16,
+1,
+4,
+24,
+-13
+],
+"code_hex": "0505030301030400040202050a00040001050528010506000502040201050700010308000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 16",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1
+],
+"code_hex": "0105020006050104100402010502000a050400010404000a0304000100042d0e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 27",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+27,
+40,
+-38
+],
+"code_hex": "010501000f050301090400010304000100050009040001020400040100011004040502030509040001050400030402160106000604050106000405010407000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x16 at 47",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+11,
+41,
+-19,
+25
+],
+"code_hex": "08000005090400010404000101059601050600010507000104080007040300090400010104000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 11",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-33,
+22,
+1,
+3
+],
+"code_hex": "010004000804020207030101010005000a02040001600600010507000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 96 >= nlocals at 20",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-4,
+22,
+32,
+47,
+-14
+],
+"code_hex": "0404000404050502010504000103050007030404010106000a02e4ff0101070008020321010508000e",
+"status": "FAULT",
+"fault": "validate: LT: reg/slot 33 >= nlocals at 32",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+26,
+-44,
+-13,
+2
+],
+"code_hex": "0a03010101040001010500010206000904000100070007040502050402040101030010000509040001030700070501030e",
+"status": "FAULT",
+"fault": "validate: JIF: jump target out of program at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-45,
+1,
+2,
+-24
+],
+"code_hex": "3e050400070201050a050400010405000904000104060001020700090400010506000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x3e at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+-40,
+-41,
+1,
+-2
+],
+"code_hex": "01010300090400010504000101050001020600080202041004010a02040001030700060504020104083b0e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 38",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+19,
+-5,
+48,
+2,
+10,
+-36,
+-34
+],
+"code_hex": "070100010100040001010500010006001005030a05e9ff09fc00010507000105080005010205010509000f03030301050a000e",
+"status": "FAULT",
+"fault": "validate: JUMP: jump target out of program at 23",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-35
+],
+"code_hex": "0a05040001000400100200118502020011040f030303080401030301050a02dfff0a020400010304000a05d3ff010505000f0301040e",
+"status": "FAULT",
+"fault": "validate: OUT: reg/slot 133 >= nlocals at 11",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-6,
+1,
+-10,
+39,
+26
+],
+"code_hex": "0104040011040a000400010505000a050400010205000a03040001020500010006000a02daff05030204010507000101080006030305100201050302020f4104050e",
+"status": "FAULT",
+"fault": "validate: STRCAT: reg/slot 65 >= nlocals at 61",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+41,
+50,
+-46,
+-21,
+-26,
+1
+],
+"code_hex": "01020400070205020105050001010300110404030102010106000100070008030005050005040f05040007050204010508000a040400930309000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x93 at 54",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-26,
+14,
+-25
+],
+"code_hex": "1002020a03f9ff0a03040001040400100202080502030103050001020300010202000604000201040600030102e403050a02ccff010207000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xe4 at 45",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-13,
+-37,
+-6,
+-16,
+10,
+41
+],
+"code_hex": "0a040400010504000505020504030305010305000a0404000100040003030501020600070404040101070001030800010509000a02c9ff01010a300e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 55",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-49,
+1
+],
+"code_hex": "040302040101040005040200010100000a000400010510000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 20",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+46,
+19,
+1
+],
+"code_hex": "01050400010405000a02040001020600030319050103010e",
+"status": "FAULT",
+"fault": "validate: STORE_LOCAL: reg/slot 25 >= nlocals at 16",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+28,
+16,
+17,
+1,
+37
+],
+"code_hex": "0904000102040009040001020400010405000701000501030600060001010705000210000101050400010207000a050400010508920403010001050900070204040e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 49",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-45,
+0,
+29,
+1,
+2
+],
+"code_hex": "010404000f01040101000500010006000a02040001000700050105040a030400cc00070009040001010800040204010e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xcc at 32",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-17
+],
+"code_hex": "010301000a0104000104040001040500e5",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xe5 at 16",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+1
+],
+"code_hex": "09040001031700010400000a050400010305000a02e9ff05020203090400010004000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 3",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-38,
+18,
+30,
+-22
+],
+"code_hex": "050000000a01f8ff100205044d03050a020400010504000400030201000500010206000103070007020303110311020a01cdff010508000e",
+"status": "FAULT",
+"fault": "validate: ADD: reg/slot 77 >= nlocals at 11",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+0,
+24
+],
+"code_hex": "01013400060200030701050001020400010205001001030e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-7,
+-34,
+23,
+-43
+],
+"code_hex": "010404001100011b0500040002050105060004000000010207000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 27 >= nlocals at 6",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-49,
+2
+],
+"code_hex": "06020200060401040a05049401040400010005000103020009040001000600090400010306000e",
+"status": "FAULT",
+"fault": "validate: JIF: jump target out of program at 8",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-11,
+-32,
+2,
+-46,
+33,
+15,
+6
+],
+"code_hex": "010004000103050011020f03040009040001020600020400090400010306000404050311040105070002010101050800010509000104ff000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 52",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-50,
+16
+],
+"code_hex": "0804030111020102030008013a000100040004030003010305000e",
+"status": "FAULT",
+"fault": "validate: LT: reg/slot 58 >= nlocals at 10",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+-25
+],
+"code_hex": "09040001050400b0050500080300020302040e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xb0 at 7",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+22,
+15,
+-17,
+-22,
+2,
+1,
+50,
+26,
+-30,
+41
+],
+"code_hex": "010504000102050001010600080302010103070007020000090400010108000a03ddff090400010208000a0004000101090001030a00018f0b0001050c0001010d000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 143 >= nlocals at 54",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-13,
+33,
+-30,
+2,
+26,
+-50
+],
+"code_hex": "010203000502000001030400020304070405020a04e9ff01020500010506000904000102070001030854010409000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 38",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+37,
+-17,
+2,
+1,
+-22
+],
+"code_hex": "05050400010304000101050009040001030600100003050200020a0304000100070001010801050302000a03d2ff020404090400010406000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 34",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+3,
+6,
+1,
+-6
+],
+"code_hex": "01040400010105000a020400010272000a00040001040600010000001005010a03ddff010407000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 12",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+4,
+41,
+-20,
+16,
+2,
+-45
+],
+"code_hex": "0703020304050104010104000105050001020600050505030105070009040001030800080103cb01020900060101020a04cdff11000e",
+"status": "FAULT",
+"fault": "validate: LT: reg/slot 203 >= nlocals at 35",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+21,
+2,
+8,
+1,
+-39
+],
+"code_hex": "02010401050400090400010105000102060009040001020500010103001f0204040f02050209040001020500090400010205000a00040001030700020404010008000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x1f at 29",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+3,
+2,
+-49,
+-44,
+-35,
+21
+],
+"code_hex": "0a010400010104000a0004000103040001020500040005030300040301020904000102060001040700070002010102080068000900040202030904000105060001040a000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x68 at 49",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-9,
+-45
+],
+"code_hex": "64030400010102000a02f4ff030201010005000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x64 at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+25,
+37,
+-19,
+-34,
+12,
+2
+],
+"code_hex": "0405000001010400110401030500010506000105010001030700010365000501010101050300040200000f02050209040001020900050204020e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 26",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-43,
+42,
+1,
+-6,
+40,
+-37,
+-24
+],
+"code_hex": "01000400010305000a0504000102060001000700010108180103090010010501040a000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 20",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+8,
+-37
+],
+"code_hex": "010004560a01f8ff08020002010205000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-11
+],
+"code_hex": "01000400040200940a04f4ff0203030e",
+"status": "FAULT",
+"fault": "validate: ADD: reg/slot 148 >= nlocals at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+44,
+-28,
+1,
+2,
+24
+],
+"code_hex": "720504000a04f8ff0102010001030500040001050a05e8ff0a03040001020600090400010407000102010001010600010508000f000103040103010e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x72 at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-39,
+14,
+2,
+-24
+],
+"code_hex": "0233010a020400010504000505050202040501050500030202010206000f010301040402020f020503090400010007000a02040001050400010408000e",
+"status": "FAULT",
+"fault": "validate: LOAD_LOCAL: reg/slot 51 >= nlocals at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-45,
+-16
+],
+"code_hex": "010102000a01040001050400010405000104060001020000050203050a020488010204000e",
+"status": "FAULT",
+"fault": "validate: JIF: jump target out of program at 28",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-14
+],
+"code_hex": "0f030502030005fa0404000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xfa at 7",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+33,
+1,
+16,
+15,
+-48
+],
+"code_hex": "010204000a0004000105050005040205030004010106000503030211040a0492ff010207000604040401010800060205020e",
+"status": "FAULT",
+"fault": "validate: JIF: jump target out of program at 29",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+5,
+2,
+47
+],
+"code_hex": "0a04fcff920404000904000102050001030600070103020e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x92 at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+6,
+26,
+1
+],
+"code_hex": "01030400010105000a010400010006000302000700030405030104cb0402010e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xcb at 27",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+-30,
+-40,
+1,
+-7
+],
+"code_hex": "0904000103040001000500010006000a04040001030729010408000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 19",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-35,
+0,
+2,
+-40,
+-19
+],
+"code_hex": "0a02040001050400010305000100060009040001030700010503000a030400010204000401050201020800010009ae0e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 43",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+17,
+-9
+],
+"code_hex": "07010205070503010801020501020400ac030500050501020e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xac at 16",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-15,
+13,
+29,
+2,
+28
+],
+"code_hex": "010504000103050001000600080104030102030005020003090400010007000105080001040100112c0a03d3ff0e",
+"status": "FAULT",
+"fault": "validate: OUT: reg/slot 44 >= nlocals at 39",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+46,
+26,
+-10
+],
+"code_hex": "0302020a020400010404000404f1ff0804020101040500010006000100070011031102070002040e",
+"status": "FAULT",
+"fault": "validate: ADD: reg/slot 241 >= nlocals at 11",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-24,
+48,
+2,
+46,
+50,
+-45
+],
+"code_hex": "07025e020100040001030500070500010100030009040001040600010107000100080001030200090400010206000a00ceff09040001000600010509000e",
+"status": "FAULT",
+"fault": "validate: EQ: reg/slot 94 >= nlocals at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+-28,
+1
+],
+"code_hex": "0904000100040001040500080402020a040400010406000a012f00010506000a0404000101060008010303070400050e",
+"status": "FAULT",
+"fault": "validate: JIF: jump target out of program at 23",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+43,
+49
+],
+"code_hex": "0102030001030400010505000402f40103020101040000010100000e",
+"status": "FAULT",
+"fault": "validate: ADD: reg/slot 244 >= nlocals at 12",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-14,
+-30,
+1
+],
+"code_hex": "02040101000400010505000a02f1ff04000200960504000100060008040100020300110307050305010503000401020308030001070100050e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x96 at 19",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-13,
+29,
+24
+],
+"code_hex": "0703050201030400100104010205000a03edff0103060003010105030103a804010005050101040502010e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xa8 at 30",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+-4,
+-11,
+10
+],
+"code_hex": "7e0200000904000104040005000405100100080301000105050001020600010407000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x7e at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-17,
+3
+],
+"code_hex": "010201000100040001042e000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 8",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"code_hex": "070405040803040011c30a01f2ff07020001070303010e",
+"status": "FAULT",
+"fault": "validate: OUT: reg/slot 195 >= nlocals at 8",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-31,
+2
+],
+"code_hex": "0a02040001030400090404030a05040001000400080000040303030105050006050103090400010106000a03d2ff08050000080005020e",
+"status": "FAULT",
+"fault": "validate: JUMP: jump target out of program at 8",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"code_hex": "970204020102060502020e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x97 at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+39,
+-14,
+1
+],
+"code_hex": "04030004080001040104040004040000060501b40a01e8ff0204040103050001040100040301010a050400010506000e",
+"status": "FAULT",
+"fault": "validate: MUL: reg/slot 180 >= nlocals at 16",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-15,
+-29
+],
+"code_hex": "01020400040004700705010401020300040405000a05e8ff110007020304010505000e",
+"status": "FAULT",
+"fault": "validate: ADD: reg/slot 112 >= nlocals at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+12
+],
+"code_hex": "06fd01040801020205020501010404000e",
+"status": "FAULT",
+"fault": "validate: MUL: reg/slot 253 >= nlocals at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-44,
+-31,
+7
+],
+"code_hex": "0a0204000105040008010502050405010f000505040405040605b7050201030101050001020600010207000e",
+"status": "FAULT",
+"fault": "validate: MUL: reg/slot 183 >= nlocals at 24",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+44,
+14,
+-4,
+36,
+-39
+],
+"code_hex": "04016005010503000102040001030500010306000802030501000700010008001105070203030a00d6ff0e",
+"status": "FAULT",
+"fault": "validate: ADD: reg/slot 96 >= nlocals at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-1,
+1,
+2
+],
+"code_hex": "010404000a05040096020500090400010106000a02040001050500040502030105000008050505060001020801050209040001020600050303010e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x96 at 8",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-31,
+9
+],
+"code_hex": "0a040400010504000604030301050500080305030a04f80001030400020503010506000e",
+"status": "FAULT",
+"fault": "validate: JIF: jump target out of program at 20",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+49,
+-9,
+40,
+42,
+12
+],
+"code_hex": "fa02fcff0104040007020304010505000102060001050700010508000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xfa at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-29,
+1,
+-27,
+46
+],
+"code_hex": "010404000a040400010405000f010301010206000101070004006302050002020a04dcff04020002060404020e",
+"status": "FAULT",
+"fault": "validate: ADD: reg/slot 99 >= nlocals at 24",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2
+],
+"code_hex": "0a00fcff93040001020400080303050e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x93 at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+47,
+-37,
+37
+],
+"code_hex": "0104040001f10500010306000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 241 >= nlocals at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-35,
+2,
+-10,
+1,
+-48,
+44,
+27,
+-1
+],
+"code_hex": "010004000204040904000103050001010200010306000a00040001040700090400010105000a02d7ff08020404010208d30101090001030a0001000b000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 45",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-27,
+2
+],
+"code_hex": "070400010103dd00090400010505000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+37,
+-12,
+1,
+2,
+41
+],
+"code_hex": "1103017e04001104020104110404020403010105000a030400010206000a04dfff0205050f0204000904000101070001020800010201000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 126 >= nlocals at 2",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-41,
+2,
+21
+],
+"code_hex": "070504000a0004000101040001040500060500010a00e8ff050303021100020201050400000a0304000104040009040001008400010007000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 48",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+-15
+],
+"code_hex": "010404000a02f8ff16000100010105000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x16 at 8",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1
+],
+"code_hex": "0104020008037b02050500050f0501030f0000040f0102050a030400010404000e",
+"status": "FAULT",
+"fault": "validate: LT: reg/slot 123 >= nlocals at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1
+],
+"code_hex": "080304030a04f8ff0804000508010203050300030a00040024000400010500000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x24 at 24",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1
+],
+"code_hex": "0a000400010204d10a02040001010400060300020e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-23,
+15,
+49,
+2,
+11,
+14
+],
+"code_hex": "01049a000100050001030600090400010407000a04e9ff010008000a05e1ff0501030201030900090400010507000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-15,
+2,
+-47
+],
+"code_hex": "010204000503000401050200090400010405000405000301050000d90506000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xd9 at 27",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+-1,
+19,
+-33
+],
+"code_hex": "090400011a0400030405010105000103060005000103010007000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 26 >= nlocals at 3",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+43,
+-20
+],
+"code_hex": "05010100010104005905050011040e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x59 at 8",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1
+],
+"code_hex": "060000040ad704000103040011000e",
+"status": "FAULT",
+"fault": "validate: JIF: reg/slot 215 >= nlocals at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+38,
+1,
+8,
+-16,
+2,
+-5
+],
+"code_hex": "010204000a02040001010500040501050512000502000005030105010306000100070007040304080105020904000101080001050900090400010508000e",
+"status": "FAULT",
+"fault": "validate: SUB: reg/slot 18 >= nlocals at 16",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-25,
+-4,
+17
+],
+"code_hex": "070502010f0404010101040001030500110401020600019e06000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 158 >= nlocals at 22",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+18,
+24,
+-25,
+-12
+],
+"code_hex": "0a0404000102040001010500010406000a01ecff0a04e8ff0101000001000700010003000801050502050006030201010108c9010503000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 47",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-3,
+1,
+2
+],
+"code_hex": "01029d0001000400080505020a00040001040500070102040f000301010006000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+25,
+16,
+42,
+2,
+-20,
+-40
+],
+"code_hex": "010504000f01020501010500080000020800020403010401010600010402000904000103070007fc04000605040503010201040800010309000e",
+"status": "FAULT",
+"fault": "validate: EQ: reg/slot 252 >= nlocals at 38",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-37,
+5
+],
+"code_hex": "01050400030404070401020f050501010305004f",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x4f at 19",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-33,
+0,
+2,
+10
+],
+"code_hex": "0a030400010304000201050a000400010204000a25040001050400010505000a04ddff0100060009040001020700040405010103080009040001020700070304010e",
+"status": "FAULT",
+"fault": "validate: JIF: reg/slot 37 >= nlocals at 19",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+47
+],
+"code_hex": "0101000002030401010400c8050405040300050e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xc8 at 11",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+-32,
+-37
+],
+"code_hex": "050202050602020303040309040001030400040404050a00e6ff060201030f030401010005000a03d6ff01020600010102d3090400010304000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 46",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+14,
+46
+],
+"code_hex": "0a05040001040400010303000a030400010304001103050100030f01040501020500010506d008050205060100040e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 34",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-3
+],
+"code_hex": "040203000a03ba00010504000304041005051101010005000a010400010504000201030e",
+"status": "FAULT",
+"fault": "validate: JIF: jump target out of program at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-33,
+19,
+27,
+39,
+-25,
+50
+],
+"code_hex": "060102000a0104000102040003050227000500010206000101070006000104020105010408000a050400010004000100090001000a000a050400010404000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x27 at 15",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+36,
+37,
+2
+],
+"code_hex": "01010e00010505000205000703050309040001050600060404030f04040107030102010005000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+47,
+2,
+-47,
+1,
+-40,
+-5
+],
+"code_hex": "010204000a03f8ff050303020904000001050001020600060005020a050400010307000104010001030800010209000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 16",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+-44
+],
+"code_hex": "09040001020400050305010904000103041601000500090400010204000804040405010303020201080301001103080204010e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 14",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-4
+],
+"code_hex": "110110050504010101010203000a01ef3201010300010404000e",
+"status": "FAULT",
+"fault": "validate: JIF: jump target out of program at 13",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+31,
+2,
+22,
+1,
+-47,
+29
+],
+"code_hex": "015c04000705040209040001030500010006000a01040001050700010008000a02040001020700010007000402010401040900040302000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 92 >= nlocals at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+39
+],
+"code_hex": "040403040a33f8ff08030303010104000e",
+"status": "FAULT",
+"fault": "validate: JIF: reg/slot 51 >= nlocals at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-19,
+26,
+-24,
+-36,
+-4
+],
+"code_hex": "0a0504000105040001030500010306340100070001020800010500000a0004000104040001000900060005020a01d0ff060301001005050e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 12",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-11,
+-6,
+-43,
+2,
+1,
+-37
+],
+"code_hex": "10030400040401010102050001030600090400010207000304040a0304000102080010010405040500010209000202010e",
+"status": "HALTED",
+"fault": null,
+"steps": 13,
+"pending_import": null,
+"outs": [],
+"regs": [
+null,
+-37,
+-37,
+-43,
+null,
+null
+]
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-3,
+1,
+37,
+2
+],
+"code_hex": "01055f00010104000a0004000105050001050600080203030a010400010005000a010400010305000203050f0405050a050400010305000a0304000102050009040001020700090400010507001001010e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+6,
+47,
+-4
+],
+"code_hex": "090400010104000f03030409040001030400010b050001010600010307001000030e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 11 >= nlocals at 18",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-18,
+2,
+46
+],
+"code_hex": "07050302010104000804050201020500020503070002e8010006000e",
+"status": "FAULT",
+"fault": "validate: EQ: reg/slot 232 >= nlocals at 19",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+23
+],
+"code_hex": "01010400010101000203029c0304050e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x9c at 11",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+1,
+-17
+],
+"code_hex": "11020104790009040001000400090400010404000a01040001020500030101050102050a050400010305000103060009040001030400040205000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 2",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+-40,
+26,
+14,
+-42,
+-37
+],
+"code_hex": "09f8000102040011050505010101030500030105020402050000000302030105060001050700010108001103010309000e",
+"status": "FAULT",
+"fault": "validate: JUMP: jump target out of program at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+21,
+-41,
+1,
+2
+],
+"code_hex": "0100030001040400010005000a6e040001020600050105000700010011040201050a01dbff0700020409040001010700010304000a00c8ff0301040e",
+"status": "FAULT",
+"fault": "validate: JIF: reg/slot 110 >= nlocals at 12",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-19,
+-11,
+18,
+-23,
+49
+],
+"code_hex": "0a040400010104000101050001030300010506000103070004050533010508000a02dcff10050507040001010309000e",
+"status": "FAULT",
+"fault": "validate: ADD: reg/slot 51 >= nlocals at 24",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-41,
+20
+],
+"code_hex": "0103020001020400080505020603000001f40500040403010e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 244 >= nlocals at 16",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+3
+],
+"code_hex": "043905000904000100040001030000010105000205010e",
+"status": "FAULT",
+"fault": "validate: ADD: reg/slot 57 >= nlocals at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+43,
+2,
+7,
+-23,
+49
+],
+"code_hex": "01030400040505010103010009040001030500010506000101070002020076000800040000040e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x76 at 30",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1
+],
+"code_hex": "0a0504000102040003020301030100040301030a05e9ff0e",
+"status": "HALTED",
+"fault": null,
+"steps": 7,
+"pending_import": null,
+"outs": [],
+"regs": [
+null,
+null,
+1,
+null,
+null,
+null
+]
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+36,
+6,
+-26
+],
+"code_hex": "0904000101040061030500010303000a02edff01050600010507000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x61 at 7",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-19,
+-37,
+-18,
+1,
+25,
+11
+],
+"code_hex": "11000102040001040500010106000a030400010207000a03f00001030700040200020a01daff0505010101010800010209000a010400010507000e",
+"status": "FAULT",
+"fault": "validate: JIF: jump target out of program at 22",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+19,
+2,
+-12
+],
+"code_hex": "0a0104000105040001050500100003110107010304090400010106000a0204000104040007fd0103010007000202050a01cdff0e",
+"status": "FAULT",
+"fault": "validate: EQ: reg/slot 253 >= nlocals at 36",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+14,
+-32,
+33
+],
+"code_hex": "05000401010304000104050001050600040501010a01e8ff0e",
+"status": "HALTED",
+"fault": null,
+"steps": 7,
+"pending_import": null,
+"outs": [],
+"regs": [
+null,
+null,
+null,
+14,
+-32,
+null
+]
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-32,
+-50,
+2,
+-15,
+15,
+13
+],
+"code_hex": "cb0404000a02f8ff1101010505000904000100060001040700050303020703000510020201030800010409000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xcb at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+44
+],
+"code_hex": "090400010504004900f5ff0100050009040001040400060500021002040e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x49 at 7",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-41,
+2
+],
+"code_hex": "02010504020203010404000f050200090441010505000303000e",
+"status": "FAULT",
+"fault": "validate: JUMP: jump target out of program at 15",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+33,
+-48,
+6,
+1,
+16
+],
+"code_hex": "05050103090400010204000705010409040001020400010005000904000100040001030600010407000a03040001010800070105050600ee03010509000a02040001010800060100020e",
+"status": "FAULT",
+"fault": "validate: MUL: reg/slot 238 >= nlocals at 53",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+1,
+40,
+35
+],
+"code_hex": "0402000001000400080002040a05040001040500090400010504000402040204020301010106000a020400eb0505000a00cdff010507000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xeb at 43",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-4,
+2,
+1,
+-13,
+-27,
+7
+],
+"code_hex": "040105040803020003020101020400090400010205000a01040001050600010107960a00daff0f0300030103080001040900010000000a040400010106000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 30",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+27,
+-6
+],
+"code_hex": "030400010104000703020470030008020300110005000500010105000201030a02ddff060002050e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x70 at 11",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-35,
+1,
+-34
+],
+"code_hex": "010504000a050400010305000a010400010105000a02e8ff010500000278040a000400010105000804040004020202010206000e",
+"status": "FAULT",
+"fault": "validate: LOAD_LOCAL: reg/slot 120 >= nlocals at 28",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-14,
+1,
+30,
+-48
+],
+"code_hex": "010404000a02040001040500010406000a01ecff0572030101010700010401000e",
+"status": "FAULT",
+"fault": "validate: SUB: reg/slot 114 >= nlocals at 20",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-19,
+2
+],
+"code_hex": "01b6040009040001040500100402090400010105000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 182 >= nlocals at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-29
+],
+"code_hex": "08050203080302000a05f4ffbf0104000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xbf at 12",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-48,
+1,
+25,
+24,
+13
+],
+"code_hex": "070403020a03f8ff010504001002020a030400010205000105060001000700010208000ab90400010305000e",
+"status": "FAULT",
+"fault": "validate: JIF: reg/slot 185 >= nlocals at 35",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"code_hex": "0500000197000201100504050501010e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x97 at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1
+],
+"code_hex": "070502000a02040001050400060200050802020506000201017302000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 115 >= nlocals at 24",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+0,
+26
+],
+"code_hex": "01020400052a040103030410020408020002010505000e",
+"status": "FAULT",
+"fault": "validate: SUB: reg/slot 42 >= nlocals at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+44,
+23,
+1,
+42,
+2,
+-12,
+-10
+],
+"code_hex": "b9010400010505000a0504000102060001040700090400010508000102090010040001000a00050102020e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xb9 at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+1,
+41
+],
+"code_hex": "06050403010403000a05f4ff07020401090400010304000a01040001030500030201014a06000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 74 >= nlocals at 34",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+35,
+1,
+34,
+-27,
+7,
+27
+],
+"code_hex": "010004000a0204000100050001040600010507001a0404000104050001050800010209000a05d8ff0a02d4ff0e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x1a at 20",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-39,
+-42,
+1,
+2,
+45,
+-45,
+-20
+],
+"code_hex": "010004000404050501000500020303010406000904000101070001010800050300040a0004e901040600010209001000040604020401030a00090400010507000e",
+"status": "FAULT",
+"fault": "validate: JIF: jump target out of program at 34",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-45,
+2,
+-49,
+37,
+1
+],
+"code_hex": "02000301000446090400010105000102060001010700070401010a000400010208000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 3",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"code_hex": "10000102010006023a000e",
+"status": "FAULT",
+"fault": "validate: MUL: reg/slot 58 >= nlocals at 6",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-38,
+2,
+13,
+18
+],
+"code_hex": "010300000104040011040904000105050001030600010407000a04e3ff09040001820500080003040e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 130 >= nlocals at 32",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+45,
+1,
+2
+],
+"code_hex": "01010481080003020a03040001030500090400010106000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+12,
+2,
+-3
+],
+"code_hex": "0103020001050400060201030401050268040001050500100504010506000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x68 at 16",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-17,
+-4,
+16,
+-7
+],
+"code_hex": "0a040400010104000a05f4ffc6020304030204050500030102050001010600070302020101070001000800050505040a03cdff0e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xc6 at 12",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-5,
+-24,
+17,
+1,
+25,
+6
+],
+"code_hex": "010104000a04f8ff0a01f4ff030204010305000105060001020100010302000a0304000101070001016600010409000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 39",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"code_hex": "0a05fc5705000105080502000e",
+"status": "FAULT",
+"fault": "validate: JIF: jump target out of program at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+4,
+-7,
+-33,
+2
+],
+"code_hex": "0a01fcff01010400040501010105050004040500020301010106000904000100440002050506050404080400050e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 30",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+7,
+2
+],
+"code_hex": "0101040002040301004500090400010405000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 7",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-48,
+2,
+1
+],
+"code_hex": "0805010005020501060303030105a500090400010505000a04040001020600080004040e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 12",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-46,
+-17,
+-37,
+2,
+-41,
+1
+],
+"code_hex": "01010100070304030300050a01f1ff01040400010405000103060002040509040001020700010108000a02d3ffee0400010007000a010400010109000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xee at 45",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2
+],
+"code_hex": "090400010104000a03f5ff050504011005021003fa070000000e",
+"status": "FAULT",
+"fault": "validate: LEN: reg/slot 250 >= nlocals at 18",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+10,
+-50,
+42
+],
+"code_hex": "0a000400010204000104050008000501010306000a03e8ff1102010307000a000400010004000203020a04d3ff0604cb020e",
+"status": "FAULT",
+"fault": "validate: MUL: reg/slot 203 >= nlocals at 45",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-22,
+41,
+-1,
+2,
+-44
+],
+"code_hex": "0401020401000300010004000105050001020600020102080300020a04e1ff010507000101020009040001030800060301040203020104090011",
+"status": "FAULT",
+"fault": "validate: truncated instruction at 57",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+36,
+50
+],
+"code_hex": "0105d500060305000a000400010504000102050011000a040400010504000a030400010304000a04d6ff0501000501000600010102000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-49,
+-6,
+2
+],
+"code_hex": "0a040400010404000103050001040600070200040904be01050700070503040e",
+"status": "FAULT",
+"fault": "validate: JUMP: jump target out of program at 20",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+-24,
+34
+],
+"code_hex": "090400010104000303050103020008010504110501020500050205010402050110020301022a00020303060200041004010e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 35",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+17,
+-18,
+2,
+1
+],
+"code_hex": "01010300070003030105040001030500090400010206000403042d010401000904000102060009040001050600080201050302050a000400010007000e",
+"status": "FAULT",
+"fault": "validate: ADD: reg/slot 45 >= nlocals at 23",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-39,
+-16,
+0,
+1,
+2
+],
+"code_hex": "1105100504010401000101040001050500010106000a010400010207000a03dfff090400010008000e",
+"status": "HALTED",
+"fault": null,
+"steps": 11,
+"pending_import": null,
+"outs": [
+null
+],
+"regs": [
+null,
+0,
+1,
+null,
+"fz1",
+-16
+]
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+48,
+10,
+2
+],
+"code_hex": "01000400070404e705050304010005000f020301080002030501010009040001020600080102020e",
+"status": "FAULT",
+"fault": "validate: EQ: reg/slot 231 >= nlocals at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+20,
+23,
+32,
+26
+],
+"code_hex": "0700030101010400010505000487040002010401030100010206000101000001020200010407000f040004070204030e",
+"status": "FAULT",
+"fault": "validate: ADD: reg/slot 135 >= nlocals at 12",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+47,
+38,
+-6,
+37
+],
+"code_hex": "010504d0050104040105050001020600010307000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+-3,
+1
+],
+"code_hex": "090400010504000100050002010529010400010006000101040001030200010403000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x29 at 14",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+7,
+-33,
+-13
+],
+"code_hex": "04050001060002040953000101040004010004080105010102050001010200040402000802040001020600070402010805010301000700090400010104000e",
+"status": "FAULT",
+"fault": "validate: JUMP: jump target out of program at 8",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+1,
+-38,
+-40
+],
+"code_hex": "090400010104000a000400010105000a050400010105000a04e5ff0a05e1ff010206ca0a040400010005000a05d1ff01040300010307001104040000000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 31",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+27,
+24
+],
+"code_hex": "0a01040001040400020502020500050401050a03feff010505000400000101040600050205050e",
+"status": "HALTED",
+"fault": null,
+"steps": 11,
+"pending_import": null,
+"outs": [],
+"regs": [
+null,
+null,
+0,
+null,
+24,
+27
+]
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-13,
+6,
+28
+],
+"code_hex": "0801fd050104040001000500010506000e",
+"status": "FAULT",
+"fault": "validate: LT: reg/slot 253 >= nlocals at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+17,
+2,
+1
+],
+"code_hex": "0104040009040001030500070103010a040400010106000a030400010106000904000100050007000200c5",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xc5 at 42",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-41,
+2,
+-12
+],
+"code_hex": "0203001105110208020504080304000a0504000101040007050504080502040a00040001040400010205000904d201020600010007000202010303050e",
+"status": "FAULT",
+"fault": "validate: JUMP: jump target out of program at 43",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+33,
+-36,
+2,
+-3,
+1,
+18
+],
+"code_hex": "01f5040007030103010305000904000104060005010005010307000201030a0304000103080001020900040101010e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 245 >= nlocals at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-10,
+-48,
+2
+],
+"code_hex": "0a01040001050400010005000a000400010404000805010502000229020302010206000a01d9ff090400010507000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x29 at 27",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+-27,
+-15,
+17,
+1
+],
+"code_hex": "09040001010400010105000504020410020401010600010107000a05040001b008000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 176 >= nlocals at 30",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+35,
+4
+],
+"code_hex": "010402001001020a000400e8040400030200070100020a00040001000400040005000a01040001000400010005000103060011050a04c8ff0e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xe8 at 11",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-22,
+-39
+],
+"code_hex": "0a000400010104000601040001010500060003d4010104000a05e4ff0101060011040e",
+"status": "FAULT",
+"fault": "validate: MUL: reg/slot 212 >= nlocals at 16",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+28
+],
+"code_hex": "0a02fcff01000400b9040f0004040e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xb9 at 8",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+17,
+-45,
+-26
+],
+"code_hex": "0a04fcff0a030400010504000104050011050100010006f40004010006000a03040001000400010503000500020310020401050700010001000e",
+"status": "FAULT",
+"fault": "validate: MUL: reg/slot 244 >= nlocals at 22",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-27,
+1,
+-5
+],
+"code_hex": "08020405010104000a01040001008b0006020502070103040a01e4ff060003010a04040001000500100303010303000705000401000400010206000f0403050e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 12",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+37,
+33,
+-3,
+3
+],
+"code_hex": "0102020001015d00010205000601040101000600010207000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+22
+],
+"code_hex": "0105ac00010104001102010201000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+5,
+1,
+-19,
+45,
+-20,
+-34,
+2
+],
+"code_hex": "010104000a01f8ff0a040400010205000a05ecff0a0104000104050001050600fb0007000102080001020900040205020804000209040001000a00050302000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xfb at 32",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+22,
+37,
+-47
+],
+"code_hex": "080405000e0303030a05f4ff01000100010504000100050001040600010503000e",
+"status": "HALTED",
+"fault": null,
+"steps": 2,
+"pending_import": null,
+"outs": [],
+"regs": [
+null,
+null,
+null,
+null,
+null,
+null
+]
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+-24,
+1,
+40,
+5,
+42,
+-21
+],
+"code_hex": "09040001030400010405000a04040001050600070300030104030008050004010107000a0304000101060001020200010008000100b00001020a000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 51",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-35,
+1,
+-47,
+5,
+-43,
+2,
+17
+],
+"code_hex": "010204000a050400010105000a0104000101050001040600010007000102080009040001010900080502040a0504000101050045040a001101010501000a010400010505000305020e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x45 at 51",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+2,
+-39,
+-22
+],
+"code_hex": "11020a010400010404000904000103bd00010006000a010400010504000101010003040001020700010001000a03040001020400010000000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 13",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+8,
+15,
+-1,
+2
+],
+"code_hex": "01040400050002020f055901070401010103050001050600090400010007000a02ddff0e",
+"status": "FAULT",
+"fault": "validate: STRCAT: reg/slot 89 >= nlocals at 8",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+2,
+0
+],
+"code_hex": "0a040400010204000a050400010304000904000105050001030600070203040904000104050001040200040204030a000400010204000a030400010004000e",
+"status": "FAULT",
+"fault": "trap:TypeError",
+"steps": 10,
+"pending_import": null,
+"outs": [],
+"regs": [
+null,
+null,
+false,
+0,
+"fz2",
+null
+]
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+40,
+-5,
+-25,
+1,
+41
+],
+"code_hex": "0103040008020203010305000401040001010200010106000a0504960102070006040304010008000e",
+"status": "FAULT",
+"fault": "validate: JIF: jump target out of program at 24",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+4,
+1,
+33
+],
+"code_hex": "010304000a0004000104b800010406000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 8",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+14,
+2,
+-24
+],
+"code_hex": "0105040009040001000500080503010102d8000a02e9ff090400010305000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 15",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-11,
+-23
+],
+"code_hex": "0a030400010004000305010a020400010104e90501050501010500070101020a0204000104040001000600010303000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 15",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+47,
+2
+],
+"code_hex": "01040400090400010105006704f1ff0e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x67 at 11",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-48,
+1,
+2
+],
+"code_hex": "010404000a040400c90105000504040009040001030600030303070001050e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xc9 at 8",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+37,
+-29,
+1,
+27
+],
+"code_hex": "03020201050400080502040703040401020500060573050f020003080401010a040400010506000a050400010506000a0404000102060006020504010107000e",
+"status": "FAULT",
+"fault": "validate: MUL: reg/slot 115 >= nlocals at 19",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-47
+],
+"code_hex": "0304020a0404000102040001b605000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 182 >= nlocals at 11",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-39,
+-18
+],
+"code_hex": "0a0004000103040001f4050008000403010306000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 244 >= nlocals at 8",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+34,
+2
+],
+"code_hex": "05040400010300000904000100050001000200010102000e",
+"status": "HALTED",
+"fault": null,
+"steps": 6,
+"pending_import": null,
+"outs": [],
+"regs": [
+"fz2",
+"fz2",
+null,
+"fz0",
+null,
+null
+]
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-10,
+39,
+2,
+-1,
+1
+],
+"code_hex": "0105040001010500090400010006000100070007010405010000000904000101060001010400480400010306000a04cfff0a020400010508000a050400010308000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x48 at 38",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+20,
+-46,
+-25,
+2,
+46,
+-43,
+-50
+],
+"code_hex": "0100040001020500010306000a05f0ff090400010407000103080008020003090400010107000601a2010105090001050a000e",
+"status": "FAULT",
+"fault": "validate: MUL: reg/slot 162 >= nlocals at 38",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+47,
+49,
+-48
+],
+"code_hex": "0a000400010204000a04040001000400080205000105050004000405010106000a000400010204000103020001040100010207000a01c8fff0",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xf0 at 56",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-26,
+-10,
+-23,
+-44,
+-16,
+1,
+-17,
+37,
+2
+],
+"code_hex": "0101040001030500010406000100040002050501000700010408000a010400010409000704030501040a00110501050b00aa040001000c000a03c4ff0e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xaa at 49",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-7,
+-44,
+8,
+23,
+9,
+36
+],
+"code_hex": "0a00048d01030400010405000100060001050700010108000a00040001010400060102050101090001010a000a02d0ff0e",
+"status": "FAULT",
+"fault": "validate: JIF: jump target out of program at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-42,
+9,
+1
+],
+"code_hex": "0f02050201000400080202040a01f0ff010405000f030304070203020a020400010106000f00030202038d0e",
+"status": "FAULT",
+"fault": "validate: LOAD_LOCAL: reg/slot 141 >= nlocals at 40",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+36,
+1,
+50,
+2,
+41,
+-33
+],
+"code_hex": "01030400050401020202040a000400010405000101033411030104060009040001040700040303050a04d4ff0103000001030800010009000a050400010005000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 19",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-29,
+2,
+-21,
+-19,
+3
+],
+"code_hex": "01040400010403000a00f4ff090400010005000405010111050100060001050700050003050304040205003c030303010508000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x3c at 43",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+38,
+2
+],
+"code_hex": "080004000a0204000103050008040502010305000a050400010104000a05e0ff090400010506000302030a03d2ff0e",
+"status": "HALTED",
+"fault": null,
+"steps": 12,
+"pending_import": null,
+"outs": [],
+"regs": [
+null,
+1,
+null,
+null,
+null,
+null
+]
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-30
+],
+"code_hex": "05020503010404009b030400050400030e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x9b at 8",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+-15,
+-36,
+17,
+36,
+1
+],
+"code_hex": "ec05040509040001050400010005000104060001000700010208000a000400010109000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xec at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+2,
+-20
+],
+"code_hex": "100401010002000a0404000101d30001030000090400010305000a04e2ff010206001104090400010105000a020400010504000a00040001020400090400010205000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 11",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+4,
+-20,
+-2,
+2,
+14,
+1,
+-42
+],
+"code_hex": "1103010304000a00f6ff010005000a00eeff0a01eaff010506000904000105ba00010308000a01040001050900060401010803020201000a000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 29",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-45,
+24,
+7
+],
+"code_hex": "0105040001013c0001030500010306000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+16,
+2,
+-7,
+-26,
+28,
+-4
+],
+"code_hex": "04050202010304000904000101050001020600080104030103077101010800010109000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 23",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-9,
+49
+],
+"code_hex": "0400050001ae04000104050006030301080403011001040e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 174 >= nlocals at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+19,
+2,
+-5,
+1
+],
+"code_hex": "01020400040102031005016a04000103050009040001000500030002010006000a030400010307000f030204090400010105000a010400010507000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x6a at 11",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+4,
+1
+],
+"code_hex": "08050000010204000a040400010105000201010a010400d00305000f0303000a05040001050500070301050302000f040504070102011004050e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xd0 at 23",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+1,
+-44
+],
+"code_hex": "09040001000400090400010204001303040001050500010206000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x13 at 14",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+-38,
+16,
+-32
+],
+"code_hex": "0101000009040001050400078d000301010500010306000705020503010501020200060504000300050504050301000700020505060405040e",
+"status": "FAULT",
+"fault": "validate: EQ: reg/slot 141 >= nlocals at 11",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+27,
+-38,
+2,
+-37,
+-47
+],
+"code_hex": "0103040001040500090400010006000504040501050700010003000f0205040a046cff06020500010208000a04d1ff0e",
+"status": "FAULT",
+"fault": "validate: JIF: jump target out of program at 31",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+39,
+33
+],
+"code_hex": "110109040001020400013a05000505030205000001010506000a04e3ff010302000a05dbff040105000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 58 >= nlocals at 9",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-16,
+37,
+-12,
+32
+],
+"code_hex": "010104000800000454030300010005000a01ecff01010600010307001102010406000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x54 at 8",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1
+],
+"code_hex": "070504c00a01f8ff0a030400010504000a03ecff0e",
+"status": "FAULT",
+"fault": "validate: EQ: reg/slot 192 >= nlocals at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+37,
+44,
+2,
+1,
+-14,
+35
+],
+"code_hex": "0103040001040500090400010406000a00040085040700080305050a0204000101070009040001030600010208000f01010401010900060005010400030109040001000600040203000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x85 at 19",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+36,
+1,
+-18,
+43,
+11
+],
+"code_hex": "010304000a040400010405000505010501000600010307000a01040001030500010208000f0200030f0302290e",
+"status": "FAULT",
+"fault": "validate: STRCAT: reg/slot 41 >= nlocals at 40",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-16,
+1
+],
+"code_hex": "030002080400000105030006050105010204000a030400010205000700010001055a000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 31",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+3
+],
+"code_hex": "0605050307000001050201000a3ef0ff010104000e",
+"status": "FAULT",
+"fault": "validate: JIF: reg/slot 62 >= nlocals at 12",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+5,
+-7,
+1
+],
+"code_hex": "08020400070403050304020f02010309040001000400110001040500013b06000a010400010007000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 59 >= nlocals at 28",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+26,
+31
+],
+"code_hex": "0a0304000101047f01020500010106000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+21,
+1,
+-2,
+7
+],
+"code_hex": "010004000a04040001050500050504040a04040001020500840406000a05040001030500010107000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x84 at 24",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"code_hex": "0a00fcff07050581040300050805030308050004070303010a04e4ff0a05e0ff0e",
+"status": "FAULT",
+"fault": "validate: EQ: reg/slot 129 >= nlocals at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+7,
+11,
+2,
+42,
+-33,
+1
+],
+"code_hex": "010504000101050001020000010406000101070007040004010208000a000400010361000705000211050e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 32",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+2,
+-50
+],
+"code_hex": "0a01fcff0a0304003504040008010101020202070502010405000403010001040500010106000a03d6ff0a04d2ff0a03ceff05020504070504020e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x35 at 8",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+6,
+-9,
+1,
+34
+],
+"code_hex": "0105d5001103010505000a050400010306000a010400010506000100020001000000010207000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+1,
+7
+],
+"code_hex": "0505010505900101090400010504000a0404000103050001000600070401030e",
+"status": "FAULT",
+"fault": "validate: SUB: reg/slot 144 >= nlocals at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-27,
+1,
+-13
+],
+"code_hex": "010404000ac004000101050007030302010103001003040103060011040e",
+"status": "FAULT",
+"fault": "validate: JIF: reg/slot 192 >= nlocals at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-33,
+2,
+3,
+9,
+1,
+25,
+36
+],
+"code_hex": "01000400090400010505000a01f1ff0702030201050600010007000a02040001000800090400010105bd090400010205000105090001040a000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 38",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3"
+],
+"code_hex": "01000300060102030a02f4ff0a0046ff060101021003050e",
+"status": "FAULT",
+"fault": "validate: JIF: jump target out of program at 12",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1
+],
+"code_hex": "10050201050200060103000a0404000104040008030401020004c9",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xc9 at 26",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+27,
+38,
+1
+],
+"code_hex": "01050400100104070000050697020201040100010405000a010400010406000e",
+"status": "FAULT",
+"fault": "validate: MUL: reg/slot 151 >= nlocals at 11",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+42
+],
+"code_hex": "0904000103040001030500090400010404000105e8000303010e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 18",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+4,
+2,
+44,
+-19,
+-37
+],
+"code_hex": "0a03040001050400010305000904000105060001020700010208000102090007050001030003050d0401080001030e",
+"status": "FAULT",
+"fault": "validate: SUB: reg/slot 13 >= nlocals at 38",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1
+],
+"code_hex": "01030100107205070503050a040400010504000e",
+"status": "FAULT",
+"fault": "validate: LEN: reg/slot 114 >= nlocals at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+26,
+1
+],
+"code_hex": "0104fa001000050a02f5ff010400000f000404060200010a02e5ff0a02040001000500030204070304000a01d2ff050404020e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-3,
+1
+],
+"code_hex": "08000102050502000302040703040104026d020103040001050100010200000a040400010505000e",
+"status": "FAULT",
+"fault": "validate: ADD: reg/slot 109 >= nlocals at 15",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+31,
+-31,
+2,
+-4,
+15
+],
+"code_hex": "01050400010205000904000103060007019201070505010a00e5ff01000700010108000e",
+"status": "FAULT",
+"fault": "validate: EQ: reg/slot 146 >= nlocals at 15",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-49,
+2,
+-35,
+-46
+],
+"code_hex": "0104040009040001027200010206000f020204010502000a03e5ff0104070007030304090400010205000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: const idx out of pool at 7",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-13,
+1
+],
+"code_hex": "5f0504000a0504000105050001050400010102000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x5f at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+42,
+40,
+7,
+5
+],
+"code_hex": "01010300060301000101040008010404020202010205000103060004010501b20402040f04000001020700060502030e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xb2 at 31",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-29,
+18,
+-4,
+12
+],
+"code_hex": "100500010204000700010001020500080030030102060007030400010307000a04ddff020202080402010e",
+"status": "FAULT",
+"fault": "validate: LT: reg/slot 48 >= nlocals at 15",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+24,
+1,
+2
+],
+"code_hex": "0f03030501000400013f03000a05040001040500110401040000090400010306000e",
+"status": "FAULT",
+"fault": "validate: LOAD_CONST: reg/slot 63 >= nlocals at 8",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+-25,
+19
+],
+"code_hex": "0a0207ff010200000a04040001020400110201010500010006000e",
+"status": "FAULT",
+"fault": "validate: JIF: jump target out of program at 0",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+2,
+-45,
+1,
+-21,
+18
+],
+"code_hex": "09040001050400010005000a0204000103060001020700010208000404040309040001020400060503000a02040001040600070005050904003d0504000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x3d at 57",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+35,
+-23,
+1,
+2,
+-17,
+-49
+],
+"code_hex": "01000400010305000a0004000104060005010205080300010703050509040001030700010208000501040101010900ee0400010507000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0xee at 47",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+-25,
+1,
+-37,
+-27
+],
+"code_hex": "010404000a03040001030500010506000800050201010700010103000a000400010305000400000057",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x57 at 40",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+1,
+2,
+20,
+-16,
+-2
+],
+"code_hex": "080102010a020400010504006b04000103050009040001010500010506000a050400010404000a030400010204001001030a01cbff01040700010408000e",
+"status": "FAULT",
+"fault": "validate: bad opcode 0x6b at 12",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+},
+{
+"nlocals": 6,
+"pool": [
+"fz0",
+"fz1",
+"fz2",
+"fz3",
+41,
+37
+],
+"code_hex": "01040400070405d007050403010505000e",
+"status": "FAULT",
+"fault": "validate: EQ: reg/slot 208 >= nlocals at 4",
+"steps": 0,
+"pending_import": null,
+"outs": [],
+"regs": []
+}
+]

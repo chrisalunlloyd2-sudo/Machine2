@@ -1,0 +1,11 @@
+[package]
+name = "pq"
+version = "0.1.0"
+edition = "2021"
+description = "py4qwhip block 01 (byte-space) in Rust: assemble + canonical bytes + content hash. Conformance: ../../rust_plan/golden_vectors.json and fuzz_corpus.json"
+
+[dependencies]
+sha2 = "0.10"
+
+[dev-dependencies]
+serde_json = "1"

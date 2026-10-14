@@ -1,2 +1,4 @@
 __pycache__/
 *.pyc
+rust/pq/target/
+rust/pq/Cargo.lock

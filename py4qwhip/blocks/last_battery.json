@@ -1,0 +1,63 @@
+{
+  "runner": "py4qwhip test block05",
+  "blocks": [
+    {
+      "block": "01_bytespace",
+      "exit": 0,
+      "ok": true,
+      "checks": {
+        "roundtrip_hash_equal": true,
+        "tamper_caught": true,
+        "hash_deterministic": true,
+        "jump_validates": true
+      }
+    },
+    {
+      "block": "02_karaka",
+      "exit": 0,
+      "ok": true,
+      "checks": {
+        "bind_ok": true,
+        "rebind_refused": true,
+        "bogus_role_refused": true,
+        "json_roundtrip": true,
+        "args_mapped": true,
+        "arity_refused": true,
+        "merge_ok": true,
+        "frozen_refused": true,
+        "conflict_refused": true
+      }
+    },
+    {
+      "block": "03_synthesize",
+      "exit": 0,
+      "ok": true,
+      "checks": {
+        "fp_stable": true,
+        "fp_distinct": true,
+        "prior_art_local": true,
+        "synth_deterministic": true,
+        "karaka_present": true,
+        "bad_kind_refused": true,
+        "bad_module_refused": true,
+        "ledger_ok": true
+      }
+    },
+    {
+      "block": "04_vm",
+      "exit": 0,
+      "ok": true,
+      "checks": {
+        "mul_6x7": true,
+        "loop_closure": true,
+        "step_limit": true,
+        "loop_term": true,
+        "fault_trapped": true,
+        "deterministic": true
+      }
+    }
+  ],
+  "passed": 4,
+  "total": 4,
+  "verdict": "GREEN"
+}

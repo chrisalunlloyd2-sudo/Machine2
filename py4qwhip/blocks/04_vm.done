@@ -1,0 +1,1 @@
+done 2026-10-12T block04 vm loop-closure runtime (6/6: mul, IMPORT->SYNTH_PENDING->synthesize->resume HALTED, step_limit, loop_term, validate-trap FAULT, deterministic), conventions id 1728, consumes 0x0d

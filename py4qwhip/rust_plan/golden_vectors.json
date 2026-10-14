@@ -1,0 +1,303 @@
+{
+ "generated": "2026-10-14",
+ "by": "python reference (blocks 01/03/04)",
+ "skeletons": [
+  {
+   "module": "cpuinfo",
+   "kind": "MODULE_MISSING",
+   "fingerprint": "24f20ab6665078dd",
+   "content_hash": "c7cdf0ec14a37fbe"
+  },
+  {
+   "module": "pytesseract",
+   "kind": "MODULE_MISSING",
+   "fingerprint": "95221ab13557da00",
+   "content_hash": "6af5bc3ea40f61a9"
+  },
+  {
+   "module": "encrypted_wrapper",
+   "kind": "MODULE_MISSING",
+   "fingerprint": "c0ea5219694e91d7",
+   "content_hash": "7d3372f8d377f8e6"
+  },
+  {
+   "module": "archival_agent",
+   "kind": "MODULE_MISSING",
+   "fingerprint": "415f0c2640deb628",
+   "content_hash": "24a017f7630d135d"
+  },
+  {
+   "module": "email_syphon",
+   "kind": "MODULE_MISSING",
+   "fingerprint": "aa97b47b37c89665",
+   "content_hash": "f904eb5e5d85276d"
+  },
+  {
+   "module": "handshake_watcher",
+   "kind": "MODULE_MISSING",
+   "fingerprint": "89cf2e39aa6c453d",
+   "content_hash": "ac8b79434b13c758"
+  },
+  {
+   "module": "headless",
+   "kind": "MODULE_MISSING",
+   "fingerprint": "73b9137a5ebe925d",
+   "content_hash": "462436901a331dec"
+  },
+  {
+   "module": "kai_control_panel",
+   "kind": "MODULE_MISSING",
+   "fingerprint": "820fd6f65a92ea8e",
+   "content_hash": "0f1f36324a358c3d"
+  },
+  {
+   "module": "kai_pedagogy",
+   "kind": "MODULE_MISSING",
+   "fingerprint": "9119e6fc5de1b083",
+   "content_hash": "4fadaae3ab03a009"
+  },
+  {
+   "module": "kai_sync_heartbeat",
+   "kind": "MODULE_MISSING",
+   "fingerprint": "022362235fdbaf71",
+   "content_hash": "6fb30457a2df3811"
+  },
+  {
+   "module": "readme_updater",
+   "kind": "MODULE_MISSING",
+   "fingerprint": "19a5d5c1deb07325",
+   "content_hash": "5247d7d411da1bf6"
+  },
+  {
+   "module": "telemetry_coach",
+   "kind": "MODULE_MISSING",
+   "fingerprint": "673168bae5b1908b",
+   "content_hash": "2daf355038dcdbbf"
+  },
+  {
+   "module": "watchdog_agent",
+   "kind": "MODULE_MISSING",
+   "fingerprint": "652ded1ffa57416d",
+   "content_hash": "0914c8221fc18c86"
+  },
+  {
+   "module": "ctransformers",
+   "kind": "MODULE_MISSING",
+   "fingerprint": "e053f22aa6023f01",
+   "content_hash": "5230c1d1710a4e7d"
+  },
+  {
+   "module": "torchao",
+   "kind": "MODULE_MISSING",
+   "fingerprint": "d17dfdb101b9513f",
+   "content_hash": "27d781666cb45f0e"
+  },
+  {
+   "module": "sophia",
+   "kind": "IMPORT_ELSEWHERE",
+   "fingerprint": "51094bbbbf30e342",
+   "content_hash": "f6429690119937f4"
+  },
+  {
+   "module": "code_finder",
+   "kind": "IMPORT_ELSEWHERE",
+   "fingerprint": "acaae423816779e1",
+   "content_hash": "edfa44f47c841750"
+  },
+  {
+   "module": "agentic_loop_controller",
+   "kind": "IMPORT_ELSEWHERE",
+   "fingerprint": "4ec1d077a83c1b21",
+   "content_hash": "325ac9e08ccd4d13"
+  },
+  {
+   "module": "agent_db",
+   "kind": "IMPORT_ELSEWHERE",
+   "fingerprint": "f57a5a8e1726cea2",
+   "content_hash": "61fddf711b4796e7"
+  },
+  {
+   "module": "nmct_db_manager",
+   "kind": "IMPORT_ELSEWHERE",
+   "fingerprint": "da50c4ddeb674852",
+   "content_hash": "b23ccfe901123945"
+  },
+  {
+   "module": "squigly",
+   "kind": "IMPORT_ELSEWHERE",
+   "fingerprint": "5e41f83e6048659a",
+   "content_hash": "a646a7a950b4168e"
+  },
+  {
+   "module": "genetic_compare",
+   "kind": "IMPORT_ELSEWHERE",
+   "fingerprint": "da512742e4a3b9c6",
+   "content_hash": "fc45550778b1366e"
+  },
+  {
+   "module": "flags",
+   "kind": "IMPORT_ELSEWHERE",
+   "fingerprint": "989b844b269385fa",
+   "content_hash": "86a6e5baac620914"
+  },
+  {
+   "module": "agents",
+   "kind": "IMPORT_ELSEWHERE",
+   "fingerprint": "297ca492f74eae02",
+   "content_hash": "811e3bcdc6c5171c"
+  },
+  {
+   "module": "extrapolate",
+   "kind": "IMPORT_ELSEWHERE",
+   "fingerprint": "ca5750393338af98",
+   "content_hash": "d364102cd11647f1"
+  },
+  {
+   "module": "grammar",
+   "kind": "IMPORT_ELSEWHERE",
+   "fingerprint": "ddbdc879991a9dbf",
+   "content_hash": "870c5b0b91fda725"
+  },
+  {
+   "module": "main",
+   "kind": "IMPORT_ELSEWHERE",
+   "fingerprint": "7b0c2dde663817a7",
+   "content_hash": "091fbafaa66b94f8"
+  },
+  {
+   "module": "autonomous_loop",
+   "kind": "IMPORT_ELSEWHERE",
+   "fingerprint": "f26228b03ef07123",
+   "content_hash": "201cf038c59efa26"
+  },
+  {
+   "module": "ingest",
+   "kind": "IMPORT_ELSEWHERE",
+   "fingerprint": "89dc02e73f2fef51",
+   "content_hash": "a18efe1a4cca8d78"
+  },
+  {
+   "module": "kaleidoscope_v2",
+   "kind": "IMPORT_ELSEWHERE",
+   "fingerprint": "ee69cc5f3f991ddc",
+   "content_hash": "76b1aa1135a20e71"
+  },
+  {
+   "module": "code_ngram",
+   "kind": "IMPORT_ELSEWHERE",
+   "fingerprint": "228c307de8ab2c5b",
+   "content_hash": "12dd243adbcc198a"
+  },
+  {
+   "module": "ngram_fastmem",
+   "kind": "IMPORT_ELSEWHERE",
+   "fingerprint": "85b3193a0da48888",
+   "content_hash": "d7b2e466522411cb"
+  },
+  {
+   "module": "moe_core",
+   "kind": "IMPORT_ELSEWHERE",
+   "fingerprint": "8395f0bc8c659d5c",
+   "content_hash": "7544103710ed7877"
+  },
+  {
+   "module": "context_injector",
+   "kind": "IMPORT_ELSEWHERE",
+   "fingerprint": "068a730df4a4def8",
+   "content_hash": "fb402e1063679e76"
+  },
+  {
+   "module": "update_agent",
+   "kind": "IMPORT_ELSEWHERE",
+   "fingerprint": "1b0c40a2ab9158a0",
+   "content_hash": "16ea312d9000901f"
+  },
+  {
+   "module": "crawler",
+   "kind": "IMPORT_ELSEWHERE",
+   "fingerprint": "a3cadd2b261a04cd",
+   "content_hash": "50a491268c3e7c07"
+  },
+  {
+   "module": "blackboard",
+   "kind": "IMPORT_ELSEWHERE",
+   "fingerprint": "bed9aeea2f47ba94",
+   "content_hash": "749833f7a1d75cc0"
+  },
+  {
+   "module": "chat_kernels",
+   "kind": "IMPORT_ELSEWHERE",
+   "fingerprint": "a4304d4064a38ddb",
+   "content_hash": "2707a69705f25188"
+  },
+  {
+   "module": "ragnet_mesh_hardened",
+   "kind": "IMPORT_ELSEWHERE",
+   "fingerprint": "d4cbd655d69c164a",
+   "content_hash": "694fcb752349435e"
+  },
+  {
+   "module": "swarm_ragnet_sync",
+   "kind": "IMPORT_ELSEWHERE",
+   "fingerprint": "df850f2db8885529",
+   "content_hash": "a1e0a0ffc138b7c1"
+  },
+  {
+   "module": "aegis_swarm_worker",
+   "kind": "IMPORT_ELSEWHERE",
+   "fingerprint": "070745babf30059e",
+   "content_hash": "5ffdbe16ac3ddc55"
+  },
+  {
+   "module": "swarm_nodes",
+   "kind": "IMPORT_ELSEWHERE",
+   "fingerprint": "bdaa86250660ce8f",
+   "content_hash": "f9883d701af4c68c"
+  },
+  {
+   "module": "swarm_task_poller",
+   "kind": "IMPORT_ELSEWHERE",
+   "fingerprint": "9cb08a1296808aac",
+   "content_hash": "c8ea5542bd53d870"
+  },
+  {
+   "module": "swarm_jobs",
+   "kind": "IMPORT_ELSEWHERE",
+   "fingerprint": "d13c482c5848be21",
+   "content_hash": "5e8700c400cf0c1c"
+  },
+  {
+   "module": "swarm_feature_pages",
+   "kind": "IMPORT_ELSEWHERE",
+   "fingerprint": "02c244df4861e437",
+   "content_hash": "b8056115bcc10fbb"
+  }
+ ],
+ "vm": [
+  {
+   "name": "print_hello",
+   "asm": "load_const r1, 'hello'\nout r1\nhalt\n",
+   "const_extra": [
+    "hello"
+   ],
+   "content_hash": "d0151fda7032ea76",
+   "status": "HALTED",
+   "outs": [
+    "hello"
+   ]
+  },
+  {
+   "name": "import_sophia",
+   "asm": "import r0, 'sophia'\nload_const r1, 'after'\nout r1\nhalt\n",
+   "const_extra": [
+    "sophia",
+    "after"
+   ],
+   "content_hash": "41f35d160c754611",
+   "status": "HALTED",
+   "outs": [
+    "after"
+   ]
+  }
+ ]
+}

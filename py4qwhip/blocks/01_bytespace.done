@@ -1,0 +1,1 @@
+done 2026-10-12T block01 bytespace assembler+disassembler+canonical sha256+validate, selftest 4/4 okamend block01 2026-10-12T: assemble() rewritten two-pass (instruction byte-offset map; jump rel = target_byte - after_byte); C-operand strips matching quotes so const_extra pool dedupes; selftest re-verified 4/4

@@ -1,0 +1,282 @@
+{
+ "summary": {
+  "jobs": 45,
+  "synthesized": 0,
+  "reused": 41,
+  "blocked": 4,
+  "rejected": 0,
+  "errors": []
+ },
+ "ledger": {
+  "MODULE_MISSING:cpuinfo": {
+   "action": "blocked",
+   "id": 8497,
+   "fingerprint": "24f20ab6665078dd",
+   "content_hash": "c7cdf0ec14a37fbe"
+  },
+  "MODULE_MISSING:pytesseract": {
+   "action": "existing",
+   "id": 8626,
+   "fingerprint": "95221ab13557da00",
+   "content_hash": "6af5bc3ea40f61a9"
+  },
+  "MODULE_MISSING:encrypted_wrapper": {
+   "action": "existing",
+   "id": 8627,
+   "fingerprint": "c0ea5219694e91d7",
+   "content_hash": "7d3372f8d377f8e6"
+  },
+  "MODULE_MISSING:archival_agent": {
+   "action": "existing",
+   "id": 8628,
+   "fingerprint": "415f0c2640deb628",
+   "content_hash": "24a017f7630d135d"
+  },
+  "MODULE_MISSING:email_syphon": {
+   "action": "existing",
+   "id": 8629,
+   "fingerprint": "aa97b47b37c89665",
+   "content_hash": "f904eb5e5d85276d"
+  },
+  "MODULE_MISSING:handshake_watcher": {
+   "action": "existing",
+   "id": 8630,
+   "fingerprint": "89cf2e39aa6c453d",
+   "content_hash": "ac8b79434b13c758"
+  },
+  "MODULE_MISSING:headless": {
+   "action": "existing",
+   "id": 8631,
+   "fingerprint": "73b9137a5ebe925d",
+   "content_hash": "462436901a331dec"
+  },
+  "MODULE_MISSING:kai_control_panel": {
+   "action": "existing",
+   "id": 8632,
+   "fingerprint": "820fd6f65a92ea8e",
+   "content_hash": "0f1f36324a358c3d"
+  },
+  "MODULE_MISSING:kai_pedagogy": {
+   "action": "existing",
+   "id": 8633,
+   "fingerprint": "9119e6fc5de1b083",
+   "content_hash": "4fadaae3ab03a009"
+  },
+  "MODULE_MISSING:kai_sync_heartbeat": {
+   "action": "existing",
+   "id": 8634,
+   "fingerprint": "022362235fdbaf71",
+   "content_hash": "6fb30457a2df3811"
+  },
+  "MODULE_MISSING:readme_updater": {
+   "action": "existing",
+   "id": 8635,
+   "fingerprint": "19a5d5c1deb07325",
+   "content_hash": "5247d7d411da1bf6"
+  },
+  "MODULE_MISSING:telemetry_coach": {
+   "action": "existing",
+   "id": 8636,
+   "fingerprint": "673168bae5b1908b",
+   "content_hash": "2daf355038dcdbbf"
+  },
+  "MODULE_MISSING:watchdog_agent": {
+   "action": "existing",
+   "id": 8637,
+   "fingerprint": "652ded1ffa57416d",
+   "content_hash": "0914c8221fc18c86"
+  },
+  "MODULE_MISSING:ctransformers": {
+   "action": "existing",
+   "id": 8638,
+   "fingerprint": "e053f22aa6023f01",
+   "content_hash": "5230c1d1710a4e7d"
+  },
+  "MODULE_MISSING:torchao": {
+   "action": "existing",
+   "id": 8639,
+   "fingerprint": "d17dfdb101b9513f",
+   "content_hash": "27d781666cb45f0e"
+  },
+  "IMPORT_ELSEWHERE:sophia": {
+   "action": "blocked",
+   "id": 8625,
+   "fingerprint": "51094bbbbf30e342",
+   "content_hash": "f6429690119937f4"
+  },
+  "IMPORT_ELSEWHERE:code_finder": {
+   "action": "existing",
+   "id": 8640,
+   "fingerprint": "acaae423816779e1",
+   "content_hash": "edfa44f47c841750"
+  },
+  "IMPORT_ELSEWHERE:agentic_loop_controller": {
+   "action": "existing",
+   "id": 8641,
+   "fingerprint": "4ec1d077a83c1b21",
+   "content_hash": "325ac9e08ccd4d13"
+  },
+  "IMPORT_ELSEWHERE:agent_db": {
+   "action": "existing",
+   "id": 8642,
+   "fingerprint": "f57a5a8e1726cea2",
+   "content_hash": "61fddf711b4796e7"
+  },
+  "IMPORT_ELSEWHERE:nmct_db_manager": {
+   "action": "existing",
+   "id": 8643,
+   "fingerprint": "da50c4ddeb674852",
+   "content_hash": "b23ccfe901123945"
+  },
+  "IMPORT_ELSEWHERE:squigly": {
+   "action": "existing",
+   "id": 8644,
+   "fingerprint": "5e41f83e6048659a",
+   "content_hash": "a646a7a950b4168e"
+  },
+  "IMPORT_ELSEWHERE:genetic_compare": {
+   "action": "existing",
+   "id": 8645,
+   "fingerprint": "da512742e4a3b9c6",
+   "content_hash": "fc45550778b1366e"
+  },
+  "IMPORT_ELSEWHERE:flags": {
+   "action": "existing",
+   "id": 8646,
+   "fingerprint": "989b844b269385fa",
+   "content_hash": "86a6e5baac620914"
+  },
+  "IMPORT_ELSEWHERE:agents": {
+   "action": "blocked",
+   "id": 8642,
+   "fingerprint": "297ca492f74eae02",
+   "content_hash": "811e3bcdc6c5171c"
+  },
+  "IMPORT_ELSEWHERE:extrapolate": {
+   "action": "existing",
+   "id": 8647,
+   "fingerprint": "ca5750393338af98",
+   "content_hash": "d364102cd11647f1"
+  },
+  "IMPORT_ELSEWHERE:grammar": {
+   "action": "existing",
+   "id": 8648,
+   "fingerprint": "ddbdc879991a9dbf",
+   "content_hash": "870c5b0b91fda725"
+  },
+  "IMPORT_ELSEWHERE:main": {
+   "action": "existing",
+   "id": 8649,
+   "fingerprint": "7b0c2dde663817a7",
+   "content_hash": "091fbafaa66b94f8"
+  },
+  "IMPORT_ELSEWHERE:autonomous_loop": {
+   "action": "existing",
+   "id": 8650,
+   "fingerprint": "f26228b03ef07123",
+   "content_hash": "201cf038c59efa26"
+  },
+  "IMPORT_ELSEWHERE:ingest": {
+   "action": "existing",
+   "id": 8651,
+   "fingerprint": "89dc02e73f2fef51",
+   "content_hash": "a18efe1a4cca8d78"
+  },
+  "IMPORT_ELSEWHERE:kaleidoscope_v2": {
+   "action": "existing",
+   "id": 8652,
+   "fingerprint": "ee69cc5f3f991ddc",
+   "content_hash": "76b1aa1135a20e71"
+  },
+  "IMPORT_ELSEWHERE:code_ngram": {
+   "action": "existing",
+   "id": 8653,
+   "fingerprint": "228c307de8ab2c5b",
+   "content_hash": "12dd243adbcc198a"
+  },
+  "IMPORT_ELSEWHERE:ngram_fastmem": {
+   "action": "existing",
+   "id": 8654,
+   "fingerprint": "85b3193a0da48888",
+   "content_hash": "d7b2e466522411cb"
+  },
+  "IMPORT_ELSEWHERE:moe_core": {
+   "action": "existing",
+   "id": 8655,
+   "fingerprint": "8395f0bc8c659d5c",
+   "content_hash": "7544103710ed7877"
+  },
+  "IMPORT_ELSEWHERE:context_injector": {
+   "action": "existing",
+   "id": 8656,
+   "fingerprint": "068a730df4a4def8",
+   "content_hash": "fb402e1063679e76"
+  },
+  "IMPORT_ELSEWHERE:update_agent": {
+   "action": "existing",
+   "id": 8657,
+   "fingerprint": "1b0c40a2ab9158a0",
+   "content_hash": "16ea312d9000901f"
+  },
+  "IMPORT_ELSEWHERE:crawler": {
+   "action": "existing",
+   "id": 8658,
+   "fingerprint": "a3cadd2b261a04cd",
+   "content_hash": "50a491268c3e7c07"
+  },
+  "IMPORT_ELSEWHERE:blackboard": {
+   "action": "existing",
+   "id": 8659,
+   "fingerprint": "bed9aeea2f47ba94",
+   "content_hash": "749833f7a1d75cc0"
+  },
+  "IMPORT_ELSEWHERE:chat_kernels": {
+   "action": "existing",
+   "id": 8660,
+   "fingerprint": "a4304d4064a38ddb",
+   "content_hash": "2707a69705f25188"
+  },
+  "IMPORT_ELSEWHERE:ragnet_mesh_hardened": {
+   "action": "existing",
+   "id": 8661,
+   "fingerprint": "d4cbd655d69c164a",
+   "content_hash": "694fcb752349435e"
+  },
+  "IMPORT_ELSEWHERE:swarm_ragnet_sync": {
+   "action": "existing",
+   "id": 8662,
+   "fingerprint": "df850f2db8885529",
+   "content_hash": "a1e0a0ffc138b7c1"
+  },
+  "IMPORT_ELSEWHERE:aegis_swarm_worker": {
+   "action": "existing",
+   "id": 8663,
+   "fingerprint": "070745babf30059e",
+   "content_hash": "5ffdbe16ac3ddc55"
+  },
+  "IMPORT_ELSEWHERE:swarm_nodes": {
+   "action": "existing",
+   "id": 8664,
+   "fingerprint": "bdaa86250660ce8f",
+   "content_hash": "f9883d701af4c68c"
+  },
+  "IMPORT_ELSEWHERE:swarm_task_poller": {
+   "action": "existing",
+   "id": 8665,
+   "fingerprint": "9cb08a1296808aac",
+   "content_hash": "c8ea5542bd53d870"
+  },
+  "IMPORT_ELSEWHERE:swarm_jobs": {
+   "action": "blocked",
+   "id": 8664,
+   "fingerprint": "d13c482c5848be21",
+   "content_hash": "5e8700c400cf0c1c"
+  },
+  "IMPORT_ELSEWHERE:swarm_feature_pages": {
+   "action": "existing",
+   "id": 8666,
+   "fingerprint": "02c244df4861e437",
+   "content_hash": "b8056115bcc10fbb"
+  }
+ }
+}

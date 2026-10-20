@@ -521,15 +521,19 @@ pub mod c_abi {
         while body_end > 0 && b[body_end - 1] == b'=' { body_end -= 1; }
         if b.len() - body_end >= 3 { return None; }
         let mut out = Vec::with_capacity(b.len() / 4 * 3);
-        for ch in b[..body_end].chunks(4) {
-            let mut acc: u32 = b64_val(ch[0])?;
-            acc = (acc << 6) | b64_val(ch[1])?;
-            let mut n = 1usize;
-            if ch.len() > 2 { acc = (acc << 6) | b64_val(ch[2])?; n += 1; }
-            if ch.len() > 3 { acc = (acc << 6) | b64_val(ch[3])?; n += 1; }
+        let mut i = 0usize;
+        while i < body_end {
+            let take = core::cmp::min(4, body_end - i);
+            if take < 2 { return None; }
+            let v0 = b64_val(b[i])?;
+            let v1 = b64_val(b[i + 1])?;
+            let v2 = if take > 2 { b64_val(b[i + 2])? } else { 0u32 };
+            let v3 = if take > 3 { b64_val(b[i + 3])? } else { 0u32 };
+            let acc: u32 = (v0 << 18) | (v1 << 12) | (v2 << 6) | v3;
             out.push((acc >> 16) as u8);
-            if n > 1 { out.push((acc >> 8) as u8); }
-            if n > 2 { out.push(acc as u8); }
+            if take > 2 { out.push((acc >> 8) as u8); }
+            if take > 3 { out.push(acc as u8); }
+            i += take;
         }
         Some(out)
     }

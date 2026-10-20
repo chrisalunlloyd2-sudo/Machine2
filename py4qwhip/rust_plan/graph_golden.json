@@ -1,0 +1,3367 @@
+{
+ "formula_cases": [
+  {
+   "error": null,
+   "formula": null,
+   "tt": null,
+   "verdict": "TAUTOLOGY",
+   "verdict_tt": null
+  },
+  {
+   "error": null,
+   "formula": "a",
+   "tt": {
+    "atoms": [
+     "a"
+    ],
+    "is_satisfiable": true,
+    "is_tautology": false,
+    "models": 1,
+    "rows": [
+     [
+      [
+       false
+      ],
+      false
+     ],
+     [
+      [
+       true
+      ],
+      true
+     ]
+    ]
+   },
+   "verdict": "SATISFIABLE",
+   "verdict_tt": {
+    "atoms": [
+     "a"
+    ],
+    "is_satisfiable": true,
+    "is_tautology": false,
+    "models": 1,
+    "rows": [
+     [
+      [
+       false
+      ],
+      false
+     ],
+     [
+      [
+       true
+      ],
+      true
+     ]
+    ]
+   }
+  },
+  {
+   "error": null,
+   "formula": "~a | b",
+   "tt": {
+    "atoms": [
+     "a",
+     "b"
+    ],
+    "is_satisfiable": true,
+    "is_tautology": false,
+    "models": 3,
+    "rows": [
+     [
+      [
+       false,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       true
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       true
+      ],
+      true
+     ]
+    ]
+   },
+   "verdict": "SATISFIABLE",
+   "verdict_tt": {
+    "atoms": [
+     "a",
+     "b"
+    ],
+    "is_satisfiable": true,
+    "is_tautology": false,
+    "models": 3,
+    "rows": [
+     [
+      [
+       false,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       true
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       true
+      ],
+      true
+     ]
+    ]
+   }
+  },
+  {
+   "error": null,
+   "formula": "a & b | ~b",
+   "tt": {
+    "atoms": [
+     "a",
+     "b"
+    ],
+    "is_satisfiable": true,
+    "is_tautology": false,
+    "models": 3,
+    "rows": [
+     [
+      [
+       false,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       true
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       true
+      ],
+      true
+     ]
+    ]
+   },
+   "verdict": "SATISFIABLE",
+   "verdict_tt": {
+    "atoms": [
+     "a",
+     "b"
+    ],
+    "is_satisfiable": true,
+    "is_tautology": false,
+    "models": 3,
+    "rows": [
+     [
+      [
+       false,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       true
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       true
+      ],
+      true
+     ]
+    ]
+   }
+  },
+  {
+   "error": null,
+   "formula": "a -> b",
+   "tt": {
+    "atoms": [
+     "a",
+     "b"
+    ],
+    "is_satisfiable": true,
+    "is_tautology": false,
+    "models": 3,
+    "rows": [
+     [
+      [
+       false,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       true
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       true
+      ],
+      true
+     ]
+    ]
+   },
+   "verdict": "SATISFIABLE",
+   "verdict_tt": {
+    "atoms": [
+     "a",
+     "b"
+    ],
+    "is_satisfiable": true,
+    "is_tautology": false,
+    "models": 3,
+    "rows": [
+     [
+      [
+       false,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       true
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       true
+      ],
+      true
+     ]
+    ]
+   }
+  },
+  {
+   "error": null,
+   "formula": "a <-> b",
+   "tt": {
+    "atoms": [
+     "a",
+     "b"
+    ],
+    "is_satisfiable": true,
+    "is_tautology": false,
+    "models": 2,
+    "rows": [
+     [
+      [
+       false,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       true
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       true
+      ],
+      true
+     ]
+    ]
+   },
+   "verdict": "SATISFIABLE",
+   "verdict_tt": {
+    "atoms": [
+     "a",
+     "b"
+    ],
+    "is_satisfiable": true,
+    "is_tautology": false,
+    "models": 2,
+    "rows": [
+     [
+      [
+       false,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       true
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       true
+      ],
+      true
+     ]
+    ]
+   }
+  },
+  {
+   "error": null,
+   "formula": "a & (b | ~c) -> d",
+   "tt": {
+    "atoms": [
+     "a",
+     "b",
+     "c",
+     "d"
+    ],
+    "is_satisfiable": true,
+    "is_tautology": false,
+    "models": 13,
+    "rows": [
+     [
+      [
+       false,
+       false,
+       false,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       false,
+       false,
+       true
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       false,
+       true,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       false,
+       true,
+       true
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       true,
+       false,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       true,
+       false,
+       true
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       true,
+       true,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       true,
+       true,
+       true
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       false,
+       false,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       false,
+       false,
+       true
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       false,
+       true,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       false,
+       true,
+       true
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       true,
+       false,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       true,
+       false,
+       true
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       true,
+       true,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       true,
+       true,
+       true
+      ],
+      true
+     ]
+    ]
+   },
+   "verdict": "SATISFIABLE",
+   "verdict_tt": {
+    "atoms": [
+     "a",
+     "b",
+     "c",
+     "d"
+    ],
+    "is_satisfiable": true,
+    "is_tautology": false,
+    "models": 13,
+    "rows": [
+     [
+      [
+       false,
+       false,
+       false,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       false,
+       false,
+       true
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       false,
+       true,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       false,
+       true,
+       true
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       true,
+       false,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       true,
+       false,
+       true
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       true,
+       true,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       true,
+       true,
+       true
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       false,
+       false,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       false,
+       false,
+       true
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       false,
+       true,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       false,
+       true,
+       true
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       true,
+       false,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       true,
+       false,
+       true
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       true,
+       true,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       true,
+       true,
+       true
+      ],
+      true
+     ]
+    ]
+   }
+  },
+  {
+   "error": null,
+   "formula": "p & ~p",
+   "tt": {
+    "atoms": [
+     "p"
+    ],
+    "is_satisfiable": false,
+    "is_tautology": false,
+    "models": 0,
+    "rows": [
+     [
+      [
+       false
+      ],
+      false
+     ],
+     [
+      [
+       true
+      ],
+      false
+     ]
+    ]
+   },
+   "verdict": "UNSAT",
+   "verdict_tt": {
+    "atoms": [
+     "p"
+    ],
+    "is_satisfiable": false,
+    "is_tautology": false,
+    "models": 0,
+    "rows": [
+     [
+      [
+       false
+      ],
+      false
+     ],
+     [
+      [
+       true
+      ],
+      false
+     ]
+    ]
+   }
+  },
+  {
+   "error": null,
+   "formula": "a | ~a",
+   "tt": {
+    "atoms": [
+     "a"
+    ],
+    "is_satisfiable": true,
+    "is_tautology": true,
+    "models": 2,
+    "rows": [
+     [
+      [
+       false
+      ],
+      true
+     ],
+     [
+      [
+       true
+      ],
+      true
+     ]
+    ]
+   },
+   "verdict": "TAUTOLOGY",
+   "verdict_tt": {
+    "atoms": [
+     "a"
+    ],
+    "is_satisfiable": true,
+    "is_tautology": true,
+    "models": 2,
+    "rows": [
+     [
+      [
+       false
+      ],
+      true
+     ],
+     [
+      [
+       true
+      ],
+      true
+     ]
+    ]
+   }
+  },
+  {
+   "error": null,
+   "formula": "a & ~b",
+   "tt": {
+    "atoms": [
+     "a",
+     "b"
+    ],
+    "is_satisfiable": true,
+    "is_tautology": false,
+    "models": 1,
+    "rows": [
+     [
+      [
+       false,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       false,
+       true
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       true
+      ],
+      false
+     ]
+    ]
+   },
+   "verdict": "SATISFIABLE",
+   "verdict_tt": {
+    "atoms": [
+     "a",
+     "b"
+    ],
+    "is_satisfiable": true,
+    "is_tautology": false,
+    "models": 1,
+    "rows": [
+     [
+      [
+       false,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       false,
+       true
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       true
+      ],
+      false
+     ]
+    ]
+   }
+  },
+  {
+   "error": null,
+   "formula": "a & (b -> c) <-> (~d | e)",
+   "tt": {
+    "atoms": [
+     "a",
+     "b",
+     "c",
+     "d",
+     "e"
+    ],
+    "is_satisfiable": true,
+    "is_tautology": false,
+    "models": 14,
+    "rows": [
+     [
+      [
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       false,
+       false,
+       false,
+       false,
+       true
+      ],
+      false
+     ],
+     [
+      [
+       false,
+       false,
+       false,
+       true,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       false,
+       false,
+       true,
+       true
+      ],
+      false
+     ],
+     [
+      [
+       false,
+       false,
+       true,
+       false,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       false,
+       false,
+       true,
+       false,
+       true
+      ],
+      false
+     ],
+     [
+      [
+       false,
+       false,
+       true,
+       true,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       false,
+       true,
+       true,
+       true
+      ],
+      false
+     ],
+     [
+      [
+       false,
+       true,
+       false,
+       false,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       false,
+       true,
+       false,
+       false,
+       true
+      ],
+      false
+     ],
+     [
+      [
+       false,
+       true,
+       false,
+       true,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       true,
+       false,
+       true,
+       true
+      ],
+      false
+     ],
+     [
+      [
+       false,
+       true,
+       true,
+       false,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       false,
+       true,
+       true,
+       false,
+       true
+      ],
+      false
+     ],
+     [
+      [
+       false,
+       true,
+       true,
+       true,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       true,
+       true,
+       true,
+       true
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       false,
+       false,
+       false,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       false,
+       false,
+       false,
+       true
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       false,
+       false,
+       true,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       false,
+       false,
+       true,
+       true
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       false,
+       true,
+       false,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       false,
+       true,
+       false,
+       true
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       false,
+       true,
+       true,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       false,
+       true,
+       true,
+       true
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       true,
+       false,
+       false,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       true,
+       false,
+       false,
+       true
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       true,
+       false,
+       true,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       true,
+       false,
+       true,
+       true
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       true,
+       true,
+       false,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       true,
+       true,
+       false,
+       true
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       true,
+       true,
+       true,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       true,
+       true,
+       true,
+       true
+      ],
+      true
+     ]
+    ]
+   },
+   "verdict": "SATISFIABLE",
+   "verdict_tt": {
+    "atoms": [
+     "a",
+     "b",
+     "c",
+     "d",
+     "e"
+    ],
+    "is_satisfiable": true,
+    "is_tautology": false,
+    "models": 14,
+    "rows": [
+     [
+      [
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       false,
+       false,
+       false,
+       false,
+       true
+      ],
+      false
+     ],
+     [
+      [
+       false,
+       false,
+       false,
+       true,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       false,
+       false,
+       true,
+       true
+      ],
+      false
+     ],
+     [
+      [
+       false,
+       false,
+       true,
+       false,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       false,
+       false,
+       true,
+       false,
+       true
+      ],
+      false
+     ],
+     [
+      [
+       false,
+       false,
+       true,
+       true,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       false,
+       true,
+       true,
+       true
+      ],
+      false
+     ],
+     [
+      [
+       false,
+       true,
+       false,
+       false,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       false,
+       true,
+       false,
+       false,
+       true
+      ],
+      false
+     ],
+     [
+      [
+       false,
+       true,
+       false,
+       true,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       true,
+       false,
+       true,
+       true
+      ],
+      false
+     ],
+     [
+      [
+       false,
+       true,
+       true,
+       false,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       false,
+       true,
+       true,
+       false,
+       true
+      ],
+      false
+     ],
+     [
+      [
+       false,
+       true,
+       true,
+       true,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       true,
+       true,
+       true,
+       true
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       false,
+       false,
+       false,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       false,
+       false,
+       false,
+       true
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       false,
+       false,
+       true,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       false,
+       false,
+       true,
+       true
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       false,
+       true,
+       false,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       false,
+       true,
+       false,
+       true
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       false,
+       true,
+       true,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       false,
+       true,
+       true,
+       true
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       true,
+       false,
+       false,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       true,
+       false,
+       false,
+       true
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       true,
+       false,
+       true,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       true,
+       false,
+       true,
+       true
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       true,
+       true,
+       false,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       true,
+       true,
+       false,
+       true
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       true,
+       true,
+       true,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       true,
+       true,
+       true,
+       true
+      ],
+      true
+     ]
+    ]
+   }
+  },
+  {
+   "error": null,
+   "formula": "a0 & b_x | ~Y9",
+   "tt": {
+    "atoms": [
+     "Y9",
+     "a0",
+     "b_x"
+    ],
+    "is_satisfiable": true,
+    "is_tautology": false,
+    "models": 5,
+    "rows": [
+     [
+      [
+       false,
+       false,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       false,
+       true
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       true,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       true,
+       true
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       false,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       false,
+       true
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       true,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       true,
+       true
+      ],
+      true
+     ]
+    ]
+   },
+   "verdict": "SATISFIABLE",
+   "verdict_tt": {
+    "atoms": [
+     "Y9",
+     "a0",
+     "b_x"
+    ],
+    "is_satisfiable": true,
+    "is_tautology": false,
+    "models": 5,
+    "rows": [
+     [
+      [
+       false,
+       false,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       false,
+       true
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       true,
+       false
+      ],
+      true
+     ],
+     [
+      [
+       false,
+       true,
+       true
+      ],
+      true
+     ],
+     [
+      [
+       true,
+       false,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       false,
+       true
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       true,
+       false
+      ],
+      false
+     ],
+     [
+      [
+       true,
+       true,
+       true
+      ],
+      true
+     ]
+    ]
+   }
+  },
+  {
+   "error": "mismatched parens",
+   "formula": "((a",
+   "tt": null,
+   "verdict": "ERROR",
+   "verdict_tt": "mismatched parens"
+  },
+  {
+   "error": "mismatched parens",
+   "formula": "a)",
+   "tt": null,
+   "verdict": "ERROR",
+   "verdict_tt": "mismatched parens"
+  },
+  {
+   "error": "malformed formula 'a & & b': pop from empty list",
+   "formula": "a & & b",
+   "tt": null,
+   "verdict": "ERROR",
+   "verdict_tt": "malformed formula 'a & & b': pop from empty list"
+  },
+  {
+   "error": "malformed formula '~': pop from empty list",
+   "formula": "~",
+   "tt": null,
+   "verdict": "ERROR",
+   "verdict_tt": "malformed formula '~': pop from empty list"
+  },
+  {
+   "error": "malformed formula '': list index out of range",
+   "formula": "",
+   "tt": null,
+   "verdict": "ERROR",
+   "verdict_tt": "malformed formula '': list index out of range"
+  },
+  {
+   "error": "unexpected char '@' at 2 in 'a @ b'",
+   "formula": "a @ b",
+   "tt": null,
+   "verdict": "ERROR",
+   "verdict_tt": "unexpected char '@' at 2 in 'a @ b'"
+  },
+  {
+   "error": "unexpected char '1' at 0 in '1'",
+   "formula": "1",
+   "tt": null,
+   "verdict": "ERROR",
+   "verdict_tt": "unexpected char '1' at 0 in '1'"
+  }
+ ],
+ "generator": "pq05_golden_gen_v3.py",
+ "graph_cases": [
+  {
+   "edges": [
+    [
+     "RUNNING",
+     "step_ok",
+     "RUNNING",
+     null
+    ],
+    [
+     "RUNNING",
+     "halt_or_ret_or_pc_end",
+     "HALTED",
+     null
+    ],
+    [
+     "RUNNING",
+     "vmerror_or_trap_or_step_limit",
+     "FAULT",
+     null
+    ],
+    [
+     "RUNNING",
+     "import_op",
+     "SYNTH_PENDING",
+     null
+    ],
+    [
+     "SYNTH_PENDING",
+     "resolved",
+     "RUNNING",
+     null
+    ],
+    [
+     "SYNTH_PENDING",
+     "retry_exhausted",
+     "FAULT",
+     null
+    ]
+   ],
+   "name": "vm_status",
+   "ops": [
+    {
+     "args": {
+      "goals": [
+       "HALTED",
+       "FAULT"
+      ]
+     },
+     "error": null,
+     "op": "audit",
+     "posargs": [],
+     "result": {
+      "deadlock": {
+       "counterexample": null,
+       "deadlock_states": [],
+       "holds": true,
+       "property": "deadlock-freedom"
+      },
+      "liveness": {
+       "counterexample": null,
+       "holds": true,
+       "property": "liveness",
+       "terminals": [
+        "FAULT",
+        "HALTED"
+       ],
+       "violations": []
+      },
+      "termination": {
+       "counterexample": {
+        "event": "step_ok",
+        "from": "RUNNING",
+        "guard": null,
+        "to": "RUNNING"
+       },
+       "cycles": [
+        [
+         {
+          "event": "step_ok",
+          "from": "RUNNING",
+          "guard": null,
+          "to": "RUNNING"
+         }
+        ],
+        [
+         {
+          "event": "import_op",
+          "from": "RUNNING",
+          "guard": null,
+          "to": "SYNTH_PENDING"
+         },
+         {
+          "event": "resolved",
+          "from": "SYNTH_PENDING",
+          "guard": null,
+          "to": "RUNNING"
+         }
+        ]
+       ],
+       "holds": false,
+       "livelock_cycles": [
+        [
+         {
+          "event": "step_ok",
+          "from": "RUNNING",
+          "guard": null,
+          "to": "RUNNING"
+         }
+        ],
+        [
+         {
+          "event": "import_op",
+          "from": "RUNNING",
+          "guard": null,
+          "to": "SYNTH_PENDING"
+         },
+         {
+          "event": "resolved",
+          "from": "SYNTH_PENDING",
+          "guard": null,
+          "to": "RUNNING"
+         }
+        ]
+       ],
+       "note": "no-goal termination requires an acyclic graph; with goals, cycles that never pass a goal are livelocks (need runtime bounded counters), cycles that pass a goal are task-cycles where each loop completes a unit of work.",
+       "property": "termination",
+       "ranks": {
+        "FAULT": 0,
+        "HALTED": 0,
+        "RUNNING": 1,
+        "SYNTH_PENDING": 1
+       },
+       "task_cycles": [],
+       "watch": [
+        {
+         "event": "step_ok",
+         "from": "RUNNING",
+         "rank_from": 1,
+         "rank_to": 1,
+         "to": "RUNNING"
+        },
+        {
+         "event": "import_op",
+         "from": "RUNNING",
+         "rank_from": 1,
+         "rank_to": 1,
+         "to": "SYNTH_PENDING"
+        },
+        {
+         "event": "resolved",
+         "from": "SYNTH_PENDING",
+         "rank_from": 1,
+         "rank_to": 1,
+         "to": "RUNNING"
+        }
+       ]
+      },
+      "total_correctness": {
+       "counterexample": {
+        "event": "step_ok",
+        "from": "RUNNING",
+        "guard": null,
+        "to": "RUNNING"
+       },
+       "deadlock": true,
+       "goals": [
+        "HALTED",
+        "FAULT"
+       ],
+       "holds": false,
+       "liveness": true,
+       "property": "total-correctness",
+       "termination": false
+      }
+     }
+    },
+    {
+     "args": {
+      "start": "RUNNING"
+     },
+     "error": null,
+     "op": "verify_path",
+     "posargs": [
+      "HALTED"
+     ],
+     "result": {
+      "blocked": null,
+      "path": [
+       {
+        "event": "halt_or_ret_or_pc_end",
+        "from": "RUNNING",
+        "guard": null,
+        "to": "HALTED"
+       }
+      ],
+      "proofs": [
+       {
+        "event": "halt_or_ret_or_pc_end",
+        "from": "RUNNING",
+        "guard": null,
+        "to": "HALTED",
+        "verdict": "TAUTOLOGY"
+       }
+      ],
+      "reachable": true,
+      "reason": null
+     }
+    },
+    {
+     "args": {
+      "start": "RUNNING"
+     },
+     "error": null,
+     "op": "verify_path",
+     "posargs": [
+      "FAULT"
+     ],
+     "result": {
+      "blocked": null,
+      "path": [
+       {
+        "event": "vmerror_or_trap_or_step_limit",
+        "from": "RUNNING",
+        "guard": null,
+        "to": "FAULT"
+       }
+      ],
+      "proofs": [
+       {
+        "event": "vmerror_or_trap_or_step_limit",
+        "from": "RUNNING",
+        "guard": null,
+        "to": "FAULT",
+        "verdict": "TAUTOLOGY"
+       }
+      ],
+      "reachable": true,
+      "reason": null
+     }
+    },
+    {
+     "args": {
+      "goals": [
+       "HALTED",
+       "FAULT"
+      ]
+     },
+     "error": null,
+     "op": "prove_exit",
+     "posargs": [],
+     "result": {
+      "all_reachable": true,
+      "goals": [
+       "HALTED",
+       "FAULT"
+      ],
+      "results": {
+       "FAULT": {
+        "blocked": null,
+        "path": [
+         {
+          "event": "vmerror_or_trap_or_step_limit",
+          "from": "RUNNING",
+          "guard": null,
+          "to": "FAULT"
+         }
+        ],
+        "proofs": [
+         {
+          "event": "vmerror_or_trap_or_step_limit",
+          "from": "RUNNING",
+          "guard": null,
+          "to": "FAULT",
+          "verdict": "TAUTOLOGY"
+         }
+        ],
+        "reachable": true,
+        "reason": null
+       },
+       "HALTED": {
+        "blocked": null,
+        "path": [
+         {
+          "event": "halt_or_ret_or_pc_end",
+          "from": "RUNNING",
+          "guard": null,
+          "to": "HALTED"
+         }
+        ],
+        "proofs": [
+         {
+          "event": "halt_or_ret_or_pc_end",
+          "from": "RUNNING",
+          "guard": null,
+          "to": "HALTED",
+          "verdict": "TAUTOLOGY"
+         }
+        ],
+        "reachable": true,
+        "reason": null
+       }
+      },
+      "start": "RUNNING",
+      "summary": {
+       "FAULT": true,
+       "HALTED": true
+      }
+     }
+    },
+    {
+     "args": {
+      "terminals": [
+       "HALTED",
+       "FAULT"
+      ]
+     },
+     "error": null,
+     "op": "deadlock",
+     "posargs": [],
+     "result": {
+      "counterexample": null,
+      "deadlock_states": [],
+      "holds": true,
+      "property": "deadlock-freedom"
+     }
+    },
+    {
+     "args": {
+      "terminals": [
+       "HALTED",
+       "FAULT"
+      ]
+     },
+     "error": null,
+     "op": "liveness",
+     "posargs": [],
+     "result": {
+      "counterexample": null,
+      "holds": true,
+      "property": "liveness",
+      "terminals": [
+       "FAULT",
+       "HALTED"
+      ],
+      "violations": []
+     }
+    },
+    {
+     "args": {},
+     "error": null,
+     "op": "liveness",
+     "posargs": [],
+     "result": {
+      "counterexample": null,
+      "holds": true,
+      "property": "liveness",
+      "terminals": [
+       "FAULT",
+       "HALTED"
+      ],
+      "violations": []
+     }
+    },
+    {
+     "args": {},
+     "error": null,
+     "op": "termination",
+     "posargs": [],
+     "result": {
+      "counterexample": {
+       "event": "step_ok",
+       "from": "RUNNING",
+       "guard": null,
+       "to": "RUNNING"
+      },
+      "cycles": [
+       [
+        {
+         "event": "step_ok",
+         "from": "RUNNING",
+         "guard": null,
+         "to": "RUNNING"
+        }
+       ],
+       [
+        {
+         "event": "import_op",
+         "from": "RUNNING",
+         "guard": null,
+         "to": "SYNTH_PENDING"
+        },
+        {
+         "event": "resolved",
+         "from": "SYNTH_PENDING",
+         "guard": null,
+         "to": "RUNNING"
+        }
+       ]
+      ],
+      "holds": false,
+      "livelock_cycles": [
+       [
+        {
+         "event": "step_ok",
+         "from": "RUNNING",
+         "guard": null,
+         "to": "RUNNING"
+        }
+       ],
+       [
+        {
+         "event": "import_op",
+         "from": "RUNNING",
+         "guard": null,
+         "to": "SYNTH_PENDING"
+        },
+        {
+         "event": "resolved",
+         "from": "SYNTH_PENDING",
+         "guard": null,
+         "to": "RUNNING"
+        }
+       ]
+      ],
+      "note": "no-goal termination requires an acyclic graph; with goals, cycles that never pass a goal are livelocks (need runtime bounded counters), cycles that pass a goal are task-cycles where each loop completes a unit of work.",
+      "property": "termination",
+      "ranks": {
+       "FAULT": 0,
+       "HALTED": 0,
+       "RUNNING": 1,
+       "SYNTH_PENDING": 1
+      },
+      "task_cycles": [],
+      "watch": [
+       {
+        "event": "step_ok",
+        "from": "RUNNING",
+        "rank_from": 1,
+        "rank_to": 1,
+        "to": "RUNNING"
+       },
+       {
+        "event": "import_op",
+        "from": "RUNNING",
+        "rank_from": 1,
+        "rank_to": 1,
+        "to": "SYNTH_PENDING"
+       },
+       {
+        "event": "resolved",
+        "from": "SYNTH_PENDING",
+        "rank_from": 1,
+        "rank_to": 1,
+        "to": "RUNNING"
+       }
+      ]
+     }
+    }
+   ],
+   "state": "RUNNING"
+  },
+  {
+   "edges": [
+    [
+     "IDLE",
+     "go",
+     "WORK",
+     "ready"
+    ],
+    [
+     "WORK",
+     "done",
+     "DONE",
+     null
+    ],
+    [
+     "WORK",
+     "skip",
+     "IDLE",
+     null
+    ],
+    [
+     "WORK",
+     "back",
+     "WORK",
+     null
+    ],
+    [
+     "IDLE",
+     "blocked",
+     "NOGO",
+     "p & ~p"
+    ],
+    [
+     "NOGO",
+     "wake",
+     "WORK",
+     "ready"
+    ]
+   ],
+   "name": "guarded_loop",
+   "ops": [
+    {
+     "args": {
+      "terminals": [
+       "DONE"
+      ]
+     },
+     "error": null,
+     "op": "deadlock",
+     "posargs": [],
+     "result": {
+      "counterexample": null,
+      "deadlock_states": [],
+      "holds": true,
+      "property": "deadlock-freedom"
+     }
+    },
+    {
+     "args": {
+      "goals": [
+       "DONE"
+      ]
+     },
+     "error": null,
+     "op": "liveness",
+     "posargs": [],
+     "result": {
+      "counterexample": null,
+      "holds": true,
+      "property": "liveness",
+      "terminals": [
+       "DONE"
+      ],
+      "violations": []
+     }
+    },
+    {
+     "args": {
+      "goals": [
+       "DONE"
+      ]
+     },
+     "error": null,
+     "op": "termination",
+     "posargs": [],
+     "result": {
+      "counterexample": {
+       "event": "go",
+       "from": "IDLE",
+       "guard": "ready",
+       "to": "WORK"
+      },
+      "cycles": [
+       [
+        {
+         "event": "go",
+         "from": "IDLE",
+         "guard": "ready",
+         "to": "WORK"
+        },
+        {
+         "event": "skip",
+         "from": "WORK",
+         "guard": null,
+         "to": "IDLE"
+        }
+       ],
+       [
+        {
+         "event": "back",
+         "from": "WORK",
+         "guard": null,
+         "to": "WORK"
+        }
+       ]
+      ],
+      "holds": false,
+      "livelock_cycles": [
+       [
+        {
+         "event": "go",
+         "from": "IDLE",
+         "guard": "ready",
+         "to": "WORK"
+        },
+        {
+         "event": "skip",
+         "from": "WORK",
+         "guard": null,
+         "to": "IDLE"
+        }
+       ],
+       [
+        {
+         "event": "back",
+         "from": "WORK",
+         "guard": null,
+         "to": "WORK"
+        }
+       ]
+      ],
+      "note": "no-goal termination requires an acyclic graph; with goals, cycles that never pass a goal are livelocks (need runtime bounded counters), cycles that pass a goal are task-cycles where each loop completes a unit of work.",
+      "property": "termination",
+      "ranks": {
+       "DONE": 0,
+       "IDLE": 2,
+       "NOGO": 2,
+       "WORK": 1
+      },
+      "task_cycles": [],
+      "watch": [
+       {
+        "event": "blocked",
+        "from": "IDLE",
+        "rank_from": 2,
+        "rank_to": 2,
+        "to": "NOGO"
+       },
+       {
+        "event": "skip",
+        "from": "WORK",
+        "rank_from": 1,
+        "rank_to": 2,
+        "to": "IDLE"
+       },
+       {
+        "event": "back",
+        "from": "WORK",
+        "rank_from": 1,
+        "rank_to": 1,
+        "to": "WORK"
+       }
+      ]
+     }
+    },
+    {
+     "args": {
+      "start": "IDLE"
+     },
+     "error": null,
+     "op": "verify_path",
+     "posargs": [
+      "DONE"
+     ],
+     "result": {
+      "blocked": null,
+      "path": [
+       {
+        "event": "go",
+        "from": "IDLE",
+        "guard": "ready",
+        "to": "WORK"
+       },
+       {
+        "event": "done",
+        "from": "WORK",
+        "guard": null,
+        "to": "DONE"
+       }
+      ],
+      "proofs": [
+       {
+        "event": "go",
+        "from": "IDLE",
+        "guard": "ready",
+        "models": 1,
+        "to": "WORK",
+        "verdict": "SATISFIABLE"
+       },
+       {
+        "event": "done",
+        "from": "WORK",
+        "guard": null,
+        "to": "DONE",
+        "verdict": "TAUTOLOGY"
+       }
+      ],
+      "reachable": true,
+      "reason": null
+     }
+    },
+    {
+     "args": {
+      "start": "IDLE"
+     },
+     "error": null,
+     "op": "verify_path",
+     "posargs": [
+      "NOGO"
+     ],
+     "result": {
+      "blocked": {
+       "event": "blocked",
+       "from": "IDLE",
+       "guard": "p & ~p",
+       "models": 0,
+       "to": "NOGO",
+       "verdict": "UNSAT"
+      },
+      "path": [
+       {
+        "event": "blocked",
+        "from": "IDLE",
+        "guard": "p & ~p",
+        "to": "NOGO"
+       }
+      ],
+      "proofs": [
+       {
+        "event": "blocked",
+        "from": "IDLE",
+        "guard": "p & ~p",
+        "models": 0,
+        "to": "NOGO",
+        "verdict": "UNSAT"
+       }
+      ],
+      "reachable": false,
+      "reason": "edge IDLE -blocked-> NOGO guard 'p & ~p' is UNSAT (no model)"
+     }
+    },
+    {
+     "args": {
+      "goals": [
+       "DONE"
+      ],
+      "start": "IDLE"
+     },
+     "error": null,
+     "op": "prove_exit",
+     "posargs": [],
+     "result": {
+      "all_reachable": true,
+      "goals": [
+       "DONE"
+      ],
+      "results": {
+       "DONE": {
+        "blocked": null,
+        "path": [
+         {
+          "event": "go",
+          "from": "IDLE",
+          "guard": "ready",
+          "to": "WORK"
+         },
+         {
+          "event": "done",
+          "from": "WORK",
+          "guard": null,
+          "to": "DONE"
+         }
+        ],
+        "proofs": [
+         {
+          "event": "go",
+          "from": "IDLE",
+          "guard": "ready",
+          "models": 1,
+          "to": "WORK",
+          "verdict": "SATISFIABLE"
+         },
+         {
+          "event": "done",
+          "from": "WORK",
+          "guard": null,
+          "to": "DONE",
+          "verdict": "TAUTOLOGY"
+         }
+        ],
+        "reachable": true,
+        "reason": null
+       }
+      },
+      "start": "IDLE",
+      "summary": {
+       "DONE": true
+      }
+     }
+    },
+    {
+     "args": {
+      "terminals": [
+       "DONE"
+      ]
+     },
+     "error": null,
+     "op": "audit",
+     "posargs": [],
+     "result": {
+      "deadlock": {
+       "counterexample": null,
+       "deadlock_states": [],
+       "holds": true,
+       "property": "deadlock-freedom"
+      },
+      "liveness": {
+       "counterexample": null,
+       "holds": true,
+       "property": "liveness",
+       "terminals": [
+        "DONE"
+       ],
+       "violations": []
+      },
+      "termination": {
+       "counterexample": {
+        "event": "go",
+        "from": "IDLE",
+        "guard": "ready",
+        "to": "WORK"
+       },
+       "cycles": [
+        [
+         {
+          "event": "go",
+          "from": "IDLE",
+          "guard": "ready",
+          "to": "WORK"
+         },
+         {
+          "event": "skip",
+          "from": "WORK",
+          "guard": null,
+          "to": "IDLE"
+         }
+        ],
+        [
+         {
+          "event": "back",
+          "from": "WORK",
+          "guard": null,
+          "to": "WORK"
+         }
+        ]
+       ],
+       "holds": false,
+       "livelock_cycles": [
+        [
+         {
+          "event": "go",
+          "from": "IDLE",
+          "guard": "ready",
+          "to": "WORK"
+         },
+         {
+          "event": "skip",
+          "from": "WORK",
+          "guard": null,
+          "to": "IDLE"
+         }
+        ],
+        [
+         {
+          "event": "back",
+          "from": "WORK",
+          "guard": null,
+          "to": "WORK"
+         }
+        ]
+       ],
+       "note": "no-goal termination requires an acyclic graph; with goals, cycles that never pass a goal are livelocks (need runtime bounded counters), cycles that pass a goal are task-cycles where each loop completes a unit of work.",
+       "property": "termination",
+       "ranks": {
+        "DONE": 0,
+        "IDLE": 2,
+        "NOGO": 2,
+        "WORK": 1
+       },
+       "task_cycles": [],
+       "watch": [
+        {
+         "event": "blocked",
+         "from": "IDLE",
+         "rank_from": 2,
+         "rank_to": 2,
+         "to": "NOGO"
+        },
+        {
+         "event": "skip",
+         "from": "WORK",
+         "rank_from": 1,
+         "rank_to": 2,
+         "to": "IDLE"
+        },
+        {
+         "event": "back",
+         "from": "WORK",
+         "rank_from": 1,
+         "rank_to": 1,
+         "to": "WORK"
+        }
+       ]
+      },
+      "total_correctness": {
+       "counterexample": {
+        "event": "go",
+        "from": "IDLE",
+        "guard": "ready",
+        "to": "WORK"
+       },
+       "deadlock": true,
+       "goals": [],
+       "holds": false,
+       "liveness": true,
+       "property": "total-correctness",
+       "termination": false
+      }
+     }
+    }
+   ],
+   "state": "IDLE"
+  },
+  {
+   "edges": [
+    [
+     "A",
+     "go",
+     "B",
+     "p & ~p"
+    ]
+   ],
+   "name": "unsat_blocked",
+   "ops": [
+    {
+     "args": {},
+     "error": null,
+     "op": "deadlock",
+     "posargs": [],
+     "result": {
+      "counterexample": {
+       "cause": "all_guards_unsat",
+       "edges": [
+        {
+         "event": "go",
+         "guard": "p & ~p",
+         "to": "B"
+        }
+       ],
+       "state": "A"
+      },
+      "deadlock_states": [
+       {
+        "cause": "all_guards_unsat",
+        "edges": [
+         {
+          "event": "go",
+          "guard": "p & ~p",
+          "to": "B"
+         }
+        ],
+        "state": "A"
+       }
+      ],
+      "holds": false,
+      "property": "deadlock-freedom"
+     }
+    },
+    {
+     "args": {},
+     "error": null,
+     "op": "liveness",
+     "posargs": [],
+     "result": {
+      "counterexample": {
+       "reason": "all paths to a terminal pass an UNSAT guard",
+       "state": "A"
+      },
+      "holds": false,
+      "property": "liveness",
+      "terminals": [
+       "B"
+      ],
+      "violations": [
+       {
+        "reason": "all paths to a terminal pass an UNSAT guard",
+        "state": "A"
+       }
+      ]
+     }
+    },
+    {
+     "args": {
+      "start": "A"
+     },
+     "error": null,
+     "op": "verify_path",
+     "posargs": [
+      "B"
+     ],
+     "result": {
+      "blocked": {
+       "event": "go",
+       "from": "A",
+       "guard": "p & ~p",
+       "models": 0,
+       "to": "B",
+       "verdict": "UNSAT"
+      },
+      "path": [
+       {
+        "event": "go",
+        "from": "A",
+        "guard": "p & ~p",
+        "to": "B"
+       }
+      ],
+      "proofs": [
+       {
+        "event": "go",
+        "from": "A",
+        "guard": "p & ~p",
+        "models": 0,
+        "to": "B",
+        "verdict": "UNSAT"
+       }
+      ],
+      "reachable": false,
+      "reason": "edge A -go-> B guard 'p & ~p' is UNSAT (no model)"
+     }
+    },
+    {
+     "args": {},
+     "error": null,
+     "op": "termination",
+     "posargs": [],
+     "result": {
+      "counterexample": null,
+      "cycles": [],
+      "holds": true,
+      "livelock_cycles": [],
+      "note": "no-goal termination requires an acyclic graph; with goals, cycles that never pass a goal are livelocks (need runtime bounded counters), cycles that pass a goal are task-cycles where each loop completes a unit of work.",
+      "property": "termination",
+      "ranks": {
+       "A": 1,
+       "B": 0
+      },
+      "task_cycles": [],
+      "watch": []
+     }
+    }
+   ],
+   "state": "A"
+  },
+  {
+   "edges": [
+    [
+     "RUNNING",
+     "tick",
+     "RUNNING",
+     "go"
+    ]
+   ],
+   "name": "no_terminals",
+   "ops": [
+    {
+     "args": {},
+     "error": null,
+     "op": "liveness",
+     "posargs": [],
+     "result": {
+      "counterexample": {
+       "reason": "no terminal states exist",
+       "state": "RUNNING"
+      },
+      "holds": false,
+      "property": "liveness"
+     }
+    },
+    {
+     "args": {},
+     "error": null,
+     "op": "prove_exit",
+     "posargs": [],
+     "result": {
+      "all_reachable": false,
+      "goals": [],
+      "reason": "no terminal states exist (cyclic control loop); call prove_exit(goals=[...]) with explicit success states",
+      "results": {},
+      "start": "RUNNING",
+      "summary": {}
+     }
+    },
+    {
+     "args": {
+      "terminals": []
+     },
+     "error": null,
+     "op": "deadlock",
+     "posargs": [],
+     "result": {
+      "counterexample": null,
+      "deadlock_states": [],
+      "holds": true,
+      "property": "deadlock-freedom"
+     }
+    },
+    {
+     "args": {},
+     "error": null,
+     "op": "termination",
+     "posargs": [],
+     "result": {
+      "counterexample": {
+       "event": "tick",
+       "from": "RUNNING",
+       "guard": "go",
+       "to": "RUNNING"
+      },
+      "cycles": [
+       [
+        {
+         "event": "tick",
+         "from": "RUNNING",
+         "guard": "go",
+         "to": "RUNNING"
+        }
+       ]
+      ],
+      "holds": false,
+      "livelock_cycles": [
+       [
+        {
+         "event": "tick",
+         "from": "RUNNING",
+         "guard": "go",
+         "to": "RUNNING"
+        }
+       ]
+      ],
+      "note": "no-goal termination requires an acyclic graph; with goals, cycles that never pass a goal are livelocks (need runtime bounded counters), cycles that pass a goal are task-cycles where each loop completes a unit of work.",
+      "property": "termination",
+      "ranks": {
+       "RUNNING": 2
+      },
+      "task_cycles": [],
+      "watch": [
+       {
+        "event": "tick",
+        "from": "RUNNING",
+        "rank_from": 2,
+        "rank_to": 2,
+        "to": "RUNNING"
+       }
+      ]
+     }
+    },
+    {
+     "args": {},
+     "error": null,
+     "op": "audit",
+     "posargs": [],
+     "result": {
+      "deadlock": {
+       "counterexample": null,
+       "deadlock_states": [],
+       "holds": true,
+       "property": "deadlock-freedom"
+      },
+      "liveness": {
+       "counterexample": {
+        "reason": "no terminal states exist",
+        "state": "RUNNING"
+       },
+       "holds": false,
+       "property": "liveness"
+      },
+      "termination": {
+       "counterexample": {
+        "event": "tick",
+        "from": "RUNNING",
+        "guard": "go",
+        "to": "RUNNING"
+       },
+       "cycles": [
+        [
+         {
+          "event": "tick",
+          "from": "RUNNING",
+          "guard": "go",
+          "to": "RUNNING"
+         }
+        ]
+       ],
+       "holds": false,
+       "livelock_cycles": [
+        [
+         {
+          "event": "tick",
+          "from": "RUNNING",
+          "guard": "go",
+          "to": "RUNNING"
+         }
+        ]
+       ],
+       "note": "no-goal termination requires an acyclic graph; with goals, cycles that never pass a goal are livelocks (need runtime bounded counters), cycles that pass a goal are task-cycles where each loop completes a unit of work.",
+       "property": "termination",
+       "ranks": {
+        "RUNNING": 2
+       },
+       "task_cycles": [],
+       "watch": [
+        {
+         "event": "tick",
+         "from": "RUNNING",
+         "rank_from": 2,
+         "rank_to": 2,
+         "to": "RUNNING"
+        }
+       ]
+      },
+      "total_correctness": {
+       "counterexample": {
+        "reason": "no terminal states exist",
+        "state": "RUNNING"
+       },
+       "deadlock": true,
+       "goals": [],
+       "holds": false,
+       "liveness": false,
+       "property": "total-correctness",
+       "termination": false
+      }
+     }
+    }
+   ],
+   "state": "RUNNING"
+  },
+  {
+   "edges": [
+    [
+     "A",
+     "e1",
+     "B",
+     "x | y"
+    ],
+    [
+     "B",
+     "e2",
+     "C",
+     null
+    ],
+    [
+     "C",
+     "e3",
+     "B",
+     null
+    ]
+   ],
+   "name": "paths",
+   "ops": [
+    {
+     "args": {
+      "max_depth": 1,
+      "start": "A"
+     },
+     "error": null,
+     "op": "verify_path",
+     "posargs": [
+      "C"
+     ],
+     "result": {
+      "blocked": null,
+      "path": null,
+      "proofs": [],
+      "reachable": false,
+      "reason": "no path in state graph"
+     }
+    },
+    {
+     "args": {
+      "start": "A"
+     },
+     "error": null,
+     "op": "verify_path",
+     "posargs": [
+      "C"
+     ],
+     "result": {
+      "blocked": null,
+      "path": [
+       {
+        "event": "e1",
+        "from": "A",
+        "guard": "x | y",
+        "to": "B"
+       },
+       {
+        "event": "e2",
+        "from": "B",
+        "guard": null,
+        "to": "C"
+       }
+      ],
+      "proofs": [
+       {
+        "event": "e1",
+        "from": "A",
+        "guard": "x | y",
+        "models": 3,
+        "to": "B",
+        "verdict": "SATISFIABLE"
+       },
+       {
+        "event": "e2",
+        "from": "B",
+        "guard": null,
+        "to": "C",
+        "verdict": "TAUTOLOGY"
+       }
+      ],
+      "reachable": true,
+      "reason": null
+     }
+    },
+    {
+     "args": {},
+     "error": null,
+     "op": "verify_path",
+     "posargs": [
+      "C"
+     ],
+     "result": {
+      "blocked": null,
+      "path": [
+       {
+        "event": "e1",
+        "from": "A",
+        "guard": "x | y",
+        "to": "B"
+       },
+       {
+        "event": "e2",
+        "from": "B",
+        "guard": null,
+        "to": "C"
+       }
+      ],
+      "proofs": [
+       {
+        "event": "e1",
+        "from": "A",
+        "guard": "x | y",
+        "models": 3,
+        "to": "B",
+        "verdict": "SATISFIABLE"
+       },
+       {
+        "event": "e2",
+        "from": "B",
+        "guard": null,
+        "to": "C",
+        "verdict": "TAUTOLOGY"
+       }
+      ],
+      "reachable": true,
+      "reason": null
+     }
+    },
+    {
+     "args": {
+      "start": "C"
+     },
+     "error": null,
+     "op": "verify_path",
+     "posargs": [
+      "C"
+     ],
+     "result": {
+      "blocked": null,
+      "path": [],
+      "proofs": [],
+      "reachable": true,
+      "reason": null
+     }
+    },
+    {
+     "args": {
+      "start": "A"
+     },
+     "error": null,
+     "op": "path_to",
+     "posargs": [
+      "C"
+     ],
+     "result": [
+      {
+       "event": "e1",
+       "from": "A",
+       "guard": "x | y",
+       "to": "B"
+      },
+      {
+       "event": "e2",
+       "from": "B",
+       "guard": null,
+       "to": "C"
+      }
+     ]
+    },
+    {
+     "args": {
+      "goals": [
+       "C"
+      ],
+      "start": "A"
+     },
+     "error": null,
+     "op": "prove_exit",
+     "posargs": [],
+     "result": {
+      "all_reachable": true,
+      "goals": [
+       "C"
+      ],
+      "results": {
+       "C": {
+        "blocked": null,
+        "path": [
+         {
+          "event": "e1",
+          "from": "A",
+          "guard": "x | y",
+          "to": "B"
+         },
+         {
+          "event": "e2",
+          "from": "B",
+          "guard": null,
+          "to": "C"
+         }
+        ],
+        "proofs": [
+         {
+          "event": "e1",
+          "from": "A",
+          "guard": "x | y",
+          "models": 3,
+          "to": "B",
+          "verdict": "SATISFIABLE"
+         },
+         {
+          "event": "e2",
+          "from": "B",
+          "guard": null,
+          "to": "C",
+          "verdict": "TAUTOLOGY"
+         }
+        ],
+        "reachable": true,
+        "reason": null
+       }
+      },
+      "start": "A",
+      "summary": {
+       "C": true
+      }
+     }
+    }
+   ],
+   "state": "A"
+  },
+  {
+   "edges": [
+    [
+     "S",
+     "e",
+     "T",
+     "~q"
+    ]
+   ],
+   "name": "unsat_only",
+   "ops": [
+    {
+     "args": {},
+     "error": null,
+     "op": "deadlock",
+     "posargs": [],
+     "result": {
+      "counterexample": null,
+      "deadlock_states": [],
+      "holds": true,
+      "property": "deadlock-freedom"
+     }
+    },
+    {
+     "args": {},
+     "error": null,
+     "op": "liveness",
+     "posargs": [],
+     "result": {
+      "counterexample": null,
+      "holds": true,
+      "property": "liveness",
+      "terminals": [
+       "T"
+      ],
+      "violations": []
+     }
+    },
+    {
+     "args": {},
+     "error": null,
+     "op": "termination",
+     "posargs": [],
+     "result": {
+      "counterexample": null,
+      "cycles": [],
+      "holds": true,
+      "livelock_cycles": [],
+      "note": "no-goal termination requires an acyclic graph; with goals, cycles that never pass a goal are livelocks (need runtime bounded counters), cycles that pass a goal are task-cycles where each loop completes a unit of work.",
+      "property": "termination",
+      "ranks": {
+       "S": 1,
+       "T": 0
+      },
+      "task_cycles": [],
+      "watch": []
+     }
+    },
+    {
+     "args": {
+      "goals": [
+       "T"
+      ]
+     },
+     "error": null,
+     "op": "total",
+     "posargs": [],
+     "result": {
+      "counterexample": null,
+      "deadlock": true,
+      "goals": [
+       "T"
+      ],
+      "holds": true,
+      "liveness": true,
+      "property": "total-correctness",
+      "termination": true
+     }
+    },
+    {
+     "args": {},
+     "error": null,
+     "op": "audit",
+     "posargs": [],
+     "result": {
+      "deadlock": {
+       "counterexample": null,
+       "deadlock_states": [],
+       "holds": true,
+       "property": "deadlock-freedom"
+      },
+      "liveness": {
+       "counterexample": null,
+       "holds": true,
+       "property": "liveness",
+       "terminals": [
+        "T"
+       ],
+       "violations": []
+      },
+      "termination": {
+       "counterexample": null,
+       "cycles": [],
+       "holds": true,
+       "livelock_cycles": [],
+       "note": "no-goal termination requires an acyclic graph; with goals, cycles that never pass a goal are livelocks (need runtime bounded counters), cycles that pass a goal are task-cycles where each loop completes a unit of work.",
+       "property": "termination",
+       "ranks": {
+        "S": 1,
+        "T": 0
+       },
+       "task_cycles": [],
+       "watch": []
+      },
+      "total_correctness": {
+       "counterexample": null,
+       "deadlock": true,
+       "goals": [],
+       "holds": true,
+       "liveness": true,
+       "property": "total-correctness",
+       "termination": true
+      }
+     }
+    }
+   ],
+   "state": "S"
+  }
+ ],
+ "note": "Rust port graph.rs must reproduce every result VALUE exactly; objects compare as parsed JSON (key order free), error strings byte-for-byte.",
+ "reference": "BDI_FSM_AGENT bdi_fsm reachability.py + planner_proofs.py"
+}

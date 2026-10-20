@@ -1,0 +1,58 @@
+{
+ "plus2": {
+  "ok": true,
+  "pool": [
+   [
+    "'+2'",
+    "str"
+   ]
+  ]
+ },
+ "dashdash5": {
+  "ok": false,
+  "err": "ValueError: invalid literal for int() with base 10: '--5'"
+ },
+ "negint": {
+  "ok": true,
+  "pool": [
+   [
+    "-7",
+    "int"
+   ]
+  ]
+ },
+ "badreg": {
+  "ok": true,
+  "pool": [
+   [
+    "'zz'",
+    "str"
+   ]
+  ]
+ },
+ "badreg_r9x": {
+  "ok": false,
+  "err": "BytespaceError: LOAD_CONST wants 2 operands, got ['r9x']"
+ },
+ "floatlit": {
+  "ok": true,
+  "pool": [
+   [
+    "'3.5'",
+    "str"
+   ]
+  ]
+ },
+ "pool_plus2": {
+  "ok": false,
+  "err": "BytespaceError: unknown op 'CONST'"
+ },
+ "pool_minus": {
+  "ok": false,
+  "err": "BytespaceError: unknown op 'CONST'"
+ },
+ "biglit_const": {
+  "ok": false,
+  "err": "BytespaceError: unknown op 'CONST'"
+ }
+}

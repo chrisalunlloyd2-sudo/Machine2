@@ -29,7 +29,7 @@ fn skeleton_hashes_match_python() {
         let m = s["module"].as_str().unwrap();
         let asm = format!("load_const r3, 'SKELETON:{m}'\nout r3\nload_const r0, 0\nhalt\n");
         let p = assemble(&asm, &format!("skel:{m}"), 8, &[Const::Str(format!("SKELETON:{m}"))]).unwrap();
-        assert_eq!(content_hash(&p), s["content_hash"].as_str().unwrap(), "module {m}");
+        assert_eq!(content_hash(&p).unwrap(), s["content_hash"].as_str().unwrap(), "module {m}");
     }
 }
 
@@ -38,7 +38,7 @@ fn vm_program_hashes_match_python() {
     let g = load(GV);
     for v in g["vm"].as_array().unwrap() {
         let p = assemble(v["asm"].as_str().unwrap(), v["name"].as_str().unwrap(), 4, &consts(&v["const_extra"])).unwrap();
-        assert_eq!(content_hash(&p), v["content_hash"].as_str().unwrap(), "{}", v["name"]);
+        assert_eq!(content_hash(&p).unwrap(), v["content_hash"].as_str().unwrap(), "{}", v["name"]);
     }
 }
 
@@ -55,6 +55,6 @@ fn fuzz_corpus_hashes_match_python() {
             &consts(&e["const_extra"]),
         )
         .unwrap_or_else(|er| panic!("case {i}: {er:?}\n{}", e["asm"]));
-        assert_eq!(content_hash(&p), e["content_hash"].as_str().unwrap(), "case {i}\n{}", e["asm"]);
+        assert_eq!(content_hash(&p).unwrap(), e["content_hash"].as_str().unwrap(), "case {i}\n{}", e["asm"]);
     }
 }

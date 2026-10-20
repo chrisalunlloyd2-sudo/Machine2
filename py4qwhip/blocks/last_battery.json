@@ -53,11 +53,67 @@
         "step_limit": true,
         "loop_term": true,
         "fault_trapped": true,
-        "deterministic": true
+        "deterministic": true,
+        "grant_ok_runs": true,
+        "grant_wrong_refused": true,
+        "grant_zero_refused": true,
+        "grant_binds_body": true,
+        "chain_01060704": true
+      }
+    },
+    {
+      "block": "06_envelope",
+      "exit": 0,
+      "ok": true,
+      "checks": {
+        "roundtrip_source": true,
+        "tamper_caught": true,
+        "kind_source": true
+      }
+    },
+    {
+      "block": "07_qgrant",
+      "exit": 0,
+      "ok": true,
+      "checks": {
+        "grant_deterministic": true,
+        "grant_binds_body": true,
+        "blob_grant_ok": true,
+        "tamper_caught_envelope": true,
+        "wrong_grant_refused": true,
+        "zero_endcap_policy": true,
+        "source_grant_ok": true
+      }
+    },
+    {
+      "block": "08_e2e",
+      "exit": 0,
+      "ok": true,
+      "checks": {
+        "chain_program_ok": true,
+        "chain_deterministic": true,
+        "chain_tamper_refused": true,
+        "chain_wrong_grant_vm_fault": true,
+        "chain_zero_policy": true,
+        "chain_kindcode_ok": true,
+        "chain_source_ok": true,
+        "chain_vm_zero_refused": true
+      }
+    },
+    {
+      "block": "09_ledgerartifacts",
+      "exit": 0,
+      "ok": true,
+      "checks": {
+        "ledger_rows_found": true,
+        "ledger_all_granted_halted": true,
+        "ledger_owner_lane_ok": true,
+        "ledger_tamper_and_wrong_refused": true,
+        "ledger_rows_reproducible": true
       }
     }
   ],
-  "passed": 4,
-  "total": 4,
+  "passed": 8,
+  "total": 8,
   "verdict": "GREEN"
 }

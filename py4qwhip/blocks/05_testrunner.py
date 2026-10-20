@@ -15,6 +15,10 @@ BLOCKS = [
     ("02_karaka",    r"C:\Viper\projects\py4qwhip\blocks\02_karaka.py"),
     ("03_synthesize", r"C:\Viper\projects\py4qwhip\blocks\03_synthesize.py"),
     ("04_vm",        r"C:\Viper\projects\py4qwhip\blocks\04_vm.py"),
+    ("06_envelope",  r"C:\Viper\projects\py4qwhip\blocks\06_envelope.py"),
+    ("07_qgrant",    r"C:\Viper\projects\py4qwhip\blocks\07_qgrant.py"),
+    ("08_e2e",       r"C:\Viper\projects\py4qwhip\blocks\08_e2e.py"),
+    ("09_ledgerartifacts", r"C:\Viper\projects\py4qwhip\blocks\09_ledgerartifacts.py"),
 ]
 results = []
 for name, path in BLOCKS:

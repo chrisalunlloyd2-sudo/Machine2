@@ -1,0 +1,2309 @@
+[
+ {
+  "name": "vm_status",
+  "state": "RUNNING",
+  "edges": [
+   [
+    "RUNNING",
+    "step_ok",
+    "RUNNING",
+    null
+   ],
+   [
+    "RUNNING",
+    "halt_or_ret_or_pc_end",
+    "HALTED",
+    null
+   ],
+   [
+    "RUNNING",
+    "vmerror_or_trap_or_step_limit",
+    "FAULT",
+    null
+   ],
+   [
+    "RUNNING",
+    "import_op",
+    "SYNTH_PENDING",
+    null
+   ],
+   [
+    "SYNTH_PENDING",
+    "resolved",
+    "RUNNING",
+    null
+   ],
+   [
+    "SYNTH_PENDING",
+    "retry_exhausted",
+    "FAULT",
+    null
+   ]
+  ],
+  "op": "audit",
+  "posargs": [],
+  "args": {
+   "goals": [
+    "HALTED",
+    "FAULT"
+   ]
+  },
+  "error": null,
+  "result": {
+   "deadlock": {
+    "counterexample": null,
+    "deadlock_states": [],
+    "holds": true,
+    "property": "deadlock-freedom"
+   },
+   "liveness": {
+    "counterexample": null,
+    "holds": true,
+    "property": "liveness",
+    "terminals": [
+     "FAULT",
+     "HALTED"
+    ],
+    "violations": []
+   },
+   "termination": {
+    "counterexample": {
+     "event": "step_ok",
+     "from": "RUNNING",
+     "guard": null,
+     "to": "RUNNING"
+    },
+    "cycles": [
+     [
+      {
+       "event": "step_ok",
+       "from": "RUNNING",
+       "guard": null,
+       "to": "RUNNING"
+      }
+     ],
+     [
+      {
+       "event": "import_op",
+       "from": "RUNNING",
+       "guard": null,
+       "to": "SYNTH_PENDING"
+      },
+      {
+       "event": "resolved",
+       "from": "SYNTH_PENDING",
+       "guard": null,
+       "to": "RUNNING"
+      }
+     ]
+    ],
+    "holds": false,
+    "livelock_cycles": [
+     [
+      {
+       "event": "step_ok",
+       "from": "RUNNING",
+       "guard": null,
+       "to": "RUNNING"
+      }
+     ],
+     [
+      {
+       "event": "import_op",
+       "from": "RUNNING",
+       "guard": null,
+       "to": "SYNTH_PENDING"
+      },
+      {
+       "event": "resolved",
+       "from": "SYNTH_PENDING",
+       "guard": null,
+       "to": "RUNNING"
+      }
+     ]
+    ],
+    "note": "no-goal termination requires an acyclic graph; with goals, cycles that never pass a goal are livelocks (need runtime bounded counters), cycles that pass a goal are task-cycles where each loop completes a unit of work.",
+    "property": "termination",
+    "ranks": {
+     "FAULT": 0,
+     "HALTED": 0,
+     "RUNNING": 1,
+     "SYNTH_PENDING": 1
+    },
+    "task_cycles": [],
+    "watch": [
+     {
+      "event": "step_ok",
+      "from": "RUNNING",
+      "rank_from": 1,
+      "rank_to": 1,
+      "to": "RUNNING"
+     },
+     {
+      "event": "import_op",
+      "from": "RUNNING",
+      "rank_from": 1,
+      "rank_to": 1,
+      "to": "SYNTH_PENDING"
+     },
+     {
+      "event": "resolved",
+      "from": "SYNTH_PENDING",
+      "rank_from": 1,
+      "rank_to": 1,
+      "to": "RUNNING"
+     }
+    ]
+   },
+   "total_correctness": {
+    "counterexample": {
+     "event": "step_ok",
+     "from": "RUNNING",
+     "guard": null,
+     "to": "RUNNING"
+    },
+    "deadlock": true,
+    "goals": [
+     "HALTED",
+     "FAULT"
+    ],
+    "holds": false,
+    "liveness": true,
+    "property": "total-correctness",
+    "termination": false
+   }
+  }
+ },
+ {
+  "name": "vm_status",
+  "state": "RUNNING",
+  "edges": [
+   [
+    "RUNNING",
+    "step_ok",
+    "RUNNING",
+    null
+   ],
+   [
+    "RUNNING",
+    "halt_or_ret_or_pc_end",
+    "HALTED",
+    null
+   ],
+   [
+    "RUNNING",
+    "vmerror_or_trap_or_step_limit",
+    "FAULT",
+    null
+   ],
+   [
+    "RUNNING",
+    "import_op",
+    "SYNTH_PENDING",
+    null
+   ],
+   [
+    "SYNTH_PENDING",
+    "resolved",
+    "RUNNING",
+    null
+   ],
+   [
+    "SYNTH_PENDING",
+    "retry_exhausted",
+    "FAULT",
+    null
+   ]
+  ],
+  "op": "verify_path",
+  "posargs": [
+   "HALTED"
+  ],
+  "args": {
+   "start": "RUNNING"
+  },
+  "error": null,
+  "result": {
+   "blocked": null,
+   "path": [
+    {
+     "event": "halt_or_ret_or_pc_end",
+     "from": "RUNNING",
+     "guard": null,
+     "to": "HALTED"
+    }
+   ],
+   "proofs": [
+    {
+     "event": "halt_or_ret_or_pc_end",
+     "from": "RUNNING",
+     "guard": null,
+     "to": "HALTED",
+     "verdict": "TAUTOLOGY"
+    }
+   ],
+   "reachable": true,
+   "reason": null
+  }
+ },
+ {
+  "name": "vm_status",
+  "state": "RUNNING",
+  "edges": [
+   [
+    "RUNNING",
+    "step_ok",
+    "RUNNING",
+    null
+   ],
+   [
+    "RUNNING",
+    "halt_or_ret_or_pc_end",
+    "HALTED",
+    null
+   ],
+   [
+    "RUNNING",
+    "vmerror_or_trap_or_step_limit",
+    "FAULT",
+    null
+   ],
+   [
+    "RUNNING",
+    "import_op",
+    "SYNTH_PENDING",
+    null
+   ],
+   [
+    "SYNTH_PENDING",
+    "resolved",
+    "RUNNING",
+    null
+   ],
+   [
+    "SYNTH_PENDING",
+    "retry_exhausted",
+    "FAULT",
+    null
+   ]
+  ],
+  "op": "verify_path",
+  "posargs": [
+   "FAULT"
+  ],
+  "args": {
+   "start": "RUNNING"
+  },
+  "error": null,
+  "result": {
+   "blocked": null,
+   "path": [
+    {
+     "event": "vmerror_or_trap_or_step_limit",
+     "from": "RUNNING",
+     "guard": null,
+     "to": "FAULT"
+    }
+   ],
+   "proofs": [
+    {
+     "event": "vmerror_or_trap_or_step_limit",
+     "from": "RUNNING",
+     "guard": null,
+     "to": "FAULT",
+     "verdict": "TAUTOLOGY"
+    }
+   ],
+   "reachable": true,
+   "reason": null
+  }
+ },
+ {
+  "name": "vm_status",
+  "state": "RUNNING",
+  "edges": [
+   [
+    "RUNNING",
+    "step_ok",
+    "RUNNING",
+    null
+   ],
+   [
+    "RUNNING",
+    "halt_or_ret_or_pc_end",
+    "HALTED",
+    null
+   ],
+   [
+    "RUNNING",
+    "vmerror_or_trap_or_step_limit",
+    "FAULT",
+    null
+   ],
+   [
+    "RUNNING",
+    "import_op",
+    "SYNTH_PENDING",
+    null
+   ],
+   [
+    "SYNTH_PENDING",
+    "resolved",
+    "RUNNING",
+    null
+   ],
+   [
+    "SYNTH_PENDING",
+    "retry_exhausted",
+    "FAULT",
+    null
+   ]
+  ],
+  "op": "prove_exit",
+  "posargs": [],
+  "args": {
+   "goals": [
+    "HALTED",
+    "FAULT"
+   ]
+  },
+  "error": null,
+  "result": {
+   "all_reachable": true,
+   "goals": [
+    "HALTED",
+    "FAULT"
+   ],
+   "results": {
+    "FAULT": {
+     "blocked": null,
+     "path": [
+      {
+       "event": "vmerror_or_trap_or_step_limit",
+       "from": "RUNNING",
+       "guard": null,
+       "to": "FAULT"
+      }
+     ],
+     "proofs": [
+      {
+       "event": "vmerror_or_trap_or_step_limit",
+       "from": "RUNNING",
+       "guard": null,
+       "to": "FAULT",
+       "verdict": "TAUTOLOGY"
+      }
+     ],
+     "reachable": true,
+     "reason": null
+    },
+    "HALTED": {
+     "blocked": null,
+     "path": [
+      {
+       "event": "halt_or_ret_or_pc_end",
+       "from": "RUNNING",
+       "guard": null,
+       "to": "HALTED"
+      }
+     ],
+     "proofs": [
+      {
+       "event": "halt_or_ret_or_pc_end",
+       "from": "RUNNING",
+       "guard": null,
+       "to": "HALTED",
+       "verdict": "TAUTOLOGY"
+      }
+     ],
+     "reachable": true,
+     "reason": null
+    }
+   },
+   "start": "RUNNING",
+   "summary": {
+    "FAULT": true,
+    "HALTED": true
+   }
+  }
+ },
+ {
+  "name": "vm_status",
+  "state": "RUNNING",
+  "edges": [
+   [
+    "RUNNING",
+    "step_ok",
+    "RUNNING",
+    null
+   ],
+   [
+    "RUNNING",
+    "halt_or_ret_or_pc_end",
+    "HALTED",
+    null
+   ],
+   [
+    "RUNNING",
+    "vmerror_or_trap_or_step_limit",
+    "FAULT",
+    null
+   ],
+   [
+    "RUNNING",
+    "import_op",
+    "SYNTH_PENDING",
+    null
+   ],
+   [
+    "SYNTH_PENDING",
+    "resolved",
+    "RUNNING",
+    null
+   ],
+   [
+    "SYNTH_PENDING",
+    "retry_exhausted",
+    "FAULT",
+    null
+   ]
+  ],
+  "op": "deadlock",
+  "posargs": [],
+  "args": {
+   "terminals": [
+    "HALTED",
+    "FAULT"
+   ]
+  },
+  "error": null,
+  "result": {
+   "counterexample": null,
+   "deadlock_states": [],
+   "holds": true,
+   "property": "deadlock-freedom"
+  }
+ },
+ {
+  "name": "vm_status",
+  "state": "RUNNING",
+  "edges": [
+   [
+    "RUNNING",
+    "step_ok",
+    "RUNNING",
+    null
+   ],
+   [
+    "RUNNING",
+    "halt_or_ret_or_pc_end",
+    "HALTED",
+    null
+   ],
+   [
+    "RUNNING",
+    "vmerror_or_trap_or_step_limit",
+    "FAULT",
+    null
+   ],
+   [
+    "RUNNING",
+    "import_op",
+    "SYNTH_PENDING",
+    null
+   ],
+   [
+    "SYNTH_PENDING",
+    "resolved",
+    "RUNNING",
+    null
+   ],
+   [
+    "SYNTH_PENDING",
+    "retry_exhausted",
+    "FAULT",
+    null
+   ]
+  ],
+  "op": "liveness",
+  "posargs": [],
+  "args": {
+   "terminals": [
+    "HALTED",
+    "FAULT"
+   ]
+  },
+  "error": null,
+  "result": {
+   "counterexample": null,
+   "holds": true,
+   "property": "liveness",
+   "terminals": [
+    "FAULT",
+    "HALTED"
+   ],
+   "violations": []
+  }
+ },
+ {
+  "name": "vm_status",
+  "state": "RUNNING",
+  "edges": [
+   [
+    "RUNNING",
+    "step_ok",
+    "RUNNING",
+    null
+   ],
+   [
+    "RUNNING",
+    "halt_or_ret_or_pc_end",
+    "HALTED",
+    null
+   ],
+   [
+    "RUNNING",
+    "vmerror_or_trap_or_step_limit",
+    "FAULT",
+    null
+   ],
+   [
+    "RUNNING",
+    "import_op",
+    "SYNTH_PENDING",
+    null
+   ],
+   [
+    "SYNTH_PENDING",
+    "resolved",
+    "RUNNING",
+    null
+   ],
+   [
+    "SYNTH_PENDING",
+    "retry_exhausted",
+    "FAULT",
+    null
+   ]
+  ],
+  "op": "liveness",
+  "posargs": [],
+  "args": {},
+  "error": null,
+  "result": {
+   "counterexample": null,
+   "holds": true,
+   "property": "liveness",
+   "terminals": [
+    "FAULT",
+    "HALTED"
+   ],
+   "violations": []
+  }
+ },
+ {
+  "name": "vm_status",
+  "state": "RUNNING",
+  "edges": [
+   [
+    "RUNNING",
+    "step_ok",
+    "RUNNING",
+    null
+   ],
+   [
+    "RUNNING",
+    "halt_or_ret_or_pc_end",
+    "HALTED",
+    null
+   ],
+   [
+    "RUNNING",
+    "vmerror_or_trap_or_step_limit",
+    "FAULT",
+    null
+   ],
+   [
+    "RUNNING",
+    "import_op",
+    "SYNTH_PENDING",
+    null
+   ],
+   [
+    "SYNTH_PENDING",
+    "resolved",
+    "RUNNING",
+    null
+   ],
+   [
+    "SYNTH_PENDING",
+    "retry_exhausted",
+    "FAULT",
+    null
+   ]
+  ],
+  "op": "termination",
+  "posargs": [],
+  "args": {},
+  "error": null,
+  "result": {
+   "counterexample": {
+    "event": "step_ok",
+    "from": "RUNNING",
+    "guard": null,
+    "to": "RUNNING"
+   },
+   "cycles": [
+    [
+     {
+      "event": "step_ok",
+      "from": "RUNNING",
+      "guard": null,
+      "to": "RUNNING"
+     }
+    ],
+    [
+     {
+      "event": "import_op",
+      "from": "RUNNING",
+      "guard": null,
+      "to": "SYNTH_PENDING"
+     },
+     {
+      "event": "resolved",
+      "from": "SYNTH_PENDING",
+      "guard": null,
+      "to": "RUNNING"
+     }
+    ]
+   ],
+   "holds": false,
+   "livelock_cycles": [
+    [
+     {
+      "event": "step_ok",
+      "from": "RUNNING",
+      "guard": null,
+      "to": "RUNNING"
+     }
+    ],
+    [
+     {
+      "event": "import_op",
+      "from": "RUNNING",
+      "guard": null,
+      "to": "SYNTH_PENDING"
+     },
+     {
+      "event": "resolved",
+      "from": "SYNTH_PENDING",
+      "guard": null,
+      "to": "RUNNING"
+     }
+    ]
+   ],
+   "note": "no-goal termination requires an acyclic graph; with goals, cycles that never pass a goal are livelocks (need runtime bounded counters), cycles that pass a goal are task-cycles where each loop completes a unit of work.",
+   "property": "termination",
+   "ranks": {
+    "FAULT": 0,
+    "HALTED": 0,
+    "RUNNING": 1,
+    "SYNTH_PENDING": 1
+   },
+   "task_cycles": [],
+   "watch": [
+    {
+     "event": "step_ok",
+     "from": "RUNNING",
+     "rank_from": 1,
+     "rank_to": 1,
+     "to": "RUNNING"
+    },
+    {
+     "event": "import_op",
+     "from": "RUNNING",
+     "rank_from": 1,
+     "rank_to": 1,
+     "to": "SYNTH_PENDING"
+    },
+    {
+     "event": "resolved",
+     "from": "SYNTH_PENDING",
+     "rank_from": 1,
+     "rank_to": 1,
+     "to": "RUNNING"
+    }
+   ]
+  }
+ },
+ {
+  "name": "guarded_loop",
+  "state": "IDLE",
+  "edges": [
+   [
+    "IDLE",
+    "go",
+    "WORK",
+    "ready"
+   ],
+   [
+    "WORK",
+    "done",
+    "DONE",
+    null
+   ],
+   [
+    "WORK",
+    "skip",
+    "IDLE",
+    null
+   ],
+   [
+    "WORK",
+    "back",
+    "WORK",
+    null
+   ],
+   [
+    "IDLE",
+    "blocked",
+    "NOGO",
+    "p & ~p"
+   ],
+   [
+    "NOGO",
+    "wake",
+    "WORK",
+    "ready"
+   ]
+  ],
+  "op": "deadlock",
+  "posargs": [],
+  "args": {
+   "terminals": [
+    "DONE"
+   ]
+  },
+  "error": null,
+  "result": {
+   "counterexample": null,
+   "deadlock_states": [],
+   "holds": true,
+   "property": "deadlock-freedom"
+  }
+ },
+ {
+  "name": "guarded_loop",
+  "state": "IDLE",
+  "edges": [
+   [
+    "IDLE",
+    "go",
+    "WORK",
+    "ready"
+   ],
+   [
+    "WORK",
+    "done",
+    "DONE",
+    null
+   ],
+   [
+    "WORK",
+    "skip",
+    "IDLE",
+    null
+   ],
+   [
+    "WORK",
+    "back",
+    "WORK",
+    null
+   ],
+   [
+    "IDLE",
+    "blocked",
+    "NOGO",
+    "p & ~p"
+   ],
+   [
+    "NOGO",
+    "wake",
+    "WORK",
+    "ready"
+   ]
+  ],
+  "op": "liveness",
+  "posargs": [],
+  "args": {
+   "goals": [
+    "DONE"
+   ]
+  },
+  "error": null,
+  "result": {
+   "counterexample": null,
+   "holds": true,
+   "property": "liveness",
+   "terminals": [
+    "DONE"
+   ],
+   "violations": []
+  }
+ },
+ {
+  "name": "guarded_loop",
+  "state": "IDLE",
+  "edges": [
+   [
+    "IDLE",
+    "go",
+    "WORK",
+    "ready"
+   ],
+   [
+    "WORK",
+    "done",
+    "DONE",
+    null
+   ],
+   [
+    "WORK",
+    "skip",
+    "IDLE",
+    null
+   ],
+   [
+    "WORK",
+    "back",
+    "WORK",
+    null
+   ],
+   [
+    "IDLE",
+    "blocked",
+    "NOGO",
+    "p & ~p"
+   ],
+   [
+    "NOGO",
+    "wake",
+    "WORK",
+    "ready"
+   ]
+  ],
+  "op": "termination",
+  "posargs": [],
+  "args": {
+   "goals": [
+    "DONE"
+   ]
+  },
+  "error": null,
+  "result": {
+   "counterexample": {
+    "event": "go",
+    "from": "IDLE",
+    "guard": "ready",
+    "to": "WORK"
+   },
+   "cycles": [
+    [
+     {
+      "event": "go",
+      "from": "IDLE",
+      "guard": "ready",
+      "to": "WORK"
+     },
+     {
+      "event": "skip",
+      "from": "WORK",
+      "guard": null,
+      "to": "IDLE"
+     }
+    ],
+    [
+     {
+      "event": "back",
+      "from": "WORK",
+      "guard": null,
+      "to": "WORK"
+     }
+    ]
+   ],
+   "holds": false,
+   "livelock_cycles": [
+    [
+     {
+      "event": "go",
+      "from": "IDLE",
+      "guard": "ready",
+      "to": "WORK"
+     },
+     {
+      "event": "skip",
+      "from": "WORK",
+      "guard": null,
+      "to": "IDLE"
+     }
+    ],
+    [
+     {
+      "event": "back",
+      "from": "WORK",
+      "guard": null,
+      "to": "WORK"
+     }
+    ]
+   ],
+   "note": "no-goal termination requires an acyclic graph; with goals, cycles that never pass a goal are livelocks (need runtime bounded counters), cycles that pass a goal are task-cycles where each loop completes a unit of work.",
+   "property": "termination",
+   "ranks": {
+    "DONE": 0,
+    "IDLE": 2,
+    "NOGO": 2,
+    "WORK": 1
+   },
+   "task_cycles": [],
+   "watch": [
+    {
+     "event": "blocked",
+     "from": "IDLE",
+     "rank_from": 2,
+     "rank_to": 2,
+     "to": "NOGO"
+    },
+    {
+     "event": "skip",
+     "from": "WORK",
+     "rank_from": 1,
+     "rank_to": 2,
+     "to": "IDLE"
+    },
+    {
+     "event": "back",
+     "from": "WORK",
+     "rank_from": 1,
+     "rank_to": 1,
+     "to": "WORK"
+    }
+   ]
+  }
+ },
+ {
+  "name": "guarded_loop",
+  "state": "IDLE",
+  "edges": [
+   [
+    "IDLE",
+    "go",
+    "WORK",
+    "ready"
+   ],
+   [
+    "WORK",
+    "done",
+    "DONE",
+    null
+   ],
+   [
+    "WORK",
+    "skip",
+    "IDLE",
+    null
+   ],
+   [
+    "WORK",
+    "back",
+    "WORK",
+    null
+   ],
+   [
+    "IDLE",
+    "blocked",
+    "NOGO",
+    "p & ~p"
+   ],
+   [
+    "NOGO",
+    "wake",
+    "WORK",
+    "ready"
+   ]
+  ],
+  "op": "verify_path",
+  "posargs": [
+   "DONE"
+  ],
+  "args": {
+   "start": "IDLE"
+  },
+  "error": null,
+  "result": {
+   "blocked": null,
+   "path": [
+    {
+     "event": "go",
+     "from": "IDLE",
+     "guard": "ready",
+     "to": "WORK"
+    },
+    {
+     "event": "done",
+     "from": "WORK",
+     "guard": null,
+     "to": "DONE"
+    }
+   ],
+   "proofs": [
+    {
+     "event": "go",
+     "from": "IDLE",
+     "guard": "ready",
+     "models": 1,
+     "to": "WORK",
+     "verdict": "SATISFIABLE"
+    },
+    {
+     "event": "done",
+     "from": "WORK",
+     "guard": null,
+     "to": "DONE",
+     "verdict": "TAUTOLOGY"
+    }
+   ],
+   "reachable": true,
+   "reason": null
+  }
+ },
+ {
+  "name": "guarded_loop",
+  "state": "IDLE",
+  "edges": [
+   [
+    "IDLE",
+    "go",
+    "WORK",
+    "ready"
+   ],
+   [
+    "WORK",
+    "done",
+    "DONE",
+    null
+   ],
+   [
+    "WORK",
+    "skip",
+    "IDLE",
+    null
+   ],
+   [
+    "WORK",
+    "back",
+    "WORK",
+    null
+   ],
+   [
+    "IDLE",
+    "blocked",
+    "NOGO",
+    "p & ~p"
+   ],
+   [
+    "NOGO",
+    "wake",
+    "WORK",
+    "ready"
+   ]
+  ],
+  "op": "verify_path",
+  "posargs": [
+   "NOGO"
+  ],
+  "args": {
+   "start": "IDLE"
+  },
+  "error": null,
+  "result": {
+   "blocked": {
+    "event": "blocked",
+    "from": "IDLE",
+    "guard": "p & ~p",
+    "models": 0,
+    "to": "NOGO",
+    "verdict": "UNSAT"
+   },
+   "path": [
+    {
+     "event": "blocked",
+     "from": "IDLE",
+     "guard": "p & ~p",
+     "to": "NOGO"
+    }
+   ],
+   "proofs": [
+    {
+     "event": "blocked",
+     "from": "IDLE",
+     "guard": "p & ~p",
+     "models": 0,
+     "to": "NOGO",
+     "verdict": "UNSAT"
+    }
+   ],
+   "reachable": false,
+   "reason": "edge IDLE -blocked-> NOGO guard 'p & ~p' is UNSAT (no model)"
+  }
+ },
+ {
+  "name": "guarded_loop",
+  "state": "IDLE",
+  "edges": [
+   [
+    "IDLE",
+    "go",
+    "WORK",
+    "ready"
+   ],
+   [
+    "WORK",
+    "done",
+    "DONE",
+    null
+   ],
+   [
+    "WORK",
+    "skip",
+    "IDLE",
+    null
+   ],
+   [
+    "WORK",
+    "back",
+    "WORK",
+    null
+   ],
+   [
+    "IDLE",
+    "blocked",
+    "NOGO",
+    "p & ~p"
+   ],
+   [
+    "NOGO",
+    "wake",
+    "WORK",
+    "ready"
+   ]
+  ],
+  "op": "prove_exit",
+  "posargs": [],
+  "args": {
+   "goals": [
+    "DONE"
+   ],
+   "start": "IDLE"
+  },
+  "error": null,
+  "result": {
+   "all_reachable": true,
+   "goals": [
+    "DONE"
+   ],
+   "results": {
+    "DONE": {
+     "blocked": null,
+     "path": [
+      {
+       "event": "go",
+       "from": "IDLE",
+       "guard": "ready",
+       "to": "WORK"
+      },
+      {
+       "event": "done",
+       "from": "WORK",
+       "guard": null,
+       "to": "DONE"
+      }
+     ],
+     "proofs": [
+      {
+       "event": "go",
+       "from": "IDLE",
+       "guard": "ready",
+       "models": 1,
+       "to": "WORK",
+       "verdict": "SATISFIABLE"
+      },
+      {
+       "event": "done",
+       "from": "WORK",
+       "guard": null,
+       "to": "DONE",
+       "verdict": "TAUTOLOGY"
+      }
+     ],
+     "reachable": true,
+     "reason": null
+    }
+   },
+   "start": "IDLE",
+   "summary": {
+    "DONE": true
+   }
+  }
+ },
+ {
+  "name": "guarded_loop",
+  "state": "IDLE",
+  "edges": [
+   [
+    "IDLE",
+    "go",
+    "WORK",
+    "ready"
+   ],
+   [
+    "WORK",
+    "done",
+    "DONE",
+    null
+   ],
+   [
+    "WORK",
+    "skip",
+    "IDLE",
+    null
+   ],
+   [
+    "WORK",
+    "back",
+    "WORK",
+    null
+   ],
+   [
+    "IDLE",
+    "blocked",
+    "NOGO",
+    "p & ~p"
+   ],
+   [
+    "NOGO",
+    "wake",
+    "WORK",
+    "ready"
+   ]
+  ],
+  "op": "audit",
+  "posargs": [],
+  "args": {
+   "terminals": [
+    "DONE"
+   ]
+  },
+  "error": null,
+  "result": {
+   "deadlock": {
+    "counterexample": null,
+    "deadlock_states": [],
+    "holds": true,
+    "property": "deadlock-freedom"
+   },
+   "liveness": {
+    "counterexample": null,
+    "holds": true,
+    "property": "liveness",
+    "terminals": [
+     "DONE"
+    ],
+    "violations": []
+   },
+   "termination": {
+    "counterexample": {
+     "event": "go",
+     "from": "IDLE",
+     "guard": "ready",
+     "to": "WORK"
+    },
+    "cycles": [
+     [
+      {
+       "event": "go",
+       "from": "IDLE",
+       "guard": "ready",
+       "to": "WORK"
+      },
+      {
+       "event": "skip",
+       "from": "WORK",
+       "guard": null,
+       "to": "IDLE"
+      }
+     ],
+     [
+      {
+       "event": "back",
+       "from": "WORK",
+       "guard": null,
+       "to": "WORK"
+      }
+     ]
+    ],
+    "holds": false,
+    "livelock_cycles": [
+     [
+      {
+       "event": "go",
+       "from": "IDLE",
+       "guard": "ready",
+       "to": "WORK"
+      },
+      {
+       "event": "skip",
+       "from": "WORK",
+       "guard": null,
+       "to": "IDLE"
+      }
+     ],
+     [
+      {
+       "event": "back",
+       "from": "WORK",
+       "guard": null,
+       "to": "WORK"
+      }
+     ]
+    ],
+    "note": "no-goal termination requires an acyclic graph; with goals, cycles that never pass a goal are livelocks (need runtime bounded counters), cycles that pass a goal are task-cycles where each loop completes a unit of work.",
+    "property": "termination",
+    "ranks": {
+     "DONE": 0,
+     "IDLE": 2,
+     "NOGO": 2,
+     "WORK": 1
+    },
+    "task_cycles": [],
+    "watch": [
+     {
+      "event": "blocked",
+      "from": "IDLE",
+      "rank_from": 2,
+      "rank_to": 2,
+      "to": "NOGO"
+     },
+     {
+      "event": "skip",
+      "from": "WORK",
+      "rank_from": 1,
+      "rank_to": 2,
+      "to": "IDLE"
+     },
+     {
+      "event": "back",
+      "from": "WORK",
+      "rank_from": 1,
+      "rank_to": 1,
+      "to": "WORK"
+     }
+    ]
+   },
+   "total_correctness": {
+    "counterexample": {
+     "event": "go",
+     "from": "IDLE",
+     "guard": "ready",
+     "to": "WORK"
+    },
+    "deadlock": true,
+    "goals": [],
+    "holds": false,
+    "liveness": true,
+    "property": "total-correctness",
+    "termination": false
+   }
+  }
+ },
+ {
+  "name": "unsat_blocked",
+  "state": "A",
+  "edges": [
+   [
+    "A",
+    "go",
+    "B",
+    "p & ~p"
+   ]
+  ],
+  "op": "deadlock",
+  "posargs": [],
+  "args": {},
+  "error": null,
+  "result": {
+   "counterexample": {
+    "cause": "all_guards_unsat",
+    "edges": [
+     {
+      "event": "go",
+      "guard": "p & ~p",
+      "to": "B"
+     }
+    ],
+    "state": "A"
+   },
+   "deadlock_states": [
+    {
+     "cause": "all_guards_unsat",
+     "edges": [
+      {
+       "event": "go",
+       "guard": "p & ~p",
+       "to": "B"
+      }
+     ],
+     "state": "A"
+    }
+   ],
+   "holds": false,
+   "property": "deadlock-freedom"
+  }
+ },
+ {
+  "name": "unsat_blocked",
+  "state": "A",
+  "edges": [
+   [
+    "A",
+    "go",
+    "B",
+    "p & ~p"
+   ]
+  ],
+  "op": "liveness",
+  "posargs": [],
+  "args": {},
+  "error": null,
+  "result": {
+   "counterexample": {
+    "reason": "all paths to a terminal pass an UNSAT guard",
+    "state": "A"
+   },
+   "holds": false,
+   "property": "liveness",
+   "terminals": [
+    "B"
+   ],
+   "violations": [
+    {
+     "reason": "all paths to a terminal pass an UNSAT guard",
+     "state": "A"
+    }
+   ]
+  }
+ },
+ {
+  "name": "unsat_blocked",
+  "state": "A",
+  "edges": [
+   [
+    "A",
+    "go",
+    "B",
+    "p & ~p"
+   ]
+  ],
+  "op": "verify_path",
+  "posargs": [
+   "B"
+  ],
+  "args": {
+   "start": "A"
+  },
+  "error": null,
+  "result": {
+   "blocked": {
+    "event": "go",
+    "from": "A",
+    "guard": "p & ~p",
+    "models": 0,
+    "to": "B",
+    "verdict": "UNSAT"
+   },
+   "path": [
+    {
+     "event": "go",
+     "from": "A",
+     "guard": "p & ~p",
+     "to": "B"
+    }
+   ],
+   "proofs": [
+    {
+     "event": "go",
+     "from": "A",
+     "guard": "p & ~p",
+     "models": 0,
+     "to": "B",
+     "verdict": "UNSAT"
+    }
+   ],
+   "reachable": false,
+   "reason": "edge A -go-> B guard 'p & ~p' is UNSAT (no model)"
+  }
+ },
+ {
+  "name": "unsat_blocked",
+  "state": "A",
+  "edges": [
+   [
+    "A",
+    "go",
+    "B",
+    "p & ~p"
+   ]
+  ],
+  "op": "termination",
+  "posargs": [],
+  "args": {},
+  "error": null,
+  "result": {
+   "counterexample": null,
+   "cycles": [],
+   "holds": true,
+   "livelock_cycles": [],
+   "note": "no-goal termination requires an acyclic graph; with goals, cycles that never pass a goal are livelocks (need runtime bounded counters), cycles that pass a goal are task-cycles where each loop completes a unit of work.",
+   "property": "termination",
+   "ranks": {
+    "A": 1,
+    "B": 0
+   },
+   "task_cycles": [],
+   "watch": []
+  }
+ },
+ {
+  "name": "no_terminals",
+  "state": "RUNNING",
+  "edges": [
+   [
+    "RUNNING",
+    "tick",
+    "RUNNING",
+    "go"
+   ]
+  ],
+  "op": "liveness",
+  "posargs": [],
+  "args": {},
+  "error": null,
+  "result": {
+   "counterexample": {
+    "reason": "no terminal states exist",
+    "state": "RUNNING"
+   },
+   "holds": false,
+   "property": "liveness"
+  }
+ },
+ {
+  "name": "no_terminals",
+  "state": "RUNNING",
+  "edges": [
+   [
+    "RUNNING",
+    "tick",
+    "RUNNING",
+    "go"
+   ]
+  ],
+  "op": "prove_exit",
+  "posargs": [],
+  "args": {},
+  "error": null,
+  "result": {
+   "all_reachable": false,
+   "goals": [],
+   "reason": "no terminal states exist (cyclic control loop); call prove_exit(goals=[...]) with explicit success states",
+   "results": {},
+   "start": "RUNNING",
+   "summary": {}
+  }
+ },
+ {
+  "name": "no_terminals",
+  "state": "RUNNING",
+  "edges": [
+   [
+    "RUNNING",
+    "tick",
+    "RUNNING",
+    "go"
+   ]
+  ],
+  "op": "deadlock",
+  "posargs": [],
+  "args": {
+   "terminals": []
+  },
+  "error": null,
+  "result": {
+   "counterexample": null,
+   "deadlock_states": [],
+   "holds": true,
+   "property": "deadlock-freedom"
+  }
+ },
+ {
+  "name": "no_terminals",
+  "state": "RUNNING",
+  "edges": [
+   [
+    "RUNNING",
+    "tick",
+    "RUNNING",
+    "go"
+   ]
+  ],
+  "op": "termination",
+  "posargs": [],
+  "args": {},
+  "error": null,
+  "result": {
+   "counterexample": {
+    "event": "tick",
+    "from": "RUNNING",
+    "guard": "go",
+    "to": "RUNNING"
+   },
+   "cycles": [
+    [
+     {
+      "event": "tick",
+      "from": "RUNNING",
+      "guard": "go",
+      "to": "RUNNING"
+     }
+    ]
+   ],
+   "holds": false,
+   "livelock_cycles": [
+    [
+     {
+      "event": "tick",
+      "from": "RUNNING",
+      "guard": "go",
+      "to": "RUNNING"
+     }
+    ]
+   ],
+   "note": "no-goal termination requires an acyclic graph; with goals, cycles that never pass a goal are livelocks (need runtime bounded counters), cycles that pass a goal are task-cycles where each loop completes a unit of work.",
+   "property": "termination",
+   "ranks": {
+    "RUNNING": 2
+   },
+   "task_cycles": [],
+   "watch": [
+    {
+     "event": "tick",
+     "from": "RUNNING",
+     "rank_from": 2,
+     "rank_to": 2,
+     "to": "RUNNING"
+    }
+   ]
+  }
+ },
+ {
+  "name": "no_terminals",
+  "state": "RUNNING",
+  "edges": [
+   [
+    "RUNNING",
+    "tick",
+    "RUNNING",
+    "go"
+   ]
+  ],
+  "op": "audit",
+  "posargs": [],
+  "args": {},
+  "error": null,
+  "result": {
+   "deadlock": {
+    "counterexample": null,
+    "deadlock_states": [],
+    "holds": true,
+    "property": "deadlock-freedom"
+   },
+   "liveness": {
+    "counterexample": {
+     "reason": "no terminal states exist",
+     "state": "RUNNING"
+    },
+    "holds": false,
+    "property": "liveness"
+   },
+   "termination": {
+    "counterexample": {
+     "event": "tick",
+     "from": "RUNNING",
+     "guard": "go",
+     "to": "RUNNING"
+    },
+    "cycles": [
+     [
+      {
+       "event": "tick",
+       "from": "RUNNING",
+       "guard": "go",
+       "to": "RUNNING"
+      }
+     ]
+    ],
+    "holds": false,
+    "livelock_cycles": [
+     [
+      {
+       "event": "tick",
+       "from": "RUNNING",
+       "guard": "go",
+       "to": "RUNNING"
+      }
+     ]
+    ],
+    "note": "no-goal termination requires an acyclic graph; with goals, cycles that never pass a goal are livelocks (need runtime bounded counters), cycles that pass a goal are task-cycles where each loop completes a unit of work.",
+    "property": "termination",
+    "ranks": {
+     "RUNNING": 2
+    },
+    "task_cycles": [],
+    "watch": [
+     {
+      "event": "tick",
+      "from": "RUNNING",
+      "rank_from": 2,
+      "rank_to": 2,
+      "to": "RUNNING"
+     }
+    ]
+   },
+   "total_correctness": {
+    "counterexample": {
+     "reason": "no terminal states exist",
+     "state": "RUNNING"
+    },
+    "deadlock": true,
+    "goals": [],
+    "holds": false,
+    "liveness": false,
+    "property": "total-correctness",
+    "termination": false
+   }
+  }
+ },
+ {
+  "name": "paths",
+  "state": "A",
+  "edges": [
+   [
+    "A",
+    "e1",
+    "B",
+    "x | y"
+   ],
+   [
+    "B",
+    "e2",
+    "C",
+    null
+   ],
+   [
+    "C",
+    "e3",
+    "B",
+    null
+   ]
+  ],
+  "op": "verify_path",
+  "posargs": [
+   "C"
+  ],
+  "args": {
+   "max_depth": 1,
+   "start": "A"
+  },
+  "error": null,
+  "result": {
+   "blocked": null,
+   "path": null,
+   "proofs": [],
+   "reachable": false,
+   "reason": "no path in state graph"
+  }
+ },
+ {
+  "name": "paths",
+  "state": "A",
+  "edges": [
+   [
+    "A",
+    "e1",
+    "B",
+    "x | y"
+   ],
+   [
+    "B",
+    "e2",
+    "C",
+    null
+   ],
+   [
+    "C",
+    "e3",
+    "B",
+    null
+   ]
+  ],
+  "op": "verify_path",
+  "posargs": [
+   "C"
+  ],
+  "args": {
+   "start": "A"
+  },
+  "error": null,
+  "result": {
+   "blocked": null,
+   "path": [
+    {
+     "event": "e1",
+     "from": "A",
+     "guard": "x | y",
+     "to": "B"
+    },
+    {
+     "event": "e2",
+     "from": "B",
+     "guard": null,
+     "to": "C"
+    }
+   ],
+   "proofs": [
+    {
+     "event": "e1",
+     "from": "A",
+     "guard": "x | y",
+     "models": 3,
+     "to": "B",
+     "verdict": "SATISFIABLE"
+    },
+    {
+     "event": "e2",
+     "from": "B",
+     "guard": null,
+     "to": "C",
+     "verdict": "TAUTOLOGY"
+    }
+   ],
+   "reachable": true,
+   "reason": null
+  }
+ },
+ {
+  "name": "paths",
+  "state": "A",
+  "edges": [
+   [
+    "A",
+    "e1",
+    "B",
+    "x | y"
+   ],
+   [
+    "B",
+    "e2",
+    "C",
+    null
+   ],
+   [
+    "C",
+    "e3",
+    "B",
+    null
+   ]
+  ],
+  "op": "verify_path",
+  "posargs": [
+   "C"
+  ],
+  "args": {},
+  "error": null,
+  "result": {
+   "blocked": null,
+   "path": [
+    {
+     "event": "e1",
+     "from": "A",
+     "guard": "x | y",
+     "to": "B"
+    },
+    {
+     "event": "e2",
+     "from": "B",
+     "guard": null,
+     "to": "C"
+    }
+   ],
+   "proofs": [
+    {
+     "event": "e1",
+     "from": "A",
+     "guard": "x | y",
+     "models": 3,
+     "to": "B",
+     "verdict": "SATISFIABLE"
+    },
+    {
+     "event": "e2",
+     "from": "B",
+     "guard": null,
+     "to": "C",
+     "verdict": "TAUTOLOGY"
+    }
+   ],
+   "reachable": true,
+   "reason": null
+  }
+ },
+ {
+  "name": "paths",
+  "state": "A",
+  "edges": [
+   [
+    "A",
+    "e1",
+    "B",
+    "x | y"
+   ],
+   [
+    "B",
+    "e2",
+    "C",
+    null
+   ],
+   [
+    "C",
+    "e3",
+    "B",
+    null
+   ]
+  ],
+  "op": "verify_path",
+  "posargs": [
+   "C"
+  ],
+  "args": {
+   "start": "C"
+  },
+  "error": null,
+  "result": {
+   "blocked": null,
+   "path": [],
+   "proofs": [],
+   "reachable": true,
+   "reason": null
+  }
+ },
+ {
+  "name": "paths",
+  "state": "A",
+  "edges": [
+   [
+    "A",
+    "e1",
+    "B",
+    "x | y"
+   ],
+   [
+    "B",
+    "e2",
+    "C",
+    null
+   ],
+   [
+    "C",
+    "e3",
+    "B",
+    null
+   ]
+  ],
+  "op": "path_to",
+  "posargs": [
+   "C"
+  ],
+  "args": {
+   "start": "A"
+  },
+  "error": null,
+  "result": [
+   {
+    "event": "e1",
+    "from": "A",
+    "guard": "x | y",
+    "to": "B"
+   },
+   {
+    "event": "e2",
+    "from": "B",
+    "guard": null,
+    "to": "C"
+   }
+  ]
+ },
+ {
+  "name": "paths",
+  "state": "A",
+  "edges": [
+   [
+    "A",
+    "e1",
+    "B",
+    "x | y"
+   ],
+   [
+    "B",
+    "e2",
+    "C",
+    null
+   ],
+   [
+    "C",
+    "e3",
+    "B",
+    null
+   ]
+  ],
+  "op": "prove_exit",
+  "posargs": [],
+  "args": {
+   "goals": [
+    "C"
+   ],
+   "start": "A"
+  },
+  "error": null,
+  "result": {
+   "all_reachable": true,
+   "goals": [
+    "C"
+   ],
+   "results": {
+    "C": {
+     "blocked": null,
+     "path": [
+      {
+       "event": "e1",
+       "from": "A",
+       "guard": "x | y",
+       "to": "B"
+      },
+      {
+       "event": "e2",
+       "from": "B",
+       "guard": null,
+       "to": "C"
+      }
+     ],
+     "proofs": [
+      {
+       "event": "e1",
+       "from": "A",
+       "guard": "x | y",
+       "models": 3,
+       "to": "B",
+       "verdict": "SATISFIABLE"
+      },
+      {
+       "event": "e2",
+       "from": "B",
+       "guard": null,
+       "to": "C",
+       "verdict": "TAUTOLOGY"
+      }
+     ],
+     "reachable": true,
+     "reason": null
+    }
+   },
+   "start": "A",
+   "summary": {
+    "C": true
+   }
+  }
+ },
+ {
+  "name": "unsat_only",
+  "state": "S",
+  "edges": [
+   [
+    "S",
+    "e",
+    "T",
+    "~q"
+   ]
+  ],
+  "op": "deadlock",
+  "posargs": [],
+  "args": {},
+  "error": null,
+  "result": {
+   "counterexample": null,
+   "deadlock_states": [],
+   "holds": true,
+   "property": "deadlock-freedom"
+  }
+ },
+ {
+  "name": "unsat_only",
+  "state": "S",
+  "edges": [
+   [
+    "S",
+    "e",
+    "T",
+    "~q"
+   ]
+  ],
+  "op": "liveness",
+  "posargs": [],
+  "args": {},
+  "error": null,
+  "result": {
+   "counterexample": null,
+   "holds": true,
+   "property": "liveness",
+   "terminals": [
+    "T"
+   ],
+   "violations": []
+  }
+ },
+ {
+  "name": "unsat_only",
+  "state": "S",
+  "edges": [
+   [
+    "S",
+    "e",
+    "T",
+    "~q"
+   ]
+  ],
+  "op": "termination",
+  "posargs": [],
+  "args": {},
+  "error": null,
+  "result": {
+   "counterexample": null,
+   "cycles": [],
+   "holds": true,
+   "livelock_cycles": [],
+   "note": "no-goal termination requires an acyclic graph; with goals, cycles that never pass a goal are livelocks (need runtime bounded counters), cycles that pass a goal are task-cycles where each loop completes a unit of work.",
+   "property": "termination",
+   "ranks": {
+    "S": 1,
+    "T": 0
+   },
+   "task_cycles": [],
+   "watch": []
+  }
+ },
+ {
+  "name": "unsat_only",
+  "state": "S",
+  "edges": [
+   [
+    "S",
+    "e",
+    "T",
+    "~q"
+   ]
+  ],
+  "op": "total",
+  "posargs": [],
+  "args": {
+   "goals": [
+    "T"
+   ]
+  },
+  "error": null,
+  "result": {
+   "counterexample": null,
+   "deadlock": true,
+   "goals": [
+    "T"
+   ],
+   "holds": true,
+   "liveness": true,
+   "property": "total-correctness",
+   "termination": true
+  }
+ },
+ {
+  "name": "unsat_only",
+  "state": "S",
+  "edges": [
+   [
+    "S",
+    "e",
+    "T",
+    "~q"
+   ]
+  ],
+  "op": "audit",
+  "posargs": [],
+  "args": {},
+  "error": null,
+  "result": {
+   "deadlock": {
+    "counterexample": null,
+    "deadlock_states": [],
+    "holds": true,
+    "property": "deadlock-freedom"
+   },
+   "liveness": {
+    "counterexample": null,
+    "holds": true,
+    "property": "liveness",
+    "terminals": [
+     "T"
+    ],
+    "violations": []
+   },
+   "termination": {
+    "counterexample": null,
+    "cycles": [],
+    "holds": true,
+    "livelock_cycles": [],
+    "note": "no-goal termination requires an acyclic graph; with goals, cycles that never pass a goal are livelocks (need runtime bounded counters), cycles that pass a goal are task-cycles where each loop completes a unit of work.",
+    "property": "termination",
+    "ranks": {
+     "S": 1,
+     "T": 0
+    },
+    "task_cycles": [],
+    "watch": []
+   },
+   "total_correctness": {
+    "counterexample": null,
+    "deadlock": true,
+    "goals": [],
+    "holds": true,
+    "liveness": true,
+    "property": "total-correctness",
+    "termination": true
+   }
+  }
+ }
+]

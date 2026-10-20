@@ -37,6 +37,8 @@ def _load_local(fname: str, modname: str):
 
 b01 = _load_local("01_bytespace.py", "pq4_b01")
 b03 = _load_local("03_synthesize.py", "pq4_b03")
+b07 = _load_local("07_qgrant.py", "pq4_b07")
+b06_local = _load_local("06_envelope.py", "pq4_b06_04")
 
 
 class VMError(Exception):
@@ -221,12 +223,25 @@ class Machine:
 def resolve_and_run(program: Dict[str, Any],
                     inputs: Optional[List[Any]] = None,
                     max_steps: int = MAX_STEPS_DEFAULT,
-                    feed_path: str = b03.GAP_FEED_DEFAULT) -> Dict[str, Any]:
+                    feed_path: str = b03.GAP_FEED_DEFAULT,
+                    grant: Optional[bytes] = None) -> Dict[str, Any]:
     """Run a program; on SYNTH_PENDING, synthesize+register the module, resume.
 
     This IS the loop closure: the VM never returns ModuleNotFoundError. It
     returns either HALTED (with outs) or FAULT (real faults only).
+
+    grant (QW-7, block 07): when handed an 8-byte endcap, the machine verifies
+    it against the program BEFORE executing a single step (docstring contract:
+    "to run someone's bytecode you must be handed the hash"). grant=None keeps
+    the owner/trusted-local lane ungated. Verification failure is a
+    deterministic FAULT "grant: ..." — never an execute-then-fail.
     """
+    if grant is not None:
+        ok, reason = b07.verify(grant, program, require=True)
+        if not ok:
+            return {"status": FAULT, "steps": 0, "fault": reason,
+                    "pending_import": None, "outs": [],
+                    "regs": [], "synth_log": []}
     m = Machine(program, inputs, max_steps)
     synth_log: List[Dict[str, Any]] = []
     while True:
@@ -314,6 +329,28 @@ def selftest() -> dict:
     st6b = resolve_and_run(p)
     checks["deterministic"] = (st6a["outs"] == st6b["outs"]
                                and st6a["steps"] == st6b["steps"])
+    # 7. QW-7 grant gate (block 07): pre-execution verification
+    cap = b07.grant(p)
+    st7a = resolve_and_run(p, grant=cap)
+    checks["grant_ok_runs"] = (st7a["status"] == "HALTED" and st7a["outs"] == [42])
+    st7b = resolve_and_run(p, grant=b"\x11" * 8)
+    checks["grant_wrong_refused"] = (st7b["status"] == "FAULT"
+                                     and st7b["fault"].startswith("grant:")
+                                     and st7b["steps"] == 0 and st7b["outs"] == [])
+    st7c = resolve_and_run(p, grant=b"\x00" * 8)
+    checks["grant_zero_refused"] = (st7c["status"] == "FAULT"
+                                    and "zero endcap" in st7c["fault"])
+    checks["grant_binds_body"] = (resolve_and_run(
+        dict(p, code=p["code"] + b"\x18\x00"), grant=cap)["status"] == "FAULT")
+    # 8. end-to-end chain 01->06->07->04: assemble -> grant -> envelope with
+    # endcap -> blob gates pass -> decode program back -> VM runs gr blob.
+    ptxt = b07._canonical_text(p)
+    blob = b06_local.encode(ptxt, endcap=b07.grant_text(ptxt))
+    gate = b07.check_blob(blob, require=True, decode=True)
+    prog_rt = b07.program_from_text(gate["decoded"])
+    st8 = resolve_and_run(prog_rt, grant=b07.grant(prog_rt))
+    checks["chain_01060704"] = (gate["ok"] is True and st8["status"] == "HALTED"
+                                and st8["outs"] == [42])
     ok = all(checks.values())
     return {"ok": ok, "name": "vm", "checks": checks}
 

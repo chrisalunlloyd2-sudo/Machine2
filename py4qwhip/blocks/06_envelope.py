@@ -1,4 +1,4 @@
-"""envelope - py4qwhip block 06 (promoted from alt\envelope_claude.py 2026-10-15). Deterministic byte container for source or code objects.
+r"""envelope - py4qwhip block 06 (promoted from alt\envelope_claude.py 2026-10-15). Deterministic byte container for source or code objects.
 
 Layout: MAGIC(4) VER(1) KIND(1) ENDCAP(8) LEN(4,big) SHA256(32) BODY(LEN)
 KIND 0 = utf-8 source text, 1 = marshal'd code object.
@@ -6,8 +6,10 @@ ENDCAP is reserved for the QW-7 credential tag (all zero until Alice rules).
 Stdlib only. Same input -> same bytes (no timestamps).
 """
 import hashlib
+import json
 import marshal
 import struct
+import sys
 import types
 
 MAGIC = b"PYQW"
@@ -69,3 +71,31 @@ def decode(blob):
     if not isinstance(code, types.CodeType):
         raise ByteSpaceError("body is not a code object")
     return code
+
+
+# ---------------------------------------------------- additive selftest (07)
+# Block 06 shipped silent (no __main__); block 07's battery needs a printable
+# verdict. Additive only: exercise the public surface, no logic changes.
+
+def selftest() -> dict:
+    checks = {}
+    text = 'print("hi")\n'
+    checks["roundtrip_source"] = decode(encode(text)) == text
+    checks["tamper_caught"] = False
+    blob = encode(text)
+    bad = blob[:26] + bytes([blob[26] ^ 0x01]) + blob[27:]
+    try:
+        inspect(bad)
+    except ByteSpaceError:
+        checks["tamper_caught"] = True
+    except Exception:
+        checks["tamper_caught"] = False
+    checks["kind_source"] = inspect(encode(text))[0] == 0
+    return {"ok": all(checks.values()), "name": "envelope_additive",
+            "checks": checks}
+
+
+if __name__ == "__main__":
+    r = selftest()
+    print(json.dumps(r, default=str))
+    sys.exit(0 if r["ok"] else 1)

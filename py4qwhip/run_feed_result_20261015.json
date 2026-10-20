@@ -2,17 +2,19 @@
  "summary": {
   "jobs": 45,
   "synthesized": 0,
-  "reused": 41,
-  "blocked": 4,
+  "reused": 45,
+  "blocked": 0,
   "rejected": 0,
-  "errors": []
+  "errors": [],
+  "reused_stale_fp": 4
  },
  "ledger": {
   "MODULE_MISSING:cpuinfo": {
-   "action": "blocked",
+   "action": "existing_stale_fp",
    "id": 8497,
    "fingerprint": "24f20ab6665078dd",
-   "content_hash": "c7cdf0ec14a37fbe"
+   "content_hash": "c7cdf0ec14a37fbe",
+   "nearest_ratio": 0.9554
   },
   "MODULE_MISSING:pytesseract": {
    "action": "existing",
@@ -99,10 +101,11 @@
    "content_hash": "27d781666cb45f0e"
   },
   "IMPORT_ELSEWHERE:sophia": {
-   "action": "blocked",
+   "action": "existing_stale_fp",
    "id": 8625,
    "fingerprint": "51094bbbbf30e342",
-   "content_hash": "f6429690119937f4"
+   "content_hash": "f6429690119937f4",
+   "nearest_ratio": 0.9476
   },
   "IMPORT_ELSEWHERE:code_finder": {
    "action": "existing",
@@ -147,10 +150,11 @@
    "content_hash": "86a6e5baac620914"
   },
   "IMPORT_ELSEWHERE:agents": {
-   "action": "blocked",
+   "action": "existing_stale_fp",
    "id": 8642,
    "fingerprint": "297ca492f74eae02",
-   "content_hash": "811e3bcdc6c5171c"
+   "content_hash": "811e3bcdc6c5171c",
+   "nearest_ratio": 0.9368
   },
   "IMPORT_ELSEWHERE:extrapolate": {
    "action": "existing",
@@ -267,10 +271,11 @@
    "content_hash": "c8ea5542bd53d870"
   },
   "IMPORT_ELSEWHERE:swarm_jobs": {
-   "action": "blocked",
+   "action": "existing_stale_fp",
    "id": 8664,
    "fingerprint": "d13c482c5848be21",
-   "content_hash": "5e8700c400cf0c1c"
+   "content_hash": "5e8700c400cf0c1c",
+   "nearest_ratio": 0.9239
   },
   "IMPORT_ELSEWHERE:swarm_feature_pages": {
    "action": "existing",
@@ -278,5 +283,6 @@
    "fingerprint": "02c244df4861e437",
    "content_hash": "b8056115bcc10fbb"
   }
- }
+ },
+ "wall_s": 16.37
 }

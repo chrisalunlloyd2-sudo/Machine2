@@ -1,0 +1,1 @@
+done 2026-10-15 block07 qgrant QW-7 grant gate: grant/grant_text/_verify_text/check_blob (FNV-1a64 of b"QW-7"+sha256(canonical text); 8B endcap; zero-endcap refused unless require=False=Alice reserved mode; wrong grant refused; tamper caught by 06 checksum); selftest 7/7 GREEN; battery 6/6 GREEN (06 needed additive selftest block - shipped silent); pure stdlib local no cloud

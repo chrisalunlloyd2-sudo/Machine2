@@ -128,9 +128,9 @@ def synth_skeleton(job: Dict[str, Any]) -> Dict[str, Any]:
             "kind": kind, "fingerprint": fingerprint(job)}
 
 
-def submit_synthesis(job: Dict[str, Any], synth: Dict[str, Any],
-                     prior_art: List[Dict[str, Any]]) -> Dict[str, Any]:
-    """Register the synthesized program in the ledger (never-make-twice)."""
+def _payload(job: Dict[str, Any], synth: Dict[str, Any],
+             prior_art: List[Dict[str, Any]]) -> Tuple[str, str, str]:
+    """Canonical ledger payload for a synthesized skeleton (single source)."""
     name = "pq4_skel_%s" % str(job.get("module", "unnamed"))
     purpose = ("py4qwhip skeleton for gap %s (kind %s, fingerprint %s); "
                "prior art ids %s" % (job.get("gap_id", "?"), synth["kind"],
@@ -142,11 +142,46 @@ def submit_synthesis(job: Dict[str, Any], synth: Dict[str, Any],
         "karaka": synth["karaka"],
         "fingerprint": synth["fingerprint"],
     }, sort_keys=True)
+    return name, purpose, code_text
+
+
+def submit_synthesis(job: Dict[str, Any], synth: Dict[str, Any],
+                     prior_art: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """Register the synthesized program in the ledger (never-make-twice)."""
+    name, purpose, code_text = _payload(job, synth, prior_art)
     res = code_ledger.submit(code=code_text, name=name, purpose=purpose,
                              language="json", kind="artifact",
                              file_path=r"C:\Viper\projects\py4qwhip\blocks\03_synthesize.py",
                              fitness_score=0.5)
     return res
+
+
+def _body_matches_row(row_id: int, synth: Dict[str, Any]) -> bool:
+    """Read-only: does ledger row @row_id carry the SAME body as live synth?
+
+    Body = program bytes + nlocals + karakas. The embedded fingerprint is
+    deliberately ignored: it is derived annotation and may be stale in older
+    rows (10-13 writer era). No writes, no verdict override — callers still
+    keep code_ledger's own 'blocked' unless this exact body match succeeds.
+    """
+    try:
+        import sqlite3
+        con = sqlite3.connect(r"file:C:\Viper\databases\code\code.db?mode=ro", uri=True)
+        try:
+            row = con.execute("SELECT code FROM code_artifacts WHERE id=?",
+                              (row_id,)).fetchone()
+        finally:
+            con.close()
+        if not row:
+            return False
+        old = json.loads(row[0])
+        prog_old = old.get("program", {})
+        return (old.get("karaka") == synth["karaka"] and
+                prog_old.get("code") ==
+                synth["program"]["code"].decode("latin-1") and
+                prog_old.get("nlocals") == synth["program"].get("nlocals"))
+    except Exception:
+        return False
 
 
 # ---------------------------------------------------------------- feed loop
@@ -185,13 +220,36 @@ def run_feed(path: str = GAP_FEED_DEFAULT, verbose: bool = False
             summary["errors"].append("%s: submit %s" % (gid, e))
             continue
         action = str(res.get("action", "?"))
-        ledger[gid] = {"action": action, "id": res.get("id"),
-                       "fingerprint": synth["fingerprint"],
-                       "content_hash": b01.content_hash(synth["program"])}
+        if action == "blocked":
+            code_text = _payload(job, synth, prior)[2]
+            # code_ledger refused as near-dup (never-make-twice). If the prior row's
+            # BODY matches ours (program + karakas identical; only its embedded
+            # fingerprint annotation is stale), this is reuse of the SAME artifact
+            # with annotation drift — not a synthesis dead end. Read-only re-derive.
+            near_id, ratio = None, None
+            try:
+                near, ratio = code_ledger._nearest(code_text, "json")
+                thr = getattr(code_ledger, "DUP_THRESHOLD", 0.9)
+                if near and ratio >= thr and _body_matches_row(near["id"], synth):
+                    near_id = near["id"]
+                    action = "existing_stale_fp"  # reuse verdict, annotation drift only
+            except Exception:
+                pass  # keep the strict ledger verdict on any probe failure
+            if action == "existing_stale_fp":
+                res = dict(res, id=near_id, nearest_ratio=round(ratio, 4))
+        entry = {"action": action, "id": res.get("id"),
+                 "fingerprint": synth["fingerprint"],
+                 "content_hash": b01.content_hash(synth["program"])}
+        if "nearest_ratio" in res:
+            entry["nearest_ratio"] = res["nearest_ratio"]
+        ledger[gid] = entry
         if action == "added":
             summary["synthesized"] += 1
         elif action == "existing":
             summary["reused"] += 1
+        elif action == "existing_stale_fp":
+            summary["reused"] += 1  # still reuse; separate counter for audit
+            summary["reused_stale_fp"] = summary.get("reused_stale_fp", 0) + 1
         elif action == "blocked":
             summary["blocked"] += 1
         else:

@@ -159,6 +159,101 @@ def assemble(text: str, name: str = "prog", nlocals: int = 8,
     Two-pass: pass 1 sizes every instruction (labels included as zero-width),
     pass 2 emits code with rel = target_byte - after_instr_byte.
     """
+    # -- pq4 wrapper: delegate str-text programs to the Rust pq.dll (C ABI) --
+    # FILE-LEVEL swap per RUST_PORT_PLAN step 6 (2026-10-19): text/name str +
+    # int nlocals + pool-safe const_extra + utf8-encodable text/name route to
+    # the dll; everything else falls through to the verbatim pure-Python body
+    # below so b01's native AttributeError/TypeError behaviour is preserved.
+    if (isinstance(text, str) and isinstance(name, str)
+            and isinstance(nlocals, int) and not isinstance(nlocals, bool)
+            and all(isinstance(v, (bool, int, float, bytes, str))
+                    for v in (const_extra or []))):
+        try:
+            text.encode("utf-8")
+            name.encode("utf-8")
+        except UnicodeEncodeError:
+            pass  # lone surrogates: only the pure-Python path can hold these
+        else:
+            import base64 as _b64
+            import ctypes
+            import sys
+            import json as _json
+            import os as _os
+
+            def _to_wire(v):
+                if isinstance(v, bool):
+                    return {"t": "z", "v": v}
+                if isinstance(v, int):
+                    if -(2 ** 63) <= v <= 2 ** 63 - 1:
+                        return {"t": "i", "v": v}
+                    return {"t": "B", "v": str(v)}
+                if isinstance(v, float):
+                    return {"t": "f",
+                            "v": "0x%016x" % struct.unpack(
+                                "<Q", struct.pack("<d", v))[0]}
+                if isinstance(v, bytes):
+                    return {"t": "b",
+                            "v": _b64.b64encode(v).decode("ascii")}
+                return {"t": "s", "v": v}
+
+            def _from_wire(e):
+                t, v = e["t"], e["v"]
+                if t == "z":
+                    return True if v else False
+                if t in ("i", "B"):
+                    return int(v)
+                if t == "f":
+                    hx = v[2:] if v.startswith("0x") else v
+                    return struct.unpack(">d", bytes.fromhex(hx))[0]
+                if t == "b":
+                    return _b64.b64decode(v)
+                return v
+
+            def _lib():
+                got = getattr(assemble, "_pq4_lib", None)
+                if got is not None:
+                    return got
+                path = _os.path.join(
+                    _os.path.dirname(_os.path.dirname(
+                        _os.path.abspath(__file__))),
+                    "rust", "pq", "target", "release", "pq.dll")
+                if not _os.path.isfile(path):
+                    raise BytespaceError("pq4 dll not found: %s" % path)
+                lib = ctypes.CDLL(str(path))
+                lib.pq_assemble_json.argtypes = [ctypes.c_char_p]
+                lib.pq_assemble_json.restype = ctypes.c_void_p
+                lib.pq_free.argtypes = [ctypes.c_void_p]
+                lib.pq_free.restype = None
+                assemble._pq4_lib = lib
+                return lib
+
+            req = _json.dumps({
+                "text": text, "name": name, "nlocals": nlocals,
+                "const_extra": [_to_wire(v) for v in (const_extra or [])],
+            })
+            lib = _lib()
+            ptr = lib.pq_assemble_json(req.encode("utf-8"))
+            if not ptr:
+                raise BytespaceError("pq_assemble_json returned null")
+            raw = ctypes.string_at(ptr)
+            lib.pq_free(ptr)
+            resp = _json.loads(raw.decode("utf-8"))
+            if "error" in resp:
+                err = resp["error"]
+                msg = err.get("message", err) if isinstance(err, dict) else err
+                print("pq4: dll refused (%s); re-running pure-Python body"
+                      % _json.dumps(msg)[:120], file=sys.stderr)
+            else:
+                prog = {"magic": MAGIC.decode("ascii"),
+                    "version": VERSION, "name": name,
+                    "nlocals": int(nlocals),
+                    "const_pool": [_from_wire(e) for e in resp["const_pool"]],
+                    "code": _b64.b64decode(resp["code_b64"])}
+                validate(prog)
+                return prog
+            # dll refused: fall through to the verbatim pure-Python body below
+            # so the native exception (ValueError/TypeError/BytespaceError)
+            # surfaces exactly as unpatched b01 would raise it.
     labels: Dict[str, int] = {}      # label -> instruction index
     ins: List[Tuple[str, List[str]]] = []
     for lineno, raw in enumerate(text.splitlines(), 1):

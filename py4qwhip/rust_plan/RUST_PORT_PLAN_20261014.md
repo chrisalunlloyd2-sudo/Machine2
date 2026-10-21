@@ -128,3 +128,73 @@ Next: Chris go on rustup -> `cargo new` crate pq, port 01 against golden vectors
     reproduce the exact Python exception TYPE + message per error kind.
   - Probe battery authoritative blob: session 20261009_161334_603e96, call_9b0dek4r
     (default= serializer; supersedes te53tz3t/h35hhhn1/tkle0kbl).
+
+## PROGRESS 10-19 (spans F-H: CB-1 fix, full C-ABI parity, git/backup v2)
+
+- ROUNDTRIP BREAK found: pq_program_json -> pq_content_hash_json FAILED for
+  PADDED base64 payloads ("AQAAAA4=" rebuilt as "AQAAAAA="): b64_decode consumed
+  the trailing 4-char tail with the low-bit packing only correct for UNPADDED
+  input. NEW decode = min(4, body_end - i) take-loop (take<2 -> None); encode
+  side untouched. Patched by b64fix_apply.py (latin-1 splice, CRLF anchors in
+  lib.rs, assert count==1); rebuild EXIT 0; 8/8 content_hash parity (CB-1
+  CLOSED); 17/17 GREEN (run #10). Commit eb0a696 -> 15837c0 (only lib.rs
+  staged; dll is NOT git-tracked - build artifact, carried by backup zips).
+- FULL C-ABI PARITY PROVEN on pq_probe4.dll (fresh scratch copy): validate 6/6
+  byte-exact + None-on-success; content_hash 8/8; assemble errors 13/13;
+  const-kinds 9/9; wire roundtrip identity. Live exports (8): pq_version,
+  pq_abi_version, pq_ops_json, pq_assemble_json, pq_validate_json,
+  pq_content_hash_json, pq_free, pq_program_json. NO disassemble /
+  canonical_bytes exports (wrapper keeps those pure Python).
+- Backup v2 = pq_port_backup_20261019_190650.zip (49 entries, testzip OK).
+
+## PROGRESS 10-19..20 (spans I-K: b01 recon + wire map, all landed)
+
+- 09 re-hydration RESOLVED: 09 -> b07.program_from_text (07_qgrant.py L59,
+  Latin-1) re-encodes `code` to text; 09's only b01 use = validate(prog).
+- b01 385/385 lines mapped via latin-1 numbered disk-log reads (escape-rich
+  text defeats read_file clipping). census open(p,"rb"): b01 PURE LF; lib.rs
+  PURE CRLF; vm/graph/envelope/karaka/golden.rs PURE LF; vm_conformance CRLF.
+- struct.error origin = L124 struct.pack("<q", val) in canonical_bytes -> the
+  huge-int lane keeps content_hash/validate PURE PYTHON; assemble rebuilds
+  b01-exact pool values from the wire echo (bool->z lane, f->"0x%016x" bits).
+- WIRE MAP COMPLETE (no remaining holes): pos+neg huge ints echo as
+  {"t":"B","v":"<decimal>"} both accepted; dedupe (type+value) matches both
+  directions (bool <> int 1 separate); dll STRICTER on name/text/nlocals types
+  (b01 natural AttributeError/TypeError -> route gate); pool-cap: dll accepts
+  65537 const_extra, b01's own trailing validate(prog) raises
+  "const pool too large" (L237) - dll lane must call validate(prog) on the
+  rebuilt dict explicitly; 300-ch name error pin VOID (both accept long names).
+
+## PROGRESS 10-20 (span L: wrapper APPLIED + PROVEN, milestone 4)
+
+- Wrapper write: pristine b01 copy -> scratch pq_b01_pristine.py
+  (14,608 B / 385 LF / sha256 1a72...; exact sha in backup meta). Applier
+  (latin-1 splice, anchor "    labels: Dict[str, int] = {}" 4-indent,
+  count==1 assert, CR asserts 3x, py_compile doraise) -> 88-line WRAPPER_BLOCK
+  spliced before L162; live b01 now 473+ lines. Payload composition:
+  route gate (text str + name str + utf-8 encodable + nlocals non-bool int +
+  const_extra elements typed) -> ctypes pq_assemble_json -> rebuild pool
+  echo (z->bool, i->int, B->int(dec-str), f->>d bits, b->bytes, s->str) ->
+  validate(prog) on rebuilt dict -> return; ANY dll refusal prints stderr
+  note + falls through to the VERBATIM pure-Python body -> native
+  AttributeError/TypeError/ValueError/BytespaceError fidelity by
+  construction (bad-reg ValueError proven on a dll-refused case).
+- FIXES during battery authoring: (1) wrapper referenced undeclared
+  module-level base64 -> lane-local imports (base64/ctypes/sys). (2) float
+  rebuild used struct.unpack("<d", bytes.fromhex(hx)) - fromhex is
+  big-endian; correct unpack is ">d" (battery caught 3.5 -> 1.55e-320).
+- DIFFERENTIAL BATTERY 27/27 (pq4_battery.py, PY311 -I): all fallback rows
+  exception-identical pristine vs wrapped; routed rows pool/hash identical;
+  dl<->py hash agreement; pool caps 65536 ("const pool overflow") / 65537
+  ("const pool too large"); struct.error text EXACT "error:argument out of
+  range" (struct.error.__name__ == "error" - grep gotcha); jumps corpus,
+  surrogate/None rows, selftest rc=0. 03_synthesize consumer battery: 8/8
+  GREEN, all blocks true; six b01 consumers import cleanly; b01
+  selftest rc=0.
+- MILESTONE 4 runbook: commit ac0e626 pushed (parent 15837c0; 95 insertions,
+  b01 only). Backup v3 =
+  pq_port_backup_20261020_final.zip (61 entries, testzip OK, no dups, v2
+  members carried byte-exact; interim zips removed; meta carries commit +
+  pristine sha). GIT-3 CLOSED: dll never git-tracked (all 3 commits).
+- RESIDUAL: DOC-1 this update; scratch probe dlls pq_probe*.dll (delete when
+  kernel session ends); Alice step-2/step-5 rulings still external.

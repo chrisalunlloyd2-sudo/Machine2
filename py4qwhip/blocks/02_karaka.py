@@ -32,12 +32,94 @@ class KarakaError(Exception):
     """Deterministic kāraka fault (unknown role, bad slot, arity mismatch)."""
 
 
+def _pq_karaka_wire(op, req):
+    # -- pq4 wrapper (milestone 6, step 6 FILE-LEVEL): one block-02 op call
+    # to the Rust pq.dll over pq_karaka_json (C ABI). Returns the parsed
+    # ok:true response dict, or None on dll refusal -- callers fall through
+    # to the verbatim pure-Python bodies so native KarakaError texts and
+    # int() slot semantics stay exact (D168/D258/D269).
+    import ctypes, json as _json, os as _os, sys
+    lib = getattr(_pq_karaka_wire, "_lib", None)
+    if lib is None:
+        path = _os.path.join(_os.path.dirname(_os.path.dirname(
+            _os.path.abspath(__file__))),
+            "rust", "pq", "target", "release", "pq.dll")
+        if not _os.path.isfile(path):
+            raise KarakaError("pq4 dll not found: %s" % path)
+        lib = ctypes.CDLL(str(path))
+        lib.pq_karaka_json.argtypes = [ctypes.c_char_p]
+        lib.pq_karaka_json.restype = ctypes.c_void_p
+        lib.pq_free.argtypes = [ctypes.c_void_p]
+        lib.pq_free.restype = None
+        _pq_karaka_wire._lib = lib
+    req = dict(req); req["op"] = op
+    ptr = lib.pq_karaka_json(_json.dumps(req).encode("utf-8"))
+    if not ptr:
+        raise KarakaError("pq_karaka_json returned null")
+    raw = ctypes.string_at(ptr)
+    lib.pq_free(ptr)
+    resp = _json.loads(raw.decode("utf-8"))
+    if resp.get("ok") is not True:
+        print("pq4: dll refused (%s); re-running pure-Python body"
+              % _json.dumps(resp.get("error"))[:120], file=sys.stderr)
+        return None
+    return resp
+
+
+def _pq_karaka_pairs(binding):
+    # Ctor-binding snapshot as [role, slot] wire pairs (D250 layout); None
+    # = outside the wire grammar, the pure-Python ctor must own it (D258:
+    # str/upper casings and int() slot coercion stay native).
+    if not isinstance(binding, dict):
+        return None
+    pairs = []
+    for k, v in binding.items():
+        if not isinstance(k, str):
+            return None
+        r = k.upper()
+        if r not in ROLE_IDS:
+            return None
+        if isinstance(v, bool) or not isinstance(v, int) or not 0 <= v <= 255:
+            return None
+        pairs.append([r, v])
+    return pairs
+
+
+def _pq_karaka_snapshot(resp):
+    # KarakaTable from an ok:true response (table_pairs snapshot);
+    # strict validation, None on anything unexpected -> refuse.
+    pairs = None if not isinstance(resp, dict) else resp.get("table_pairs")
+    if not isinstance(pairs, list):
+        return None
+    m = {}
+    for p in pairs:
+        if (not isinstance(p, list) or len(p) != 2
+                or not isinstance(p[0], str) or p[0] not in ROLE_IDS
+                or not isinstance(p[1], int) or isinstance(p[1], bool)
+                or not 0 <= p[1] <= 255):
+            return None
+        m[p[0]] = p[1]
+    t = object.__new__(KarakaTable)
+    t._m = m
+    return t
+
+
 class KarakaTable:
     """Role -> local-slot binding for one function frame."""
 
     __slots__ = ("_m",)
 
     def __init__(self, binding: Optional[Dict[str, int]] = None):
+        pairs = [] if binding is None else _pq_karaka_pairs(binding)
+        if pairs is not None:
+            resp = _pq_karaka_wire("from_pairs", {"pairs": pairs})
+            snap = None if resp is None else _pq_karaka_snapshot(resp)
+            if snap is not None:
+                self._m = snap._m
+                return
+        return KarakaTable._pq_init(self, binding)
+
+    def _pq_init(self, binding: Optional[Dict[str, int]] = None):
         m: Dict[str, int] = {}
         if binding:
             for role, slot in dict(binding).items():
@@ -52,15 +134,41 @@ class KarakaTable:
         self._m = m
 
     def get(self, role: str) -> Optional[int]:
+        t = _pq_karaka_wire("get", {"table_pairs": self._pq_pairs(),
+                                    "role": role})
+        if t is None:
+            return self._pq_get(role, ())
+        return t["slot"] if t.get("found") is True else None
+
+    def _pq_get(self, role, _gate=()):
         return self._m.get(str(role).upper())
 
     def require(self, role: str) -> int:
+        t = _pq_karaka_wire("require", {"table_pairs": self._pq_pairs(),
+                                        "role": role})
+        if t is None or not isinstance(t.get("slot"), int) \
+                or isinstance(t["slot"], bool):
+            return self._pq_require(role, ())
+        return t["slot"]
+
+    def _pq_require(self, role, _gate=()):
         s = self._m.get(str(role).upper())
         if s is None:
             raise KarakaError("required role missing: %s" % role)
         return s
 
     def bind(self, role: str, slot: int) -> "KarakaTable":
+        t = _pq_karaka_wire("bind", {"table_pairs": self._pq_pairs(),
+                                     "role": role, "slot": slot})
+        if t is None:
+            return self._pq_bind(role, slot, ())
+        snap = _pq_karaka_snapshot(t)
+        if snap is None:
+            return self._pq_bind(role, slot, ())
+        self._m = snap._m
+        return self
+
+    def _pq_bind(self, role, slot, _gate=()):
         r = str(role).upper()
         if r not in ROLE_IDS:
             raise KarakaError("unknown role %r" % role)
@@ -86,6 +194,10 @@ class KarakaTable:
 
     def __eq__(self, o: object) -> bool:
         return isinstance(o, KarakaTable) and self._m == o._m
+
+    def _pq_pairs(self):
+        # Wire snapshot in insertion order (matches __init__ iteration).
+        return [[r, s] for r, s in self._m.items()]
 
 
 def parse_arguments(args: List[str], table: KarakaTable) -> Dict[str, Any]:

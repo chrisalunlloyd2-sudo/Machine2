@@ -840,6 +840,33 @@ pub mod c_abi {
         out_json(out)
     }
     #[no_mangle]
+    pub extern "C" fn pq_karaka_json(req: *const std::os::raw::c_char) -> *mut std::os::raw::c_char {
+        // Block 02 karaka wire lane (milestone 6, RUST_PORT_PLAN step 6
+        // FILE-LEVEL): {"op": ...} request in -> {"ok": true, ...} out.
+        // KarakaError kind-tags ITSELF here: err_json hard-tags every PqError
+        // "BytespaceError", and this export owns its envelope so the wire
+        // response is always ok:true/ok:false + kind "KarakaError" (D251);
+        // Python side treats ANY ok:false as dll-refused and falls through to
+        // the verbatim pure-Python body, keeping D168 fidelity native.
+        let out = std::panic::catch_unwind(std::panic::AssertUnwindSafe(
+            || -> Result<serde_json::Value, PqError> {
+            let req = req_json(req)?;
+            match crate::karaka::karaka_op(&req) {
+                Ok(v) => Ok(v),
+                Err(crate::karaka::KarakaError(m)) => {
+                    Ok(serde_json::json!({"ok": false,
+                        "error": {"kind": "KarakaError", "message": m}}))
+                }
+            }
+            },
+        ));
+        let out = match out {
+            Ok(v) => v,
+            Err(payload) => Err(panic_err(payload)),
+        };
+        out_json(out)
+    }
+    #[no_mangle]
     pub extern "C" fn pq_version() -> *mut std::os::raw::c_char {
         // pq.dll build stamp; format!(...) is re-derived from Cargo.toml
         // pkg:version on every rebuild, so the string cannot rot.

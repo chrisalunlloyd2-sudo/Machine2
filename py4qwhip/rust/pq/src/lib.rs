@@ -812,6 +812,34 @@ pub mod c_abi {
     }
 
     #[no_mangle]
+    pub extern "C" fn pq_vm_run_json(req: *const std::os::raw::c_char) -> *mut std::os::raw::c_char {
+        // Snapshot-in -> snapshot-out VM run (block 04 Machine.run lane, D182).
+        // Contract: {"program": program JSON, "pc","steps","max_steps","status",
+        // "fault","pending_import","outs","regs"} in; snapshot + final "pc" out
+        // (Python strips pc from the returned dict, D188).
+        let out = std::panic::catch_unwind(std::panic::AssertUnwindSafe(
+            || -> Result<serde_json::Value, PqError> {
+            let req = req_json(req)?;
+            let prog_v = match req.get("program") {
+                Some(v) => v,
+                None => return err("request missing 'program'"),
+            };
+            let prog = program_from_json(prog_v)?;
+            let snap = match req.as_object() {
+                Some(m) => m,
+                None => return err("request must be a JSON object"),
+            };
+            let mut machine = crate::vm::Machine::from_snapshot(prog, snap).map_err(PqError)?;
+            Ok(machine.machine_run_json().map_err(PqError)?)
+            },
+        ));
+        let out = match out {
+            Ok(v) => v,
+            Err(payload) => Err(panic_err(payload)),
+        };
+        out_json(out)
+    }
+    #[no_mangle]
     pub extern "C" fn pq_version() -> *mut std::os::raw::c_char {
         // pq.dll build stamp; format!(...) is re-derived from Cargo.toml
         // pkg:version on every rebuild, so the string cannot rot.

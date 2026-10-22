@@ -729,3 +729,217 @@ fn dec_of(v: &Val) -> String {
         _ => "0".into(),
     }
 }
+// ---- machine-run export lane (2026-10-20): snapshot-in -> snapshot-out.
+// Wire: {"program": b01 program JSON, "pc": i64, "steps": u64, "max_steps": u64,
+//        "status": str, "fault": str|null, "pending_import": str|null,
+//        "outs": [Val], "regs": [Val]}
+// D186: TAGGED {"t","v"} codec both sides, bool BEFORE int; floats as hex bits
+// ("0x%016x" == to_bits hex); "B" bignum; "n" None (NOT valid in pool);
+// pool -> Vec<Const> mirrors const_from_json idioms.
+// Ownership split: codec/decode logic HERE in vm.rs (self-contained, own tiny
+// b64 pair); lib.rs keeps only the thin pq_vm_run_json envelope (D196).
+
+/// Tiny RFC-correct b64 encoder (always = padded).
+fn lane_b64_encode(data: &[u8]) -> String {
+    const TBL: &[u8; 64] = b"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+    let mut s = String::with_capacity((data.len() + 2) / 3 * 4);
+    let mut i = 0usize;
+    while i + 3 <= data.len() {
+        let n = ((data[i] as u32) << 16) | ((data[i + 1] as u32) << 8) | (data[i + 2] as u32);
+        s.push(TBL[(n >> 18) as usize & 63] as char);
+        s.push(TBL[(n >> 12) as usize & 63] as char);
+        s.push(TBL[(n >> 6) as usize & 63] as char);
+        s.push(TBL[n as usize & 63] as char);
+        i += 3;
+    }
+    let rem = data.len() - i;
+    if rem == 1 {
+        let n = (data[i] as u32) << 16;
+        s.push(TBL[(n >> 18) as usize & 63] as char);
+        s.push(TBL[(n >> 12) as usize & 63] as char);
+        s.push('=');
+        s.push('=');
+    } else if rem == 2 {
+        let n = ((data[i] as u32) << 16) | ((data[i + 1] as u32) << 8);
+        s.push(TBL[(n >> 18) as usize & 63] as char);
+        s.push(TBL[(n >> 12) as usize & 63] as char);
+        s.push(TBL[(n >> 6) as usize & 63] as char);
+        s.push('=');
+    }
+    s
+}
+
+/// Tiny b64 decoder; padded-tail-safe 4-char stepping (CB-1 style).
+fn lane_b64_decode(s: &str) -> Option<Vec<u8>> {
+    fn dv(c: u8) -> Option<u32> {
+        match c {
+            b'A'..=b'Z' => Some((c - b'A') as u32),
+            b'a'..=b'z' => Some((c - b'a') as u32 + 26),
+            b'0'..=b'9' => Some((c - b'0') as u32 + 52),
+            b'+' => Some(62),
+            b'/' => Some(63),
+            _ => None,
+        }
+    }
+    let b = s.as_bytes();
+    let mut out = Vec::with_capacity(b.len() / 4 * 3);
+    let mut i = 0usize;
+    while i < b.len() {
+        let take = core::cmp::min(4, b.len() - i);
+        if take < 2 {
+            return None;
+        }
+        let mut n: u32 = 0;
+        let mut got: u32 = 0;
+        for k in 0..take {
+            if b[i + k] == b'=' {
+                break;
+            }
+            n |= dv(b[i + k])? << (18 - 6 * got);
+            got += 1;
+        }
+        if got > 0 {
+            n >>= 18 - 6 * got;
+            let nbytes = (got * 6 / 8) as usize;
+            for k in 0..nbytes {
+                out.push((n >> (8 * (nbytes - 1 - k))) as u8);
+            }
+        }
+        i += take;
+    }
+    Some(out)
+}
+/// TAGGED encode: Val -> {"t","v"} (D186). bool BEFORE int. Float = hex bits.
+fn lane_val_to_json(v: &Val) -> Value {
+    match v {
+        Val::None => serde_json::json!({"t": "n", "v": null}),
+        Val::Bool(b) => serde_json::json!({"t": "z", "v": b}),
+        Val::Int(i) => serde_json::json!({"t": "i", "v": i}),
+        Val::Str(s) => serde_json::json!({"t": "s", "v": s}),
+        Val::Float(f) => {
+            let bits: u64 = f.to_bits();
+            serde_json::json!({"t": "f", "v": format!("0x{:016x}", bits)})
+        }
+        Val::Bytes(b) => serde_json::json!({"t": "b", "v": lane_b64_encode(b)}),
+        Val::Bigint(s) => serde_json::json!({"t": "B", "v": s}),
+    }
+}
+
+/// TAGGED decode: {"t","v"} -> Val (7 variants; "n" allowed OUTSIDE pool only).
+fn lane_val_from_json(v: &Value) -> Result<Val, String> {
+    let t = v.get("t").and_then(|x| x.as_str()).ok_or_else(|| "const item missing 't'".to_string())?;
+    let body = v.get("v").ok_or_else(|| "const item missing 'v'".to_string())?;
+    match t {
+        "n" => Ok(Val::None),
+        "z" => body.as_bool().map(Val::Bool).ok_or_else(|| "invalid const value".to_string()),
+        // bool FIRST: JSON true is also an integer to serde; bool must not fall in "i".
+        "i" => {
+            if body.is_boolean() {
+                return Err("invalid const tag".to_string());
+            }
+            body.as_i64().map(Val::Int).ok_or_else(|| "invalid const value".to_string())
+        }
+        "s" => body.as_str().map(|s| Val::Str(s.to_string())).ok_or_else(|| "invalid const value".to_string()),
+        "b" => {
+            let s = body.as_str().ok_or_else(|| "invalid const value".to_string())?;
+            lane_b64_decode(s).map(Val::Bytes).ok_or_else(|| "invalid const value".to_string())
+        }
+        "f" => {
+            let s = body.as_str().ok_or_else(|| "invalid const value".to_string())?;
+            let hex = s.strip_prefix("0x").ok_or_else(|| "invalid const value".to_string())?;
+            let bits = u64::from_str_radix(hex, 16).map_err(|_| "invalid const value".to_string())?;
+            Ok(Val::Float(f64::from_bits(bits)))
+        }
+        "B" => {
+            let s = body.as_str().ok_or_else(|| "invalid const value".to_string())?;
+            // both signs accepted (NEG-B proven); digits only after optional '-'
+            let mag = s.strip_prefix('-').unwrap_or(s);
+            if mag.is_empty() || !mag.bytes().all(|c| c.is_ascii_digit()) {
+                return Err("invalid const value".to_string());
+            }
+            Ok(Val::Bigint(s.to_string()))
+        }
+        _ => Err("invalid const tag".to_string()),
+    }
+}
+
+
+impl Machine {
+    /// Build a Machine from a snapshot wire dict. NO input: snapshot carries only
+    /// (program, pc, steps, max_steps, status, fault, pending_import, outs, regs)
+    /// -- IMPORT resume advance (pc += 4) is Python-side (D207); Rust never
+    /// advances pc on Import (step() returns SYNTH_PENDING with pc untouched).
+    pub fn from_snapshot(prog: Program, snap: &serde_json::Map<String, Value>) -> Result<Machine, String> {
+        let pc = match snap.get("pc").and_then(|x| x.as_i64()) {
+            Some(v) => v,
+            None => return Err("snapshot missing 'pc'".to_string()),
+        };
+        let steps = match snap.get("steps").and_then(|x| x.as_u64()) {
+            Some(v) => v,
+            None => return Err("snapshot missing 'steps'".to_string()),
+        };
+        let max_steps = match snap.get("max_steps").and_then(|x| x.as_u64()) {
+            Some(v) => v,
+            None => return Err("snapshot missing 'max_steps'".to_string()),
+        };
+        let status = match snap.get("status").and_then(|x| x.as_str()) {
+            Some("RUNNING") => Status::Running,
+            Some("HALTED") => Status::Halted,
+            Some("SYNTH_PENDING") => Status::SynthPending,
+            Some("FAULT") => Status::Fault,
+            _ => return Err("snapshot missing 'status'".to_string()),
+        };
+        let fault = match snap.get("fault") {
+            Some(Value::Null) | None => None,
+            Some(Value::String(s)) => Some(s.clone()),
+            Some(_) => return Err("snapshot 'fault' not a string".to_string()),
+        };
+        let pending_import = match snap.get("pending_import") {
+            Some(Value::Null) | None => None,
+            Some(Value::String(s)) => Some(s.clone()),
+            Some(_) => return Err("snapshot 'pending_import' not a string".to_string()),
+        };
+        let outs_v = snap.get("outs").ok_or_else(|| "snapshot missing 'outs'".to_string())?;
+        let outs_a = outs_v.as_array().ok_or_else(|| "snapshot 'outs' not a list".to_string())?;
+        let mut outs = Vec::with_capacity(outs_a.len());
+        for it in outs_a {
+            outs.push(lane_val_from_json(it)?);
+        }
+        let regs_v = snap.get("regs").ok_or_else(|| "snapshot missing 'regs'".to_string())?;
+        let regs_a = regs_v.as_array().ok_or_else(|| "snapshot 'regs' not a list".to_string())?;
+        let mut regs = Vec::with_capacity(regs_a.len());
+        for it in regs_a {
+            regs.push(lane_val_from_json(it)?);
+        }
+        // Program arrives fully parsed (lib.rs program_from_json; fields pub D203).
+        Ok(Machine {
+            prog,
+            regs,
+            pc,
+            steps,
+            max_steps,
+            status,
+            fault,
+            pending_import,
+            outs,
+        })
+        // NOTE: Python Machine._outs drives out(); Rust Machine field `outs` is
+        // the live list (Landing B clone-out); lane mirrors that field directly.
+    }
+
+    /// run() + full state re-serialize (snapshot-out). Envelope in lib.rs is thin.
+    pub fn machine_run_json(&mut self) -> Result<serde_json::Value, String> {
+        let st: RunState = self.run();
+        // final pc AFTER run (D188: rides envelope; Python strips it)
+        let pc = self.pc;
+        let mut m = serde_json::Map::new();
+        m.insert("status".to_string(), Value::String(st.status.as_str().to_string()));
+        m.insert("steps".to_string(), Value::from(st.steps));
+        m.insert("fault".to_string(), st.fault.clone().map(Value::String).unwrap_or(Value::Null));
+        m.insert("pending_import".to_string(), st.pending_import.clone().map(Value::String).unwrap_or(Value::Null));
+        m.insert("outs".to_string(), Value::Array(st.outs.iter().map(lane_val_to_json).collect()));
+        m.insert("regs".to_string(), Value::Array(st.regs.iter().map(lane_val_to_json).collect()));
+        m.insert("pc".to_string(), Value::from(pc));
+        Ok(Value::Object(m))
+    }
+}

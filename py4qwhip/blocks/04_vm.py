@@ -195,6 +195,165 @@ class Machine:
 
     def run(self) -> Dict[str, Any]:
         """Run to HALT/FAULT/step-limit. Returns final state (deterministic)."""
+        # -- pq4 wrapper: delegate the run loop to the Rust pq.dll (C ABI) --
+        # FILE-LEVEL swap per RUST_PORT_PLAN step 6 (2026-10-21): dict-form
+        # program (str name, int nlocals, bytes code), int pc/steps/max_steps,
+        # plain-string status, representable pool/regs/outs and encodable
+        # strings route to the dll; everything else falls through to the
+        # verbatim pure-Python body below so run()'s native behaviour is
+        # preserved (D168 fall-through pattern, b01 mirror).
+        _prog = self.program
+        if (isinstance(_prog, dict) and isinstance(_prog.get("name"), str)
+                and isinstance(_prog.get("nlocals"), int)
+                and not isinstance(_prog.get("nlocals"), bool)
+                and isinstance(_prog.get("code"), bytes)
+                and isinstance(self.pc, int) and not isinstance(self.pc, bool)
+                and isinstance(self.steps, int) and not isinstance(self.steps, bool)
+                and isinstance(self.max_steps, int)
+                and not isinstance(self.max_steps, bool)
+                and isinstance(self.status, str)
+                and (self.fault is None or isinstance(self.fault, str))
+                and (self.pending_import is None
+                     or isinstance(self.pending_import, str))
+                and isinstance(self.pool, list)
+                and isinstance(self.regs, list)
+                and isinstance(self._outs, list)
+                and all(v is None or isinstance(v, (bool, int, float, bytes, str))
+                        for v in self.pool)
+                and all(v is None or isinstance(v, (bool, int, float, bytes, str))
+                        for v in self.regs)
+                and all(v is None or isinstance(v, (bool, int, float, bytes, str))
+                        for v in self._outs)):
+            try:
+                _prog["name"].encode("utf-8")
+                self.status.encode("utf-8")
+                if self.fault is not None:
+                    self.fault.encode("utf-8")
+                if self.pending_import is not None:
+                    self.pending_import.encode("utf-8")
+                for _v in self.pool:
+                    if isinstance(_v, str):
+                        _v.encode("utf-8")
+                for _v in self.regs:
+                    if isinstance(_v, str):
+                        _v.encode("utf-8")
+                for _v in self._outs:
+                    if isinstance(_v, str):
+                        _v.encode("utf-8")
+            except UnicodeEncodeError:
+                pass  # lone surrogates: only the pure-Python path can hold these
+            else:
+                import base64 as _b64
+                import ctypes
+                import sys
+                import json as _json
+                import os as _os
+
+                def _to_wire(v):
+                    if v is None:
+                        return {"t": "n", "v": None}
+                    if isinstance(v, bool):
+                        return {"t": "z", "v": v}
+                    if isinstance(v, int):
+                        if -(2 ** 63) <= v <= 2 ** 63 - 1:
+                            return {"t": "i", "v": v}
+                        return {"t": "B", "v": str(v)}
+                    if isinstance(v, float):
+                        return {"t": "f",
+                                "v": "0x%016x" % struct.unpack(
+                                    "<Q", struct.pack("<d", v))[0]}
+                    if isinstance(v, bytes):
+                        return {"t": "b",
+                                "v": _b64.b64encode(v).decode("ascii")}
+                    return {"t": "s", "v": v}
+
+                def _from_wire(e):
+                    t, v = e["t"], e["v"]
+                    if t == "n":
+                        return None
+                    if t == "z":
+                        return True if v else False
+                    if t in ("i", "B"):
+                        return int(v)
+                    if t == "f":
+                        hx = v[2:] if v.startswith("0x") else v
+                        return struct.unpack(">d", bytes.fromhex(hx))[0]
+                    if t == "b":
+                        return _b64.b64decode(v)
+                    return v
+
+                def _lib():
+                    got = getattr(Machine.run, "_pq4_lib", None)
+                    if got is not None:
+                        return got
+                    _path = _os.path.join(
+                        _os.path.dirname(_os.path.dirname(
+                            _os.path.abspath(__file__))),
+                        "rust", "pq", "target", "release", "pq.dll")
+                    if not _os.path.isfile(_path):
+                        print("pq4: pq.dll not found; re-running"
+                              " pure-Python body", file=sys.stderr)
+                        return None
+                    lib = ctypes.CDLL(str(_path))
+                    lib.pq_vm_run_json.argtypes = [ctypes.c_char_p]
+                    lib.pq_vm_run_json.restype = ctypes.c_void_p
+                    lib.pq_free.argtypes = [ctypes.c_void_p]
+                    lib.pq_free.restype = None
+                    Machine.run._pq4_lib = lib
+                    return lib
+
+                req = _json.dumps({
+                    "program": {
+                        "name": _prog["name"],
+                        "nlocals": int(_prog["nlocals"]),
+                        "const_pool": [_to_wire(v) for v in self.pool],
+                        "code_b64": _b64.b64encode(_prog["code"]).decode(
+                            "ascii"),
+                    },
+                    "pc": self.pc,
+                    "steps": self.steps,
+                    "max_steps": self.max_steps,
+                    "status": self.status,
+                    "fault": self.fault,
+                    "pending_import": self.pending_import,
+                    "outs": [_to_wire(v) for v in self._outs],
+                    "regs": [_to_wire(v) for v in self.regs],
+                })
+                lib = _lib()
+                if lib is not None:
+                    ptr = lib.pq_vm_run_json(req.encode("utf-8"))
+                    if not ptr:
+                        print("pq4: pq_vm_run_json returned null;"
+                              " re-running pure-Python body", file=sys.stderr)
+                    else:
+                        _raw = ctypes.string_at(ptr)
+                        lib.pq_free(ptr)
+                        _resp = _json.loads(_raw.decode("utf-8"))
+                        if "error" in _resp:
+                            _err = _resp["error"]
+                            _msg = (_err.get("message", _err)
+                                    if isinstance(_err, dict) else _err)
+                            print("pq4: dll refused (%s); re-running"
+                                  " pure-Python body"
+                                  % _json.dumps(_msg)[:120], file=sys.stderr)
+                            # dll refused: fall through to the verbatim
+                            # pure-Python body below so the native exception
+                            # kind surfaces exactly as unpatched 04_vm would.
+                        else:
+                            self.pc = int(_resp["pc"])
+                            self.steps = int(_resp["steps"])
+                            self.status = str(_resp["status"])
+                            self.fault = _resp["fault"]
+                            self.pending_import = _resp["pending_import"]
+                            self._outs = [_from_wire(e) for e in _resp["outs"]]
+                            self.regs = [_from_wire(e) for e in _resp["regs"]]
+                            return {"status": self.status,
+                                    "steps": self.steps,
+                                    "fault": self.fault,
+                                    "pending_import": self.pending_import,
+                                    "outs": self.out(),
+                                    "regs": list(self.regs)}
+
         while self.status == RUNNING:
             self.steps += 1
             if self.steps > self.max_steps:

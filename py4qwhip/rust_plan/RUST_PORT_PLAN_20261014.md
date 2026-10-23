@@ -298,3 +298,24 @@ Next: Chris go on rustup -> `cargo new` crate pq, port 01 against golden vectors
   DESIGN (light surfaces only). Open external: Alice ruling on
   b01 wrapper package (staged emit 20261020-181628, send = explicit user-visible
   flush()); pq.dll.old locked/inert (leave).
+- ABI-1 B-TAG VALUE-ROUTING FIX (20261023, commit db578c0 pushed ae78456..db578c0):
+  const_from_json's "B" arm routed ALL decimal tags to Const::Bigint, and canonical_bytes
+  (<B-pack lane L438) refuses Bigint -> every B-tag const probe returned struct.error
+  "argument out of range". Fix (lib.rs ~L574): trim + '+'-strip + digit guard (garbage ->
+  "invalid const value"), parse::<i64> -> in-i64 = Const::Int, else Const::Bigint; mirrors
+  python canonical_pool_value. Dedupe merges Int<->Bigint. Rebuild green (14.68 s);
+  post-fix dll 455,168 B sha16 3406e1df037462f4 (pre-fix fb764a706c288ce2 retired).
+  GOLDEN-PIN CLOSURE: fixture generator recovered verbatim from session history
+  (probe a39..a66); landed in-repo as rust_plan/bytespace_probe_edge2_repro.py; re-run
+  = 28/28 keys byte-identical vs rust_plan/bytespace_probe_edge2.json (DIFF_STRING True);
+  a41_hash_q_min_edge = 879b4139b98664ef EXACT, a42_hash_q_max_edge = b45d92ea8a9b66e4
+  EXACT, a40 = struct.error "argument out of range" EXACT. Correct program shape (was
+  mis-guessed earlier): name "x", nlocals 2, const_pool [-2^63] / [2^63-1], code "\x0e".
+  Pinned a SECOND route at dll wire level: pq_content_hash_json with fixture shapes +
+  B-tag returns bare strings "879b4139b98664ef" / "b45d92ea8a9b66e4" exact. POST-FIX
+  GATES: ring selftest 13/13, keepalive selftest 15/15, blocks/05_testrunner.py 8/8 GREEN.
+  Ledger row 9138; backup v6 = pq_port_backup_20261023_v6.zip (git archive HEAD
+  db578c0, 641 entries + fresh meta.json, namelist + testzip clean, zip sha
+  91c2ff57c6aadf64, 1,745,867 B); v1-v5 untouched.
+- STEP 7: NONE - port internally closed at db578c0; 03_synthesize stays pure Python by
+  design (light surfaces only).

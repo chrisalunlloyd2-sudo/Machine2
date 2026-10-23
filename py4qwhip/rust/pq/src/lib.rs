@@ -572,7 +572,27 @@ pub mod c_abi {
                 None => err("invalid const value"),
             },
             "B" => match v.as_str() {
-                Some(d) => Ok(Const::Bigint(d.to_string())),
+                Some(d) => {
+                    // Value-based routing (Python canonical_pool_value): an
+                    // in-i64 decimal packs <q fine (pins a41/a42), only
+                    // out-of-i64 stays Bigint (canonical_bytes then refuses
+                    // with raw struct.error, mirroring Python).
+                    let t = d.trim();
+                    let digits = t.trim_start_matches(['+', '-']);
+                    let neg = t.starts_with('-');
+                    let pos = t.starts_with('+');
+                    if (neg && pos)
+                        || digits.is_empty()
+                        || !digits.bytes().all(|c| c.is_ascii_digit())
+                    {
+                        return err("invalid const value");
+                    }
+                    let canon = t.strip_prefix('+').unwrap_or(t).to_string();
+                    match canon.parse::<i64>() {
+                        Ok(n) => Ok(Const::Int(n)),
+                        Err(_) => Ok(Const::Bigint(canon)),
+                    }
+                }
                 None => err("invalid const value"),
             },
             "s" => match v.as_str() {

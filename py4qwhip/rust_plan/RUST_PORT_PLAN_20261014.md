@@ -247,3 +247,54 @@ Next: Chris go on rustup -> `cargo new` crate pq, port 01 against golden vectors
   already in the Rust suite); Alice open rulings external (step-2/step-5 +
   Alice package pq4_b01_wrapper_alice_package.md, emit staged
   20261020-181628, unsent).
+
+
+## PROGRESS 10-22 (milestone 6: 02_karaka file-level wrapper, commit a704668)
+
+- RUST LANE (karaka.rs tail: sha 5139cdb5eb525247, 11,475 B / 286 LF / pure LF; base
+  L1-120 intact, lane at EOF; local err<T> @ L10-12 = fault-1 D263 RESOLVED): wire ops
+  from_pairs/bind/get/require/to_json/merge_tables keyed req["op"]; layout = [role, slot]
+  ARRAY pairs both directions (D250); parse_wire_slot bool-through-int True->1 (D258);
+  dispatch tail = "wire: unknown op '{}'". tests/karaka.rs sha b6851f17834d6d8b
+  (wire_lane_roundtrip + BTreeMap-order asserts). Build env D267: vcvars64 BROKEN /
+  vcvarsall MISSING (VS 18 Insiders) - never retry; drivers = scratch/pq_karaka_vsdevshell.ps1
+  (build2; log pq_karaka_build.log, suite green 18/18) + pq_karaka_dllbuild.ps1 (canonical
+  in-place rebuild after target/release/pq.dll found 0-byte truncated; D270). FINAL canonical
+  dll 454,144 B sha fb764a706c288ce2 (re-asserted at P-35 gate).
+- LIB EXPORT: pq_karaka_json added to lib.rs (34,123 B / 874 LF / all-CRLF, sha
+  afc659edf46ee9a1), inserted before pq_version (D252/D264); C-ABI export count now 10;
+  export owns the envelope ok/kind (D251; error kind-tagging KarakaError). All 10 exports
+  ctypes-smoked green on the canonical dll.
+- PYTHON WRAPPER (blocks/02_karaka.py 5,964 -> 10,423 B, PURE LF, 279 LF / CR 0, sha
+  980ed55d427d6ad5, py_compile OK): module helpers _pq_karaka_wire (ctypes CDLL cached on function
+  attr _lib; dll path = block parent-of-parent + rust/pq/target/release/pq.dll; missing ->
+  KarakaError("pq4 dll not found: %s")), _pq_karaka_pairs (ROLE_IDS gate; slots 0..255
+  non-bool), _pq_karaka_snapshot (strict table_pairs validation). Hooks: ctor -> from_pairs
+  wire, bind -> bind, get -> get(found/slot), require -> require; refuse/None/missing-dll
+  fall through to VERBATIM pure-Python bodies _pq_init/_pq_bind/_pq_get/_pq_require (D168).
+  from_json/merge_tables/parse_arguments UNTOUCHED - transitively wired via hooked ctor/bind
+  (planned batch-2 hooks unnecessary). D269 CLOSED explicitly: casing parity = wire accepts
+  lowercase (dll upcases internally - proven via lowercase "agt" in gate), wrapper gate
+  upper-cases, pure bodies keep str(role).upper(); no divergence path remains.
+- P-35 GATE + BATTERY: dll sha re-assert + ctypes smoke of ALL wire ops incl. refusal paths
+  (bind-dup ok:false, require-miss refusal, unknown-op refusal). Differential battery
+  scratch/pq4_karaka_battery.py (192 L): pristine vs wrapped vs direct-dll, exception reprs
+  byte-identical ("%s:%s"); Py311 -I, cwd py4qwhip -> CASES=67 FAILS==0, rc=0, log
+  pq4_karaka_battery.log 67/67 PASS (wrapped selftest ok:true 9 checks @ case 59; pristine
+  pair; both selftest-exit-0 cases). Consumer 03_synthesize selftest on wrapped 02: ok true,
+  8/8, no stderr. Repo sweep: 05/08 references benign (05 = runner listing, 08 = .done
+  marker).
+- MILESTONE 6 RUNBOOK: commit a704668 pushed origin main (parent 12ed65c; 4 files / 429
+  insertions: blocks/02_karaka.py, rust/pq/src/karaka.rs, rust/pq/src/lib.rs,
+  rust/pq/tests/karaka.rs). Backup v5 = pq_port_backup_20261021_v5.zip: 106 entries (95 files +
+  11 dir stubs) = git archive HEAD (captures a704668) + 12 carried logs/*
+  members from v4 + FRESH meta.json (commit a704668, created 20261022 - v4's was stale,
+  said ac0e626/20261020) + rust/pq/Cargo.lock + fresh pq.dll 454,144 B; text members
+  CRLF-normalized by git archive export (same as v3/v4 floor). namelist + testzip clean;
+  file set == v4 (delta = intended extras only); zip sha 52910dfed98e8059, 927,054 B; v1-v4
+  untouched. Ledger row 9071 (pq4_karaka_wrapper_block, mirrors row 9070 format).
+- STEP 6 FILE-LEVEL WRAPPERS: 01_bytespace (closed earlier in step 6; battery 27/27),
+  04_vm (m5, d70b80f), 02_karaka (m6, a704668); 03_synthesize stays pure Python BY
+  DESIGN (light surfaces only). Open external: Alice ruling on
+  b01 wrapper package (staged emit 20261020-181628, send = explicit user-visible
+  flush()); pq.dll.old locked/inert (leave).

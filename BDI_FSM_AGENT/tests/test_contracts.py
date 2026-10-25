@@ -192,3 +192,21 @@ def test_release_reason_distinguishes_the_three_failures():
     assert "held by aegis" in f.release_reason("t", owner="bdi")["why"]
     time.sleep(1.3)
     assert f.release_reason("t", owner="aegis").get("expired") is True
+
+
+def test_a_long_board_hold_names_its_method_and_caller(monkeypatch):
+    # 2026-10-25: a writer waited 20 s, went UNGUARDED, and the holder could not be named afterwards.
+    import json
+    import bdi_fsm.contracts as cm
+    monkeypatch.setattr(cm, "HOLD_WARN_S", -1.0)   # a fast hold can read as 0.0 s
+    c = _c()
+    c.offer("t1", "fix the parser")
+    rows = [json.loads(l) for l in open(os.path.join(c.state_dir, "contracts_holds.jsonl"), encoding="utf-8")]
+    assert rows and rows[-1]["method"] == "offer" and "test_contracts.py" in rows[-1]["caller"]
+    assert rows[-1]["locked"] is True and rows[-1]["held_s"] >= 0
+
+
+def test_a_short_board_hold_is_not_logged():
+    c = _c()
+    c.offer("t2", "fix the parser")
+    assert not os.path.exists(os.path.join(c.state_dir, "contracts_holds.jsonl"))

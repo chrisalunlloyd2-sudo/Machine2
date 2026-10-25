@@ -206,6 +206,9 @@ def _locked(fn):
     return wrapper
 
 
+HOLD_WARN_S = float(os.environ.get("VIPER_BOARD_HOLD_WARN_S", "5"))   # 2026-10-25: see _note_hold
+
+
 class Contracts:
     """Todos on hexes, taken under lease by whichever party may do them."""
 
@@ -271,9 +274,14 @@ class Contracts:
                         break
                     time.sleep(0.05)
             self._depth = 1
+            t_held = time.time()
             yield
         finally:
             self._depth = 0
+            if "t_held" in locals():
+                held = time.time() - t_held
+                if held > HOLD_WARN_S:
+                    self._note_hold(held, time.time() - deadline + timeout - held, locked)
             if locked:
                 try:
                     fh.seek(0)
@@ -285,6 +293,31 @@ class Contracts:
                     print("[contracts] lock release failed (%s) -- the kernel "
                           "drops it when this process exits" % str(e)[:60])
             fh.close()
+
+    def _note_hold(self, held, waited, locked):
+        """2026-10-25: a writer found the board busy for 20 s and went UNGUARDED, and nobody could say who held
+        it. Any hold over HOLD_WARN_S is now printed and appended to contracts_holds.jsonl with the method and
+        the caller outside this file, so the next long hold names itself."""
+        import sys as _sys
+        # The locked METHOD has already returned when the hold ends; _locked's wrapper is still on the stack
+        # and holds it as `fn`, and the frame above the wrapper is the caller.
+        meth, caller, f = "", "", _sys._getframe(1)
+        while f is not None:
+            if f.f_code.co_name == "wrapper" and f.f_code.co_filename == __file__ and callable(f.f_locals.get("fn")):
+                meth = f.f_locals["fn"].__name__
+                b = f.f_back
+                if b is not None:
+                    caller = "%s:%d %s" % (os.path.basename(b.f_code.co_filename), b.f_lineno, b.f_code.co_name)
+                break
+            f = f.f_back
+        rec = {"ts": time.strftime("%Y-%m-%dT%H:%M:%S"), "held_s": round(held, 2), "waited_s": round(max(waited, 0), 2),
+               "locked": locked, "method": meth, "caller": caller, "pid": os.getpid()}
+        print("[contracts] board held %.1fs by %s (%s)" % (held, meth or "?", caller or "?"))
+        try:
+            with open(os.path.join(self.state_dir, "contracts_holds.jsonl"), "a", encoding="utf-8") as fh:
+                fh.write(json.dumps(rec) + "\n")
+        except OSError:
+            pass
 
     def _read(self):
         try:

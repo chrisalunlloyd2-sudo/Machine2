@@ -265,6 +265,10 @@ class Handler(BaseHTTPRequestHandler):
             self._send(200, planner_verdicts())
         elif p == "/api/directives":
             self._send(200, {"items": read_directives()})
+        elif p == "/api/shell":
+            # GET /api/shell -- pershell entry status for the dashboard
+            self._send(200, {"ok": True, "entry": "pershell.run / pershell.describe",
+                             "usage": "POST /api/shell {\"line\": \"!print('hi')\"}"})
         else:
             self._send(404, {"error": "not found"})
 
@@ -376,6 +380,18 @@ class Handler(BaseHTTPRequestHandler):
         elif p == "/api/feedback":
             result = a.feedback(d.get("prompt", ""), d.get("reply", ""), bool(d.get("positive", True)))
             self._send(200, result)
+        elif p == "/api/shell":
+            # '!' sink: the line the user typed, verbatim, '!' included.
+            line = str(d.get("line") or "")
+            if not line.lstrip().startswith("!"):
+                self._send(400, {"error": "no '!'"})
+                return
+            sys.path.insert(0, r"C:\Viper\scripts")
+            import pershell
+            pres = pershell.run(line, route=str(d.get("route") or "auto"))
+            self._send(200, {"ok": bool(pres.get("ok")),
+                             "executed": bool(pres.get("executed")),
+                             "text": pershell.describe(pres)[-4000:]})
         else:
             self._send(404, {"error": "not found"})
 

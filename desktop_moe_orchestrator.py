@@ -867,13 +867,18 @@ def _aegis_synthesize(question: str, data: str, context: str = "") -> str:
     # timeout throws away every token it produced and falls through to the
     # empty-reply path. Picking a bigger model would have made chat go BLANK,
     # which reads as "the model is broken", not "the timeout was too short".
+    try:                                  # config/model_profile.json = THE shared model settings (11-09)
+        import model_router as _mr
+        _prof = _mr.profile()
+    except Exception:
+        _prof = {"context": {"num_ctx": 4096}, "residency": {"keep_alive": "15m"}}
     _plan = chat_kernels.plan(want_tokens=900)
     body = json.dumps({
         "model": _plan["model"],
         "system": system,
         "prompt": prompt,
         "stream": False,
-        "keep_alive": "15m",
+        "keep_alive": _prof["residency"]["keep_alive"],
         # num_ctx pinned rather than left to the default: when prompt + num_predict
         # overflows the window Ollama silently drops the FRONT of the prompt, which
         # is where the axioms live. The old 2048 was already tight -- 250 (system)
@@ -883,7 +888,7 @@ def _aegis_synthesize(question: str, data: str, context: str = "") -> str:
         # reply still arrives, just answered from a prompt with its head cut off.
         # 4096 on a 1.1b is a few tens of MB of KV cache, cheap next to that.
         "options": {"num_gpu": 0, "num_predict": _plan["num_predict"],
-                    "num_thread": 4, "num_ctx": 4096},
+                    "num_thread": 4, "num_ctx": max(int(_prof["context"]["num_ctx"]), 2048)},
     }).encode()
     # SLOW IS OK, SLOW IS GOOD (Chris, 2026-09-28). AEGIS always gives a REAL model reply:
     # ollama first, then the house (:8765), then the backup house (:8767), same system +

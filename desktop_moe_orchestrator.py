@@ -99,7 +99,9 @@ CHAT_INJECT_PATH = r"C:\Viper\databases\sophia\chat_inject.jsonl"
 
 os.makedirs(r"C:\Viper\databases\sophia", exist_ok=True)
 
-TURN_CHARS = 300      # per-turn budget. Was 80 -- a turn was cut mid-word.
+TURN_CHARS = 2000     # per-turn cap. Was 300, and 80 before that -- turns were stored cut to 200 anyway.
+LIT_CHARS = 6000      # the flashlight: ~1500 tokens of newest turns carried verbatim (Chris 11-09: 2048 ctx
+                      # minimum, prune like a flashlight on the active area; the dark part goes to RAG recall)
 TURNS_BACK = 8        # turns of dialogue carried forward. Was 2.
 
 def _rag_sources(query: str) -> str:
@@ -167,6 +169,9 @@ def _rag_sources(query: str) -> str:
     return ("RAG sources:\n" + "\n".join(blocks)) if blocks else ""
 
 
+_LAST_RAFT = ("", [], "companion")   # (query, hits, memory) from the last context build
+
+
 def _bb_read_context(max_facts: int = 8, query: str = "") -> str:
     """Pull recent facts from sophia_loop's blackboard + this session's chat turns.
     If query is provided, prepends nearest-neighbour recalled memories."""
@@ -184,6 +189,7 @@ def _bb_read_context(max_facts: int = 8, query: str = "") -> str:
     except Exception:
         pass
     # 2. Immediate session context: last 2 turns from chat_inject (before sophia tick)
+    _lit_texts = []
     try:
         turns = []
         with open(CHAT_INJECT_PATH, "rb") as f:
@@ -192,7 +198,7 @@ def _bb_read_context(max_facts: int = 8, query: str = "") -> str:
             # TURNS_BACK turns at TURN_CHARS with room for long ones.
             f.seek(0, 2)
             size = f.tell()
-            f.seek(max(0, size - 32768))
+            f.seek(max(0, size - 262144))
             for raw in f:
                 try:
                     turns.append(json.loads(raw.decode("utf-8", errors="replace")))
@@ -202,15 +208,29 @@ def _bb_read_context(max_facts: int = 8, query: str = "") -> str:
         # parses as garbage or not at all, so drop it rather than feed a fragment.
         if len(turns) > 1:
             turns = turns[1:]
-        for t in turns[-TURNS_BACK:]:
-            lines.append(f"recent {t.get('role','?')}: {t.get('content','')[:TURN_CHARS]}")
+        lit, used = [], 0
+        for t in reversed(turns):
+            c = str(t.get('content', ''))[:TURN_CHARS]
+            if lit and used + len(c) > LIT_CHARS:
+                break
+            lit.append(f"recent {t.get('role','?')}: {c}")
+            used += len(c)
+        lines.extend(reversed(lit))
+        _lit_texts = [str(t.get('content', ''))[:TURN_CHARS] for t in turns[-len(lit):]] if lit else []
     except Exception:
         pass
     mem_ctx = ("System memory:\n" + "\n".join(lines)) if lines else ""
     # 3. Nearest-neighbour episodic recall
     if _MEM_OK and query:
         try:
-            mem_hits = _mem.recall_text(query, top_k=3)
+            # the DARK half of the flashlight: older turns + indexed code, by embedding similarity,
+            # skipping whatever is already lit; RAFT block = numbered docs, distractors expected, quote used
+            global _LAST_RAFT
+            # six specialised memories (coder/critic/sentinel/archivist/planner/companion): the question
+            # picks which one is mounted; it recalls only its own past + the shared code library
+            _m, _dark = _mem.recall_for(query, exclude=_lit_texts)
+            _LAST_RAFT = (query, _dark, _m)
+            mem_hits = _mem.persona(_m) + ("\n\n" + _mem.raft_block(_dark) if _dark else "")
             if mem_hits:
                 mem_ctx = (mem_hits + "\n\n" + mem_ctx) if mem_ctx else mem_hits
         except Exception:
@@ -232,7 +252,7 @@ def _bb_inject_chat(role: str, text: str):
         rec = json.dumps({
             "ts": datetime.utcnow().isoformat(),
             "role": role,
-            "content": text[:200],
+            "content": text[:8000],
         })
         with open(CHAT_INJECT_PATH, "a", encoding="utf-8") as f:
             f.write(rec + "\n")
@@ -853,7 +873,7 @@ def _aegis_synthesize(question: str, data: str, context: str = "") -> str:
         "system": system,
         "prompt": prompt,
         "stream": False,
-        "keep_alive": 0,
+        "keep_alive": "15m",
         # num_ctx pinned rather than left to the default: when prompt + num_predict
         # overflows the window Ollama silently drops the FRONT of the prompt, which
         # is where the axioms live. The old 2048 was already tight -- 250 (system)
@@ -934,6 +954,17 @@ def _aegis_synthesize(question: str, data: str, context: str = "") -> str:
             ai_text = _gr.annotate(ai_text, f"{question}\n{context}\n{data}")
         except Exception:
             pass  # grounding is a check on the answer, never a reason to lose one
+    # RAFT corpus: question + the docs it was shown + the answer -> one training row (CPU LoRA later)
+    if ai_text and _MEM_OK:
+        try:
+            _q, _h, _m = _LAST_RAFT
+            if _m != "companion":          # companion's turns are already stored by _bb_inject_chat
+                _mem.store_mem(_m, "user", question)
+                _mem.store_mem(_m, "aegis", ai_text)
+            _row = _mem.raft_log(question, _h, ai_text, path=os.path.join(_mem.RAFT_DIR, _m + ".jsonl")) if _h else None
+            _mem.grow(_m, question, bool(_row and _row["cited"]))
+        except Exception:
+            pass
     # Persist to day-folder (same pattern as sophia_loop) + overwrite last-reply pointer
     try:
         ts      = datetime.utcnow()
@@ -1098,7 +1129,7 @@ def get_agent_from_llm(query: str) -> str:
         "model": chat_kernels.CLASSIFIER,
         "prompt": prompt,
         "stream": False,
-        "keep_alive": 0,
+        "keep_alive": "15m",
         "options": {"num_gpu": 0, "num_predict": 20, "num_thread": 4},
     }).encode()
     import urllib.request as _ureq
